@@ -119,8 +119,13 @@ def parse_args() -> argparse.Namespace:
         default=0.0,
         help="0 = adaptive schedule; otherwise explicit learning rate.",
     )
-    p.add_argument("--batch-size", type=int, default=1)
-    p.add_argument("--grad-accum", type=int, default=2)
+    p.add_argument(
+        "--batch-size",
+        type=int,
+        default=0,
+        help="0 = auto by GPU VRAM (4 for >=12GB, 2 for >=8GB, otherwise 1).",
+    )
+    p.add_argument("--grad-accum", type=int, default=1)
     p.add_argument(
         "--workers",
         type=int,
@@ -1016,6 +1021,19 @@ def write_report(path: Path, report: dict[str, Any]) -> None:
 
 def main() -> None:
     args = parse_args()
+    if args.batch_size <= 0:
+        import torch
+
+        if torch.cuda.is_available():
+            vram_gb = torch.cuda.get_device_properties(0).total_memory / (1024**3)
+            args.batch_size = 4 if vram_gb >= 12 else 2 if vram_gb >= 8 else 1
+            print(
+                f"🦜 Auto batch theo VRAM {vram_gb:.1f} GB: "
+                f"batch={args.batch_size}, grad_accum={args.grad_accum}",
+                flush=True,
+            )
+        else:
+            args.batch_size = 1
     if args.fast_gpu:
         os.environ["CUDA_LAUNCH_BLOCKING"] = "0"
         os.environ.pop("PYTORCH_NO_CUDA_MEMORY_CACHING", None)
