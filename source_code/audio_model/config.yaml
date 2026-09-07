@@ -1,0 +1,30 @@
+text_settings:
+  max_chars_per_chunk: 256
+  max_total_chars_streaming: 3000
+
+backbone_configs:
+  # v3 Turbo: default for everyone — CPU runs via ONNX, GPU via PyTorch.
+  "VieNeu-TTS-v3-Turbo (Thử nghiệm)":
+    repo: pnnbao-ump/VieNeu-TTS-v3-Turbo
+    supports_streaming: false
+    description: "🆕 v3 Turbo (early access) — 48kHz. CPU dùng ONNX; GPU dùng PyTorch. Giọng mặc định qua speaker token; Voice Cloning từ audio mẫu; hỗ trợ tag cảm xúc (thử nghiệm). Bản dùng thử; v3 đầy đủ sẽ ra mắt trong vài tuần tới."
+  # GPU-only extras.
+  "VieNeu-TTS-v2 (GPU)":
+    repo: pnnbao-ump/VieNeu-TTS-v2
+    supports_streaming: false
+    description: "VieNeu-TTS v2 - song ngữ (Anh-Việt) & chế độ podcast (GPU)"
+  "VieNeu-TTS (GPU)":
+    repo: pnnbao-ump/VieNeu-TTS
+    supports_streaming: false
+    description: "⭐ VieNeu-TTS v1 - ổn định, chất lượng cao (GPU)"
+
+codec_configs:
+  "NeuCodec (Distill)":
+    repo: neuphonic/distill-neucodec
+    description: "Codec mặc định cho model GPU"
+    use_preencoded: false
+  "VieNeu-Codec":
+    repo: pnnbao-ump/VieNeu-Codec
+    description: "Codec tối ưu cho Turbo v2 (ONNX)"
+    use_preencoded: false
+

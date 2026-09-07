@@ -1,0 +1,9 @@
+"""
+VieNeu-TTS v3 Turbo — minimal batched serving runtime (pure PyTorch).
+====================================================================
+"""
+from .batched_acoustic import generate_frame_batched
+from .batched_backbone import BatchedBackbone
+from .engine import V3TurboBatchEngine
+
+__all__ = ["generate_frame_batched", "BatchedBackbone", "V3TurboBatchEngine"]

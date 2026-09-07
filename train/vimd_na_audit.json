@@ -1,0 +1,3845 @@
+{
+  "source": "nguyendv02/ViMD_Dataset",
+  "filter": "province_code == 40 or province_name in {NgheAn,Nghệ An}",
+  "audio_downloaded": false,
+  "split_row_counts_scanned": {
+    "train": 15023,
+    "valid": 1900,
+    "test": 2026
+  },
+  "province_values_matching": {
+    "('NgheAn', 37)": 363
+  },
+  "utterances": 363,
+  "speakers": 275,
+  "speaker_distribution": {
+    "1": 198,
+    "2": 69,
+    "3": 6,
+    "4": 1,
+    "5": 1
+  },
+  "speakers_ge_2": 77,
+  "speakers_ge_3": 8,
+  "speakers_ge_5": 1,
+  "speakers_ge_10": 0,
+  "speaker_rows": {
+    "spk_37_0001": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0001.wav",
+        "text": "Trẻ em thành phố hiện nay ngoài học thêm và ở nhà ra thì chưa có một sân chơi dành riêng cho các trẻ em. Ngoài ở công viên và hồ Điều Hòa là dành cho cả người lớn và trẻ nhỏ thì ở trung tâm thương mại thì các trẻ em lại phải mất tiền. Công viên và hồ Điều Hòa thì Lại chưa có sự kiểm soát sự an toàn đối với các trẻ nhỏ. Nên là em mong muốn có một khu vui chơi, sân vui chơi dành cho trẻ nhỏ được kiểm soát an toàn và lành mạnh.",
+        "speakerID": "spk_37_0001",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0002": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0002.wav",
+        "text": "Dịp này cháu nghỉ hè, phải cho cháu về quê. Còn ở Vinh là cứ nhốt cháu vào trong phòng. Chủ yếu là ở nhà là chỉ có mở máy tính chơi game là chính. Không có chỗ nào để các cháu đi chơi cả. Đi đá bóng thì cũng phải có tiền và phải thuê được sân. Đi bơi lội cũng vậy mà cũng cần phải có phụ huynh đi theo. Thì tôi mong muốn là mỗi phường, mỗi địa phương cần phải có những cái hoạt động phù hợp với các lứa tuổi để tuổi, tuổi nào chơi cái gì và phải là sân chơi phải nhường cho các cháu.",
+        "speakerID": "spk_37_0002",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0003": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0003.wav",
+        "text": "Chơi dưới đường thì cũng không được an toàn bởi vì xe cộ đi lại nhiều, mà không chơi ở đây thì cháu cũng nỏ biết chơi ở mô cả, tại vì ở trong nhà mãi cũng chán.",
+        "speakerID": "spk_37_0003",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0004": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0004.wav",
+        "text": "Trên địa bàn thị xã Cửa Lò thiếu những cái điểm sân chơi cho nên em mong muốn trung tâm này sẽ trở vào hoạt động để cho các bạn đoàn viên, thanh thiếu niên, các em học sinh có thể tạo ra một sân chơi bổ ích.",
+        "speakerID": "spk_37_0004",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0005": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0005.wav",
+        "text": "Về cái quy hoạch, tổng thể trước đây thì không có. Vì vậy mà không có sân chơi, bài tập cho các cháu. Hiện nay còn thiếu cái nguồn lực và thiếu cái quy hoạch, tổng thể về các cái sân chơi.",
+        "speakerID": "spk_37_0005",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0006": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0006.wav",
+        "text": "Phòng văn hóa thông tin chúng tôi đã tham mưu ủy ban nhân dân thị xã Cửa Lò. Trong cái quy hoạch thì dành những cái quỹ đất ban hành các cái chủ trương chính sách, khuyến khích các cái nhà đầu tư, đầu tư vào các cái khu vui chơi giải trí dành cho trẻ em..",
+        "speakerID": "spk_37_0006",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0007.wav",
+        "text": "Và đặc biệt trong quy hoạch ở khu vực phía đông đường Bình Minh, khu Lâm Viên bãi tắm ấy. Ngoài những cái không gian dành cho các nhà hàng, khách sạn, câu lạc bộ biển thì chúng tôi rất quan tâm đến vấn đề dành cái không gian và cái khoản đầu tư để xây dựng cái khu vui chơi giải trí dành cho trẻ em",
+        "speakerID": "spk_37_0006",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0007": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0008.wav",
+        "text": "Hôm trước thì cơ quan chức năng có xử phạt thì bên em đã sửa và khắc phục lại và sẽ cam kết là làm đúng và đủ theo cái giấy phép kinh doanh và các cái đề xuất mà các cơ quan chức năng đề ra.",
+        "speakerID": "spk_37_0007",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0008": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0009.wav",
+        "text": "Khi các trung tâm thẩm mỹ viện mà xảy ra các sự cố mà mình tham khảo trên thị trường thì mình cũng rất là lo lắng.",
+        "speakerID": "spk_37_0008",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0010.wav",
+        "text": "Khi mà chọn những cái địa điểm để mà làm đẹp thì cái yếu tố quan trọng nhất đó là phải an toàn",
+        "speakerID": "spk_37_0008",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0011.wav",
+        "text": "Vì vậy cho nên để mà tìm một thẩm mỹ viện để cho mình an tâm gửi gắm bản thân mình vào đấy thì mình phải tìm hiểu kỹ qua người quen, bạn bè và đặc biệt là mình cũng phải theo dõi, phải tìm hiểu một quá trình của sự hoạt động của thẩm mỹ viện",
+        "speakerID": "spk_37_0008",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0009": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0012.wav",
+        "text": "Tôi cũng mong muốn rằng là nhà nước có thể tạo điều kiện cho những chỗ làm đẹp là nhu cầu chính đáng của người ta được thực hiện một cách dễ dàng nhưng mà cũng phải rất là chặt chẽ.",
+        "speakerID": "spk_37_0009",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0010": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0013.wav",
+        "text": "Ngành thẩm mỹ là một ngành rất là đặc thù. thì Để hoạt động một cơ sở thì bắt buộc là bác sĩ phải tuân thủ những quy định của pháp luật hiện hành. thì Đối với cơ sở Tân Trà chúng tôi tuân thủ những quy định của pháp luật cũng giống như là quy định của bên y tế..",
+        "speakerID": "spk_37_0010",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0014.wav",
+        "text": "Những cái trường hợp nào không được phép hoạt động và những trường hợp nào không được phép thực hiện tại cơ sở thì chúng tôi đều tuân thủ những quy định của pháp luật",
+        "speakerID": "spk_37_0010",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0011": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0015.wav",
+        "text": "Và còn có một số cơ sở lén lút hoạt động ở trên địa bàn, không chỉ địa bàn thành phố Sài Gòn đâu, trên địa bàn thành phố Vinh nữa. Cho nên những nội dung mà Các cơ sở hoạt động này chính là những nơi bức xúc nhất.",
+        "speakerID": "spk_37_0011",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0012": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0016.wav",
+        "text": "Hiện nay trên địa bàn thành phố Vinh thì các cơ sở hoạt động dịch vụ thẩm mỹ và làm đẹp rất là nhiều. Đặc biệt là những năm gần đây thì rất là nhiều những cơ sở mới có chủ từ Hà Nội, Sài Gòn về mở các dịch vụ ở thành phố Vinh. Cũng vì vậy nên công tác quản lý của các cơ sở dịch vụ thẩm mỹ cũng gặp một số khó khăn nhất định vì chủ người ta mở nhưng không có mặt tại địa bàn",
+        "speakerID": "spk_37_0012",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0017.wav",
+        "text": "Số kiểm tra, số cơ sở được kiểm tra và số tiền như vậy thì cũng đang còn rất là ít so với các cơ sở dịch vụ thẩm mỹ trên địa bàn. Trong thời gian tới chúng tôi sẽ tăng cường hơn nữa về công tác kiểm tra về các cơ sở dịch vụ thẩm mỹ trên địa bàn, đặc biệt là kiểm tra đột xuất trong giờ và ngoài giờ. Vì các cơ sở dịch vụ này chủ yếu là hoạt động vào ngoài giờ, thứ Bảy và Chủ Nhật. Và khi phát hiện ra vi phạm thì sẽ xử lý triệt để.",
+        "speakerID": "spk_37_0012",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0013": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0018.wav",
+        "text": "Qua tìm hiểu và kiểm tra thông tin hoặc rà soát rất nhiều dự án thì mình đã lựa chọn Aqua Pearl City. Thì ở đây là khi mình bước chân ở đây thì cảm nhận được cái không khí ở đây là nó nhiệt độ rất là mạt, mạt tự nhiên. Vậy là về không khí rất là trong lành. Nếu như tìm ở một cái đỗ thị hoặc là một cái nơi nghỉ khác thì nó tương đương một khu nghỉ dưỡng. Vậy mình quyết định chọn đây là căn nhà thứ hai để mình lựa chọn để mình sinh sống và làm việc ở đây.",
+        "speakerID": "spk_37_0013",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0014": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0019.wav",
+        "text": "Đối với dự án Aqua Pearl City được triển khai trên địa bàn thì mong muốn của chính quyền địa phương đối với dự án là được triển khai đảm bảo đúng quy hoạch và đúng tiến độ của các nhà phát triển dự án và của chủ đầu tư. Bên cạnh đó thì cũng mong muốn nữa là để cho nó đảm bảo kết nối các không gian du lịch và hạ tầng đô thị cho Phương Dương ngày càng xanh sạch đẹp.",
+        "speakerID": "spk_37_0014",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0015": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0020.wav",
+        "text": "Song song với quá trình đầu tư xây dựng cơ sở hạ tầng, cũng như xây dựng khu Lâm Viên thì thị xã Cửa Lò cũng ưu tiên để thu hút đầu tư xây dựng các khu bất động sản, du lịch nghỉ dưỡng đẳng cấp nhằm để tăng sức cạnh tranh với các khu du lịch khác trên cả nước.",
+        "speakerID": "spk_37_0015",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0021.wav",
+        "text": "và đồng thời là tạo sự kết nối trong không gian du lịch Thành phố Vinh và Cửa Lò. Dự án Aqua Pearl City thì nằm ở vị trí rất là thuận lợi, đối với dự án này thì thị xã rất là kỳ vọng và trong cái dự án này có rất nhiều căn biệt thự nghỉ dưỡng đảm bảo, đẳng cấp, cũng như là sẽ đầu tư xây dựng một tòa nhà khách sạn quy mô. Khi dự án hoàn thành thì đây sẽ là một điểm nhấn về du lịch lớn cho Cửa Lò",
+        "speakerID": "spk_37_0015",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0016": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0022.wav",
+        "text": "Các quán ăn cũng có người vào, ăn xin. Rồi đứng đường đèn xanh, đèn đỏ cũng có người ăn xin. Đề xuất với cấp trên và nhà nước nên đầu tư ngân sách nhà nước và kêu gọi các nhà tài trợ xây dựng những khu tập trung để đưa những người khó khăn hoàn cảnh đó tập trung một địa điểm phù hợp.",
+        "speakerID": "spk_37_0016",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0017": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0023.wav",
+        "text": "Trong thời gian qua thì phường cũng triển khai có ba cái giải pháp sau. Thứ nhất là công tác tuyên truyền, các người lang thang cơ nhỡ, các người thân của những người lang thang cơ nhỡ đấy Về các cái chế độ, chính sách về an sinh xã hội Khi mà chúng tôi nắm bắt được thông tin về cả cái đối tượng này thì chúng tôi cũng sẽ chỉ đạo bộ phần công an Rồi tư pháp, rồi lao động thương binh và xã hội, rồi y tế.",
+        "speakerID": "spk_37_0017",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0024.wav",
+        "text": "Trước mắt đưa đối tượng đấy về trạm địa phương để chăm sóc, xác minh hoàn cảnh đối tượng, tìm hiểu nhân thân Nếu mà những đối tượng đấy có hoàn cảnh thật, đối tượng thật thì chúng tôi sẽ tiến hành làm thủ tục để đưa họ vào trung tâm bảo trợ xã hội tỉnh",
+        "speakerID": "spk_37_0017",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0018": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0025.wav",
+        "text": "Thì đây là đặc thù của cái đối tượng xin ăn Nên cho nên là nó thường xuất hiện nó không đồng đều Thì khi các đối tượng đến ở trên địa bàn á Thì chúng tôi giao cho lực lượng chuyên trách, lực lượng chuyên môn sẽ trực tiếp đến ở cái địa điểm mà có người xin ăn cơ nhỡ.",
+        "speakerID": "spk_37_0018",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0026.wav",
+        "text": "Để thực hiện cái việc thăm dò các cái thông tin cá nhân Một số trường hợp đã mời về Ủy ban phường Lập biên bản Giao trách nhiệm Nó không được cái hành nghề chúng tôi cũng đã tổ chức để đưa một số người mà họ có thể là trao đổi được về địa chỉ, họ cung cấp được địa chỉ thông tin của nơi ở liên hệ rồi để bàn giao cho các đối tượng này về cái nơi mà họ thường trú",
+        "speakerID": "spk_37_0018",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0019": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0027.wav",
+        "text": "Các đối tượng này là đối tượng lang thang, cơ nhỡ cho nên là cũng không xác định được là người ta là xuất phát từ đâu Có những đối tượng cũng mất hành vi xử lý Cho nên là cái việc mà khoanh vùng đối tượng cũng như là tiếp nhận các đối tượng này là gặp rất nhiều khó khăn.",
+        "speakerID": "spk_37_0019",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0020": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0028.wav",
+        "text": "Thường những đối tượng như thế này thì đều có hoàn cảnh cả Người thì mất trí nhớ, người thì không có người thân Người thì bị lợi dụng và chăn dắt vào một đường dây nào đấy Khi mà tìm hiểu về hoàn cảnh rồi về thân nhân thì rất khó khăn Họ không nói, họ không khai báo Và quá trình đưa về trung tâm bảo trợ xã hội tỉnh rất vất vả Phường phải tự tổ chức thuê xe rồi cũng phải cử cán bộ đi cùng.",
+        "speakerID": "spk_37_0020",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0021": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0029.wav",
+        "text": "Cái này là thực hiện đề án giải quyết tình trạng lang thang xin ăn của thành phố Nhưng sau khi thực hiện xong thì một là địa điểm sau đó được xác định là nó không phù hợp Hai là đang còn thiếu những yếu tố khác để thực hiện việc thu gom quản lý người lang thang xin ăn ở đấy Ví dụ như bộ phận người chăm sóc quản lý phải có chuyên môn để mới thực hiện được đề án này.",
+        "speakerID": "spk_37_0021",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0022": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0030.wav",
+        "text": "Thời gian tới thì chúng tôi tiếp tục giao cho các tổ công tác phường xã Ở những địa bàn mà thường xuyên có người lang thang xin ăn thì tăng cường tuần tra rà soát, phát hiện đối tượng Rồi xác minh hoàn cảnh thân nhân để giao trả đối tượng về địa phương, về gia đình.",
+        "speakerID": "spk_37_0022",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0031.wav",
+        "text": "Đối với những người mà không xác minh được quê quán nhân thân hoặc xác minh được nhưng mà không còn người có nghĩa vụ và trách nhiệm chăm sóc thì giao cho ủy ban nhân dân phường xã phối hợp với phòng lao động làm hồ sơ để đưa vào cơ sở trợ giúp xã hội. Ngoài những biện pháp đó thì chúng tôi cũng mong muốn là người dân chúng ta cũng không nên cho tiền người lang thang xin ăn ở tại các ngã ba, ngã tư, các tuyến phố trong địa bàn thành phố",
+        "speakerID": "spk_37_0022",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0023": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0032.wav",
+        "text": "Gia đình tôi thì cả ở cả kinh doanh trên đường Phan Đình Phùng ấy. lúc nào tôi cũng đề cao phòng cháy, chữa cháy trong nhà. Bình phòng cháy, chữa cháy mỗi tầng tôi đều có. Tất cả hệ thống thoát hiểm, thoát nước, Chuông chống cháy tôi đã bắt đầy đủ như theo quy định của nhà nước Trước mắt thì cái phòng cháy, chữa cháy thì đầu tiên là của những người dân để chống cháy cho mình cái đã chứ còn khi đó bắt đầu cứu nhà khác được, trước hết phải bảo vệ tài sản, tính mạng của mình cho nên mình phải sắm đầy đủ những phương tiện phòng cháy, chữa cháy cho gia đình mình, cho cộng đồng.",
+        "speakerID": "spk_37_0023",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0024": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0033.wav",
+        "text": "Thời gian vừa qua dưới sự tham mưu của lực lượng công an xã thì chúng tôi đã tổ chức tiến hành tập huấn nâng cao nhận thức ý thức của người dân trong việc phòng cháy chữa cháy Đặc biệt là chúng tôi đã thực hiện được mười một điểm phòng cháy công cộng và hai cái tổ liên gia trên địa bàn Hiện nay trong mùa nắng nóng này thì chúng tôi cũng tiếp tục nâng cao tuyên truyền và đặc biệt là tập trung vào cái việc tập huấn phòng cháy chữa cháy để có thể khắc phục các sự cố nếu xảy ra.",
+        "speakerID": "spk_37_0024",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0025": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0034.wav",
+        "text": "Thực hiện sự chỉ đạo của lãnh đạo công an tỉnh, công an thành phố Vinh và chính quyền Phường Hồng Sơn đã triển khai các giải pháp để đảm bảo công tác phòng cháy chữa cháy, đặc biệt trong mùa nắng nóng..",
+        "speakerID": "spk_37_0025",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0035.wav",
+        "text": "Thời gian vừa qua đã tuyên truyền vận động các hộ kinh doanh, nhà ở kết hợp kinh doanh lắp đặt hệ thống tổ liên gia an toàn phòng cháy chữa cháy.",
+        "speakerID": "spk_37_0025",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0036.wav",
+        "text": "Thì Đến nay cơ bản Phường cũng đã triển khai rất nhiều cái tổ để đảm bảo việc báo cháy, đảm bảo trong mùa nắng nóng. Ngoài ra, Phường Hồng Sơn tiếp tục tuyên truyền các hộ nhà ở tại hộ gia đình vào các buổi tối để tuyên truyền về cái công tác phòng cháy chữa cháy trong hộ gia đình, đảm bảo an toàn trong mùa nắng nóng",
+        "speakerID": "spk_37_0025",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0026": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0037.wav",
+        "text": "Gia đình đã được tập huấn và tiếp thu tất cả những hệ thống điện đóm là khi sử dụng, khi không sử dụng đi ra ngoài là tắt hệ thống bếp là đảm bảo để hạn chế tốt nhất phần vấn đề chảy nổ, cũng như trong lối xóm đây cũng tuyên truyền cho mọi người hiểu và rõ nguy cơ của cháy nổ.",
+        "speakerID": "spk_37_0026",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0027": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0038.wav",
+        "text": "Đợt vừa rồi, Công an Phường Hồng Sơn đã tổ chức nhiều buổi để tuyên truyền, vận động nhân nhân về vấn đề phòng cháy chữa cháy và cứu nạn cứu hộ. Chúng tôi thấy việc tuyên truyền cực kỳ quan trọng và rất bổ ích.",
+        "speakerID": "spk_37_0027",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0028": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0039.wav",
+        "text": "Thì hiện nay đang bước vào cái mùa nắng nóng cao điểm thì công an thành phố đang tập trung chỉ đạo quyết liệt là cái công tác tuyên truyền an toàn phòng cháy chữa cháy trên địa bàn thành phố để cho mọi người dân hiểu được, nắm được cái nguy cơ cháy nổ cũng như cái thiệt hại do cháy nổ gây ra.",
+        "speakerID": "spk_37_0028",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0040.wav",
+        "text": "Cái thứ hai nữa thì chúng tôi đang tập trung chỉ đạo là cái công tác kiểm tra an toàn phòng cháy chữa cháy đối với các cái cơ sở thuộc thẩm quyền được phân cấp quản lý trong đó đặc biệt Tập trung vào đội các cái loại hình có tính chất nguy hiểm cháy nổ cao như chợ, trung tâm thương mại và nhà ở kết hợp sản xuất kinh doanh Xây dựng các cái tổ liên gia an toàn phòng cháy chữa cháy trên địa bàn thành phố",
+        "speakerID": "spk_37_0028",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0029": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0041.wav",
+        "text": "Khi chưa có ứng dụng Smart Thái Hòa thì người dân có ý kiến phản ánh phải đến trực tiếp đến cơ quan chức năng có thẩm quyền và gửi đơn thư khiếu nại thì hiện nay người dân chúng tôi thuận tiện trong việc gửi các nội dung phản ánh lên cấp trên cần giải quyết.",
+        "speakerID": "spk_37_0029",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0030": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0042.wav",
+        "text": "Đối với cấp ủy chính quyền thì trong việc quản lý điều hành qua ứng dụng Thái Hòa Smart thì cũng rất là thuận lợi để tiếp nhận các thông tin của người dân, từ đó giao nhiệm vụ cho các cơ quan chuyên môn, trực tiếp trả lời cho người dân rất là nhanh, kịp thời.",
+        "speakerID": "spk_37_0030",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0031": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0043.wav",
+        "text": "Địa phương liên tục nhận được các thông tin phản hồi từ nhân dân vì đây mang tính chất là phản ảnh hiện trường. Thông qua hệ thống tương tác này thì giúp cho chính quyền địa phương xử lý công việc rất nhanh. Cử cán bộ chuyên môn xuống trực tiếp xác minh lại nội dung phản ánh để bàn giải pháp xử lý ngay.",
+        "speakerID": "spk_37_0031",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0032": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0044.wav",
+        "text": "Trên cơ sở ứng dụng công nghệ thông tin có cơ sở dữ liệu, chúng ta sẽ phân tích, đánh giá thời điểm hiện tại để chúng ta có thể đưa ra các dự báo và đặc biệt là trên cơ sở đó chúng ta có thể đưa ra các giải pháp để chúng ta chỉ đạo, điều hành, thực hiện tốt cái phát triển kinh tế xã hội trên địa bàn.",
+        "speakerID": "spk_37_0032",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0033": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0045.wav",
+        "text": "Không phải người dân nào cũng có điện thoại thông minh, việc tải các cái ứng dụng phần mềm tương tác số Thanh Chương đang còn hạn chế. Vì vậy trong thời gian tới chúng tôi phải tiếp tục tăng cường cái việc hướng dẫn sử dụng đến với người dân để làm người dân biết được về lợi ích của phần mềm tương tác số Thanh Chương.",
+        "speakerID": "spk_37_0033",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0034": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0046.wav",
+        "text": "Trong thời gian tới thì địa phương sẽ tích cực tuyên truyền sâu rộng hơn đến tận các khối cài đặt cho người dân về thực hiện ứng dụng Thái Hòa Smart để tăng cái tính tương tác giữa chính quyền và người dân.",
+        "speakerID": "spk_37_0034",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0035": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0047.wav",
+        "text": "Chúng tôi đã chỉ đạo các phòng ban ngành chức năng để tham mưu xây dựng đề án đô thị thông minh, trong đó có một nội dung quan trọng đó là đưa các ứng dụng đô thị thông minh, các ứng dụng của chuyển đổi số để vào cái công nghệ và phát triển du lịch.",
+        "speakerID": "spk_37_0035",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0036": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0048.wav",
+        "text": "Tạo mọi điều kiện thuận lợi nhất cho các nhà xe hoạt động tại bến xe Bắc Vinh Tạm thời đến thời điểm này thì hầu như các xe đã chuyển từ bến xe Chợ Vinh về hoạt động tại bến xe Bắc Vinh là đang hoạt động rất chi là ổn định Các doanh nghiệp họ cũng đã chuyển đổi và thay đổi lại cái tuyến Trên cơ sở các cái nội quy định của bến cũng như về đảm bảo trật tự an toàn giao thông.",
+        "speakerID": "spk_37_0036",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0037": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0049.wav",
+        "text": "Di dời cái bến xe ra cái vùng ngoại ô là nó rất hợp lý, hợp tình hợp lý ở cái chỗ là, thứ nhất là trước tiên là giảm thiểu được cái ùn tắc giao thông. Rồi là cái tình trạng mà giảm thiểu được cái ùn tắc giao thông thì tình trạng kéo theo là cái tai nạn nó cũng giảm đi rất nhiều. Xe Khách chạy vào trong nội đô cũng gần như là không có.",
+        "speakerID": "spk_37_0037",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0038": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0050.wav",
+        "text": "Chúng tôi là phối hợp với công ty cổ phần Bến xe Nghệ An và Tham mưu ủy ban nhân dân tỉnh rất nhiều cái văn bản để gửi cho Cục Đường bộ Việt Nam rồi Bộ Giao thông Vận tải để sớm nhận được sự chấp thuận của Bộ Giao thông Vận tải để phê duyệt cái đấu nối này.",
+        "speakerID": "spk_37_0038",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0051.wav",
+        "text": "Theo dự kiến của Quý ba năm hai nghìn không trăm hai ba này thì Bến xe phía Nam thành phố Vinh sẽ đưa vào hoạt động",
+        "speakerID": "spk_37_0038",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0039": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0052.wav",
+        "text": "Tôi cũng vào trong bến đây cũng lâu rồi, bảy tám năm rồi. Khách như là đi lung tung, coi như là không có chỗ để mà lên luôn nè. Hẹn họ thì họ không biết chỗ nào. Mỗi bữa là chạy trong thành phố là các cái điểm điểm là họ biết rồi. Như vào đây để nhận ít hàng, để nhận chi phí cho nó đủ. Nhưng mà nghỉ xe thế này là bên bến này bắt là phụ thu.",
+        "speakerID": "spk_37_0039",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0040": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0053.wav",
+        "text": "Chúng tôi cũng phối hợp với các sở ban ngành, tham mưu ủy ban nhân dân tỉnh để bổ sung và điều chỉnh các luồng tuyến trên điểm đi và đến các bến xe khách trên địa bàn thành phố Vinh để nhằm ngăn chặn phương tiện vận tải khách không có luồng tuyến và đi vào hoạt động trong nội thành phố Vinh.",
+        "speakerID": "spk_37_0040",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0041": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0054.wav",
+        "text": "Về cái vấn đề vi phạm thì thành phố cũng như phường xã cũng đã nhiều lần mật phục xử lý các vi phạm Nhưng mà tình trạng đó vẫn diễn ra bởi vì cái hành vi đổ rác thường diễn ra vào thời điểm cơ quan không làm việc, ban đêm Chính vì thế thành phố cũng đã chỉ đạo các phường xã cũng như các lực lượng chức năng là thậm chí chúng ta phải sử dụng nhiều biện pháp Sử dụng các camera cộng đồng để phạt nguội Khi phát hiện được thì phải xử phạt nghiêm để răn đe.",
+        "speakerID": "spk_37_0041",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0042": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0055.wav",
+        "text": "Cũng có một số người dân cũng không có ý thức trong việc đảm bảo công tác môi trường. Cho nên là cũng xảy ra một số điểm cục bộ nóng với cái môi trường. Sắp tới thì địa phương cũng sẽ có một số biện pháp làm sao để đảm bảo vệ sinh môi trường trên địa bàn của xã.",
+        "speakerID": "spk_37_0042",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0043": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0056.wav",
+        "text": "Hiện nay trên địa bàn thị xã Thái Hòa thì các cái điểm giáp ranh thì cũng đang còn việc xả thải rác chưa đảm bảo đúng quy định. Thì cái này cũng là cần phối hợp với các đơn vị xã phường cũng như là các cái huyện giáp ranh để chúng ta có giải pháp trong thời gian tới.",
+        "speakerID": "spk_37_0043",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0044": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0057.wav",
+        "text": "Chị em trong chợ thì tuân thủ theo đúng vệ sinh môi trường xanh sạch đẹp, chợ lúc nào cũng sạch sẽ, gọn gàng, trưa thì hốt dọn lại có vệ sinh môi trường đến thu gom.",
+        "speakerID": "spk_37_0044",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0045": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0058.wav",
+        "text": "Các công tác vệ sinh môi trường đô thị ở trên địa bàn phường Đông Đô thì luôn luôn được đảng ủy và chính quyền quan tâm. Từ đầu năm thì đảng ủy đã có nghị quyết chuyên đề về công tác bảo đảm vệ sinh môi trường đô thị trên địa bàn phường Đông Đô sau đó thì ủy ban triển khai kế hoạch thực hiện xuống tận mười hai hộ dân cư và cái công tác kiểm tra tất cả những cái chỗ mà gây ra ô nhiễm thì được quan tâm chú trọng đối với quy tắc luôn trực sẵn sàng mười hai trên mười hai tiếng kiểm tra và xử lý.",
+        "speakerID": "spk_37_0045",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0046": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0059.wav",
+        "text": "Thành phố sẽ có chỉ đạo, tiếp tục chỉ đạo các phường xã tăng cường công tác kiểm tra, giám sát và phân công cho các lực lượng chức năng thường xuyên theo dõi. Thậm chí chúng ta phải lắp thêm các camera, đặc biệt là những nơi đất trống mà vắng người qua lại, những nơi mà thường xuyên diễn ra việc đổ thải trái quy định.",
+        "speakerID": "spk_37_0046",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0047": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0060.wav",
+        "text": "Phòng cũng đã tham mưu với kế hoạch để phân công nhiệm vụ cụ thể các phòng ban ngành, chính quyền địa phương cũng như là phối hợp với mặt trận Tổ quốc cũng như là khối đoàn thể để chúng ta cũng là cả hệ thống vào cuộc để nâng cao việc mà giữ gìn vệ sinh môi trường trong công tác bảo vệ môi trường trên địa bàn Thường xuyên kiểm tra, theo dõi cũng như là xử lý các hành vi vi phạm xả thải rác bừa bãi để đảm bảo cái nghiêm minh trong công tác chấp hành theo đúng luật bảo vệ môi trường năm hai nghìn không trăm hai mươi.",
+        "speakerID": "spk_37_0047",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0048": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0061.wav",
+        "text": "Đến thời điểm hiện nay, dự án khu du lịch văn hóa gắn với khu tưởng niệm Chủ tịch Hồ Chí Minh thực hiện xong cái bồi thường giải phóng mặt bằng. Các cái dự án tiếp theo đang khảo sát và hoàn thiện các cái bước và các cái quy trình. có dự án là khu du lịch văn hóa tâm linh nói chung, dự án làng Bình Yên gắn với trồng và bảo tồn giống lúa huyết rồng..",
+        "speakerID": "spk_37_0048",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0062.wav",
+        "text": "Qua quá trình thực hiện các dự án trên địa bàn thì cũng được cư dân là đồng tình ủng hộ rất là cao",
+        "speakerID": "spk_37_0048",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0063.wav",
+        "text": "Đối với các khu di tích trong khu đô thị thì cần ưu tiên tập trung. Thứ nhất là tập trung vào công tác lập quy hoạch khoanh vùng bảo vệ di tích để tập trung vào phát triển và bảo tồn các di tích gốc. Thứ hai là đầu tư các hạng mục, công trình theo quy hoạch được duyệt. Thứ ba là huy động nguồn vốn từ ngân sách và nguồn vốn xã hội hóa để đầu tư các công trình để phát huy giá trị di tích mà đã được công nhận.",
+        "speakerID": "spk_37_0048",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0049": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0064.wav",
+        "text": "Trên địa bàn thị trấn đang quy hoạch bốn khu đô thị. Hiện nay đang triển khai hai khu đô thị. Cố gắng trong năm nay, công tác bồi thường giải phóng mặt bằng sẽ hoàn thành. Còn hai khu đôi thị nữa, mới làm trích đo và đang làm các thủ tục. Khi nào được tỉnh duyệt xong, sẽ làm các bước đóng thầu xong. Thì khi đó mới triển khai.",
+        "speakerID": "spk_37_0049",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0050": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0065.wav",
+        "text": "Hiện nay công ty đang cùng với Ủy ban nhân dân huyện cùng với Thị trấn Giải phóng đền bù, thì mong muốn bà con đồng hành cùng doanh nghiệp sớm triển khai dự án để làm sao cho khu đô thị đi vào hoạt động và làm cho bộ mặt thị trấn cũng như huyện được khang trang hơn.",
+        "speakerID": "spk_37_0050",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0051": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0066.wav",
+        "text": "Nam Giang thì có quần thể khu di tích mộ bà Hoàng Thị Loan, rồi có các điểm du lịch, trải nghiệm trên địa bàn. Song song thì phát triển đô thị thì chúng tôi phát huy gìn giữ những giá trị, văn hóa tâm linh, rồi du lịch, trải nghiệm. Chúng tôi đang kêu gọi để đầu tư các nguồn, công bố quy hoạch, đảm bảo theo kế hoạch, lộ trình đã đề ra.",
+        "speakerID": "spk_37_0051",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0052": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0067.wav",
+        "text": "Nhân dân Nam Giang như vậy là rất phấn khởi, hồ hởi. Mà từ là cái dân nông nghiệp, nay cái nhận thức của nhân dân Nam Giang là bắt đầu đã có cái chuyển đổi dần, mạnh dạn đầu tư vào để là buôn bán nhỏ và dịch vụ. Vừa là phát triển về công nghiệp bền vững lâu dài, nhưng vừa là phải bảo vệ công tác môi trường.",
+        "speakerID": "spk_37_0052",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0053": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0068.wav",
+        "text": "Đối với các cái quy hoạch chung, quy hoạch chi tiết đã được phê duyệt thì tổ chức công bố công khai mà đặc biệt là ứng dụng chuyển đổi số công nghệ số bằng công nghệ webviz để công bố công khai quy hoạch. Người dân và doanh nghiệp thì có thể tiếp cận một cách dễ dàng các đồ án được quy hoạch..",
+        "speakerID": "spk_37_0053",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0069.wav",
+        "text": "Từ nay đến năm hai ngàn không trăm hai lăm thì triển khai lập một quy hoạch chung của Nam Giang và Trung cường theo nhiệm vụ đã xác định tăng cường công tác quản lý trật tự xây dựng, tập trung huy động ngân sách và nguồn vốn ngoài ngân sách để đầu tư kết cấu hạ tầng kỹ thuật hạ tầng xã hội đồng bộ theo các đồ án quy hoạch được dựng",
+        "speakerID": "spk_37_0053",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0054": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0070.wav",
+        "text": "Ở nhà cũng có rồi nhưng mà mình muốn cho con ăn ở nhà cho nó yên tâm hơn.",
+        "speakerID": "spk_37_0054",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0055": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0071.wav",
+        "text": " Thì thật sự nói là vấn đề phụ huynh thì lo lắng là vấn đề không an toàn thực phẩm thì sẽ xin cho cả con. Thì thật sự lúc nào vội vàng thì mới đưa con vào đây ăn thôi. Thì trẻ con bây giờ nó cũng chưa biết gì ấy. Nó cứ thích ăn nên nó cứ bảo là vào đây ăn.",
+        "speakerID": "spk_37_0055",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0056": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0072.wav",
+        "text": "Những nguy cơ của các loại thực phẩm được bày bán trên đấy bởi vì là những loại thực phẩm nó nằm ở quy mô nhỏ không có điều kiện để bảo quản nên là càng dễ phát sinh nhiễm chéo của các phơi nhiễm của các loại vi sinh vật gây bệnh với điều kiện dưới thời tiết nắng nóng thì nó sẽ phân hủy các vi khuẩn và từ đó thì gây nên các ngộ độc thực phẩm cho những người sử dụng.",
+        "speakerID": "spk_37_0056",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0057": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0073.wav",
+        "text": "Học sinh có thói quen là ăn vặt ở tại cổng trường vẫn có và cái tồn tại là gia đình phụ huynh cũng mong muốn con trong quá trình đi học thì ăn tạt ngang để ăn cho nó tiện. Thành ra là có những khó khăn nhất định. Trong thời gian tới thì phường sẽ tích cực.",
+        "speakerID": "spk_37_0057",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0074.wav",
+        "text": "hơn nữa trong cái việc đôn đốc cũng như là tuyên truyền và để chỉ đạo các ban ngành đoàn thể tiếp tục là phối hợp với cả ba nhà trường để thường chuyên nhắc nhở những hộ kinh doanh ở trên cổng trường. Và nhà trường tiếp tục tuyên truyền cho học sinh nâng cao ý thức đảm bảo trong quá trình an toàn vệ sinh thực phẩm",
+        "speakerID": "spk_37_0057",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0058": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0075.wav",
+        "text": "Đối với các hộ bán hàng rong thì trong thời gian vừa rồi thì ủy ban phường đã tổ chức ra quân, ký cam kết và đẩy đuổi xử lý thì Hiện nay cái tình trạng bán hàng rong trước cổng trường tiểu học, mầm non tiểu học và trung học cơ sở của phường Lê Mao thì đã được khắc phục tương đối triệt để..",
+        "speakerID": "spk_37_0058",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0076.wav",
+        "text": "Tuy nhiên bên cạnh đó thì thỉnh thoảng khi đoàn vắng thì có một số hộ vẫn đang còn đứng ở phía khu dân cư để bán và ủy ban phường đã và đang tiếp tục sẽ kiểm tra để nhắc nhở, chấn chỉnh về việc bán hàng rong",
+        "speakerID": "spk_37_0058",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0059": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0077.wav",
+        "text": "Thì cái tinh thần và mục tiêu của cái nghị quyết này thì rất là tuyệt vời Nó mở ra những cái rất là thực tế Ví dụ như là về thể chế.",
+        "speakerID": "spk_37_0059",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0078.wav",
+        "text": "Rồi về những cái là đổi mới rồi thì là điều chỉnh Rồi thì tất cả những cái gì mà đang còn khó khăn vướng mắc với những cái là văn bản thuộc về là thượng tầng là chỉ đạo các ngành địa phương tăng cường vấn đề là tháo gỡ các khó khăn vướng mắc rồi để khôi phục lại thị trường bất động sản",
+        "speakerID": "spk_37_0059",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0060": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0079.wav",
+        "text": "Từ giữa năm hai nghìn hai hai đến năm hai nghìn hai ba thì thị trường không chỉ ở Vinh mà hầu như là ở tỉnh nghệ an cũng như toàn cả nước thì hầu như là thị trường hoàn toàn đóng băng. Tất cả giao dịch gần như là ngưng trệ. Nghị quyết ba ba ra đời thì giống như một luồng sinh khí mới thổi vào trong thị trường bất động sản.",
+        "speakerID": "spk_37_0060",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0061": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0080.wav",
+        "text": "Nghị quyết ba ba, nghị quyết chính phủ, nó hoàn thiện với cơ chế mà lâu nay chúng ta vẫn đang khúc mắc nhiều, rồi là nó thúc đẩy cái thị trường nhà ở xã hội. Vấn đề tiếp theo là cái nguồn tín dụng, cái này rất quan trọng..",
+        "speakerID": "spk_37_0061",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0081.wav",
+        "text": "Thị trường bất động sản mà không có nguồn tín dụng thì gần như là nó lưu thông hàng hóa và đầu tư gần như là tắc nghẽn. Và một cái vấn đề là Lâu nay là các tổ chức ở địa phương chúng ta cũng chưa quyết liệt vào cuộc để mà tạo ra cho thị trường bất động sản nó sôi động. Thì trong nghị quyết ba ba này thì là các tổ chức địa phương cần phải vào cuộc",
+        "speakerID": "spk_37_0061",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0062": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0082.wav",
+        "text": "Nghị quyết là một cái thượng tầng của chính phủ Điều hành đất nước là theo nghị quyết đó",
+        "speakerID": "spk_37_0062",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0083.wav",
+        "text": "Nhưng mà biên giới ấy, tôi nghĩ rằng là ví dụ như là các cái biên giới, ví dụ như các điểm ngành, như xây dựng, như kế hoạch đầu tư Rồi là như là các cái địa phương cũng cần phải quyết liệt Làm như thế nào để cho doanh nghiệp và người dân tiếp cận được nhanh nhất, ngắn nhất Thì như vậy là nó mới thực tế đưa vào cuộc sống",
+        "speakerID": "spk_37_0062",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0063": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0084.wav",
+        "text": "Chính phủ đã ban hành nhiều văn bản, nhưng để mà có hiệu quả thì cũng như mong muốn thì cũng chưa được nhiều. Nhưng nghị quyết ba ba này thì tôi tin chắc rằng là muốn để cho thị trường phục hồi nhanh chóng thì yêu cầu các cơ quan ban ngành liên quan phải vào cuộc quyết liệt và phải cần nhanh chóng thì mới đẩy được thị trường bất động sản và phục hồi nhanh chóng.",
+        "speakerID": "spk_37_0063",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0064": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0085.wav",
+        "text": "Tôi có thể đề nghị ủy ban tỉnh, xem xét điều chỉnh lại cái đề án xây dựng huyện Con Cuông thành đô thị theo hướng sinh thái để phù hợp với cả cái quy định hiện hành của pháp luật và có cái định hướng phù hợp với quy hoạch vùng tỉnh trong thời gian tới. Thứ hai là tập trung vào vấn đề quy hoạch vùng huyện..",
+        "speakerID": "spk_37_0064",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0086.wav",
+        "text": "Về cơ sở quy hoạch vùng huyện thì chúng tôi sẽ xác định lập quy hoạch chung đô thị cho các khu trung tâm, tập trung vào vùng trung tâm thị trấn và các xã phù cận. Thứ hai nữa tập trung vào các điểm đô thị vệ tính của thị tận",
+        "speakerID": "spk_37_0064",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0065": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0087.wav",
+        "text": "Chúng tôi đang tập trung để điều chỉnh quy hoạch chung của thị xã phù hợp với định hướng phát triển thị xã của tỉnh, cũng như yêu cầu phát triển thị xã. Thứ hai, sẽ tập trung để hoàn thành phủ kín các quy hoạch phân khu chi tiết trên địa bàn thị xã. Và thứ ba, sẽ tập trung để làm tốt công tác quy hoạch đối với các khu đô thị phù hợp với yêu cầu phát triển và phù hợp với xu thế phát triển xây dựng của một đô thị công nghiệp, một đô thị biển ở phía Bắc của tỉnh.",
+        "speakerID": "spk_37_0065",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0066": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0088.wav",
+        "text": "Một số quy hoạch lớn của thị xã, ví dụ như quy hoạch cảng Đông Hồi thì hôm nay cũng chưa được đầu tư. Vấn đề liên kết vùng giữa Hoàng Mai, Quỳnh Lưu cũng như Nghi Sơn, Thanh Hóa thì cũng đang còn có nhiều nội dung chưa đáp ứng được yêu cầu. Vì vậy cái phát triển cũng chưa tương xứng được.",
+        "speakerID": "spk_37_0066",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0067": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0089.wav",
+        "text": "Hiện nay thì thực hiện theo luật xây dựng, luật thì một số công trình hạ tầng kỹ thuật và công trình cấp ba để phân về cho huyện và huyện thẩm định và cấp phép các khu đô thị rồi Cấp huyện thì lần đầu tiên thực hiện cái nội dung này và cán bộ thì cũng thực ra chưa được đào tạo chuyên sâu về mặt quy hoạch nên gặp cái khó khăn thì mong sự hỗ trợ của sở ban ngành.",
+        "speakerID": "spk_37_0067",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0068": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0090.wav",
+        "text": "Nhà tôi lắp đến đây bây giờ là sang năm thứ tư rồi. Mà tôi thấy rất là hiệu quả. Mùa hè này, hai cái điều hoà từng một nhà tôi phòng ăn và phòng khách tôi bật thường xuyên đấy. Từ tiền thu nhà nước trả và đến cái mà mình nộp cho nên nó cân đối lại và thừa tiền ra. Hai nữa là năng lượng là năng lượng sạch, xanh sạch và cảm thấy tốt.",
+        "speakerID": "spk_37_0068",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0069": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0091.wav",
+        "text": "Lắp cái điện mặt trời này nó vừa lợi cho gia đình, vừa lợi cho xã hội, có nghĩa là về môi trường, nó rất tốt.",
+        "speakerID": "spk_37_0069",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0070": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0092.wav",
+        "text": "Hiện tại thì trên địa bàn tỉnh Nghệ An đang có bảy trăm tám mươi ba cái dự án hệ thống điện mặt trời mái nhà với khung suất lắp đặt là chín mươi mốt phẩy năm ki lô mê ga bít với sản lượng phát hàng năm khoảng tám mươi lăm triệu kWh..",
+        "speakerID": "spk_37_0070",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0093.wav",
+        "text": "Nếu như mà có cái quyết định của Thủ tướng Chính phủ cũng như các văn bản chỉ đạo của Bộ Công Thương của Tập đoàn Điện lực Việt Nam và Tổng công ty Điện lực miền Bắc thì sẽ có tiềm năng phát triển thì đang còn lớn và cũng sẽ có mang lại lợi ích cho cả đôi bên của các khách hàng cũng như là của ngành điện",
+        "speakerID": "spk_37_0070",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0071": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0094.wav",
+        "text": "Điện dùng mà thừa bán ra cho nhà máy điện thì cái đó là rất hợp lý Nhưng mà vừa rồi đây lại làm xong thì lại thấy trừ không còn chính sách đấy nữa Nên là cũng rất mong là nhà nước có một cái chính sách hợp lý.",
+        "speakerID": "spk_37_0071",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0072": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0095.wav",
+        "text": "Phát triển Điện Mặt Trời áp Mái là phù hợp với nghị quyết năm mươi lăm của Bộ Chính trị về phát triển năng lượng Việt Nam đến năm hai không năm mươi. Và đó cũng phù hợp với chương trình số mười một của tỉnh ủy và kế hoạch ba ba không của Ủy ban nhân dân tỉnh về thực hiện nghị quyết năm lăm..",
+        "speakerID": "spk_37_0072",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0096.wav",
+        "text": "Và bên cạnh đó thì nó cũng phù hợp với xu thế về chống biến đổi khí hậu của toàn cầu mà Việt Nam đã đăng ký là phát thải ròng về không để năm hai không năm mươi tại Hội nghị Liên Hợp Quốc về biến đổi khí hậu.",
+        "speakerID": "spk_37_0072",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0097.wav",
+        "text": "Hiện nay để mà thực hiện quản lý tốt thì cần có những hướng dẫn và các cái quy định cụ thể liên quan đến các lĩnh vực về đầu tư xây dựng, điện lực, vấn đề về môi trường, vấn đề về phòng cháy chữa cháy",
+        "speakerID": "spk_37_0072",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0073": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0098.wav",
+        "text": "Thưa quý vị và các bạn Các công viên vườn hoa chính là không gian quen thuộc về văn hóa giải trí đối với người dân và tạo điểm nhấn cho thành phố Tuy nhiên hiện nay thì hệ thống công viên vườn hoa trên địa bàn thành phố Vinh chưa nhiều Nhưng một số có sẵn thì đang bị xuống cấp Và chưa được nâng cấp sửa chữa",
+        "speakerID": "spk_37_0073",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0074": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0099.wav",
+        "text": "Công viên là nơi vui chơi của người dân. Thỉnh thoảng rảnh rỗi em cũng hay cho bé qua đây chơi. Tuy nhiên thì đi một vòng thì thấy là một số cái cơ sở hạ tầng của công viên thì đang bị xuống cấp. Ví dụ như bóng đèn, cái có cái không. Rồi các cái chỗ thoát nước, các cái mương máng thì thấy nó bị sập. Đi lại trẻ con hơi nguy hiểm.",
+        "speakerID": "spk_37_0074",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0075": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0100.wav",
+        "text": "Chúng tôi chuyên môn là đi thể dục, thể thao này, tập luyện đi này. Vì hiện nay thực tế như sau lưng tôi đây này thì đã có những cái công trình đã bị hư hỏng.",
+        "speakerID": "spk_37_0075",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0076": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0101.wav",
+        "text": "Hiện nay thì thực trạng của công viên thì cũng đã có một số phần xuống cấp, mong muốn là để làm như thế nào đó cải tạo để xứng tầm, để có điểm chơi cho nhân dân.",
+        "speakerID": "spk_37_0076",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0077": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0102.wav",
+        "text": "Từ khi mà thành phố lắp cái đó đến giờ, đến hôm nay là hỏng hết rồi. Cho nên là anh em tự rủ nhau đi sửa, để mà tập đang còn lâu dài. Nếu mà được thành phố quan tâm thì hàng tháng có người tu sửa hay là bảo dưỡng, để nó được lâu dài hơn.",
+        "speakerID": "spk_37_0077",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0078": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0103.wav",
+        "text": "Trong cái quản lý thì trung tâm văn hóa thể thao truyền thông được giao là quản lý chung Nhưng có một cái bất cập là rõ ràng là bây giờ cây xanh thì lấy công ty cây xanh quản lý Rồi hạ tầng ví dụ như mương rồi các cái vỉa hè Rồi là các cái đường đi tất cả các hạ tầng đó thì mấy công ty hạ tầng đô thị quản lý.",
+        "speakerID": "spk_37_0078",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0079": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0104.wav",
+        "text": "Trong công viên thì những cái chỗ mà xuống cấp thì thực ra là công ty quản lý thì quản lý theo km về cây số. Còn lại là phía trong nội bộ thì có đơn vị quản lý như trung tâm văn hóa. Thì họ sẽ hàng năm hoặc là hàng tháng họ đi kiểm tra thì có những cái hư hỏng gì thì họ phải báo để công ty sửa chữa.",
+        "speakerID": "spk_37_0079",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0080": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0105.wav",
+        "text": "Về dài hạn thì để mà duy trì và phát triển nó mang tính bền vững thì thứ nhất là phải có một số giải pháp đối với các công viên lớn thì sẽ phải thu hút đầu tư, các nhà đầu tư để vào khai thảng vận hành để mà quản lý và tạo cái nguồn thu và để duy trì được cái chất lượng của công viên ",
+        "speakerID": "spk_37_0080",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0106.wav",
+        "text": "Bên cạnh đó thì là các cái văn hóa công viên nhỏ thì chúng tôi cũng sẽ phải nghiên cứu và tham mưu cho thành phố là về tập trung lại một cái đầu mối quản lý cũng như là có các cái giải pháp để cải tạo nâng cấp nó mang tính đồng bộ hơn.",
+        "speakerID": "spk_37_0080",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0081": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0107.wav",
+        "text": "Có chỗ để cho người dân đậu xe để làm những việc họ cần. Ở nơi như ở đây là bưu điện mà chị đi vào để làm việc gửi bưu phẩm mà cuối cùng phải ngồi trông xe để cho một người khác đi vào đấy.",
+        "speakerID": "spk_37_0081",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0082": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0108.wav",
+        "text": "Mật độ phương tiện giao thông tham gia rất đông, mình thấy ý thức tham gia giao thông của phần lớn là người tham gia giao thông thì họ không chấp hành luật lệ với những phương tiện như chị thấy đó là họ đậu những cung đường như đường cấm hoặc là đường Một Chiều, người ta đậu gọi là không có một ý thức. Vấn đề đậu ô tô thì thật sự mà nói là cái này là quá nhức nhối. Xe máy với lại là người đi bộ thì cũng không có khoảng trống nào để mà đi cả.",
+        "speakerID": "spk_37_0082",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0083": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0109.wav",
+        "text": "Sáu tháng cuối năm hai nghìn không trăm hai hai đến đầu năm hai nghìn không trăm hai ba thì đội cảnh sát giao thông hình sự đã xử phạt một trăm mười lăm trường hợp vi phạm về trật tự giao thông cũng như là một trăm linh chín trường hợp trật tự dừng đậu xe trên vỉa hè của trật tự đô thị.",
+        "speakerID": "spk_37_0083",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0110.wav",
+        "text": "Bên cạnh những đợt ra quân xử lý vi phạm thì đội trật tự cơ quan thành phố Vinh đã hướng đến tuyên truyền để nhằm nâng cao ý thức tham gia giao thông cũng như trật tự đô thị của người dân và đã tiến hành nhiều biện pháp, gửi thông báo cũng như xử lý, phạt nguội những hành vi vi phạm.",
+        "speakerID": "spk_37_0083",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0084": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0111.wav",
+        "text": "Phiền toái nhất là những lúc tôi cần công việc để đậu xe thì tìm một bãi đậu xe rất chi là khó. Vì trên đường, nơi công sở, tôi không có những nơi đậu xe để đậu. Nếu như đậu trên lòng đường đây thì tôi cũng lo đến công an, sợ công an đến hỏi là đây không phải là nơi đậu xe.",
+        "speakerID": "spk_37_0084",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0085": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0112.wav",
+        "text": "Phải có một cái bãi đậu xe cho nó hợp với người dân để đảm bảo cho những người đi làm những công việc ở sát thành Phố là được đảm bảo hơn.",
+        "speakerID": "spk_37_0085",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0086": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0113.wav",
+        "text": "Quỹ đất để mà đầu tư xây dựng cái bãi đỗ xe hiện tại trong khu vực trung tâm là gần như nó không có. Quỹ đất sẽ sạch để mà đầu tư mới. Cái thứ hai là cái việc đầu tư vào cái những cái dự án mà bãi đỗ xe tập trung thì cũng chưa thu hút được các nhà đầu tư..",
+        "speakerID": "spk_37_0086",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0114.wav",
+        "text": "Bởi lẽ là cái chi phí bỏ ra nó sẽ tương đối lớn. Quỹ đất thì hạn chế. Trong khi cái nguồn thu lại lợi nhuận thì nó sẽ không được là trong ngắn hạn. mà nó phải là tầm trung và dài hạn. Vì vậy, việc thứ nhất là về phía nhà nước thì nó chưa có cái ngân sách để mà đầu tư xây dựng, những cái bãi đỗ xe có tính quy mô lớn. Và nhà đầu tư thì họ cũng chưa mặn mà lắm trong việc tham gia đầu tư tại khu vực trung tâm thành phố",
+        "speakerID": "spk_37_0086",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0115.wav",
+        "text": "Hiện tại chúng tôi mới dừng lại bước tức là dành quỹ đất để bố trí các bãi đỗ xe công cộng. Còn để đầu tư xây dựng các cái dự án mang tính đặc thù về bãi đỗ xe thì hiện tại là danh sách chưa bố trí được. Chúng tôi sẽ cố gắng để tham mưu cho lãnh đạo thành Phố..",
+        "speakerID": "spk_37_0086",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0116.wav",
+        "text": "Có những cái chính sách và nguồn vốn sát sườn hơn để đối với dự án này với cả quỹ đất mà chúng tôi đã dành Đặc biệt là tại khu vực trung tâm thành phố",
+        "speakerID": "spk_37_0086",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0117.wav",
+        "text": "để quy hoạch các bãi đỗ xe tập trung cũng kêu gọi các nhà đầu tư quan tâm và khuyến khích theo mô hình bãi đỗ xe thông minh, bãi đỗ xe cao tầng, nhiều tầng, bãi đỗ xe ngầm và tự động để tăng hiệu quả sử dụng đất và đáp ứng yêu cầu đỗ xe của người dân",
+        "speakerID": "spk_37_0086",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0087": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0118.wav",
+        "text": "Mà tôi thì dân nông nghiệp, trước đây đến giờ là làm ruộng và chăn nuôi thì cuộc sống nó chỉ nhìn vô đó thôi. Thì dự án nó đã lấy đất nhà rồi. Thì giờ tôi vẫn là làm cái chuồng trâu chăn nuôi đó, ruộng cũng không làm được nữa. Thì cuộc sống gia đình tôi chỉ nhìn vô mấy con trâu thôi. Trên mà nói là bắt di dời thì tôi cũng biết dời đi đâu.",
+        "speakerID": "spk_37_0087",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0088": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0119.wav",
+        "text": "Sau khi các dự án phát triển đô thị về thu hồi đất nông nghiệp, vùng đất để mà sử dụng cho việc hoạt động chăn nuôi thì sẽ bị thu hẹp lại Đối với các hộ thì ngành nghề trước đây thì chủ yếu là hoạt động sản xuất nông nghiệp Còn để bổ trí các vùng được quy hoạch tập trung cho cái hoạt động chăn nuôi thì cũng kiến nghị với thành phố và cả cấp trên đánh giá và có chuyển đổi ngành nghề được định hướng với ngành nghề để đảm bảo cuộc sống cho người dân",
+        "speakerID": "spk_37_0088",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0089": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0120.wav",
+        "text": "Thì thực tế trong địa phương hiện nay, một số dân vẫn chăn nuôi trong khu dân cư. Nó gây ô nhiễm môi trường mà cũng vấn đề rất bức xúc. Sắp tới là sẽ đưa tất cả những khu chăn nuôi ra ngoài khu vực, cái giải pháp Cơ bản nhất đó là về đất đai. Và những cái cơ chế để cho nhân dân đi ra ngoài.",
+        "speakerID": "spk_37_0089",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0090": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0121.wav",
+        "text": "Theo cái quy định của luật môi trường là các cái quy định của nhà nước liên quan đến đảm bảo chống ô nhiễm môi trường trong khu dân cư, thành phố đã có những giải pháp hướng dẫn, hỗ trợ giúp đỡ người dân để thực hiện nội dung này. Nhưng mà hiện nay thấy thành phố vẫn đang rất khó khăn..",
+        "speakerID": "spk_37_0090",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0122.wav",
+        "text": "Đặc biệt là phương án mà hỗ trợ cho người dân chuyển đổi việc làm để sau khi không tổ chức chăn nuôi gia súc ở trong khu dân cư. Thì đây là một vấn đề rất khó khăn. Thành phố đang tập trung nghiên cứu để thực hiện cái nội dung này",
+        "speakerID": "spk_37_0090",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0091": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0123.wav",
+        "text": "Căn cứ vào tình hình của Nghệ An, diện tích rộng nhất cả nước, chăn nuôi thì nhỏ lẻ, chiếm bảy mươi phần trăm. Cấm chăn nuôi nội thành, nội thị thì nó có khó khăn. Đó là, một, là tìm cái quỹ đất để mà di dời các cái trang trại ra xung quanh cũng khó khăn..",
+        "speakerID": "spk_37_0091",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0124.wav",
+        "text": "Cái thứ hai nữa là cái kinh phí để mà hỗ trợ cho những người dân để mà di dời thời gian tới thì bên ngành chi cục chăn nuôi thú y sẽ nghiên cứu để làm sao đó tìm hiểu các địa phương khác, các tỉnh khác trên cơ sở để tham mưu cho sở để mà có cái kế hoạch thời gian tới là cho phù hợp với địa phương",
+        "speakerID": "spk_37_0091",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0092": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0125.wav",
+        "text": "Chung cư này cũng chưa thuộc vào bộ phận nào quản lý cả Chỉ có một bộ phận quản lý của tòa nhà này nhưng mà làm chưa đâu đến đâu Không khi nào đi sinh hoạt hoặc là không khi nào tổ chức một cái đoàn thể ở đây Tự như vậy là dân làm. cái tết vừa rồi đấy Cũng không ai tổ chức một cái gì cả. Một cái Tòa nhà cao mười tám tầng này mà không có cái tổ chức gì cả.",
+        "speakerID": "spk_37_0092",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0093": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0126.wav",
+        "text": "Tôi thì nói thật là theo đăng ký thì là được sinh hoạt trực thuộc khối hai mươi thôi. Khối hai mươi của phường đây. Nhưng mà thực tế nói thật, cả đời cũng chưa khi mô là biết được ông tổ trưởng, tổ phó vì thực tế cái thủ tục hành chính có làm đây đâu mà, tôi ở đây nhưng phải về quê Các cái xin chứng minh thư làm tất tần tật cũng phải về quê Chứ nói thật, biết khối hai mươi đây chứ chưa biết được khối hai mươi ông mô tổ trưởng, ông mô tổ phó mô Nói thật, có quyền lợi chi dưới đó đâu",
+        "speakerID": "spk_37_0093",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0094": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0127.wav",
+        "text": "thực trạng của các nhà chung cư ấy, thì không phải hầu hết tất cả những người dân vào sinh sống ở đấy thì đều là chính chủ của căn hộ mà ở đây có rất nhiều nhà người ta cho thuê hoặc là chính chủ là một người nhưng sinh sống ở đó là một người cho nên để mà dẫn đến cái việc mà quản lý đối với nhân khẩu hộ khẩu và quản lý đối với người thường trú tạm trú nó rất khó khăn, đây là một trong những cái mà nó bất cập xảy ra ở khu chung cư.",
+        "speakerID": "spk_37_0094",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0128.wav",
+        "text": "và đặc biệt nếu như tổ chức các công việc ví dụ như liên quan đến họp dân khu chung cư hoặc là khi có sự việc của phường như là bầu cử hoặc là những việc liên quan đến quản lý nhân sự thì nó sẽ rất khó khăn trong công tác quản lý",
+        "speakerID": "spk_37_0094",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0095": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0129.wav",
+        "text": "Về hành chính thì nó thực hiện qua khối cửa tiên và về người dân thì được hưởng các chế độ nghĩa vụ. Thứ nhất là về cái nghĩa vụ quyền lợi của người dân. Tất cả người dân ở với chung cư tòa bên ấy thì đều đối với cái thủ tục về pháp lý, về đất đai, bìa đất. Thì ông chủ tôi đã làm xong và mọi người đều thực hiện nhiệm vụ tốt. Với tư cách là bên Ban Quản Lý thì chúng tôi cũng đã điều hành theo đúng luật nhà ở và thực hiện đúng, đủ nghĩa vụ của chỉ đạo của khối phường.",
+        "speakerID": "spk_37_0095",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0096": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0130.wav",
+        "text": "Thành phố cũng đã ban hành đề án quản lý hành chính khu chung cư của đô thị mới Trong đó cũng đề xuất rất là nhiều giải pháp về vấn đề sáp nhập các cái khu chung cư vào khối xóm hiện có liền kề.",
+        "speakerID": "spk_37_0096",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0131.wav",
+        "text": "Thì thứ nhất là tiếp tục giao cho các phường xã rà soát các khu chung cư mà chưa có quyết định mà sát nhập đối với khối xóm hiện trạng liền kề thì khẩn trương làm thủ tục để ban hành quyết định sáp nhập khối xóm liền kề và tiếp tục là rà soát các cái hộ dân mà chưa có đăng ký hộ khẩu thường trú, tạm trú tại khu chung cư để khẩn trương tích hợp vào trong cái căn cước công dân",
+        "speakerID": "spk_37_0096",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0097": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0132.wav",
+        "text": "Ba giờ tôi đi làm thì thấy rác là tôi vào tôi lấy. Nhưng cá nhân tôi lấy rác là phải lấy cho sạch, nói chung là không bỏ sót. Giả sử như lấy một lần như thế, chưa hết thì tôi sẽ lấy lần hai, thậm chí là lần ba. Dân đưa rác ra thì vẫn đang còn tình trạng lộn xộn.",
+        "speakerID": "spk_37_0097",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0098": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0133.wav",
+        "text": "Thông báo thì từ năm giờ cho đến mười giờ là gom rác. Nhưng mà người đi gom rác thì có khi bốn giờ hai mươi đi gom rác làm cho chúng tôi đi làm về không có một cái thời gian mô để chuẩn bị. Có khi thì rác tồn động đó, sáng mai vẫn còn tiếp tục đống rác ở một khu chỗ đó luôn.",
+        "speakerID": "spk_37_0098",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0099": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0134.wav",
+        "text": "Khối thì coi như là phổ biến rất rõ ràng. Thường xuyên là phổ biến là từ sáu giờ trở lên là cho đến mười giờ. Là thời gian là đưa rác ra để cho nhân viên môi trường đi thu gom rác..",
+        "speakerID": "spk_37_0099",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0135.wav",
+        "text": "Nhưng mà thực chất ra là hầu như là bốn rưỡi, rồi đến năm giờ. Chứ năm rưỡi là đưa ra là để đến mai luôn. Thì cái này là do nói thật ra là họ đi làm đây hầu như là họ đi làm đến năm rưỡi, sáu giờ họ mới về. Mà giờ đó đi làm về bỏ rác ra là coi như, như cô đây này, đưa ra cái là khi mô tôi cũng phải đưa cất cả. Cất để mai đưa ra, chứ không cất là coi như là cứ để đó cả ngày luôn",
+        "speakerID": "spk_37_0099",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0100": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0136.wav",
+        "text": "Thời gian họ đi lấy quá sớm. Tất nhiên có thể một khối họ đi hai ba lần Nhưng hai ba lần trong khung giờ là khoảng từ bốn rưỡi chiều cho đến khoảng bảy rưỡi tám giờ tối là gọi như là hầu như là hết.",
+        "speakerID": "spk_37_0100",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0137.wav",
+        "text": "Thì quy định cái thời gian là mùa, ví dụ như mùa hè là từ mười tám giờ ba mươi cho đến hai hai giờ Thì có nghĩa là bà con nhân dân người ta vẫn có quyền trong cái khung giờ đó người ta vẫn đang còn có quyền để đưa rác ra Ví dụ như một số cán bộ Công nhân viên chức của nhà nước đi làm về và đặc biệt các cái lao động tự do, người ta đi làm về rất muộn.",
+        "speakerID": "spk_37_0100",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0138.wav",
+        "text": "Mười giờ đêm người ta vẫn có quyền đưa rác ra thì bây giờ cái mười giờ đêm đó là coi như nhân viên môi trường không thu gom được nữa thì rõ ràng rác tồn lưu ra sáng hôm sau. Thì sáng hôm sau thì đương nhiên là bà con không biết gọi ai cả thì chỉ có gọi khối trưởng thôi",
+        "speakerID": "spk_37_0100",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0139.wav",
+        "text": "phải thực hiện đúng theo quy định. Bây giờ kinh doanh thôi chứ không phải phục vụ nữa. Hoặc là coi thay đổi cái thời gian là coi như là quy định lại cái thời gian đưa và để rác. Nếu như nói bốn giờ thì để có văn bản về bốn giờ hoặc năm giờ có văn bản về năm giờ. Còn dân người ta thực hiện theo đúng với cái quy định của ủy ban nhân dân thành phố. Không có gì là coi như là không chấp hành cả.",
+        "speakerID": "spk_37_0100",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0101": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0140.wav",
+        "text": "Hiện tượng mà người dân phản ánh ở một số nơi thì khung giờ đưa rác ra mà chưa thu gom kịp thì một số nơi có một số người lao động trong quá trình thu gom họ chưa thu gom hết thì hiện tượng đó là có. Cái khung giờ nó chưa đảm bảo đúng theo quyết định số không hai đó..",
+        "speakerID": "spk_37_0101",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0141.wav",
+        "text": "Thế thì để mà nhằm mục đích là không để rác, khối lượng rác tồn động trên địa bàn thành phố từ ngày này qua ngày khác. mà đảm bảo luôn luôn sạch thì công ty thực hiện cái phương án là tăng ca tăng kịp, sử dụng ba ca để thu gom. Thế bây giờ thì có thể là chúng tôi thực hiện cả ca ngày, ca chiều, ca sáng ca chiều và ca tối. Thực hiện đúng tốt cái quy trình vận hành mà theo quy trình của ủy ban thành phố Vinh ban hành",
+        "speakerID": "spk_37_0101",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0102": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0142.wav",
+        "text": "Vào dịp Tết cổ truyền, sau khi hoàn thành các nghĩa vụ về thắp hương thờ cúng ông bà Tổ Tiên và đi thăm nội ngoại bà con hàng xóm thì gia đình tôi thường lựa chọn các tua du lịch. Đây là dịp chúng tôi xác định là một kỳ nghỉ dành cho gia đình. Cũng là dịp để gia đình cùng đi vui du lịch với nhau, làm mới mình trong năm mới.",
+        "speakerID": "spk_37_0102",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0103": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0143.wav",
+        "text": "Với cái lượng du khách đặt lịch tour đoàn cũng như là tour ghép lẻ du xuân đầu xuân thì công ty chúng tôi cũng đã bố trí các nhân sự với cả phòng điều hành cũng như cái đảm bảo về các dịch vụ để đến các điểm đón của du khách lựa chọn..",
+        "speakerID": "spk_37_0103",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0144.wav",
+        "text": "Đối với lại năm nay thì những ngày đầu xuân mùng một Tết thì du khách lựa chọn để xuất hành. Và năm nay thì công ty chúng tôi cũng đã có một số đoàn đi du xuân trong nước và quốc tế khởi hành từ chiều mùng một Tết",
+        "speakerID": "spk_37_0103",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0104": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0145.wav",
+        "text": "Hằng năm, thì gia đình chúng tôi sau khi đón Tết nguyên đán xong sẽ có các chương trình đi du lịch khai xuân. Năm nay tôi sẽ đi về miền Tây xứ Nghệ. Thứ nhất là sẽ để cho gia đình, con cái của mình, biết được trong nội tỉnh của mình như thế nào..",
+        "speakerID": "spk_37_0104",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0146.wav",
+        "text": "Thứ hai nữa là để cho các con trải nghiệm với cuộc sống thực tế của các đồng bào dân tộc ở ngay địa phương của mình để có một cái ánh tượng nhất định của con mình, ít nhất là về cái tỉnh của mình",
+        "speakerID": "spk_37_0104",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0105": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0147.wav",
+        "text": "trong nhiệm vụ chúng của tỉnh đảm bảo an toàn tuyệt đối tại khu vực quảng trường về an ninh trật tự, an toàn phòng chống cháy nổ. Thì tại quảng trường đã xây dựng một kế hoạch phối hợp với đại đội cảnh sát bảo vệ mục tiêu thuộc phòng cảnh sát cơ động công an tỉnh để triển khai tổ chức tuần tra canh gác hai tư trên hai tư cũng như phân công nhiệm vụ để đảm bảo cho công tác an ninh trật tự tại Quảng Trường đảm bảo tuyệt đối một trăm phần trăm để phục vụ bà con nhân dân và các đoàn đến dâng hoa đến tham quan Quảng Trường vào dịp Tết đến xuân về.",
+        "speakerID": "spk_37_0105",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0106": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0148.wav",
+        "text": "Đã cũng rất nhiều năm lực lượng bảo vệ dân phố tham gia phối hợp với công an phường để chú ý điều khiển giao thông vào dịp Tết. Tất cả anh em tham gia đều nêu cao tinh thần là không để ùn tắc giao thông ở các điểm chốt mà mình được tham gia.",
+        "speakerID": "spk_37_0106",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0107": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0149.wav",
+        "text": "Thực hiện kế hoạch của Công an tỉnh và Công an thành phố thì Công an phường Lê Lợi đã triển khai hàng chục lượt cán bộ chiến sĩ cùng bảo vệ dân phố đã ra quân trên địa bàn toàn phường để đảm bảo an ninh trật tự, an toàn giao thông. Vì xử lý các hộ dân kinh doanh, buôn bán lấn chiếm hành lang vỉa hè, bày bán hàng hóa trong dịp Tết để đảm bảo cho người dân có một cái Tết hạnh phúc, ấm no và an lành.",
+        "speakerID": "spk_37_0107",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0108": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0150.wav",
+        "text": "Để đảm bảo cái an toàn giao thông cũng như đáp ứng nhu cầu đi lại của nhân dân trong dịp Tết Nguyên đán thì về phía công ty chúng tôi cũng đã là có kế hoạch về chuẩn bị Tết tăng cường lượt xe chạy lấy xe dự phòng và quay vòng xe chở đúng số người theo quy định không tăng giá vé chấp hành luật giao thông đường bộ.",
+        "speakerID": "spk_37_0108",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0151.wav",
+        "text": "đặc biệt là nghiêm cấm trữ các chất dễ nổ dễ cháy như pháo và các mặt hàng cấm",
+        "speakerID": "spk_37_0108",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0109": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0152.wav",
+        "text": "Trong thời gian vừa qua đã thực hiện mở đợt cao điểm, giải tỏa về trật tự đô thị, đặc biệt là trong cái tuyến phố ẩm thực đêm Thành Cổ Vinh Đường Đào Tấn. Cũng có một số hộ đang còn cố chai lì thì chúng tôi cũng đã tuyên truyền vận động, thực hiện tuyên truyền vận động và kiến quyết ra quân giải tỏa để đảm bảo trật tự đô thị vệ sinh môi trường trong khu vực Thành Cổ Vinh.",
+        "speakerID": "spk_37_0109",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0110": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0153.wav",
+        "text": "Như các đồng chí đã biết thì hiện nay lưu lượng phương tiện di chuyển trên đường rất là đông Lượng người đổ về thành phố Vinh mua sắm để phục vụ công tác Tết rất là nhiều.",
+        "speakerID": "spk_37_0110",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0154.wav",
+        "text": "Thì trước tình hình đó thì lãnh đạo trong thành phố đã chỉ đạo lực lượng đội cảnh sát giao thông, trật tự, chủ trì phối hợp với công an các phường xã ra quân để cùng với chính quyền ở các địa phương, các phường xã để đảm bảo trật tự an toàn giao thông trên tất cả các tuyến đường đặc biệt các đường tuyến đường trung tâm có lưu lượng người và phương tiện di chuyển rất là đông",
+        "speakerID": "spk_37_0110",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0111": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0155.wav",
+        "text": "Dưới sự chỉ đạo trực tiếp của lãnh đạo Công an tỉnh chúng tôi đã tham mưu kế hoạch huy động tối đa lực lượng để nhằm đảm bảo trật tự an toàn giao thông, trật tự đô thị trên địa bàn thành phố. Ngoài lực lượng nòng cốt là cảnh sát giao thông.",
+        "speakerID": "spk_37_0111",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0156.wav",
+        "text": "thì các lực lượng của các đội nghiệp vụ, công an các phường xã tham mưu cho ủy ban thành phố để huy động thêm dân quân tự vệ để bảo vệ dân phố, trật tự đô thị của các phường. và các lực lượng khác để nhằm cùng với lực lượng cảnh sát giao thông để mục đích cuối cùng đó là đảm bảo trật tự an toàn giao thông thông suốt trên địa bàn để phục vụ cho nhân dân đi lại vui tết đón xuân, an toàn, thuận lợi",
+        "speakerID": "spk_37_0111",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0112": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0157.wav",
+        "text": "Mặc dù thời tiết nó không thuận lợi, mưa rét nhưng mà chúng tôi tập trung các nhân lực để chăm sóc, duy trì các thảm cỏ, bồn hoa để phục vụ cho du khách đến thăm quan quảng trường để phục vụ đón Tết.",
+        "speakerID": "spk_37_0112",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0113": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0158.wav",
+        "text": "Chúng tôi làm tờ trình đăng ký ngay về vấn đề xây dựng hạ tầng chỉnh trang đô thị thì được nhân dân của khối mười hai đồng tình rất cao. Khi triển khai xong rồi thì dân quyết định dân bàn. Thì có nhà xung phong đóng mười hai triệu cao nhất. Rồi có nhà khó khăn quá thì đống một triệu. Thì đến để đi họp để bàn thì đã thu được năm mươi lăm triệu. Thì hiện nay là riêng cái đường này đã đồng góp được hai trăm chín mươi hai triệu.",
+        "speakerID": "spk_37_0113",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0114": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0159.wav",
+        "text": "Dân khối mười hai thì nghèo khổ, quanh năm vất vả. Rồi năm nay là được cái con đường nâng cấp lên rồi chỉnh trang lại cho sáng sủa. Tết năm nay là bà con trong khối xóm đi qua về lại. Rồi anh em họ đang tết năm nay là đến chúc tết là vui vẻ.",
+        "speakerID": "spk_37_0114",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0115": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0160.wav",
+        "text": "Thưa ủy ban nhân dân phường đã xây dựng kế hoạch thực hiện song song ba nội dung. Nội dung thứ nhất là tiếp tục ra quân giải tỏa để đảm bảo trật tự đô thị. Thứ hai là vận động người dân cũng như hướng dẫn các hộ gia đình liên quan trên các cái vỉa hè tuyến phố chính Thì thực hiện trang hoàng trang trí và cùng với cấp ủy ban cán sự khối vận động người dân thực hiện chỉnh trang đô thị đầu tư xây dựng cải tạo hạ tầng.",
+        "speakerID": "spk_37_0115",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0116": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0161.wav",
+        "text": "Thực hiện theo kế hoạch của tỉnh thì tại quảng trường Hồ Chí Minh năm nay có hai chương trình lớn Đấy là chương trình Chào Năm Mới hai không hai ba và chương trình Đêm Hội Giao Thừa.",
+        "speakerID": "spk_37_0116",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0162.wav",
+        "text": "Và ngoài ra thì tổ chức các hoạt động không gian để cho người dân đến để tham quan thư giãn vào dịp Tết thì tại quảng trường Hồ Chí Minh và Tượng Đài Bác Hồ đã thực hiện chỉnh trang các hạng mục như điện, nước rồi đài phun nước nghệ thuật cũng như trang trí tuyên truyền ra trên các cụm ba nô để có được màu sắc xuân, tươi vui rộn rã, khơi dậy tinh thần yêu nước của người dân cũng như thúc đẩy tinh thần thi đua, lao động sản xuất để một năm mới được khởi sắc",
+        "speakerID": "spk_37_0116",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0117": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0163.wav",
+        "text": "Thị trường hàng hóa rất là đa dạng và có rất nhiều sự lựa chọn cho mình, đặc biệt là thị trường online thì ngày càng phát triển. Tuy nhiên vào những dịp cuối năm với không khí gần kề của ngày Tết thì tôi cũng muốn đến tại trực tiếp tại các siêu thị để mình có thể lựa chọn cho mình những món đồ hoặc là để sắm Tết cho gia đình.",
+        "speakerID": "spk_37_0117",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0118": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0164.wav",
+        "text": "Năm nay thì các mặt hàng cũng tương đối phong phú, tương đối đầy đủ kinh nghiệm. Nhiều năm thì hộ kinh doanh của chúng tôi cũng là chuẩn bị lượng hàng ví dụ như bia, rượu, bánh kẹo, thuốc lá. Chủ yếu là các cái hàng thương hiệu hàng của Việt Nam. Lượng hàng là gấp đôi, gấp ba những ngày bình thường để phục vụ thỏa đáng cho người tiêu dùng.",
+        "speakerID": "spk_37_0118",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0119": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0165.wav",
+        "text": "Mỗi độ tết đến xuân về thì chúng tôi cũng thường đi mua sắm, một số vật dùng để chơi tết và cũng rất chú trọng về phần hoa. Nó mang cái phong cách vẻ đẹp cho không gian nhà cửa và cái phần linh thiêng của con người. Chất lượng của hoa thì năm nào cũng đẹp và mỗi năm nó có một cái vẻ đẹp khác nhau.",
+        "speakerID": "spk_37_0119",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0120": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0166.wav",
+        "text": "Hàng thì nói chung cũng tương đối đầy đủ về cả mẫu mã cho đến số lượng Từ đầu tháng mười hai âm lịch thì bắt đầu chuẩn bị các dụng cụ, mặt bằng, phụ kiện đầy đủ sẵn sàng khi nào khách cần thì mình trồng lên bán cho khách thôi.",
+        "speakerID": "spk_37_0120",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0121": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0167.wav",
+        "text": "Ngày có hai tổ công tác ra quân đảm bảo trật tự an toàn giao thông từ lúc sáu giờ sáng cho tới hai hai giờ đêm qua đó phối hợp với các lực lượng chức năng như đội phản ứng nhanh, công an trật tự và đội quy tắc của các phường xã ra quân giải tỏa tất cả các tuyến trọng điểm, tuyến chính trên hành lang an toàn giao thông",
+        "speakerID": "spk_37_0121",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0122": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0168.wav",
+        "text": "Toàn bộ cái hạ tầng thì cơ bản chín mươi lăm phần trăm là chúng tôi đã hoàn thiện đường, mương, điện. Chứ mà do cái điều kiện là hai tuyến đường, tức là tuyến đường Một Đê và tuyến đường Hủ Nhân, cùng nối giữa khu dự án Ra Đường Phẩm Ngại, chưa được nối ra thành phố do giải phóng mặt bằng. Do vậy mà rất nhiều lần chúng tôi đã đề xuất với ủy viên tỉnh, ủy ban thành phố để bàn giao hạ tầng cho thành phố quản lý. Thế đến bây giờ cũng chưa được.",
+        "speakerID": "spk_37_0122",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0123": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0169.wav",
+        "text": "Hiện nay cái công trình về hạ tầng ở đây thì bây giờ được phụ cấp nhiều rồi Do cái quản lý, chưa bàn giao được cho thành phố Nếu không bàn giao thì người dân thiệt thôi, tức là đường xá nó hư hỏng Rồi xảy ra, có khi xảy ra tai nạn Kể cả có những chỗ mà người ta đào phá cũng không thể ngăn được Cho nên cũng đề nghị với thành phố khi ấy làm thế nào để bàn giao.",
+        "speakerID": "spk_37_0123",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0124": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0170.wav",
+        "text": "Chúng tôi về đây làm nhà sinh hoạt là bảy tám năm. Nhưng chỉ một lần trận mưa khoảng mười lăm hai mươi phút sau là nước ngập qua nửa đầu gối. Dân tình đi lại rất chi là vất vả. Mà nếu như mưa cả ngày nửa thì hoàn toàn tê liệt toàn bộ cái tuyến đường này như một cái sông hồ. Dân tình không bao giờ đi lại được nữa hết. Mương thoát nước hai bên đường này tắc hết toàn bộ. Kể cả thoát nước trong gia đình tôi ra ngoài mương này là cũng bị tắc.",
+        "speakerID": "spk_37_0124",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0125": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0171.wav",
+        "text": "Hiện nay thì chủ đầu tư đang hoàn thiện các hồ sơ theo các quy định mới để bàn giao cho chính quyền. Tuy nhiên, nó cũng có những khó khăn vướng mắc. Theo các quy định trước đây, nó chưa quy định rõ ràng về các cái vấn đề nghiệm thu bàn giao cho chính quyền..",
+        "speakerID": "spk_37_0125",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0172.wav",
+        "text": "Do đó, đến thời điểm này, tiến hành các cái thủ tục để bàn giao nó cũng gặp nhiều khó khăn do các cái giấy tờ, các cái hồ sơ pháp lý liên quan. Trong thời gian tới, chúng tôi sẽ hoàn thiện các hồ sơ theo các quy định mới để có thể bàn giao lại cho hạ tầng đô thị thành phố quản lý",
+        "speakerID": "spk_37_0125",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0126": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0173.wav",
+        "text": "Một số cái công trình hạ tầng kỹ thuật của dự án thì thi công cũng chưa đúng theo thiết kế. Và chất lượng thi công có nơi cũng chưa đảm bảo. Cho nên việc nghiệm thu, để rồi chấp thuận nghiệm thu cũng đang còn bất cập. Đối với các dự án mà chưa thực hiện được giải phóng mặt bằng của dự án, đối với các tuyến đường hạ tầng kỹ thuật như hạ tầng xã hội..",
+        "speakerID": "spk_37_0126",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0174.wav",
+        "text": "Tuy nhiên cái việc giải phóng mặt bằng thì để thực hiện được nó liên quan nhiều vấn đề. Một số các thổ dân thì không đồng tình về khu tái định cư cũng như là về giá nơi đi nơi đến cho nên là rất khó khăn trong việc giải phóng mặt bằng",
+        "speakerID": "spk_37_0126",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0127": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0175.wav",
+        "text": "Thành phố cũng đang phối hợp với các sở ban ngành, đang kiểm tra các dự án mà chậm tiến độ. Và để rồi đề xuất về tỉnh là yêu cầu các chủ đầu tư là thực hiện các dự án theo quy hoạch được duyệt. Và bên cạnh đó thì thành phố cũng tiếp tục là sẽ là tiếp tục quyết liệt trong cái việc mà thực hiện phối hợp với chủ đầu tư để rồi thực hiện cái việc bồi thường giải phóng mặt bằng các dự án đang còn vướng mắc.",
+        "speakerID": "spk_37_0127",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0128": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0176.wav",
+        "text": "Thì cũng đã từng nghe chủ trương là có được thành phố cho thuê lại cái vỉa hè, một phần của vỉa hè, của cái trục đường để tạo điều kiện cho các hộ kinh doanh. Chúng tôi hy vọng là nếu như các cái cơ quan ban ngành tạo điều kiện thì chúng tôi những người dân ở đây cũng cam kết là sẽ đảm bảo mỹ quan này sạch sẽ ở môi trường mà mình kinh doanh.",
+        "speakerID": "spk_37_0128",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0129": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0177.wav",
+        "text": "Hội đồng nhân dân tỉnh là có nghị quyết hai bảy, ủy ban tỉnh có kế hoạch số ba sáu, và theo đó thành phố có kế hoạch số năm tư. Trong đó có nêu là nghiêm cấm cái việc mà kinh doanh, buôn bán để vật liệu trên vỉa hè. Vấn đề về kinh tế vỉa hè với đảm bảo về trật tự đô thị là vấn đề rất là khó.",
+        "speakerID": "spk_37_0129",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0130": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0178.wav",
+        "text": "Quá trình kinh doanh thì thấy là cái vỉa hè thì cũng đang rộng mà quá trình kinh doanh thì cũng mong muốn thành phố là ưu tiên là cho soạn hàng có lấn ra một tí để thuận tiện trong việc là bốc hàng, bốc hóa đi cho khách đồng thời là thuận tiện trong cái việc là buôn bán kinh doanh. Nếu mà thành phố mà ưu tiên cho các hộ khu kinh doanh trên mặt đường chính lê lợi này thì các hộ kinh doanh cũng thực hiện cái chế độ là nộp tiền hoặc là nộp tiền một khoản nào đó.",
+        "speakerID": "spk_37_0130",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0131": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0179.wav",
+        "text": "Pháp luật quy định là không được sử dụng vỉa hè để làm nơi buôn bán cho nên là các cái cơ quan chức năng và các cái lực lượng phải xung xuất kiểm tra xử lý. Tuy nhiên trên thực tế thì vẫn còn diễn ra là có những loại hình kinh doanh buôn bán nhưng có thể là phần nào đó phù hợp cho việc đối với ví dụ như là vỉa hè rộng sử dụng một phần phù hợp và đặc biệt là giờ cao điểm thì đảm bảo cho hoạt động giao thông và không lấn chiếm vỉa hè.",
+        "speakerID": "spk_37_0131",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0180.wav",
+        "text": "để quản lý tốt thì Theo tôi nghĩ là cần phải các cái cơ quan chức năng là phải đồng bộ từ cơ chế. Một là cho sử dụng, hai là quản lý cơ quan, quản lý hoạt động sử dụng. Cái thứ ba là cơ chế để xử phạt",
+        "speakerID": "spk_37_0131",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0132": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0181.wav",
+        "text": "Thì cái loại hình này thì hiện nay cũng đã xuất hiện một vài điểm trên địa bàn của thị trấn rồi Nhưng chủ yếu thì người ta vào những cái giờ nói chung là không cao điểm Chủ yếu là tập trung vào khu vực ban đêm Tôi nghĩ là có cái hay của nó Vì vừa thứ nhất là nó cũng tạo nên một cái nét gì đó nó văn minh để trong cái quá trình kinh doanh Hai nữa là cũng tạo được một cái điều kiện cho người dân người ta phát triển Đối với những cái hộ mà người ta không có kinh doanh Ốt, kinh doanh ở mặt đường Cũng như không có ruộng để người ta làm ăn để sản xuất cây trồng vật nuôi.",
+        "speakerID": "spk_37_0132",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0133": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0182.wav",
+        "text": "Việc phát triển kinh tế vỉa hè là tất yếu khách quan. Nó mang lại rất nhiều ý nghĩa cho các địa phương, các quốc gia. Nó sẽ giải quyết câu chuyện công ăn việc làm cho người dân, phát triển văn hóa xã hội. Bởi vì khi mà đã xây dựng được một kinh tế về hè, nó có thể mang lại những nét đặc trưng riêng của mỗi địa phương..",
+        "speakerID": "spk_37_0133",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0183.wav",
+        "text": "Câu chuyện đặt ra là chúng ta phải làm sao phát triển vỉa hè để đảm bảo được một số các yếu tố. Ví dụ là yếu tố về trật tự an toàn đô thị, rồi mỹ quan đô thị, rồi câu chuyện về vệ sinh môi trường, và cũng đồng thời đảm bảo cái sự công bằng đối với người dân. Tránh tình trạng một số nơi một số người dân một số cái hoạt động kinh doanh vỉa hè được ưu tiên, nhưng một số hoạt động khác lại không được ưu tiên",
+        "speakerID": "spk_37_0133",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0134": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0184.wav",
+        "text": "Trước đây chúng tôi làm toàn lúa khoai, thu nhập thấp. Bây giờ chuyển đổi cơ cấu cây trồng, dân đã làm được những vườn mẫu như vườn hoa, vườn rau. Nhân dân cũng đang mong chờ được lên phường để nâng cao đời sống vật chất cho người dân.",
+        "speakerID": "spk_37_0134",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0135": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0185.wav",
+        "text": "Hiện nay trên địa bàn xã Hùng Đông thì có bốn mươi bốn dự án đang triển khai và thi công, thì để tạo điều kiện cho các nhà thầu triển khai thi công kịp thời gian tiến độ công việc. Mặt trận Tổ quốc là tuyên truyền vận động nhân dân, là tạo điều kiện cho các nhà đầu tư. Một số nơi thì chưa đền bù nhưng mà cho các nhà thầu thi công trước.",
+        "speakerID": "spk_37_0135",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0136": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0186.wav",
+        "text": "có rất nhiều dự án lớn trên địa bàn như là dự án ở đường ba lăm với là đường bảy hai mét nối Vinh Cửa Lò cũng như các dự án khu tái định cư để khai thác quỹ đất cho nên dẫn tới tình trạng là đất nông nghiệp của người dân ngày càng bị thu hồi. Các ban ngành thị xã tích cực liên kết với các trung tâm đào tạo nghề để đào tạo thêm các ngành nghề đặc biệt là phát triển các ngành nghề dịch vụ trên địa bàn để tạo được công ăn việc làm cho các lao động nông nghiệp vì sau khi bị thu hồi đất.",
+        "speakerID": "spk_37_0136",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0137": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0187.wav",
+        "text": "Hiện nay Hưng Lộc đã phát triển theo tốc độ đô thị. Theo quy hoạch phân khu thì các điểm phát triển đô thị cũng gần gần như tiếp giáp với khu công nghiệp này. Cách khu công nghiệp này còn khoảng vài trăm mét. Các cơ quan ban ngành, các tỉnh cần quan tâm di dời khu công nghiệp này ra để đảm bảo đời sống cho nhân dân.",
+        "speakerID": "spk_37_0137",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0138": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0188.wav",
+        "text": "Nghi Đức thì được tỉnh công nhận nông thôn mới năm hai nghìn mười sáu nhưng mà để đạt được tiêu chí theo định hướng lên phường thì xã cũng phải phấn đấu rất nhiều các cái tiêu chí..",
+        "speakerID": "spk_37_0138",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0189.wav",
+        "text": "Đề nghị các ngành cấp cấp cũng phải có một lộ trình cụ thể, đặc biệt là có cơ chế đầu tư, đặc biệt là đầu tư cho hạ tầng, giữ ổn định khu quy hoạch dân cư, giữ được bản sắc văn hóa, cũng không nên đưa vào khu công nghiệp gây ô nhiễm môi trường, tác động rất lớn đến người dân. Là nhà nước cũng có chính sách hỗ trợ cho người dân trong cái sinh ký",
+        "speakerID": "spk_37_0138",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0139": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0190.wav",
+        "text": "khó khăn nhất thì vẫn là vấn đề về đất sản xuất nông nghiệp. Diện tích nông nghiệp của xã Hưng Đông thì hiện tại còn khoảng một trăm chín mươi hai héc ta. Ở Hưng Đông thì gần trạm điện, các dây điện đi qua đối với xã thì rất là nhiều. Nó khó chuyển đổi cáp thành các việc khác..",
+        "speakerID": "spk_37_0139",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0191.wav",
+        "text": "Các cái phòng ban ngành thành phố quan tâm về chuyện giải quyết các dự án trên địa bàn về tiến độ thật nhanh. Cái Thứ hai nữa thì cũng mong rằng là các doanh nghiệp các nhà đầu tư vào địa bàn xã Hưng Đông để sản xuất kinh doanh",
+        "speakerID": "spk_37_0139",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0140": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0192.wav",
+        "text": "Đối với nhà ở xã hội thì việc tiếp cận nguồn vốn, với lãi suất ưu đãi của nhà nước thì sẽ tạo điều kiện cho vợ chồng được thanh toán trong hạng mức thu nhập của mình.",
+        "speakerID": "spk_37_0140",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0141": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0193.wav",
+        "text": "Coi như là hồi ấy thì cũng mua được căn nhà này thì coi như mẹ con phấn khởi, giá thành thì vừa phải và hợp với đồng tiền của gia đình",
+        "speakerID": "spk_37_0141",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0142": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0194.wav",
+        "text": "Khó khăn thì cũng chồng chất đấy, chứ không đơn giản. Ở các cái khu công nghiệp của tỉnh Nghệ An nói chung, chưa thấy một hạ tầng xã hội nào mà tôi mới thấy là hạ tầng kỹ thuật thôi. Các thủ tục hành chính của mình đang còn cực kỳ rườm rà, cực kỳ vướng mắc, cực kỳ chồng chéo..",
+        "speakerID": "spk_37_0142",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0195.wav",
+        "text": "Cho nên là làm ở chỗ nào cũng vướng, và kéo dài thời gian là vì vậy. Một cái dự án nếu như tôi nghĩ rằng là chỉ làm trong vòng khoảng một đến hai năm là chúng ta phải đưa vào là coi như là xây dựng được rồi. Nên đây có những cái dự án mà đến sáu năm chưa xong. Về thủ tục sáu bảy năm chưa xong",
+        "speakerID": "spk_37_0142",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0143": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0196.wav",
+        "text": "Công tác bồi thường, giải phóng mặt bằng, các dự án nhà ở xã hội cũng như các dự án khác thì còn gặp nhiều khó khăn vướng mắc trong quá trình thực hiện. Chúng ta chưa tạo được nhiều quỹ đất sạch để thu hút các doanh nghiệp vào đầu tư phát triển nhà ở xã hội.",
+        "speakerID": "spk_37_0143",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0144": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0197.wav",
+        "text": "Về cái phân khúc này thì mong rằng lãnh đạo tỉnh Nghệ An quan tâm hơn, quyết liệt hơn và đồng thời là cũng minh bạch về cái vấn đề là phải công bố, phải tìm quỹ đất phải quy hoạch quỹ đất xong đó là công bố, minh bạch, công khai để cho các doanh nghiệp người ta có quan tâm, người ta vào, người ta đầu tư",
+        "speakerID": "spk_37_0144",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0145": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0198.wav",
+        "text": "Tỉnh Nghệ An sẽ tập hợp các khó khăn vướng mắc bất cập của pháp luật trong quá trình thực thi triển khai để kiến nghị trung ương sửa đổi phù hợp. Trong đó sẽ bổ sung, đề xuất là bổ sung nhiều hơn nữa cái cơ chế, chính sách, ưu đãi của các dự án đầu tư xây nhà xã hội để thu hút các doanh nghiệp vào đầu tư.",
+        "speakerID": "spk_37_0145",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0146": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0199.wav",
+        "text": "Người dân tập trung áp dụng phương pháp khoa học nghệ thuật và công nghệ cao đặc biệt là sản xuất dưa leo ở bên Nhà Vàng. Nó kết nối với chuỗi tiêu thụ sản phẩm, diện tích đất sản phẩm công nghiệp không có nhiều, đã thu hẹp lại. Thế nhưng mà lấy cái diện tích còn lại mà chúng tôi đã nâng cao cái sản lượng và nâng cao cái giá trị thu nhập cho người dân.",
+        "speakerID": "spk_37_0146",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0147": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0200.wav",
+        "text": "Để đảm bảo vệ sinh môi trường thì mỗi tuần phải phun tiêu độc khử trùng hai lần. Và dùng men vi sinh để mà xử lý các chất thải. Người dân cũng hiểu rằng là phát triển chăn nuôi đảm bảo vệ sinh môi trường thì mới phát triển bền vững được.",
+        "speakerID": "spk_37_0147",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0148": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0201.wav",
+        "text": "Trong những năm gần đây thì diện tích đất nông nghiệp có xu hướng bị thu hẹp lại. Do đó, Hội nông dân xã đã đẩy mạnh công tác tuyên truyền vận động nhằm nâng cao nhận thức cho cán bộ, hội viên trong phát triển các cái nông nghiệp như điển hình là phát triển nông nghiệp gia trại, trang trại tổng hợp. Theo xu hướng tuần hoàn, đầu ra của sản phẩm nông nghiệp cũng là đầu vào của chăn nuôi. Từ đó giảm chi phí sản xuất và tăng thu nhập cho người dân trên địa bàn.",
+        "speakerID": "spk_37_0148",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0149": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0202.wav",
+        "text": "Trong các cái vùng mà có quy hoạch để thu hồi phục vụ các dự án phát triển đô thị với các cái làng nghề, vùng phát triển rau an toàn và hoa thì vẫn có những sự chồng chéo nhất định và khiến cho cái việc đầu tư các cái hạng mục để mà hỗ trợ cho phát triển nông nghiệp thì còn có những sự khó khăn, hạn chế về nguồn kinh phí cũng như là sự yên tâm đầu tư của các nhà đầu tư. Với một số cái diện tích mà hiện tại đang sản xuất thì nó đang bị nhỏ lẻ manh mún.",
+        "speakerID": "spk_37_0149",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0150": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0203.wav",
+        "text": "Hiện nay chưa có một cái vùng quy hoạch được cấp có thẩm quyền phê duyệt. Thứ hai nữa là chưa có một khu chợ hay là một trung tâm trưng bày cái sản phẩm. Trong thời gian tới thì chúng tôi cũng mong muốn rằng các cấp các ngành quan tâm để có một trung tâm để quảng bá cũng như trưng bày sản phẩm. Cần có sự liên kết giữa nhà nông với các doanh nghiệp xây dựng được thương hiệu để sản phẩm này được nhân rộng và có cái nơi tiêu thụ.",
+        "speakerID": "spk_37_0150",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0151": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0204.wav",
+        "text": "Xe của Nghệ An của mình quá nhiều, nên ách tắc cái đường của mình thì trục đường đó thì cùng một tuyến đường đó nhưng mà cái làn xe của mình nhiều, xe nhiều quá. Hai ba làn đường nên tắc lâu. Lưu thông khoảng tầm ba bốn chục phút thì mới thoát được, lâu lắm.",
+        "speakerID": "spk_37_0151",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0152": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0205.wav",
+        "text": "Xe thì đông mà chỗ đậu thì không có. Đậu khó lắm, tìm chỗ đậu không có. Phải đậu lên vỉa hè, mà vỉa hè thì chỗ họ làm ăn. Mình mới đậu, chưa đậu xong là họ ra họ nói là đây là chỗ nớ rồi, xong họ cũng nói mình đi đi.",
+        "speakerID": "spk_37_0152",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0153": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0206.wav",
+        "text": "Bình thường thì mỗi tổ công tác là ba đồng chí tại một tổ công tác Và những chốt điểm phức tạp về tình hình trật tự, an toàn giao thông thì chúng tôi bố trí sáu đồng chí Giờ cao điểm thì chúng tôi tăng cường thêm Ngoài lực lượng tuần tra thì chống ùn tắc tại các tuyến đường thì chúng tôi huy động thêm các lực lượng của bộ phần xử lý vi phạm tại trung tâm một cửa với các bộ phần xử lý tai nạn để tăng cường hỗ trợ cho lực lượng tuần tra ở phía ngoài",
+        "speakerID": "spk_37_0153",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0154": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0207.wav",
+        "text": "đã xây dựng cái lộ trình lập các cái quy hoạch khu đô thị mới ở các vùng ven đô được kết nối bởi các cái trung tâm huyện với bởi các tuyến đường giao thông huyết mạch lớn..",
+        "speakerID": "spk_37_0154",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0208.wav",
+        "text": "Vì vậy, thời gian vừa qua, ủy ban thành Phố Vinh cũng đã tiếp xúc với một số nhà đầu tư để đề nghị tài trợ kinh phí lập kế hoạch các cái khu đô thị mới vùng ven đô. Ngoài ra thì ủy ban nhân dân thành phố Vinh đã tập trung nguồn lực để bố trí đầu tư công, các cái tuyến đường kết nối các cái khu đô thị mới với đô thị hình hữu để nhằm từng bước một giản dân, giảm mật độ dân cư cao ở trong vùng nội đô ra vùng ngoại đô",
+        "speakerID": "spk_37_0154",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0155": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0209.wav",
+        "text": "Mặc dù là có những trận mưa lớn, mưa bão lớn tại thị xã Cửa Lò nhưng mà hầu như các mương máng đều thoát nước tốt, không có vấn đề ngập úng tại các tuyến đường trên thị xã.",
+        "speakerID": "spk_37_0155",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0156": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0210.wav",
+        "text": "Phường cũng đã xây dựng kế hoạch phối hợp với mặt trận Tổ quốc, các đoàn thể, rồi các phòng ban ngành liên quan của thị xã là trực tiếp làm công tác tuyên truyền, vận động các khách sạn, nhà hàng, nhà nghỉ. Khi xây dựng và đã xây dựng đưa vào sử dụng đấu nối vào hệ thống đường ống cấp một, cấp hai của Ủy ban Thị xã Cửa Lò để chuyển về nhà máy xử lý nước thải..",
+        "speakerID": "spk_37_0156",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0211.wav",
+        "text": "Và đồng hành với việc đó thì Ủy ban Phường cũng đã triển khai các cái dự án xây dựng các cái hệ thống xử lý nước thải đảm bảo về hạ tầng kỹ thuật",
+        "speakerID": "spk_37_0156",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0157": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0212.wav",
+        "text": "Hiện nay trên địa bàn thị xã đang thu hút rất nhiều dự án lớn, đặc biệt là xây dựng cái dự án kè biển, dọc bãi biển của thị xã. Ở đây là những dự án này là đem lại sự phát triển du lịch, cũng như là xâm nhập của nước biển. Thị xã cũng đang tiếp tục triển khai đầu tư dự án xử lý nước thải giai đoạn hai, đưa vào sử dụng quý bốn năm hai ba.",
+        "speakerID": "spk_37_0157",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0158": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0213.wav",
+        "text": "Đặc điểm của cái dự án này là hệ thống thu nước bẩn nằm quá sâu, ba mét ba. Vì tôi khi ở đây tôi giám sát cơ quan này mà, quá nhỏ và quá sâu. Do đó hiện nay các hố ga, vì là cái mương dưới, nước bùn nó lắng hết rồi, các hồ ga tịt hết rồi. Thứ hai là lỗi của vận hành, là đáng lẽ khi nắng là phải đóng cống, mưa là mở cống. Nhưng mà thực tế nước thu không kịp, do đó họ đành phải mở.",
+        "speakerID": "spk_37_0158",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0159": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0214.wav",
+        "text": "Đến thời điểm hiện tại, do sau khi hình thành các tuyến mương nhưng mà vẫn không hạn chế được, không bóc tách được cái lượng nước thải của các hộ dân xung quanh khu vực hào thành cổ Vinh nên dẫn đến cái việc ô nhiễm môi trường của khu vực hào thành cổ Vinh tồn tại và vẫn tồn tại đến ngày nay.",
+        "speakerID": "spk_37_0159",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0160": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0215.wav",
+        "text": "Vấn đề này thì nhiều nội dung nó tác động Trong đó là có những công trình chúng ta đầu tư Nhưng mà lẽ là chưa khảo sát hết cái độ ảnh hưởng hay là cái công năng hoạt động của nó Thành ra là khi làm xong rồi mới thấy cái bất cập Chính vì vậy là trong quá trình vận hành thì nó không thực hiện đúng cái công năng của nó.",
+        "speakerID": "spk_37_0160",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0161": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0216.wav",
+        "text": "Toàn bộ cái hệ thống tiêu thoát nước trên địa bàn Thành phố trong thời gian qua là phải nói là còn rất nhiều bất cập. Như là do các cái công trình cũ..",
+        "speakerID": "spk_37_0161",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0217.wav",
+        "text": "Rồi thứ hai nữa là quá trình phát triển cái đô thị. Nhưng do đó là giữa cái cũ và cái mới nó đan xen nhau. Vấn đề thứ ba nữa là cái nguồn lực để mà Tu sửa, nâng cấp, rồi nạo vét thường xuyên là gặp rất nhiều khó khăn",
+        "speakerID": "spk_37_0161",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0162": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0218.wav",
+        "text": "trồng các cái cây thủy trúc, sen, súng và một số loài cây thủy sinh khác trong giai đoạn thí điểm để góp phần, thứ nhất là tạo cảnh quan môi trường, thứ hai là giảm thiểu một số tác động trong ô nhiễm môi trường trong khu vực hào thành cổ Vinh..",
+        "speakerID": "spk_37_0162",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0219.wav",
+        "text": "Thì trong thời gian tới, trên cơ sở một chức trách nhiệm vụ thì ủy ban nhân dân Phường sẽ cố gắng nghiên cứu và tham khảo ý kiến các chuyên gia. Và để trình một kế hoạch ủy ban nhân dân Thành phố Vinh phê duyệt thì ủy ban nhân dân Phường sẽ tiến hành trồng đại trà ở các địa điểm Mở rộng trong hào thành cổ Vinh",
+        "speakerID": "spk_37_0162",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0163": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0220.wav",
+        "text": "xử lý ô nhiễm môi trường ở các cái hệ thống tiêu thoát nước trên địa bàn thành phố, đặc biệt là một số cái điểm coi như là gây bức xúc. Ví dụ như Hào Thành Cổ, Kênh Bắc, một số cái hồ chứa nước thành phố từng bước là đầu tư nâng cấp hệ thống hạ tầng thoát nước để không cho nước thải sinh hoạt lọt vào những hồ này..",
+        "speakerID": "spk_37_0163",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0221.wav",
+        "text": "Đồng thời nữa là sẽ có cái giải pháp trong cái thời gian tới là gắn với các cái chương trình thoát nước mang tầm chiến lược của thành phố sẽ đưa vào thu gom để vào nhà máy xử lý nước thải của thành phố",
+        "speakerID": "spk_37_0163",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0164": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0222.wav",
+        "text": "Động viên nhân dân xây dựng hệ thống hạ tầng cơ sở như hệ thống đường, mương thoát nước, xây dựng các cái đường phố, đăng vạch ra các cái vấn đề như xây dựng các cái tiêu chí là đường hoa giấy trên địa bàn của khổi. Và vận động nhân dân cùng chung sống cái nếp sống văn minh đô thị trên cộng đồng dân cư đoàn kết, thương yêu lẫn nhau, giúp đỡ lẫn nhau để hoàn thành tốt các tiêu chí để xây dựng là chuẩn văn minh đô thị trên địa bàn.",
+        "speakerID": "spk_37_0164",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0165": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0223.wav",
+        "text": "Chúng tôi luôn chấp hành các chủ trương chính sách của Đảng, Nhà nước cũng như các cái kế hoạch chỉ thị của Phường Long Sơn Nói Riêng, tham gia đầy đủ các cái phong trào thể dục, thể thao, văn hóa, văn nghệ, bảo vệ môi trường, phát triển kinh tế gia đình.",
+        "speakerID": "spk_37_0165",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0166": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0224.wav",
+        "text": "Cơ sở vật chất các nhà văn hóa chật hẹp, không có quỹ đất. Địa bàn của phường chỉ có hai cái chợ, chợ Đầu Mối và chợ Vinh. Có việc lấn chiếm lòng lề đường trong những cái giờ cao điểm. Vì lực lượng rất mỏng, không thể thường xuyên liên tục được. Mình mong các cấp, các ngành quan tâm, hỗ trợ giúp đỡ cũng như là vào cuộc của toàn bộ hệ thống chính trị, được cả thành phố chỉ đạo vào hỗ trợ cho phường.",
+        "speakerID": "spk_37_0166",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0167": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0225.wav",
+        "text": "Quy định của Trung Ương thì trong cái tiêu chí đánh giá về thu nhập bình quân đầu người Nhưng ở cơ sở thì lại đánh giá là theo là chuẩn đoán giá trị tăng thêm Cho nên nó cũng khó khăn trong cái vấn đề đánh giá của tiêu chí này.",
+        "speakerID": "spk_37_0167",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0226.wav",
+        "text": "Tiêu chí thứ hai đó là cái việc là người dân tham gia bảo hiểm Thì hiện nay thì phường đã đạt được là tám mươi chín Trên chỉ tiêu cơ bản là phải đạt là chín mươi phần trăm chỉ tiêu nước sạch là đề xuất là về thị xã thì sẽ mở rộng đường nước cho vào vùng trong",
+        "speakerID": "spk_37_0167",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0168": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0227.wav",
+        "text": "Đẩy mạnh cái công tác tuyên truyền, tăng cường sự vào cuộc của các cấp ủy đảng chính quyền, mặt trận tổ quốc, các cái đoàn thể để tạo sự đồng thuận của nhân dân trong cái việc xây dựng nếp sống văn minh đô thị. Coi đây là một nhiệm vụ chính trị của các phường quan tâm đến cái việc đầu tư các cái cơ sở vật chất. cơ sở hạ tầng gắn với phong trào toàn dân đoàn kết xây dựng đời sống văn hóa với các tiêu chí xây dựng chi phường đạt chuẩn văn minh đô thị để đảm bảo chiều sâu và sức lan tỏa trong quần chúng nhân dân.",
+        "speakerID": "spk_37_0168",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0169": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0228.wav",
+        "text": "Đối với cơ sở chúng tôi thì hệ thống loa truyền thanh phường xã đang là đóng một cái vai trò tuyên truyền rất là lớn trong quá trình thực hiện nhiệm vụ chính trị của địa phương để cập nhật tuyên truyền các cái nội dung các cái hoạt động hàng ngày của chính quyền địa phương sở tại. Loa cũng là cái kênh tuyên truyền mà có cái tác dụng và hiệu quả rất là lớn mà không có một cái nền tảng truyền thông nào có thể là có cái hiệu quả như vậy.",
+        "speakerID": "spk_37_0169",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0170": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0229.wav",
+        "text": "Loa phường đặc biệt phát huy hiệu quả qua đợt dịch Covid mười chín vừa rồi. Phải nói các cái thông tin đến người dân nhanh nhất là qua loa phường. Toàn xã hội giản cách theo chỉ thị mười sáu, mười sáu cộng. Tổ chức truy vết, tổ chức cách ly thông báo cho người dân đi xét nghiệm, thông báo cho người dân đi tiêm đều qua hệ thống loa phường.",
+        "speakerID": "spk_37_0170",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0171": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0230.wav",
+        "text": "Hiện nay thì là Zalo này Facebook này thì là phát triển, nhưng mà có những lớp người lớn tuổi như tuổi già chẳng hạn thì người ta không thể nắm bắt được. Thì loa Phường đưa đến thông tin cần thiết, như trận bão số bốn vừa rồi đây. Loa Phường cập nhật các cái thông tin là mưa bão để giúp cho người dân.",
+        "speakerID": "spk_37_0171",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0172": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0231.wav",
+        "text": "Khối chúng tôi là sát nhập ba khối lại thành một khối cho nên diện tích cho các hộ dân cũng lớn cán bộ nổi ít hơn. Các văn bản của phường, các cái tổ chức chính trị hội họp cũng cần có sự thông tin. Chúng tôi cũng theo quy định giờ giấc để đảm bảo cho bà con nhân dân về cái nắm bắt được thông tin. Và hai nữa là về chế độ cho các cháu học hành để cho nó đảm bảo hơn.",
+        "speakerID": "spk_37_0172",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0173": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0232.wav",
+        "text": "Người lao động thì họ ít có thời gian ở nhà để theo dõi tất cả các thông tin cho nên có những thông tin quan trọng của chính quyền, của các tổ chức đoàn thể mà thông báo cho bà con ở những thời điểm thích hợp thì rất hữu ích. Nhưng mà tôi có một cái mong muốn góp ý thêm đó là cái việc sử dụng loa phường là phải đúng thời điểm, đúng mục đích, tránh lạm dụng để gây đến những ảnh hưởng không đáng có cho người già, cho trẻ nhỏ.",
+        "speakerID": "spk_37_0173",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0174": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0233.wav",
+        "text": "Xác định vai trò vị trí của truyền thanh cơ sở đối với các nhiệm vụ phát triển kinh tế, chính trị xã hội của thành phố. Chúng tôi thường xuyên tổ chức các cái lớp tập huấn, tăng cường chất lượng nội dung chuyên môn, đảm bảo tính thời sự thiết thực, có tính pháp lý, kịp thời, có trọng tâm trọng điểm. và đặc biệt là gắn với các ứng dụng công nghệ thông tin cũng như đa dạng các hình thức để tiếp cận gần hơn với nhân dân..",
+        "speakerID": "spk_37_0174",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0234.wav",
+        "text": "hai lăm phường xã sẽ được trang bị hệ thống truyền thanh không dây, hiện đại, thông minh, đồng bộ và qua đó thì chúng ta có thể số hóa, dữ liệu hóa được các nguồn thông tin cơ sở",
+        "speakerID": "spk_37_0174",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0175": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0235.wav",
+        "text": "Các cái khu đô thị này thì theo hướng là đô thị hỗn hợp, gồm là các cái hạ tầng kỹ thuật đồng bộ và các cái công trình hỗn hợp như là nhà ở, gồm biệt thự, sốc hâu và liền kề.",
+        "speakerID": "spk_37_0175",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0236.wav",
+        "text": "Rồi là các công trình công cộng, sân thể thao, nhà văn hóa, trường học và trung tâm thương mại. Gắn đấy là tăng cường cái mật độ mà đất cây xanh cảnh quan rất lớn cũng như mặt nước để tạo kiến trúc cảnh quan cho trung tâm thị trấn Nam Đàn trong tương lai.",
+        "speakerID": "spk_37_0175",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0176": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0237.wav",
+        "text": "Thời gian gần đây thì các cái khu đô thị, các cái trung tâm mua sắm nó được mở rộng rất là nhiều ở huyện Nam Đàn. Tại những mô hình đem đến những lợi ích và những sự thuận tiện cho người dân ở đây.",
+        "speakerID": "spk_37_0176",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0177": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0238.wav",
+        "text": "Nhịp sống của Nam Đàn đang tiến lên ngày một. Có nhiều trung tâm thương mại, có nhiều điểm vui chơi giải trí. Đường xá thì là được quy hoạch khang trang hơn. Có hệ thống đèn đường. Người dân thì được thụ hưởng nhiều từ sự phát triển này.",
+        "speakerID": "spk_37_0177",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0178": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0239.wav",
+        "text": "Chúng tôi thực hiện quy hoạch sử dụng đất, quy hoạch nông thôn mới và các bước để tiến tới quy hoạch xây dựng xã Nam Giang trở thành đô thị loại năm.",
+        "speakerID": "spk_37_0178",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0240.wav",
+        "text": "Đặc biệt là quan tâm đến vấn đề quy hoạch hạ tầng thương mại, rồi là hạ tầng giao thông, rồi là hạ tầng cơ sở vật chất. hạ tầng nông thôn để tiến tới đảm bảo điều kiện để thực hiện về cái đô thị hóa theo kế hoạch của tỉnh và huyện đã xác định.",
+        "speakerID": "spk_37_0178",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0179": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0241.wav",
+        "text": "Thể tập trung phát triển hệ thống hạ tầng kết nối, đặc biệt là hệ thống giao thông, thu hút các cái nhà đầu tư vào đầu tư các cái khu đô thị mới để làm cái điểm nhấn cho các cái vùng phát triển. Ngoài ra thì cũng tập trung phát triển một số cái khu vực mang tính chất đô thị, nhưng mà hài hòa với phát triển không gian văn hóa, xanh, sinh thái..",
+        "speakerID": "spk_37_0179",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0242.wav",
+        "text": "Để thực hiện được cái nhiệm vụ đó thì ngoài làm tốt quy hoạch rồi công bố quy hoạch và kế hoạch thu hút đầu tư thì phải làm sao có cái nguồn lực, nguồn lực của nhà nước rồi huy động các doanh nghiệp có điều kiện, có tiềm năng thu hút vào để đầu tư giúp cho huyện tạo được các cái không gian đô thị hiện đại nhất là các cái khu đô thị mới ở các cái vùng đã xác định",
+        "speakerID": "spk_37_0179",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0180": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0243.wav",
+        "text": "Tôi thấy thì hành lang cũng cần phải có một cái khoảng để mà dành cho người đi bộ. Nếu như bị lấn chiếm thì nó sẽ ảnh hưởng đến cái vấn đề giao thông dành cho người đi bộ. Người đi bộ chắc chắn nó sẽ phải luồn lách xuống dưới lòng đường thì có thể nó sẽ rất là nguy hiểm.",
+        "speakerID": "spk_37_0180",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0244.wav",
+        "text": "Tôi biết là việc này thì không đúng bởi vì đã lấn chiếm hành lang vỉa hè. Nhưng mà tôi muốn tranh thủ lúc buổi sáng để kiếm thêm tiền sữa cho con. nên là lần này tôi cũng xin rút kinh nghiệm để không ảnh hưởng đến đô thị cũng như là hành lang đi bộ.",
+        "speakerID": "spk_37_0180",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0181": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0245.wav",
+        "text": "Tại vì nhà mặt phố tận dụng một ít không gian vỉa hè ở ngoài để kiếm thêm thu nhập. Biết là vi phạm hành lang, nhưng vì nhà mặt phố không có chỗ để nên là nhiều khi cũng phải tận dụng một tẻo. Sau khi xử lý thì gia đình sẽ cố gắng tiếp thu và không vi phạm hành lang vỉa hè nữa.",
+        "speakerID": "spk_37_0181",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0182": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0246.wav",
+        "text": "Qua cái công tác quản lý trên địa bàn thì tình trạng tái vi phạm, lấn chiếm sử dụng vỉa hè để kinh doanh buôn bán vẫn còn tái diễn. Vì một số các cái nguyên nhân như cái mưu sinh của một số hộ dân, rồi cái lực lượng chức năng nhiều việc đan xen nên cái thời gian cũng như cái nhiệm vụ là đôi lúc chưa thường xuyên.",
+        "speakerID": "spk_37_0182",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0183": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0247.wav",
+        "text": "Trên Thực tế thì các loại hình kinh doanh này có nhiều mặt hàng, phương tiện, xe cộ trong hoạt động giao thương mua bán, thường xuyên là lấn chiếm vỉa hè. Việc kiểm tra thì đã thường xuyên, tuy nhiên cái này thì đối với các loại hình như thế cũng gây khó khăn cho phường. Đặc biệt là dù kiểm tra nhắc nhở và xử phạt, tuy nhiên hiện tượng về cái lấn chiếm và mất an toàn giao thông vẫn còn xảy ra.",
+        "speakerID": "spk_37_0183",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0184": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0248.wav",
+        "text": "xử lý thường xuyên và liên tục nhưng mà địa bàn thành phố thì rộng lớn người vi phạm thì nhiều cho nên là lực lượng của đội phối hợp với phường xã cũng khó có thể mà xử lý được hết Xử lý xong nhưng mà cái công tác duy trì quản lý tái lấn chiếm rất là khó khăn chúng tôi làm đến đâu thì có thể sạch đến đấy.",
+        "speakerID": "spk_37_0184",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0249.wav",
+        "text": "nhưng mà khi lực lượng chúng tôi đi rồi thì người ta lại cố tình để tái lấn chiếm vi phạm Thì người ta là kinh doanh miếng cơm của người ta trên vỉa hè cho nên cái điều đó rất khó để xử lý được dứt điểm",
+        "speakerID": "spk_37_0184",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0185": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0250.wav",
+        "text": "Tới đây thì thành phố sẽ đưa thông tin là trong mạng xã hội đối với các hộ dân kinh doanh lấn chiếm. Kể cả là các người dân mà tham gia dịch vụ vỉa hè cũng đưa lên các cái thông tin mạng..",
+        "speakerID": "spk_37_0185",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0251.wav",
+        "text": "Cái thứ hai nữa là thành phố tiếp tục rà soát và sẽ giải tỏa các cái công trình và kiến trúc vi phạm để đảm bảo cái hành lang an toàn giao thông thông thoáng. Tiếp tục ra quân thường xuyên để giải tỏa các tái lấn chiếm hành lang vỉa hè trên địa bàn. Đồng thời là tiếp tục thực hiện công tác chỉnh trang đô thị, nâng cấp, xây dựng các cái vỉa hè của các cái tuyến phố",
+        "speakerID": "spk_37_0185",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0186": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0252.wav",
+        "text": "Vinh thì ngày càng đẹp hơn, đặc biệt là càng về đêm thì chúng ta có thể thấy được rằng là cảnh quan của thành phố Vinh là ngày càng rực rỡ, được trang bị nhờ bởi cái hệ thống chiếu sáng đô thị, vừa đảm bảo cái sinh hoạt trong gia đình của mỗi người dân, trong đó chính là có cả gia đình em. Thứ hai nữa, đó là đảm bảo cái an toàn, an ninh về trật tự đô thị. Và đặc biệt thứ ba nữa là tạo những cái môi trường để cho tất cả cái cộng đồng dân cư có thể thuận lợi, sinh hoạt ở ngay trên chính các tuyến đường.",
+        "speakerID": "spk_37_0186",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0187": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0253.wav",
+        "text": "Thứ nhất là trên địa bàn xã Hưng Hòa Chúng Tôi thì có hai cái tuyến đường liên xã Đó là đường Hòa Lộc và đường Hòa Thái hai tuyến đường này thì cho đến thời điểm này thì vẫn chưa được đấu nối cái hệ thống điện chiếu sáng của nhà nước",
+        "speakerID": "spk_37_0187",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0254.wav",
+        "text": "Cái đường ở trong thôn xóm là nó nhỏ Nó dưới năm mét Cho nên là cái việc đấu nối theo quy định của thành phố thì sẽ không được đấu nối bởi cái nguồn điện của nhà nước Nên rằng với nhà nước có một cái đặc thù cho cái xã ngoại thành xã nông nghiệp là các cái tuyến đường ở trong thôn xóm Thì nên là cho đấu nguồn điện của nhà nước để động viên nhân dân",
+        "speakerID": "spk_37_0187",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0188": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0255.wav",
+        "text": "Đối với tuyến đường dưới bốn mét thì vận động nhân dân đóng góp đầu tư và tự chi trả tiền điện còn đối với tuyến đường từ bốn mét đến sáu mét thì nhà nước đầu tư tám mươi phần trăm còn phần còn lại thì ngân sách địa phương và nhân dân đóng góp chưa được thực hiện kiểm tra thẩm định về mặt kỹ thuật vì vậy là đề nghị các cơ quan chức năng có hướng dẫn cũng như là thực hiện các bước để kiểm tra thẩm định.",
+        "speakerID": "spk_37_0188",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0189": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0256.wav",
+        "text": "đầu tư cũng chưa đồng bộ quá nhiều năm Cho nên nó dẫn đến cái vấn đề nó bất cập Trong quy hoạch, trong đầu tư, trong chủng loại bóng Cũng như là quá trình vận hành Nó hư hỏng sửa chữa",
+        "speakerID": "spk_37_0189",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0257.wav",
+        "text": "Tỷ lệ nó hư hỏng theo thống kê là khoảng hai mươi phần trăm Và cái việc thay thế đó là cũng một vấn đề Đặc biệt nữa là cái quy trình mà chúng ta thực hiện cái việc đầu tư để thay là cái quy trình cũng dài là tiến hành đấu thầu rồi khảo sát rồi phê duyệt thì mới thay thế thì bây giờ là cần phải có cái đổi mới trong cái chỗ này",
+        "speakerID": "spk_37_0189",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0190": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0258.wav",
+        "text": "Trong thời gian tới chúng tôi sẽ tiếp tục tập trung vào các cái dự án đầu tư công trung hạn của thành phố và trong đó có các cái dự án hạ tầng, dự án chiếu sáng, thay thế các cái hệ thống bóng cũ. Các hệ thống bóng cũ thì chúng tôi sẽ để cho tái sử dụng của các xã vùng ven.",
+        "speakerID": "spk_37_0190",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0259.wav",
+        "text": "trong điều kiện mà ngân sách khó khăn mà chưa đầu tư xây dựng ở đồng Bộ, triển khai, nghiên cứu, thí điểm, các cái công nghệ mới, công nghệ về chiếu sáng tiết kiệm điện, chiếu sáng thông minh, tích hợp hệ thống chiếu sáng vào hệ thống đô thị thông minh. để mà cho hệ thống chiếu sáng nó càng ngày càng hoàn thiện hơn và công tác quản lý vận hành càng tốt hơn",
+        "speakerID": "spk_37_0190",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0191": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0260.wav",
+        "text": "Trước đây thì chúng tôi cũng rất hay mua các thực phẩm ở ngoài chợ Nhưng mà từ ngày ở đây có các cửa hàng tiện lợi thì chúng tôi đã chuyển hướng lựa chọn của mình. Đầu tiên thì chúng tôi cũng giống như khách hàng khác đều là về cái giá cả. Nhưng mà sau đó thì mình thấy là thực phẩm ở đây nó có nguồn gốc rõ ràng với là chất lượng nó tốt hơn hẳn thì cái giá cả đó thì mình cũng có thể chấp nhận được.",
+        "speakerID": "spk_37_0191",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0192": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0261.wav",
+        "text": "Khi mà có cái ý tưởng để mở cái cửa hàng thực phẩm sạch thì cái mục tiêu lớn nhất đó là tìm những cái sản phẩm mà có cái nguồn gốc xuất xứ rõ ràng, làm việc trực tiếp, tận nguồn với nhà sản xuất và đồng thời là những cái mặt hàng đó phải đảm bảo chất lượng là thực sạch.",
+        "speakerID": "spk_37_0192",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_37_0193": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0262.wav",
+        "text": "Khi chúng tôi mở cái cửa hàng thực phẩm sạch thì là phương châm chúng tôi là quan tâm đến là nguồn thực phẩm là sạch là trên hết đáp ứng với người tiêu dùng một trăm phần trăm là hàng trồng từ trang trại của công ty và đảm bảo an toàn.",
+        "speakerID": "spk_37_0193",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0194": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0263.wav",
+        "text": "Thực ra thì khi đến các cửa hàng thực phẩm sạch thì cũng được từ phía cửa hàng họ cũng tư vấn. Tức là một cái sản phẩm này nó sẽ được sản xuất ở đâu, có rất là rõ nguồn gốc. Thì cũng mong là các cái nhà quản lý thì cũng sát ở cái chỗ từ chỗ sản xuất tiêu dùng và có nhiều cái cửa hàng như thế này để người dân được sử dụng những cái sản phẩm tốt hơn.",
+        "speakerID": "spk_37_0194",
+        "gender": 0,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0195": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0264.wav",
+        "text": "Thì phường thường xuyên tổ chức các cái đoàn liên ngành, thường xuyên kiểm tra tất cả các cái cửa hàng buôn bán thực phẩm trên địa bàn. Trong đó có kể cả chuỗi cửa hàng về thực phẩm sạch để làm tốt công tác quản lý. Thứ nhất là tạo niềm tin cho nhân dân khi tham gia vào đó để lựa chọn địa điểm. Cái thứ hai là làm tốt cái công tác quản lý nhà nước để đảm bảo an toàn vệ sinh trên địa bàn phường.",
+        "speakerID": "spk_37_0195",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0196": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0265.wav",
+        "text": "Thì thực tế trên địa bàn thành phố thì các vùng sản xuất không đáp ứng được hết hoàn toàn các nhu cầu thì ở trong chương trình trong quản lý nhà nước thì chúng tôi cũng có phối kết hợp với các đơn vị địa phương khác để nắm bắt các cái thông tin cũng như các vùng nguyên liệu trong sản xuất chăn nuôi Và trong trường hợp nếu như không đảm bảo thì xử lý nghiêm và tiêu hủy những sản phẩm không đảm bảo và có hình thức xử phạt theo quy định",
+        "speakerID": "spk_37_0196",
+        "gender": 0,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0197": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0266.wav",
+        "text": "Sau khi mà được Sở Công Thương cấp giấy chứng nhận cơ sở Đủ Điều Kiện An Toàn Thực Phẩm thì Sở Công Thương hàng năm thì có các cuộc thanh kiểm tra kiểm tra các giám sát về đầu vào của sản phẩm nó phải có các cái hợp đồng và phải có các cái Giấy chứng nhận của cơ sở mà cấp sản phẩm cho các cái cơ sở kinh doanh này do đó là về mặt an toàn thực phẩm thì các cơ sở này hiện nay cơ bản đảm bảo yêu cầu để phục vụ cho người dân",
+        "speakerID": "spk_37_0197",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0198": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0267.wav",
+        "text": "Hằng năm thì chúng tôi có lấy mẫu để kiểm soát ngay tại cửa hàng. Cái việc lấy mẫu này là công việc thường xuyên của Chi Cục đối với sản phẩm nông nghiệp quản lý. Và chúng tôi phân tích mẫu và nếu như những nơi đó mà có những vấn đề liên quan đến ảnh hưởng đến chất lượng thì chúng tôi sẽ có những khuyến cáo và yêu cầu thu hồi những sản phẩm đó.",
+        "speakerID": "spk_37_0198",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0199": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0268.wav",
+        "text": "Mục tiêu là xây dựng để đạt một tiêu chí đô thị loại bốn gắn với bảo tồn thiên nhiên và phát huy giá trị của Vườn quốc gia Pù Mát. Kêu gọi các cái dự án đầu tư vào kết cấu hạ tầng đô thị của huyện để đạt tiêu chí đô thị loại bốn.",
+        "speakerID": "spk_37_0199",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0200": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0269.wav",
+        "text": "Doanh nghiệp đóng trên địa bàn là thuộc cái vùng khu đô thị sinh thái của  thì chúng tôi luôn tuân thủ các cái điều kiện về Môi trường, nước sau khi rửa dược liệu thì được lắng qua và quay trở lại để tưới dược liệu. Rồi các thải từ bã dược liệu thì chúng tôi đưa lên để ủ phân vi sinh để bón lại cho cây. Nghĩa là những yếu tố sản xuất của công ty không có tác động ra môi trường bên ngoài.",
+        "speakerID": "spk_37_0200",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0201": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0270.wav",
+        "text": "Khi mà cái quy hoạch được đưa vào thực hiện thì chắc chắn rằng là cái bước phát triển của xã nhà nó sẽ có cái thương mại dịch vụ tăng thêm rất là nhiều cũng rất là mong muốn rằng là cái quy hoạch đã được phê duyệt thì khẩn trương triển khai tổ chức thực hiện thực hiện quy hoạch để rồi là đưa vào sử dụng và thực hiện sớm.",
+        "speakerID": "spk_37_0201",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0202": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0271.wav",
+        "text": "Nhân dân và bản Khe Rạn nhận được cái tin là sắp tới Con Cuông sẽ vào quy hoạch là khu đô thị sinh thái. Nhân dân và bản khe rạn rất vui mừng và phấn khởi giữ được những đồi cỏ, nhà sàn gỗ, phong tục tập quán, dệt, thổ cẩm, rồi mây tre đan để phục vụ cho các khách du lịch về thưởng thức tham quan.",
+        "speakerID": "spk_37_0202",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0203": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0272.wav",
+        "text": "đề xuất với trung ương tỉnh có cơ chế hỗ trợ riêng cho huyện về vấn đề nguồn lực. Ưu tiên là nghiên cứu thí điểm để xác định mô hình đô thị sinh thái trong thời gian tiếp theo để có cơ sở xây dựng và trình chính phủ phê duyệt công nhận con cuông trong thời gian tiếp theo theo mô hình đô thị sinh thái.",
+        "speakerID": "spk_37_0203",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0204": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0273.wav",
+        "text": "Cái vị trí chợ thì rất đẹp Nhưng mà do con đường cái giải pháp cái đường Nguyễn Trường Tộ nó vướng mắc rất nhiều chỗ chưa làm xong được kéo dài đến bốn năm năm nay cho nên người dân không có thói quen đi qua đường này Người dân Hưng Đông ở đấy thì thói quen thường thường đi ra chợ con bánh hoặc là chợ ga Hoặc là chợ đồng vĩnh Nếu mà như để tình Trạng mà chợ mà lâu dài thế này nó cũng lãng phí.",
+        "speakerID": "spk_37_0204",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0205": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0274.wav",
+        "text": "Chợ Hương Đông thì được chợ từ năm hai không mười bốn với diện tích là ba nghìn hai trăm mét vuông. Và địa phương đã tổ chức các tuyên truyền vận động, ví dụ như hỗ trợ mười năm không thu phí, không thu các loại thuế phí để kích cầu..",
+        "speakerID": "spk_37_0205",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0275.wav",
+        "text": "Tuy nhiên đăng ký thì đăng ký đầy đủ, đăng ký đã hết, hoạt động tài trợ thì rất là ít. Hiện nay thì xã cũng đã quy hoạch các cái khu đấu giá chia lô đất ở xung quanh chợ. Khu quy hoạch tây đường Trường Tộ, sau chợ đây. Hy vọng trong thời gian tới các cái khu quy hoạch này được đưa vào sử dụng thì chợ sẽ hoạt động tốt hơn",
+        "speakerID": "spk_37_0205",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0206": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0276.wav",
+        "text": "Trên địa bàn hiện chưa có chợ nên xảy ra tình trạng hình thành chợ cóc, chợ tạm Do nhu cầu của người dân lớn nên cấm chợ rất là khó khăn Địa phương đã làm việc với công ty Trường Sơn để rồi mời tất cả các cái thương nhân và các cái hộ kinh doanh buôn bán vào mở cửa để rồi là sinh hoạt Hình thành khu vực này thành một trung tâm dịch vụ thương mại kết hợp với chợ Khai thác tiềm năng của địa phương cũng như là phục vụ đời sống dân sinh của người dân trên địa bàn",
+        "speakerID": "spk_37_0206",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0207": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0277.wav",
+        "text": "Để mà từng bước phát huy cái hiệu quả của các chợ trong thời gian tới Thì thành phố đã xây dựng một kế hoạch phát triển thương mại dịch vụ Trong đó có kế hoạch chuyển đổi mô hình quản lý chợ Đến giai đoạn hai không hai mốt hai không hai lăm.",
+        "speakerID": "spk_37_0207",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0278.wav",
+        "text": "Đối với cái chợ hiện nay là hoạt động chưa hiệu quả Thì thành phố cũng đã có các văn bản Để chỉ đạo các phường xã phải tăng cường lực lượng để kiểm tra xử lý Các cái tụ điểm mà bán chợ Cóc, chợ Tạm này một cách dứt điểm và phải có các giải pháp để mời gọi các hộ tiểu thương vào kinh doanh và có các chính sách phù hợp về thuế, phí để tạo điều kiện cho bà con kinh doanh",
+        "speakerID": "spk_37_0207",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0208": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0279.wav",
+        "text": "Khu dân cư hiện đại này nó sẽ làm thay đổi bộ mặt của thị trấn trong tương lai bởi vì là cái khu dân cư hiện đại này thì được nhà đầu tư đề xuất được các cơ quan chuyên môn có chức năng rồi là có thẩm quyền là thẩm định và đưa ra một cái định hướng trong cái việc xây dựng.",
+        "speakerID": "spk_37_0208",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0280.wav",
+        "text": "và ngoài cái khu dân cư hiện đại này thì Hiện nay, Nghĩa Đàn cũng đang tích cực để mà thu hút đầu tư bốn cái dự án tại địa bàn thị trấn Nghĩa Đàn",
+        "speakerID": "spk_37_0208",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0209": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0281.wav",
+        "text": "Nghĩa Sơn là một xã mà rất thuận lợi cho phát triển đô thị Trên địa bàn xã có ba cái quốc lộ đi qua trên địa bàn Cũng là một cái xã giáp ranh giữa hai tỉnh Nghệ An và Thanh Hóa Thuận lợi thứ hai thì là trên địa bàn của xã thì",
+        "speakerID": "spk_37_0209",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0282.wav",
+        "text": "có công ty cổ phần thực phẩm TH đóng trên địa bàn TH cũng đã xây dựng đầu tư một số cái nhà hàng Rồi các hạ tầng khác để rồi phục vụ cho cái phát triển của công ty Nhưng mà đây cũng là sự cộng hưởng để mà phát triển cùng với địa phương xã Nghĩa Sơn để phát triển kinh tế hạ tầng cho xã Nghĩa Sơn theo đô thị.",
+        "speakerID": "spk_37_0209",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_37_0210": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0283.wav",
+        "text": "Hiện nay thì theo luật quy hoạch, tất cả các quy hoạch là tích hợp trong quy hoạch xây dựng vùng huyện..",
+        "speakerID": "spk_37_0210",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0284.wav",
+        "text": "Và cũng rất may mắn là huyện Nghĩa Đàn thì thời kỳ xây dựng quy hoạch huyện đã đồng thời với việc tỉnh cho lập quy hoạch vùng tỉnh. Đấy là một thuận lợi. Tuy nhiên là cũng có những cái khó khăn vì thị trấn non trẻ, quá trình tốc độ xây dựng thì cũng Nếu không quản lý tốt thì sẽ có những cái phá vỡ quy hoạch.",
+        "speakerID": "spk_37_0210",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0285.wav",
+        "text": "Vì vậy chúng tôi cũng rất quan tâm đến vấn đề quản lý cái quy hoạch, quản lý công tác xây dựng trong khu vực thị trấn Nghĩa Đàn để đảm bảo nó phù hợp phát triển đúng cái định hướng không gian và đảm bảo hài hòa cái môi trường cùng định hướng phát triển hạ tầng trong nhiều năm tới đây",
+        "speakerID": "spk_37_0210",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0211": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0286.wav",
+        "text": "Thấy thị trường chuộng cây cảnh với các loại hoa. Chúng tôi chuyển đổi với cải tạo đất để chuyển sang các loại hoa để trồng và chăm sóc để cung cấp cho thành phố và các tỉnh lân cận. Kinh tế là hơn nhiều.",
+        "speakerID": "spk_37_0211",
+        "gender": 0,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0212": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0287.wav",
+        "text": "Khách hàng mua cũng có nhu cầu cũng rất là đa dạng, tức là họ chọn các loài giỏ treo để treo trong các cái không gian chật của chung cư, rồi là các cái cây nội thất ở trong bóng râm, rồi các loại hoa nhỏ rồi trang trí ở sân vườn.",
+        "speakerID": "spk_37_0212",
+        "gender": 0,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0213": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0288.wav",
+        "text": "để đảm bảo cái kinh tế là chúng tôi luôn luôn trăn trở để làm thế nào tìm những cái giống, những cây con, những cây giống mới đưa về để đáp ứng cho thị trường thành phố Vinh.",
+        "speakerID": "spk_37_0213",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0214": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0289.wav",
+        "text": "Muốn được sự quan tâm của xã, của thành phố là tạo cho chúng tôi cái không gian hoặc là cái chợ để mà tập trung hàng hóa, để giới thiệu sản phẩm, tiếp cận được những khách hàng xa hoặc là những khách hàng chưa biết đến.",
+        "speakerID": "spk_37_0214",
+        "gender": 0,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0215": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0290.wav",
+        "text": "Khó khăn ở đây là cái hỗ trợ cho người dân, để rồi hỗ trợ về khoa học kỹ thuật, thứ hai nữa là hỗ trợ về một phần kinh phí để rồi là chúng ta động viên nhân dân phát triển kinh tế để rồi sớm đưa cái vùng xanh của Ven thành phố vào có cái hiệu quả.",
+        "speakerID": "spk_37_0215",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0216": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0291.wav",
+        "text": "Hình thành các cái vùng chuyên canh là tập trung để tạo ra cái vùng sản xuất nông nghiệp là trong đô thị. Các cái làng nghề hoa cây cảnh này, rồi là chỉ đạo sản xuất rau sạch và rau an toàn. Hình thành được cái chợ hoa cây cảnh tại là xã Nghi  n huy động các cái nguồn lực để là tập trung đầu tư là hạ tầng kỹ thuật phát triển được cái sản xuất nông nghiệp là gắn với du lịch sinh thái.",
+        "speakerID": "spk_37_0216",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0217": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0292.wav",
+        "text": "Trước năm hai nghìn mười là nhà tôi làm lúa. Từ năm hai nghìn mười giờ là coi như, nghe nói dầu khí đến cũng không làm lúa được nữa máy móc chi cũng không đến bơm được. Người nông dân làm ruộng để sinh sống hàng ngày. Nhưng mà giờ, giờ thấy bỏ hoang ri là nhà tôi thấy nóng rọt.",
+        "speakerID": "spk_37_0217",
+        "gender": 0,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0218": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0293.wav",
+        "text": "Rất nhiều lần, ủy ban nhân dân phường đã kiến nghị lên cơ quan chức năng của thành phố và tỉnh, đề nghị là công ty việc làm thực hiện các cái dự án mà đã được phê duyệt. Tuy nhiên đến thời điểm hiện nay thì vẫn chưa triển khai. Hiện nay, thì quản lý trên địa bàn thì chúng tôi thấy sử dụng chưa đúng mục đích.",
+        "speakerID": "spk_37_0218",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0219": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0294.wav",
+        "text": "Dự án treo của nhà nước đã quá lâu mà bây giờ dân ảnh hưởng rất lớn. Thứ nhất là phát triển kinh tế. Thứ hai nữa là xây nhà, xây cửa là sau này đền bù không được cho nên dân không dám xây.",
+        "speakerID": "spk_37_0219",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0220": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0295.wav",
+        "text": "Nếu như dự án mà để lâu quá mà kéo dài không được á thì yêu cầu là phải thu hồi lại vì ta còn có luật rồi",
+        "speakerID": "spk_37_0220",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0221": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0296.wav",
+        "text": "Khi mà cơ quan chức năng, đặc biệt là cơ quan chức năng của tỉnh mà xem xét để cấp ít nhất là cũng phải địa phương sở tại của chúng tôi biết để chúng tôi có phản ánh kịp thời. Chứ còn nếu như mà chính quyền địa phương sở tại không biết thì rất là khó khăn trong việc thực thi dự án.",
+        "speakerID": "spk_37_0221",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0222": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0297.wav",
+        "text": "Các dự án mà được chấp thuận đầu tư trên địa bàn nói chung là nếu chậm tiến độ thì nó ảnh hưởng rất lớn đến quá trình khai thác, làm lãng phí tài nguyên. Cũng rất mong khi chấp thuận chủ trương đầu tư cũng có sự lựa chọn, các chủ đầu tư có đủ năng lực và đủ tâm huyết trách nhiệm.",
+        "speakerID": "spk_37_0222",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0223": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0298.wav",
+        "text": "Đối với các cái dự án mà sử dụng đất, đề nghị là tỉnh, các cái huyện là thu hồi đối với những nhà đầu tư mà không có khả năng thực hiện kéo dài. để rồi là thành phố sẽ có một kế hoạch để có thể khai thác quỹ đất hoặc là mời gọi các nhà đầu tư vào tham gia thực hiện dự án..",
+        "speakerID": "spk_37_0223",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0299.wav",
+        "text": "Ngoài ra là tổ chức các cái diễn đàn về chủ đầu tư thường xuyên để đảm bảo cho những nhà đầu tư người ta có nguyện vọng và có nhu cầu thật. để vào tìm hiểu và đầu tư trên địa bàn",
+        "speakerID": "spk_37_0223",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0224": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0300.wav",
+        "text": "Cũng chia sẻ thật là tôi cũng có một đứa cháu ruột Hiện tại cũng đang học cùng lớp với con gái của tôi Nhưng bạn cháu ruột của tôi thì có học lực nó chỉ ở mức độ trung bình thôi.",
+        "speakerID": "spk_37_0224",
+        "gender": 0,
+        "split": "test"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0301.wav",
+        "text": "Thì bây giờ rất là băn khoăn Sợ là cháu sẽ khó được một tấm vé đặt chân vào trường công lập Mà khi chia sẻ với tất cả mọi người là nếu như vào học mà học ở trường dân lập thì ta không nói cái môi trường, ta không chê trường nào cả Cũng là cái trường cấp ba trong thành phố Vinh cả thôi",
+        "speakerID": "spk_37_0224",
+        "gender": 0,
+        "split": "test"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0302.wav",
+        "text": "Nhưng mà muốn nói rằng là để ở cái môi trường á thì tất nhiên là phụ huynh ở trong thành phố Vinh cũng như cá nhân tôi, tôi vẫn muốn là các con và các cháu của mình và tất cả các bạn học sinh là có cái học lực khá và ngoan thì được đặt chân vào cái môi trường là công lập",
+        "speakerID": "spk_37_0224",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_37_0225": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0303.wav",
+        "text": "Tuyển sinh vào lớp mười trung học phổ thông thì một bài toán là luôn áp lực. Là bởi vì của ta giữa trường công và trường tư nó chênh lệch nhau về chất lượng, rồi thì về đội ngũ cũng như là môi trường học tập. Do đó là học sinh và phụ huynh có nguyện vọng vào trường công.",
+        "speakerID": "spk_37_0225",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0226": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0304.wav",
+        "text": "Trường lớp thì thực ra bây giờ ta có cái nghị quyết mười chín của ban chấp hành trung ương Cho nên đang còn tinh giảm biên chế này, tái cấu trúc này, tinh gọn bộ máy này Nhưng bây giờ mở cái trường mới rất là khó.",
+        "speakerID": "spk_37_0226",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0305.wav",
+        "text": "Thì sở cũng đã tính toán và báo cáo với ủy ban tỉnh và phối hợp với ủy ban nhân dân thành phố Vinh Thì dự kiến cũng xin mở một cái cơ sở hai, mở trường mới không được Nhưng mà mở cái cơ sở hai của trường huỳnh thúc Kháng, vùng Nghi  n sát với cái trường Phan Bội Châu địa điểm mới Thì để cho con em cái vùng từ nghĩa phú và nghĩa ân, nghĩa phong, nghĩa đức với cả cái vùng khó khăn dưới kia có thể có một cái nơi học tập",
+        "speakerID": "spk_37_0226",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0227": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0306.wav",
+        "text": "Cho đến thời điểm này chúng tôi thật sự thấy là may mắn đấy. Bởi vì khi đó là vợ chồng trẻ vừa mới sinh con cũng không đủ điều kiện để mà mua đất mua nhà. Dự án nhà ở xã hội đã cho chúng tôi một cơ hội có chỗ ở.",
+        "speakerID": "spk_37_0227",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_37_0228": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0307.wav",
+        "text": "Giá nhà ở ngày càng cao so với thu nhập chung của cán bộ công chức trong đó có đối tượng quân nhân như chúng tôi. Thì lạm phát ngày càng cao, giá ngày càng cao, ước mơ đó là nó càng xa vời. Mong các cấp ủy đảng, chính quyền, các tổ chức tín dụng có một giải pháp nào đấy để sớm triển khai lại các dự án dựng nhà ở xã hội để những người thu nhập thấp như cán bộ công chức là sớm được tiếp cận dự án ý nghĩa này của đảng và nhà nước.",
+        "speakerID": "spk_37_0228",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0229": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0308.wav",
+        "text": "thì Nếu như mà việc các nhà đầu tư đã được chấp thuận, đẩy nhanh cái tiến độ xây dựng nhà ở xã hội thì chúng tôi tin chắc rằng quỹ ký nhà ở đã được phê duyệt quy hoạch đấy sẽ cơ bản đáp ứng được nhu cầu cho nhân dân.",
+        "speakerID": "spk_37_0229",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0230": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0309.wav",
+        "text": "Luật ghi rồi, nghị định ghi rồi, thông tư ghi rồi Có nghĩa rằng là luật và các cái văn bản giấy luật là ok cả rồi Đúng không ạ? Thì cứ thế mà làm không phải hỏi Đó nè, cái này thì phải hỏi sở xây dựng Đấy cái này hỏi sở tài chính",
+        "speakerID": "spk_37_0230",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0310.wav",
+        "text": "Thì như vậy là cái mục này thì cũng chạy một vòng Xong đó đến cái mục khác Lại cái chạy vòng nữa Thì chạy đúng hết thế Rồi lại mục ba cũng chạy một vòng như thế Cơ chế chính sách còn ràng buộc rất là nhiều quyết tâm, quyết liệt, chỉ đạo quyết liệt, quyết tâm của lãnh đạo các cái địa phương",
+        "speakerID": "spk_37_0230",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0231": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0311.wav",
+        "text": "Đây là một cái cơ sở định hướng rất quan trọng để cho sở dựng tiếp tục tham mưu ủy ban tỉnh Cái chương trình kế hoạch phát triển nhà ở thị đường nông sản tỉnh Nghệ An trong thời gian tới",
+        "speakerID": "spk_37_0231",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0232": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0312.wav",
+        "text": "Ủy ban nhân dân thành phố Vinh đã xin Ủy ban tỉnh cho chủ trương lập kế hoạch phân khu hai lăm phường xã, trong đó có bố trí quỹ đất để xây dựng nhà ở xã hội ở một số xã như xã Nghi Kim, Nghi Liên, xã Hưng Hòa. Rà soát các cái dự án của các nhà đầu tư được bố trí quỹ đất nhà ở xã hội nhưng mà chậm triển khai đầu tư xây dựng để kịp thời báo cáo ủy ban tỉnh, chỉ đạo, yêu cầu các nhà đầu tư phải thực hiện.",
+        "speakerID": "spk_37_0232",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0233": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0313.wav",
+        "text": "Thị xã Cửa Lò là cũng đã sẵn sàng các quỹ đất để mà phát triển cho các dạng nhà ở xã hội sau này. Với yêu cầu phát triển của thị xã cũng như là mở rộng thành phố Vĩnh và vùng phụ cận.",
+        "speakerID": "spk_37_0233",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0234": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0314.wav",
+        "text": "Trong quá trình kiểm tra thì thành phố đã yêu cầu, thứ nhất là các doanh nghiệp phải hoàn thiện và thực hiện tốt công tác bảo vệ môi trường mà đã được phê duyệt. Giao trách nhiệm cho các phòng ngành đơn vị có liên quan và ủy ban nhân dân các phường xã có công nghiệp cũng phải tăng cường công tác thanh tra kiểm tra để phát hiện kịp thời và xử lý những vi phạm nếu có.",
+        "speakerID": "spk_37_0234",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0235": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0315.wav",
+        "text": "Nhà máy gỗ nó ô nhiễm không khí là khói bụi, bựa ni thì hắn ô nhiễm tiếng ồn. Tiếng ồn quá là ảnh hưởng đến học hành của con cái, ảnh hưởng đến sức khỏe của người già, rất chi là khổ.",
+        "speakerID": "spk_37_0235",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0236": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0316.wav",
+        "text": "Nước này nó thấm vào cái cây lúa nó thối rễ. Thối rễ là nó ảnh hưởng đến cái lá liếc là khô hết. Cánh đồng bị nước xuống này là mất mùa hoàn toàn. Đã gọi là làm ăn kinh tế là phải nghĩ đến cái môi trường thì mới bền vững được.",
+        "speakerID": "spk_37_0236",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0237": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0317.wav",
+        "text": "Rất nhiều ý kiến kiến nghị của cử tri về vấn đề môi trường, vấn đề ô nhiễm, vấn đề trật tự giao thông để xây dựng cơ bản đảm bảo cho công nghiệp hoạt động phát triển đầu tư về hạ tầng kỹ thuật cho nó cao thì đề nghị là đưa ra khỏi công nghiệp nhỏ của Hưng Lộc.",
+        "speakerID": "spk_37_0237",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0238": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0318.wav",
+        "text": "Khu công nghiệp Hưng Lộc, khu công nghiệp Nghi Phú, khu nghiệp Đông Vĩnh. Khi thành phố thành lập đã nằm lọt trong dân cư. Cho nên vì bây giờ muốn giải tỏa, chúng tôi chấp hành trên cơ sở là phải đảm bảo về địa điểm, về cơ sở hạ tầng. Làm sao đó để doanh nghiệp là khi chuyển đến thì phải sản xuất được ngay, làm được ngay và để tồn tại.",
+        "speakerID": "spk_37_0238",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0239": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0319.wav",
+        "text": "Thì Để triển khai được thì hiện nay cũng gặp rất là nhiều khó khăn Cái thứ nhất là cái quỹ đất để mà chuyển các cái doanh nghiệp này ra là hiện nay là gần như không có Kinh phí rất là lớn Thành phố cũng đã nghiên cứu xây dựng để có cái kế hoạch lộ trình thời gian cụ thể tìm kiếm cái quỹ đất để có thể di dời dần. thành phố xác định đây là cái việc là lâu dài và cần phải có sự chung tay vào cuộc của các sở ngành ban ngành cấp tỉnh quan tâm để chỉ đạo và hướng dẫn để cho thành phố thực hiện trong thời gian tới.",
+        "speakerID": "spk_37_0239",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0240": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0320.wav",
+        "text": "Không chỉ là ở các cái thành phố lớn thì mới có, mà ở ngay tại thành phố Vinh này thì cái văn hóa phố đi bộ sẽ giúp cho mọi người có thể là lại gần nhau hơn.",
+        "speakerID": "spk_37_0240",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_37_0241": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0321.wav",
+        "text": "Với cái sự kêu gọi và sự đầu tư theo lớp lang của trung tâm văn hóa thể thao thành phố đã đưa được các cái hoạt động như là dân gian vào rồi là dân ca ví dặm vào bên cạnh đó thì yêu cầu các cái tổ chức như là thành đoàn cũng đứng vào để tạo ra các cái nhóm thanh niên đường phố để tạo ra những màu sắc riêng.",
+        "speakerID": "spk_37_0241",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0322.wav",
+        "text": "Và một điểm cái nhấn mà chúng tôi thấy rõ là sau mấy kỳ chạy thử thì Có một sự xuất hiện đó là cái hiệu ứng của người dân và cái hiệu ứng của các nhóm tự nguyện, cộng đồng đã chung tay để vào cùng với phố đi bộ",
+        "speakerID": "spk_37_0241",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0242": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0323.wav",
+        "text": "Theo góc nhìn của tôi, cây xanh tôi đến đây như thế là tốt. Cây xanh đẹp nói chung được. Trước kia tôi cũng đã cách đây lâu lắm rồi. Ở đây nó nhìn nó buồn lắm. Nhưng hiện nay như thế theo tôi, ổn định, an ninh tốt. Cây cối như thế là tốt.",
+        "speakerID": "spk_37_0242",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0243": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0324.wav",
+        "text": "Nhu cầu của người dân cũng như mọi du khách muốn có một điểm nhấn của thành phố ngay ở cái lõi thành phố. Một khu cây xanh đảm bảo và có một nơi để rồi người già, người trẻ có những thoải mái trong những ngày oi bức hoặc là sau những giờ làm vất vả.",
+        "speakerID": "spk_37_0243",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0244": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0325.wav",
+        "text": "Phòng quản lý đô thị đang tham mưu thành phố, thực hiện nghị quyết không một và cái kế hoạch bốn chín về chỉnh trang đô thị. Trong đó là có cái chỉnh trang hệ thống cây xanh. Theo đó, cây xanh hiện trạng mà có nguy cơ gãy đổ, rồi sâu bệnh, rồi nghiêng, rồi xấu sẽ được thay thế cái hệ thống cây xanh phù hợp, đồng bộ, về khoảng cách, chiều cao, kích thước và đặc biệt là nó không ảnh hưởng đến kết cấu vỉa hè của đường Giao thông.",
+        "speakerID": "spk_37_0244",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_37_0245": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0326.wav",
+        "text": "Từ cái khâu mà lựa chọn cái đơn vị tư vấn tổ chức đấu thầu cũng như đến cái vấn đề giám sát trong cuộc đấu giá, tránh cái tình trạng là thông đồng giá, cũng như là tình trạng làm các cái cò đất, làm nhũng loạn thị trường giá, thông báo rộng rãi trước toàn thể người dân cũng như hệ thống thông tin đại chúng để người dân nắm được, có nhu cầu tham gia các cái cuộc đấu giá.",
+        "speakerID": "spk_37_0245",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0246": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0327.wav",
+        "text": "Khu đô thị Hải Vân này á thì được chủ đầu tư đầu tư rất bài bản về hạ tầng Trong đó ví dụ như hạ tầng giao thông, hệ thống cấp nước và hệ thống thoát nước đã được làm hoàn chỉnh Cư dân mà mua sản phẩm đất ở đây thì không phải chờ đợi lâu thì được cấp giấy chứng nhận quyền sử dụng đất cho khách hàng luôn",
+        "speakerID": "spk_37_0246",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0247": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0328.wav",
+        "text": "Từ năm một nghìn chín trăm chín mươi mốt, gia đình tôi là kinh doanh đồ nhựa đầu tiên. Sau đó và, sau đó dần dần thì là hướng dẫn các cái hộ kinh doanh gần gần ở đây và tạo điều kiện cho các cái hộ kinh doanh lấy hàng về bán. Sau quá trình lấy hàng về bán thì một thời gian mọi người bắt đầu chuyên môn dần ra. Có người kinh doanh đồ nhựa, có người kinh doanh đồ nội thất, có người kinh doanh đồ chăn ga gối đệm. Và cứ dần dần như thế và cho đến tận bây giờ cũng được gần ba mươi năm rồi.",
+        "speakerID": "spk_37_0247",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0248": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0329.wav",
+        "text": "Tôi chọn những cái cửa hàng ở đây là thấy các cái mặt hàng kinh doanh rất là nhiều. Cái thứ hai nữa là các cái mẫu mã khác nhau. Cái thứ ba nữa là cái chính sách bảo hành thì rất là tốt.",
+        "speakerID": "spk_37_0248",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0249": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0330.wav",
+        "text": "Đây là cái xu hướng tất yếu và phù hợp với cái xu thế là phát triển của kinh tế thị trường và tốc độ phát triển kinh tế xã hội của tỉnh nghệ an các địa phương để rà soát, xây dựng các quy hoạch định hướng phát triển hệ thống hạ tầng thương mại dịch vụ.",
+        "speakerID": "spk_37_0249",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0331.wav",
+        "text": "để tích hợp vào cái quy hoạch chung của tỉnh, kêu gọi các cái nhà đầu tư thương mại dịch vụ để hình thành các cái khu trung tâm thương mại tập trung, làm cơ sở cho các khối chuyên doanh được hình thành phát triển",
+        "speakerID": "spk_37_0249",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0250": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0332.wav",
+        "text": "Thành phố cũng đã chủ động và đã xây dựng kế hoạch huy động nguồn lực, chọn cái lĩnh vực rất trọng tâm là nâng cấp hạ tầng để cho cái khối chuyên doanh phát triển. Sau đó là có những định hướng cho các cái thành phần kinh tế, kinh doanh vào cái khối chuyên doanh này một cách thuận lợi và tốt nhất.",
+        "speakerID": "spk_37_0250",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0251": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0333.wav",
+        "text": "Hiện tại trên Địa bàn Phường là vẫn có một số tuyến chưa có tên đường như là tuyến từ khu đô Thị đến cầu Tân Phượng, tuyến đường mười lăm mét ở khối hai. Trong năm hai không hai mốt về cuối năm cũng đã trình thành phố và tỉnh và đã được tỉnh thành phố đặt tên đường một số tuyến trên địa bàn. Hiện tại đang khảo sát trên các tuyến để đặt biển Số Nhà thì dự kiến trong tháng ba năm hai không hai hai sẽ thực hiện xong.",
+        "speakerID": "spk_37_0251",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0252": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0334.wav",
+        "text": "Theo cái tốc độ phát triển của thành phố thì trong hiện trạng thực tế thì cũng còn một số đơn vị, phường xã hay là một số hiện trạng thì một số tuyến đường cũng chưa được đặt tên hoặc là một số tuyến chưa kịp thời, chưa đảm bảo các cái tiêu chí tiêu chuẩn theo quy định.",
+        "speakerID": "spk_37_0252",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0253": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0335.wav",
+        "text": "Đi tìm nhà, khó khăn, không tìm được thì mong có cái tên đường, có cái số nhà đi dân dễ tìm kiếm hơn Để đỡ mất thời gian",
+        "speakerID": "spk_37_0253",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_37_0254": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0336.wav",
+        "text": "Hiện nay cái số nhà của các cái tuyến đường nó rất lộn xộn, chỗ cao chỗ thấp. Các cơ quan chức năng hãy sắp xếp lại đường xá và các cái số nhà cho nó thật cẩn thận.",
+        "speakerID": "spk_37_0254",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0255": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0337.wav",
+        "text": "Chúng tôi cũng tiếp tục có cái tham mưu và phối hợp phòng quản lý đô thị để mà chỉ đạo các phường xã thực hiện cái quy trình rà soát để mà điều chỉnh bổ sung và để làm sao đó tạo lập một cái trình tự về số nhà trên các tuyến đường hay là các ngõ ở trên tất cả các địa bàn các khu dân cư kể cả khu dân cư đô thị mới thành lập để tạo một cái sự đồng bộ và thuận lợi cho nhân dân trong cái giao dịch hành chính cũng như các cái tổ chức tham gia trong cái quá trình phát triển của thành phố.",
+        "speakerID": "spk_37_0255",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0256": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0338.wav",
+        "text": "Dự kiến tháng sáu năm hai không hai hai, các đô thị vệ tinh sẽ được thông qua phương án quy hoạch lấy ý kiến cộng đồng của Dân Cư. Sẽ cố gắng phê duyệt các đồ án quy hoạch vệ tinh vào cuối năm hai nghìn không trăm hai hai.",
+        "speakerID": "spk_37_0256",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0257": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0339.wav",
+        "text": "Với sự phát triển của thị trấn Yên Thành thì các cái đường làng ngõ xóm đã được bê tông hóa, liên kết với các xã đi lại thuận tiện, nâng cao đời sống của người dân trên địa bàn của thị trấn cũng như các xã lân cận.",
+        "speakerID": "spk_37_0257",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0258": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0340.wav",
+        "text": "Kết cấu giao thông ở trên địa bàn thị trấn đã liên kết với các xã xung quanh, đặc biệt là tuyến từ trung tâm thị trấn về các xã phía Bắc của huyện Yên Thành đã tạo nên cái kết nối giao thương về kinh tế. Đó là một bước ngoặt để nâng cao phát triển kinh tế xã hội của địa phương thị trấn Yên Thành nói riêng và cả huyện Yên Thành nói chung.",
+        "speakerID": "spk_37_0258",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0259": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0341.wav",
+        "text": "Hiện tại thì Yên Thành cũng đã ưu tiên thu hút một số các cái nhà đầu tư, các đô thị hiện đại, cùng với các cái khu dân cư, nông thôn tập trung ở các trung tâm kinh tế của xã. ",
+        "speakerID": "spk_37_0259",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0342.wav",
+        "text": "Thì sau này nó sẽ dần tạo nên một cái bộ mặt thay đổi, lớn trong cái nhịp sống hiện đại. Việc đô thị hóa không phá vỡ bản sắc. Để làm thế nào mà cái cảnh quan cũng như là cuộc sống của người dân nó không bị ảnh hưởng về vấn đề môi trường, mà phải làm thế nào để vấn đề môi trường phải tốt nhất, các cái điều kiện sống nó tốt nhất.",
+        "speakerID": "spk_37_0259",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0260": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0343.wav",
+        "text": "Nam sông Vinh này thì chủ yếu là dân sản xuất nông nghiệp, vùng thường xuyên là ngập lụt, trong sản xuất thì kém hiệu quả. giờ mà có cái dự án của phát triển đô thị về phía Nam sông Vinh thì cái này là người dân chúng tôi rất là phấn khởi.",
+        "speakerID": "spk_37_0260",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0261": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0344.wav",
+        "text": "Phường Vinh Tân thì có rất nhiều dự án khu đô thị về đã và đang triển khai ở trên địa bàn. Khu đất này hiện nay sản xuất kinh doanh cũng không hiệu quả. Khi mà các cái dự án đô thị vào thì Phường sẽ cùng với các cơ quan ban ngành phối hợp chặt chẽ để thực hiện cái việc bồi thường giải phóng mặt bằng sớm nhất.",
+        "speakerID": "spk_37_0261",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0262": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0345.wav",
+        "text": "Cái khu nam sông Vinh được quy hoạch thành khu vực đô thị vừa khu sinh thái. Thể hiện sự dung hòa giữa hai ý kiến. Mức độ yêu cầu phát triển thành phố và hai là mức độ môi trường sinh thái cho thành phố.",
+        "speakerID": "spk_37_0262",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0346.wav",
+        "text": "Thế thì cái đặc trưng của kiến trúc của khu vực này là các hệ thống công trình kiến trúc nó sẽ đan xen với cái hệ thống sinh thái ngập nước. Tạo nên một hệ thống vừa công viên lại vừa kiến trúc, nó rất gần gũi tự nhiên. Và nó là cái bước chuyển tiếp từ ngoại vi cho đến nội thành. Nó bắt buộc phải thế",
+        "speakerID": "spk_37_0262",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0263": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0347.wav",
+        "text": "Cũng đã nhiều lần có cái nâng cấp, sửa chữa để đảm bảo cho cái chợ về an toàn người và cái kinh doanh tại chợ. Tuy nhiên đến nay thì có thể nói chợ quán lau đã xuống cấp và nó có cái ảnh hưởng đến cảnh quan môi trường, rồi là về mặt đô thị.",
+        "speakerID": "spk_37_0263",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0264": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0348.wav",
+        "text": "Dịch dã này là họ không vô chợ, họ mua chủ yếu mua ngoài đường với siêu thị hết. Chị ngồi trong chợ ni rất là ế ẩm.",
+        "speakerID": "spk_37_0264",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_37_0265": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0349.wav",
+        "text": "Tình hình dịch bệnh phức tạp là em chọn hệ thống siêu thị. Chợ truyền thống thật sự là cảm thấy hàng bán, hàng mua không có tiện lợi cho người dân. cứ Giá cả cứ đưa lên trả lên trả xuống. Hạ tầng nó xuống cấp.",
+        "speakerID": "spk_37_0265",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_37_0266": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0350.wav",
+        "text": "Lượng khách đến chợ và sức mua đến trực tiếp tại chợ là giảm đi rất là nhiều so với những năm trước đây. Bà con kinh doanh buôn bán cũng gặp rất nhiều khó khăn, cũng như trong công tác quản lý. Bởi vì chợ thì là công trình xuống cấp nên luôn tiềm ẩn những nguy cơ về an toàn phòng cháy, chữa cháy và cái văn minh thương mại.",
+        "speakerID": "spk_37_0266",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0267": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0351.wav",
+        "text": "hai mươi sáu cái chợ này là đều là rất lợi thế về thương mại do đó là phải nâng cao cơ sở vật chất để đáp ứng cái nhu cầu kinh doanh của các hộ tiểu thương Thứ hai nữa là sẽ cụ thể hóa.",
+        "speakerID": "spk_37_0267",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0352.wav",
+        "text": "và tùy theo tình hình cụ thể của từng chợ của từng phường xã sẽ huy động xã hội hóa cùng với các tổ chức cá nhân và hộ tiểu thương để đầu tư xây dựng lại để đảm bảo khang trang nhằm đáp ứng hạ tầng thương mại trên thành phố ngày càng phát triển",
+        "speakerID": "spk_37_0267",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0268": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0353.wav",
+        "text": "Có bốn cái điểm, một là cơ chế tiền đất, tiền đấu giá quyền sử dụng đất. Thứ hai là tiền đất ở dự án đô thị. Thứ ba là tiền sự nghiệp đô thị thị chính. Và thứ tư là hỗ trợ thị xã Cửa Lò một năm ba nghìn tấn xi măng. Thị xã hiện nay đang triển khai chỉ đạo quyết liệt, triển khai cái phong trào xây dựng đô thị văn minh, khu dân cư kiểu mẫu.",
+        "speakerID": "spk_37_0268",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0269": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0354.wav",
+        "text": "Trong năm hai nghìn không trăm mười chín ấy, Yên Thành được ủy ban Nhân dân tỉnh phê duyệt hai quy hoạch lớn đó là quy hoạch vùng huyện và quy hoạch nông nghiệp huyện.",
+        "speakerID": "spk_37_0269",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0355.wav",
+        "text": "Và trong năm hai mươi ấy, bổ sung thêm quy hoạch sử dụng đất, định hướng cho huyện về mặt lâu dài để đề xuất các cái chương trình phát triển kinh tế xã hội, an ninh quốc phòng, tích hợp các cái quy hoạch vùng của huyện rồi quy hoạch nông nghiệp của huyện. và quy hoạch sử dụng đất của huyện trong quy hoạch vùng của tỉnh",
+        "speakerID": "spk_37_0269",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0270": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0356.wav",
+        "text": "Quy hoạch tỉnh là một cái nhiệm vụ rất là đặc biệt quan trọng Và được xác định là nhiệm vụ số một trong những chương trình hành động thực hiện nghị quyết mười chín của Đại hội tỉnh đảng bộ. Tỉnh Ủy ban là chỉ đạo sở đầu tư tiến hành các cái nội dung cần thiết Để mà xây dựng cái đề cương và cũng như là phê duyệt cái đề cương Để trình cấp cầu thẩm quyền phê duyệt.",
+        "speakerID": "spk_37_0270",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0357.wav",
+        "text": "Và trên cơ sở đề cương dự toán được cấp có thẩm quyền phê duyệt thì đã tổ chức đấu thầu theo quy định hiện hành Lựa chọn đơn vị tư vấn để triển khai thực hiện Đơn vị tư vấn là làm việc trực tiếp với các ngành và các địa phương để thống nhất các cái nội dung",
+        "speakerID": "spk_37_0270",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0271": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0358.wav",
+        "text": "Để đảm bảo cái đường hoa đẹp trong dịp tết nguyên đán sắp tới thì anh em công nhân chúng tôi làm việc không kể ngày đêm. Vào những lúc xe hoa về vào lúc nửa đêm thì chúng tôi vẫn hoàn thành tốt cái nhiệm vụ trong đêm để sáng mai có hoa để làm xếp. Chọn những cái hoa đẹp để tạo những cái khối theo bản thiết kế.",
+        "speakerID": "spk_37_0271",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_37_0272": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0359.wav",
+        "text": "Đón xuân Nhâm Dần hai không hai hai trên tinh thần là vui tươi, lành mạnh, hạnh phúc, an toàn. Nhân dân đóng góp nhiệt tình và tất cả toàn dân để ra đây là đều chung tay để lao động và trang trí cảnh quan theo cái chủ trương kế hoạch của trên.",
+        "speakerID": "spk_37_0272",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0273": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0360.wav",
+        "text": "hai năm nay tình hình Covid rất là khó khăn nhưng mà mỗi khi tết đến xuân về thành phố ngày càng tươi đẹp hơn. Và do đó nên là bản thân mỗi người cũng thấy rất là phấn khởi, rất là hân hoan. Mong một năm mới mọi người có nhiều sức khỏe, niềm vui và hạnh phúc trong cuộc sống.",
+        "speakerID": "spk_37_0273",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_37_0274": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0361.wav",
+        "text": "phường đã phát động trong toàn dân. Cái đầu tiên là thực hiện cái chỉnh trang đô thị, lập lại cái trật tự đô thị để cho nhân dân vui tết đón xuân. Cái thứ hai là tạo các điểm nhấn cảnh quan trong các cái khu phố, trong các cái tổ dân cư, từ cái sự xã hội hóa của các cơ quan đơn vị doanh nghiệp và nhân dân để tạo một cái nét đẹp đồng bộ trong khu phố.",
+        "speakerID": "spk_37_0274",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_37_0275": [
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0362.wav",
+        "text": "Thành phố cũng muốn tạo ra một cái điểm văn hóa để cho người dân vui chơi, vui Tết đón xuân. Trong khi mọi cái hoạt động lễ hội khác chúng ta vì công tác phòng chống dịch nên tạm dừng cho đến hết tháng ba.",
+        "speakerID": "spk_37_0275",
+        "gender": 0,
+        "split": "test"
+      },
+      {
+        "province_name": "NgheAn",
+        "province_code": 37,
+        "filename": "37_0363.wav",
+        "text": "thì bây giờ những cái điểm vui chơi khác thì thành phố cố gắng để làm thế nào tạo ra những cái khoảng không gian và những cái điểm nhấn về mặt văn hóa để người dân có thể thưởng thức. Động lực về mặt tinh thần để người dân bước sang năm nhâm dần, hoàn thành các cái dự định, những cái kế hoạch cùng với thành phố hoàn thành xuất sắc các cái nhiệm vụ phát triển kinh tế xã hội",
+        "speakerID": "spk_37_0275",
+        "gender": 0,
+        "split": "test"
+      }
+    ]
+  }
+}

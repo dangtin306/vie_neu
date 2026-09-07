@@ -1,0 +1,36 @@
+# Python/cache
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Nested upstream repository metadata
+**/.git/
+
+# Training data and generated experiments
+train/data/
+train/output/
+train/**/*.pt
+train/**/*.bin
+train/**/*.safetensors
+train/**/*.ckpt
+train/**/*.pth
+
+# Audio generated or used during local tests/training
+*.wav
+*.mp3
+*.flac
+*.ogg
+
+# Local runtime/cache files
+.cache/
+cache/
+outputs/
+logs/
+*.log
+
+# Local environment/secrets
+.env
+.venv/
+venv/

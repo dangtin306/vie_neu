@@ -1,0 +1,12 @@
+{
+  "selected": 100,
+  "extracted": 100,
+  "speakers": 77,
+  "preferred_4_15s": 33,
+  "by_split": {
+    "train": 87,
+    "valid": 5,
+    "test": 8
+  },
+  "qc_flags": 16
+}

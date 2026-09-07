@@ -1,0 +1,28 @@
+{
+  "eligible_audit_rows": 140,
+  "extracted": 140,
+  "by_split": {
+    "train": {
+      "clips": 105,
+      "speakers": 45,
+      "qc_pass": 91
+    },
+    "valid": {
+      "clips": 15,
+      "speakers": 4,
+      "qc_pass": 15
+    },
+    "test": {
+      "clips": 20,
+      "speakers": 8,
+      "qc_pass": 19
+    }
+  },
+  "qc_pass": 125,
+  "qc_nonpass": 15,
+  "pairs": {
+    "train": 49,
+    "valid": 11,
+    "test": 11
+  }
+}

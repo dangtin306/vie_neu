@@ -1,0 +1,36 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.pytest_cache/
+bak/
+# Dictionary backups written by scripts/clean_dict.py (~50 MB each).
+*.bin.bak
+
+# Corpus normalization dumps, regenerated on demand by the audit scripts.
+test_output_*.md
+
+# Compiled extensions
+*.pyd
+*.so
+*.pdb
+
+# Rust
+target/
+
+# Virtual environments
+.venv
+
+# dictionary backups produced by scripts/build_bin_v2.py
+python/sea_g2p/sea_g2p.bin.bak
+python/sea_g2p/sea_g2p.bin.prejunk
+python/sea_g2p/sea_g2p.bin.filtered
+
+# BEST2009-derived: CC BY-NC-SA, incompatible with this project's Apache 2.0
+thai/best2009_freq.tsv
+python/sea_g2p/*.bin.keep
+python/sea_g2p/*.bin.bak*
+python/sea_g2p/*.bin.new

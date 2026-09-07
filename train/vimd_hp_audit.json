@@ -1,0 +1,3234 @@
+{
+  "source": "nguyendv02/ViMD_Dataset",
+  "filter": "province_name == HaiPhong",
+  "streamed_columns": [
+    "province_name",
+    "province_code",
+    "filename",
+    "text",
+    "speakerID",
+    "gender"
+  ],
+  "audio_downloaded": false,
+  "split_row_counts_scanned": {
+    "train": 15023,
+    "valid": 1900,
+    "test": 2026
+  },
+  "hai_phong_utterances": 306,
+  "speakers": 223,
+  "speaker_distribution": {
+    "1": 166,
+    "2": 41,
+    "3": 11,
+    "4": 3,
+    "5": 1,
+    "8": 1
+  },
+  "speakers_ge_2": 57,
+  "speakers_ge_3": 16,
+  "speakers_ge_5": 2,
+  "speakers_ge_10": 0,
+  "speaker_rows": {
+    "spk_15_0001": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0001.wav",
+        "text": "rất là tự hào. Vịnh Hạ Long, quần đảo Cát Bà chính thức trở thành di sản thiên nhiên thế giới. Điều này nó góp phần quảng bá rất là mạnh mẽ cái hình ảnh của du lịch đất nước, con người cũng như là văn hóa Việt Nam đến với toàn thể bạn bè trên toàn thế giới. Và đó cũng là một cái điều rất là quan trọng đấy là thúc đẩy cái nội lực trở thành một cái nguồn động lực để phát triển kinh tế xã hội, du lịch.",
+        "speakerID": "spk_15_0001",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0002": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0002.wav",
+        "text": "Khi mà dự hội xong thì phải dưng ông Trâu về trời đất để mà thay kiếp cho ông. Đó là một cái phong tục rất đặc biệt của đất và người Đồ Sương. Cáo úy với trời đất là ông trâu đã hoàn thành nhiệm vụ của mình trong thời gian lễ hội.",
+        "speakerID": "spk_15_0002",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0003": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0003.wav",
+        "text": "Cơ bản là các lãnh đạo hợp tác xã đều là những người có tuổi nên việc tiếp cận với công nghệ thông tin cũng như là ứng dụng công nghệ số trong hoạt động sản xuất kinh doanh sẽ còn gặp nhiều khó khăn. Chúng tôi mong muốn Liên minh hợp tác xã thành phố Hải Phòng quan tâm tổ chức các cái buổi tập huấn để cho các lãnh đạo hợp tác xã chúng tôi được tiếp cận được ứng dụng khoa học công nghệ thông tin vào sản xuất kinh doanh được tốt hơn ạ.",
+        "speakerID": "spk_15_0003",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0004": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0004.wav",
+        "text": "câu lạc bộ dịch vụ điện. để Thông qua đó, các đơn vị thành viên cùng chí hướng, cùng ngành nghề, cùng lĩnh vực dịch vụ. có thể cùng sinh hoạt, tạo ra một cái sân chơi, trao đổi kinh nghiệm, giao lưu, xúc tiến thương mại, cũng như tổng hợp ý kiến, đề xuất kiến nghị về cấp có thẩm quyền liên quan tới lĩnh vực của mình.",
+        "speakerID": "spk_15_0004",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0005.wav",
+        "text": "Thời gian tới, Liên minh sẽ hỗ trợ các đơn vị thành lập một số các câu lạc bộ hoạt động sinh hoạt theo nhóm lĩnh vực ngành nghề chuyên biệt. Tôi lấy ví dụ như là nhóm câu lạc bộ ngành nghề vệ sinh môi trường, câu lạc bộ sản phẩm ocop",
+        "speakerID": "spk_15_0004",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0005": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0006.wav",
+        "text": "Chúng tôi tiếp tục tuyên truyền vận động để trong thời gian tới các hộ có thể chuyển hướng nghề nghiệp. Những hộ nào mà khó khăn thì chúng tôi sẽ cố gắng là cùng với các ban ngành đoàn thể vận động các hộ vay với vốn chính sách để hỗ trợ các hộ chuyển đổi nghề nghiệp.",
+        "speakerID": "spk_15_0005",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0006": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0007.wav",
+        "text": "Khi xem biểu diễn này thì cháu thấy nó hay và rất là đẹp.",
+        "speakerID": "spk_15_0006",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0007": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0008.wav",
+        "text": "Tôi cũng đã đến cát bà rất là nhiều lần và cái điều mà làm tôi thật sự là ngạc nhiên và cũng cảm thấy rất là hãnh diện và tôi muốn khoe cái điều đấy với tất cả mọi người là cái vịnh Lan Hạ của chúng tôi rất là đẹp, nó là một cái sự gọi là một cái quần thể thiên nhiên và là vừa có biển vừa có núi và đấy là một cái điều mà không phải là ở một cái khu du lịch nào cũng có và đấy là rất là tự nhiên và con thiên nhiên ban tặng và tôi cảm thấy là rất là tự hào.",
+        "speakerID": "spk_15_0007",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0008": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0009.wav",
+        "text": "về mặt cảnh quan, biển đảo rồi nó chứa đựng những giá trị địa chất địa bảo Chúng ta với tư cách là người được thụ hưởng cái di sản đó thì ngoài việc là chúng ta thụ hưởng nhưng chúng ta cũng mỗi người có một cái phần trách nhiệm để mà gìn giữ, bảo tồn, phát triển du địch.",
+        "speakerID": "spk_15_0008",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0010.wav",
+        "text": "với cái tâm trạng của mình là người Hải Phòng thì tôi cũng rất là phấn khởi Cát Bà nó không chỉ là một cái nơi du lịch thuần túy mà trong đó nó chứa đựng rất nhiều cái giá trị",
+        "speakerID": "spk_15_0008",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0009": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0011.wav",
+        "text": "Muốn được công nhận ấy thì trong quá trình làm hồ sơ thì là hai địa phương có cái sự bàn bạc với nhau rất kỹ Có những lần gặp trực tiếp, có những lần họp trực tuyến, có những lần mà chúng tôi phải họp trực tuyến không những đối với Quảng Ninh mà với Bộ văn hóa rồi Bộ Ngoại giao và đối với đại diện Bộ Ngoại giao",
+        "speakerID": "spk_15_0009",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0012.wav",
+        "text": "của Việt Nam tại UNESCO. Cái cam kết của Hải Phòng đối với UNESCO thì cũng ta cũng đề nghị Quảng Ninh là cũng có cái cam kết cùng với ta. Và cái mà cao hơn là trong cái kỳ họp vừa rồi",
+        "speakerID": "spk_15_0009",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0013.wav",
+        "text": "thì chính phủ đã có cái công hàm gửi các cái nước thành viên và các cái tổ chức liên quan là hỗ trợ ủng hộ để công nhận cái di sản thiên nhiên thế giới Vịnh Hạ Long quần Đảo Cát Bà",
+        "speakerID": "spk_15_0009",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0010": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0014.wav",
+        "text": "Trong suốt ba mươi năm qua, Hải Phòng rất nỗ lực trong việc cải thiện môi trường đầu tư. Theo đó, cái đầu tư của Hải Phòng đã có những cái biến chuyển rất là đáng kể. Riêng trong hơn hai năm trở lại đây,thì đầu tư nước ngoài vào khu công nghiệp khu kinh tế của Hải Phòng đã chiếm tới khoảng gần mười tỷ đô la Mỹ.",
+        "speakerID": "spk_15_0010",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0015.wav",
+        "text": "Qua đó, đã thấy rằng Hải Phòng đã có một cái sự bứt phá rất nỗ lực trong việc thu hút đầu tư. Và thu hút đầu tư này đang đi theo hướng tức là có chất lượng và bền vững",
+        "speakerID": "spk_15_0010",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0011": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0016.wav",
+        "text": "Trong những năm trở lại đây thì cá nhân tôi đánh giá rất là cao về công tác lãnh đạo chỉ đạo của hội nông dân các cấp đối với việc phát triển các mô hình kinh tế cho nông dân các cái chủ trương rồi các cái định hướng trong cái công tác chỉ đạo về việc hướng mạnh về việc phát triển các cái mô hình kinh tế thì nó giúp cho người nông dân có thể nâng cao được thu nhập để phát triển kinh tế của địa phương cũng như là gia đình và qua đó thì cũng phát huy vai trò làm chủ của người nông dân trong công tác phát triển nông nghiệp, nông dân, nông thôn tại địa phương",
+        "speakerID": "spk_15_0011",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0012": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0017.wav",
+        "text": "Câu lạc Bộ Sản xuất Kinh doanh giỏi tháng năm vừa qua đã tạo ra một cái sân chơi, hoạt động rất hiệu quả như là một cánh chim đầu đàn để hỗ trợ sản xuất nhiều những cái công việc và giao lưu, học hỏi nhiều kinh nghiệm để cùng nhau phát triển sản xuất kinh doanh.",
+        "speakerID": "spk_15_0012",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0013": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0018.wav",
+        "text": "Với sự quan tâm lãnh đạo, chỉ đạo, tạo điều kiện của Trung ương Hội Nông dân Việt Nam của lãnh đạo thành phố và của các cấp, các ngành, các địa phương cùng với sự cố gắng, nỗ lực của toàn thể cán bộ, hội viên Nông dân toàn thành phố chúng tôi tin tưởng rằng sẽ hoàn thành thắng lợi các chỉ tiêu, nghị quyết đại hội đề ra góp phần tích cực vào xây dựng, phát triển thành phố Hải Phòng trong thời gian tới.",
+        "speakerID": "spk_15_0013",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0014": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0019.wav",
+        "text": "Quá trình chiến đấu ta đã chủ động đánh địch từ xa khi chúng đang hành quân di chuyển thực hiện đánh địch rộng khắp, kết hợp đánh có trọng điểm. tổ chức (luôn càng) khéo léo kịp thời. Đặc biệt, Ta đã kết hợp chặt chẽ việc tác chiến của bộ đội chủ lực, có sức cơ động chiến đấu cao với bộ đội địa phương, dân quân du kích và nhân dân trong các thôn, các xã, tạo thành thế trận rộng khắp, buộc địch phải phân tán lực lượng, căng kéo đối phó dẫn đến bị chia cắt, tiêu hao, tiêu diệt.",
+        "speakerID": "spk_15_0014",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0020.wav",
+        "text": "Trận chống Càn, Cờ lốt trong kháng chiến chống thực dân Pháp của quân và dân Tiên Lãng, làm minh chứng nổi bật trong vận dụng linh hoạt các hình thức chiến thuật của nghệ thuật chiến tranh du kích và xây dựng làng xã chiến đấu. Quân và dân ta đã triệt để lợi dụng, cải tạo địa hình địa vật để xây dựng công sự hào lũy, chông mìn, cạm bẫy liên hoàn giữa các thôn, các xã.",
+        "speakerID": "spk_15_0014",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0015": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0021.wav",
+        "text": "Quê hương Tiên lãng như thế này, thời bấy giờ là có hàng trăm hầm bí mật. Vừa để trú ẩn, vừa để bảo vệ cán bộ. Chính tại nơi đây đã từng nuôi giấu cán bộ. Và chính căn nhà này, tiêu thủ kháng chiến đã phải vùi xuống ao. Hòa bình lặp lại thì gia đình mới dựng lại. Trận càn lịch sử năm ấy, quân và dân Tiên lãng chiến thắng rất oanh liệt. Nhưng cũng mất đi rất nhiều người con.",
+        "speakerID": "spk_15_0015",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0016": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0022.wav",
+        "text": "Đặc biệt,cái chiến thắng trận Càn Cờ Lốt của quân và dân Tiên Lãng đã đập tan kế hoạch Nava và góp phần trực tiếp vào chiến thắng Đông Xuân năm một nghìn chín trăm năm tư và đỉnh cao là chiến thắng lịch sử Điện Biên Phủ mở đầu cho cái sự sụp đổ của chủ nghĩa thực dân cũ trên toàn thế giới.",
+        "speakerID": "spk_15_0016",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0023.wav",
+        "text": "Với hai mươi ba ngày đêm giằng co quyết liệt và một trăm tám mươi hai trận chiến đấu, quân và dân Tiên Lãng đã đập tan trận Càn Cờ Lốt buộc địch phải giúp lực lượng quân cơ động khỏi cái vùng Tiên Lãng. Và vùng Tiên Lãng được Đại tướng Võ nguyên giáp ví như là một con dao nhọn đâm thẳng vào trái tim của kẻ thù.",
+        "speakerID": "spk_15_0016",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0017": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0024.wav",
+        "text": "Đây luôn là một cây tùng, cũng là một cái tác phẩm mà anh yêu thích. Tùng này nó bé, nhưng nó rất là lâu đời rồi. Đó là dòng bonsai mini.",
+        "speakerID": "spk_15_0017",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0018": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0025.wav",
+        "text": "Gần hai nghìn bốn trăm đảo lớn nhỏ đá vôi ở cái khu vực này Nó đã là một cái tính độc đáo toàn cầu rồi Cái điểm thứ hai riêng cái trong quần đảo Cát Bà thì riêng cái đảo lớn Cát Bà đã Thì ở Việt Nam nó là một cái đảo lớn đứng thứ ba trong số hơn ba nghìn đảo của cả nước Đấy cũng là cái tính độc đáo thứ hai Cái thứ ba là với cái địa hình của hang động Castor của một cái vùng đá vôi thì nó đã tạo ra thành những cái đường nét cảnh quan rất là độc đáo ở cái vùng biển và quần đảo Cát Bà này có những giá trị ngoại hạng toàn cầu của tự nhiên đem lại.",
+        "speakerID": "spk_15_0018",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0019": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0026.wav",
+        "text": "đây Gia đình tôi đây cũng rất là ủng hộ. cái Chủ trương của nhà nước cũng có (vào đất vừa đỏ). Mặc dù chưa được hỗ trợ chưa được thông báo về cái vấn đề hỗ trợ giải phóng đền bù, nhưng khi nhà thầu làm đến đây thì chúng tôi cũng rất là ủng hộ, người dân rất ủng hộ, tự phá dỡ để cho nhà thầu người ta làm, cho nó kịp cái tiến độ.",
+        "speakerID": "spk_15_0019",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0020": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0027.wav",
+        "text": "Thế thì hiện nay cơ bản thì các hộ dân vừa là hiến đất vừa là như vầy là tháo dỡ hành lang thì đã cơ bản hoàn thành Với đất ở thì cũng hiến như vậy là gần hai trăm mét. Đối với đất nông nghiệp thì hiện vào khoảng tám trăm mét vuông để cho tất cả các cái công trình này sớm được hoàn thành.",
+        "speakerID": "spk_15_0020",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0028.wav",
+        "text": "Trước đây thì đường xá thì đoạn đường nào rộng thì chỉ được có ba mét rưỡi, ba mét ba mét rưỡi Nhưng mà sau khi mà xây dựng cái chương trình này thì như vầy là đường hiện nay đang mở rộng Tổng số như vầy là có ba tuyến đường mở rộng bảy mét rưỡi Còn lại là như vầy một tuyến đường mở rộng năm mét rưỡi Nhìn chung là trong địa bàn thôn của tôi có tổng số là bốn mươi hai hộ dân có đất hành lang đi trên các cái tuyến đường",
+        "speakerID": "spk_15_0020",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0021": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0029.wav",
+        "text": "Sau quá trình thi công, bên đơn vị cũng thuận lợi và phía chủ đầu tư cũng tạo điều kiện và phụ cấp khoản vốn cho đơn vị thi công đảm bảo tiến độ. Chúng tôi sẽ phấn đấu bàn giao cho công trình đưa vào sử dụng vào tháng một hai nghìn không trăm hai bốn tới.",
+        "speakerID": "spk_15_0021",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0022": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0030.wav",
+        "text": "được chủ đầu tư tạo điều kiện cũng như về cung cấp nguồn vốn kịp thời. Nhà thầu thi công liên tục đơn vị giám sát cũng kiểm soát kỹ về vấn đề chất lượng và kỹ thuật công trình.",
+        "speakerID": "spk_15_0022",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0023": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0031.wav",
+        "text": "Trước ngày mồng một tháng tám thì cái gói sửa chữa hai cái dãy nhà cơ bản đã hoàn thành và cũng phục vụ kịp thời cho cái năm học hai nghìn không trăm hai ba hai nghìn không trăm hai tư này. Cái gói xây mới nhà đa năng và cái khu nhà học ba tầng thì cũng đang triển khai rất là tích cực.",
+        "speakerID": "spk_15_0023",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0024": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0032.wav",
+        "text": "Năm nay nguyên liệu đầu vào ấy thì là nhập so với mọi năm là cao hơn bao bì thịt, mỡ, bột, các thứ là mỗi thứ lên một tí một tí cũng phải lên mười phần trăm. Các cái nguyên liệu thì nó cao mà sức mua người dân hạn chế có vẻ giảm đi. Năm ngoái được mười phần thì năm nay cũng chắc khoảng tám phần.",
+        "speakerID": "spk_15_0024",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0025": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0033.wav",
+        "text": "bánh truyền thống bao giờ nó cũng là lựa chọn hàng đầu của mọi người sáu mươi nghìn một chiếc, hai trăm bốn mươi nghìn một hộp bánh này là rất là hợp lý kinh tế năm nay cũng tương đối khó khăn không thể bỏ ra nhiều tiền chi nhiều tiền để mua loại cao cấp quá được",
+        "speakerID": "spk_15_0025",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0026": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0034.wav",
+        "text": "Trung thu năm nay thì các cháu nhà tôi mua đồ chơi theo kiểu hiện đại, truyền thống cũng có nhưng mà các cháu thích đổi mới. Rất nhiều là mẫu mã, giá cả thì bình dân.",
+        "speakerID": "spk_15_0026",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0027": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0035.wav",
+        "text": "Đồ hiện đại hình thức và cái màu sắc sẽ bắt mắt trẻ con nhiều hơn, nên là các cháu nó lựa chọn nhiều hơn. Đồ chơi truyền thống thì nó cũng chưa có mẫu mã đa dạng nhiều, hình thức thì cũng chưa được bắt mắt trẻ nhỏ lắm, với cả giá cả hơi đắt.",
+        "speakerID": "spk_15_0027",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0028": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0036.wav",
+        "text": "Các anh chị cán bộ đã hướng dẫn rất là nhiệt tình và bổ sung các giấy tờ còn thiếu để tôi có thể chuẩn bị để giúp tôi có thể giải quyết được cái việc của mình một cách kịp thời nhất. Và tôi cũng được biết thêm là mình có thể nộp đơn trực tuyến được và không cần phải nhiều thời gian để mình đến đây nữa.",
+        "speakerID": "spk_15_0028",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0029": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0037.wav",
+        "text": "có thêm một Di sản Thế giới Liên Tỉnh đầu tiên chúng ta cũng có cơ hội rất là lớn để quảng bá cái Di sản này trên phạm vi toàn cầu và qua đó quảng bá cái hình ảnh của thành phố Hải Phòng ở các phạm vi toàn cầu.",
+        "speakerID": "spk_15_0029",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0038.wav",
+        "text": "hai ngàn mười sáu thì chính phủ là đồng ý cho (...) tái tạo du lịch cùng ủy ban nhân dân thành phố hải phòng. trình hồ sơ đề cử kết hợp Quần đảo Cát Bà cùng với vịnh Hạ Long trở thành Di sản Thiên Nhiên Thế giới. và Như vậy chúng ta phải mất khoảng bảy năm chờ đợi Quần đảo Cát Bà cùng với vịnh Hạ Long trở thành Di sản thiên nhiên thế giới. Và đấy là một tin rất là vui đối với lại thành phố Hải Phòng nói riêng cả nước Nói chung",
+        "speakerID": "spk_15_0029",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0030": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0039.wav",
+        "text": "Chúng tôi đặc biệt chú trọng đến cái công việc lãnh đạo chỉ đạo và gắn trách nhiệm của những người đứng đầu từng cơ quan đơn vị cũng như của đảng viên trong cái hoạt động chuyển đổi số và tích cực ứng dụng các cái công nghệ thông tin vào hoạt động của tòa án Bên cạnh đó là cũng phải đảm bảo sự vận hành của hệ thống an toàn",
+        "speakerID": "spk_15_0030",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0031": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0040.wav",
+        "text": "Chi bộ tôi đã xây dựng cái mô hình chung tay giúp đỡ người cận nghèo thế và hàng tháng trợ cấp thường xuyên cho các cái hộ nghèo và sau này phường hết hộ nghèo thì chúng tôi cũng đã tiến hành xây dựng mô hình chung tay giúp đỡ người cận nghèo hàng tháng trợ cấp cho các cái hộ cận nghèo",
+        "speakerID": "spk_15_0031",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0032": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0041.wav",
+        "text": "Buổi thiết tập hôm nay rất là thiết thực mà đã để cho chín tổ dân phố đến để người ta cũng học tập và thực hiện Nhưng tôi thấy rất là thiết thực và cũng rất là tốt",
+        "speakerID": "spk_15_0032",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0033": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0042.wav",
+        "text": "Xác định rằng cái việc phòng cháy chữa cháy là rất là quan trọng nên chúng tôi cũng đã tổ chức sáu cái tổ liên gia thực tập nội bộ để cách xử lý và cách sử dụng các trang thiết bị phòng cháy chữa cháy.",
+        "speakerID": "spk_15_0033",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0043.wav",
+        "text": "Chúng tôi cũng đã giúp cho Ủy ban nhân dân các phường xây dựng và thực tập phương án chữa cháy tại các cái tổ dân phố và vận động các cái hộ gia đình phấn đấu đến ba mươi mốt tháng mười hai là một trăm phần trăm tất cả các hộ gia đình trên địa bàn quận Hải An sẽ có phương tiện chữa cháy xách tay và đảm bảo một trăm phần trăm các hộ gia đình trên địa bàn quận Hải An đều có ít nhất một người được tuyên truyền huấn luyện về nghiệp vụ về phòng cháy chữa cháy.",
+        "speakerID": "spk_15_0033",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0034": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0044.wav",
+        "text": "Thực hiện thông tư ba hai hai không hai ba của Bộ trưởng bộ Công an, Phòng cảnh sát giao thông thành phố hải phòng đã tiến hành phân công cán bộ chiến sĩ trực hai tư trên hai tư nhằm đảm bảo trong cái công việc phát hiện các cái vi phạm. Cùng với đó thì thông tư ba hai cũng đã sửa đổi bổ sung một số những cái bất cập của thông tư cũ giúp cho lực lượng chức năng thuận tiện hơn trong cái việc xử lý vi phạm chính.",
+        "speakerID": "spk_15_0034",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0035": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0045.wav",
+        "text": "Chúng tôi nghĩ rằng là đây là một cái sự đánh dấu ngoặc rất là đặc biệt bởi vì là cái quá trình mà Việt Nam thuyết phục UNESCO để công nhận cái di sản này là di sản thế giới thì đã diễn ra trong khoảng mười năm cũng rất là dài và rất là bền bỉ cùng với cả các hội ngành trung ương cùng với tỉnh Quảng Ninh với cả thành phố Hải Phòng.",
+        "speakerID": "spk_15_0035",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0046.wav",
+        "text": "cũng như là sự tham gia của các nhà khoa học, của Bộ Ngoại giao, của Bộ văn hóa về thể thao và du lịch và đặc biệt là của người dân Việt Nam và cộng đồng thế giới. thì Khi mà được công nhận là di sản thiên nhiên thế giới thì tôi tin rằng Vịnh Hạ Long và quần đảo cát bà sẽ ngày càng được biết đến nhiều hơn. với các bạn bè thế giới cũng như là người Việt Nam",
+        "speakerID": "spk_15_0035",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0047.wav",
+        "text": "và chúng ta sẽ phát huy được cái giá trị rất là tuyệt vời của cái khu vực này",
+        "speakerID": "spk_15_0035",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0036": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0048.wav",
+        "text": "Hải Phòng là một thành phố cảng với các cái thế mạnh hậu cần logistics. Do vậy là thương vụ Việt Nam tại thụy điển liên nghiệp các nước Bắc  u đã dẫn đoàn cảng Gothenburg về Hải Phòng. Đây là một cảng lớn nhất của Bắc  u. Rất là hy vọng họ có thể tìm được các cái cơ hội hợp tác về cảng biển, khu công nghiệp cũng như là kho bãi hậu cần để có thể thúc đẩy được xuất nhập khẩu trực tiếp giữa Việt Nam và các nước Bắc  u.",
+        "speakerID": "spk_15_0036",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0037": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0049.wav",
+        "text": "Hiện nay phần lớn việc giao thương giữa Việt Nam đến châu  u thì thông thường sẽ phải đi qua Bỉ và Hà Lan. Và việc này hạn chế rất là nhiều cái cơ hội để kết nối trực tiếp với lại Bắc  u. Vì vậy mà sau cái buổi làm việc này chúng tôi cũng mong muốn sẽ mở ra những cái phương hưởng mới, những cái việc hợp tác mới trực tiếp giữa Hải Phòng và cảng Gothenburg ở Thụy Điển để có những giao thương trực tiếp hơn, nâng cao vị thế tiềm năng của thành phố Hải Phòng.",
+        "speakerID": "spk_15_0037",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0038": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0050.wav",
+        "text": "Trên địa bàn thì hiện tại là có dưới mười hộ chăn nuôi nhỏ lẻ. Sau khi đã được tuyên truyền cũng như các cái vận động hỗ trợ từ chính quyền địa phương về các cái chính sách vay vốn đối với các hộ để chuyển đổi thì đến nay đã đảm bảo được năm mươi phần trăm. Thế còn sẽ thực hiện trong vòng đến giữa năm hai không hai tư là sẽ là hết.",
+        "speakerID": "spk_15_0038",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0039": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0051.wav",
+        "text": "Điều này sẽ có tác động rất tích cực đối với cái công tác đảm bảo về vệ sinh môi trường nói chung, cũng như là đảm bảo về cái sức khỏe cho người dân trên địa bàn trong các cộng đồng dân cư nói riêng. Và cũng là kết quả góp phần quan trọng vào cái việc xây dựng quận Hồng Bàng trở thành đô thị văn minh hiện đại trong thời gian tới.",
+        "speakerID": "spk_15_0039",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0040": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0052.wav",
+        "text": "Để đảm bảo cái tiến độ của nghị quyết, ngành nông nghiệp thì cũng đang tích cực phối hợp với các sở ngành để tích hợp các quy hoạch vùng chăn nuôi tập trung trên địa bàn thành phố, để tích hợp vào cái quy hoạch chung của thành phố, phối hợp với ủy ban nhân dân các quận, huyện.",
+        "speakerID": "spk_15_0040",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0041": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0053.wav",
+        "text": "cái vai trò của Đô Mea lớn nhất trong giai đoạn thế kỷ mười bảy là vai trò cảng, bến, lưu trú của Thủy Thủ, trao đổi hàng hóa ở những cái quy mô nhất định. Phố Hiến thì là tuần tra kiểm soát hải quan, ví dụ như thế.",
+        "speakerID": "spk_15_0041",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0054.wav",
+        "text": "Còn Thăng Long Cải Chợ thì vừa là sản xuất buôn bán hay trao đổi. Và cũng là nơi mà lưu trú của các thương điếm cùng với lại phố Hiến. Thế thì rõ ràng là mỗi một cái vị trí nó có một cái chức năng riêng Nó tạo nên một chỉnh thể phát triển về thương mại và kinh tế hàng hóa rất là sôi động của đằng ngoài thế kỷ mười bảy.",
+        "speakerID": "spk_15_0041",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0042": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0055.wav",
+        "text": "Bây giờ thì là cánh đồng. Như mà nói là trước đây là một cái vùng đô thị sầm uất. Thế thì tôi cũng không tin. ta bảo Thế thì các bác thử xem có ngờ. Đây này, cái ruộng nhà tôi đây này. Tôi đố các thứ là đào sâu xuống bên dưới được đấy. Đào bên dưới là toàn gạch với đá thôi. Thế mà, các bác chỉ cho chúng tôi là những cái khi người ta làm",
+        "speakerID": "spk_15_0042",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0056.wav",
+        "text": "làm ruộng ở đấy đấy là người ta phải đào được các sàn gạch các thứ họ chất đống lên các thứ như thế này đấy. rất là lớn như ở cái đầu bên bờ ruộng các thứ như vậy đấy thì chúng tôi nghĩ rằng là đúng là cái dấu tích của một cái nơi cư trú của một cái bến thuyền của một cái nơi trao đổi hàng hóa các thứ khác như vậy ông giáo sư của đại học Lê Đơn ấy dùng cái giống như cái khoan chọc xuống dưới này này để ông coi như là ông xén đất này, ông lên lên ấy và ông phân tích cái",
+        "speakerID": "spk_15_0042",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0057.wav",
+        "text": "cái gọi là cái tầng văn hóa ở trong đó ấy thì ông nói là phải nói là cái chỗ này đấy là gì gốm sứ đấy gạch đấy dày đặc thế này đấy thì phải nói là Chắc chắn là khai quật những cái vùng này lên thì chắc chắn là sẽ tìm được cái kiến trúc",
+        "speakerID": "spk_15_0042",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0043": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0058.wav",
+        "text": "Chi phí cũng khá là lớn nhưng mà lợi ích đem lại thì cũng rất là tốt tại vì theo như ghi nhận thì chúng tôi tiết kiệm được hai mươi phần trăm lượng điện. Chúng tôi cũng có kế hoạch và cũng đã có một số những cái nghiên cứu ban đầu cho cái việc mà lắp đặt toàn bộ hệ thống mà pin mặt trời lên trên các mái kho.",
+        "speakerID": "spk_15_0043",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0044": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0059.wav",
+        "text": "Trong cái thời gian tới, thì thành phố Hải Phòng khuyến khích và huy động các cái tổ chức cá nhân, doanh nghiệp, đầu tư tài chính cho ứng phó biến đổi khí hậu và bảo vệ môi trường, thực hiện chương trình dự án liên quan đến giảm nhẹ phát thải khí nhà kính, phù hợp với cái điều kiện của từng ngành, từng lĩnh vực, phân công cụ thể trách nhiệm của các sở ngành địa phương để triển khai thực hiện kế hoạch hành động về tăng trưởng xanh thành phố Hải Phòng giai đoạn hai mốt ba mươi.",
+        "speakerID": "spk_15_0044",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0045": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0060.wav",
+        "text": "Kết quả này là do cái việc Hải Phòng đã đi đúng hướng cho việc đầu tư vào khu công nghiệp, đặc biệt là xây dựng các khu vực hạ tầng cho khu công nghiệp. Một số những cái hạ tầng lớn, ví dụ như các đường cao tốc, hệ thống cảng biển, sân bay đã giúp cho Hải Phòng bứt phá để thu hút các nhà đầu tư trong thời gian vừa qua.",
+        "speakerID": "spk_15_0045",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0046": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0061.wav",
+        "text": "qua khảo sát của Viện Nghiên cứu Quản lý Kinh tế Trung ương là cơ quan được Chính phủ cũng như Bộ kế hoạch đầu tư giao theo dõi nội dung liên quan tới cải thiện môi trường đầu tư kinh doanh thì chúng tôi thấy rằng Hải Phòng đã có rất là nhiều những nỗ lực những cố gắng để có thể cải thiện được môi trường đầu tư kinh doanh và tạo điều kiện thuận lợi tốt nhất cho các nhà đầu tư trong đó có các nhà đầu tư nước ngoài. Và với những nền tảng như vậy thì chắc chắn rằng trong thời gian sắp tới thu hút đầu tư nước ngoài sẽ là một điểm sáng trong phát triển kinh tế của Hải Phòng.",
+        "speakerID": "spk_15_0046",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0047": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0062.wav",
+        "text": "Sáng ngày hôm nay thì chúng tôi công khai niêm yết phương án bồi thường đối với ba mươi hộ dân Theo quy định chúng ta có hai mươi ngày công khai niêm yết thế thì Trong hai mươi ngày đấy thì cũng không nhất thiết phải chờ những hộ nào hết hai mươi ngày Mà trong hai mươi ngày thì có những hộ nào mà người ta đồng thuận",
+        "speakerID": "spk_15_0047",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0063.wav",
+        "text": "sớm trước hai mươi ngày thì chỉ đạo của quận ngô quyền yêu cầu phòng ban đơn vị tách phương án ra để chúng ta tập trung trình duyệt phương án của những hộ đồng thuận Còn những hộ chưa đồng thuận thì sau hai mươi ngày thì chúng tôi sẽ tổ chức để trả lời đối thoại các tổ chức đơn vị này, sau đó tiếp tục hoàn thiện phương án và chỉnh thẩm định.",
+        "speakerID": "spk_15_0047",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0064.wav",
+        "text": "ủy ban quận ngô quyền đã ban hành quyết định thành lập một tổ công tác. tám giờ sáng ngày hôm nay thì cái tổ công tác đã tiến hành xuống hiện trường. Trực tiếp đi liên hệ, kết nối để tìm các cái vị trí kho mới để hỗ trợ các cái doanh nghiệp, giới thiệu cho các doanh nghiệp.",
+        "speakerID": "spk_15_0047",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0065.wav",
+        "text": "để người ta có mặt bằng, để người ta xin thuê. Chúng tôi đã tìm được bốn vị trí. Trong bốn vị trí ấy thì có ba vị trí trên địa bàn Phường Vấy Trai. Ngoài ra các vị trí khác thì anh em tôi đang tập trung tới quận Hồng Bàng và quận Hà An tạo cái điều kiện sớm bàn giao mặt bằng đối với mười bốn tổ chức tại dự án này",
+        "speakerID": "spk_15_0047",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0048": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0066.wav",
+        "text": "Hiện tại có ba xe, một xe biển số Hà Nội, còn hai xe biển số Hải Phòng đã đỗ trên ba năm rồi. Thế mà mười hai xe đỗ thường xuyên trên một tháng. Thế còn các xe khu vực gần đây đỗ năm bảy ngày là bình thường.",
+        "speakerID": "spk_15_0048",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0049": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0067.wav",
+        "text": "Mấy ông trông thì không liệt xuể được, có mấy cửa, cửa vào, cửa ra thì cái cửa này nó vào, cái xe sau nó chặn ngay rồi Mấy ngày hôm nay là có hàng lối đấy, còn ở đầu kia nhờ, xe không thể nào ra được Đấy, đã vào mà không ra được",
+        "speakerID": "spk_15_0049",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0050": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0068.wav",
+        "text": "Cũng có một số tình trạng xin kinh phí. Chúng tôi cũng đã xử lý đối với những cái trường hợp đó. Yêu cầu là (Hội Chủ Nhân Binh) cho nghỉ, không được hướng dẫn sắp xếp xe ở trên bãi đỗ xe nữa thế và chỉ đạo công an phường. Thường xuyên có lực lượng tuần tra kiểm soát xử lý các cái trường hợp, các cái đối tượng phức tạp",
+        "speakerID": "spk_15_0050",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0069.wav",
+        "text": "gây ảnh hưởng đến việc an ninh trật tự tại bãi đỗ xe miễn phí này. Thì tôi cũng đề xuất là thành phố có thể thành lập một lực lượng chuyên trách có thẩm quyền để xử lý đối với những trường hợp đỗ xe không đúng theo quy định. Thứ hai là cấp kinh phí để cho ủy ban nhân dân phường có thể thuê một lực lượng chuyên nghiệp để thực hiện nhiệm vụ này.",
+        "speakerID": "spk_15_0050",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0051": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0070.wav",
+        "text": "Đến đâu thì vừa phải có người đi phát phát đến đấy, phát quang thành lối đi vào rồi mới đi ra được. Thế mà sau khi xác định địa điểm rồi thì nếu nói đúng là Sơn Hà và Sơn Hải chính thức là cái nôi của đồng bào Khai Hoa.",
+        "speakerID": "spk_15_0051",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0052": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0071.wav",
+        "text": "Kinh nghiệm canh tác của đồng bào mình, vốn liếng của đồng bào mình lên (mục vụ) cao. Với trí thông minh của người Việt thì cải tạo và nghĩ ra nhiều cách canh tác. Thí dụ đưa cây yên quả lên đồi, hoặc là làm ao thả cá, hoặc là chăn nuôi đại gia súc ở quy mô tập trung, ổn định đời sống, định cư cho đồng bào.",
+        "speakerID": "spk_15_0052",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0053": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0072.wav",
+        "text": "Tôi kỳ vọng từ cái giải đấu này nó sẽ tạo nên một cái phong trào bóng đá trong công nhân lao động và nó sẽ được định kỳ tổ chức hàng năm. Và tôi tin rằng với những gì mà chúng ta đã chuẩn bị thật tốt thì giải đấu sẽ thành công tốt đẹp.",
+        "speakerID": "spk_15_0053",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0054": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0073.wav",
+        "text": "Tôi cảm thấy rất là phấn khởi khi mà được tham dự những gian hàng này. Cũng mong là có nhiều những cái hoạt động thiết thực như này hơn nữa dành cho chị em công nhân chúng em để thêm cái nguồn động lực, yên tâm công tác.",
+        "speakerID": "spk_15_0054",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0055": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0074.wav",
+        "text": "Tôi rất là vui và phấn khởi vì đến đây được mua đồ giảm giá mà được ưu đãi cho anh chị em công nhân.",
+        "speakerID": "spk_15_0055",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0056": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0075.wav",
+        "text": "Theo những văn bia của chùa Đót Sơn còn được lưu trữ trên viện Bác Cổ. Phật giáo du nhập Việt Nam từ xứ Ấn Độ vào khoảng năm năm trăm lẻ ba năm trăm bốn mươi ba, được các nhà sư Ấn Độ truyền vào Việt Nam theo đường biển vào chùa hang Đồ Sơn, sau đó dừng chân tại chùa (Đót Sơn), hình thành trung tâm Phật giáo (câu lâu) cổ của vùng Thương Cảng, Hải Phòng, kích thích sự ra đời của hàng trăm ngôi chùa khác ở trong vùng.",
+        "speakerID": "spk_15_0056",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0057": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0076.wav",
+        "text": "xuất phát từ lịch sử ngàn năm chống giặc ngoại xâm và thiên tai địch họa cùng với những nét đặc trưng của cái nền văn minh lúa nước vùng bờ sông ven biển. Trong lễ hội của tiên lãng thì chứa đựng cả những yếu tố về tín ngưỡng dân gian",
+        "speakerID": "spk_15_0057",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0077.wav",
+        "text": "về nghi lễ, về phong tục tập quán, về yếu tố nghệ thuật và cả biểu dương sức mạnh cộng đồng. Có thể nói Đây là một bảo tàng sống về giá trị, văn hóa, tâm linh, giao lưu, sáng tạo và sự đoàn kết, góp phần nâng cao cái đời sống tinh thần cho cộng đồng cư dân trong nhiều thế kỷ qua.",
+        "speakerID": "spk_15_0057",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0058": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0078.wav",
+        "text": "Bà Nhữ Thị Thục tuy là phụ nữ nhưng bà rất giỏi nho học, thông thiên văn địa lý và tiếng số. Bà đã dạy con bà những bài về đạo đức, về nhân cách làm người, thông qua những câu chuyện, những bài hát, những lời ru",
+        "speakerID": "spk_15_0058",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0079.wav",
+        "text": "mà chính bà đã sáng tác lên. thậm chí những trò chơi như thả diều, đánh bi, học đánh cờ cũng gửi gắm câu chuyện nhân cách góp phần tạo nên Nguyễn Bỉnh Khiêm thành nhà văn hóa, nhà tư tưởng lớn của dân độc.",
+        "speakerID": "spk_15_0058",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0059": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0080.wav",
+        "text": "Hải Phòng là một cái nơi mà mấy năm gần đây nó phát triển. Tôi cũng kế hoạch đưa gia đình đi một số cái khu du lịch ở Hải Phòng. Thì đầu tiên cũng đi (ao ăn), rồi đồi sơn, rồi lại đồi rồng.",
+        "speakerID": "spk_15_0059",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0060": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0081.wav",
+        "text": "Chúng tôi xuất đến tầm khoảng hai trăm bốn mươi đến hai trăm năm mươi lăm chuyến một ngày. Trước khi nghỉ lễ thì chúng tôi cũng đã bàn bạc với các doanh nghiệp. Đưa xe dự phòng để chuẩn bị những cái tình huống mà khách đông Đưa xe dự phòng đến để giải tỏa hành khách khách Trong đó có một số tuyến đường phía Bắc Như",
+        "speakerID": "spk_15_0060",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0082.wav",
+        "text": "Lai Châu, Sơn la, điện Biên Những cái tuyến đấy là cái tuyến Thường là đông khách những ngày lễ Còn tất cả những tuyến còn lại thì yêu cầu Những cái nhà xe, những cái doanh nghiệp mà có những cái tuyến ngắn, tuyến huyện tự chủ động",
+        "speakerID": "spk_15_0060",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0061": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0083.wav",
+        "text": "Chi nhánh vận tải đường sắt Hải Phòng đã tổ chức tập trung vệ sinh toàn bộ các cái đoàn xe này để cho khi mà đưa vào phục vụ hành khách trong đợt nghỉ lễ này được tốt hơn. Theo về phía nhân lực thì đơn vị cũng đã chuẩn bị đầy đủ các nhân lực cũng như là vật tư để phục vụ cho cái đợt nghỉ lễ. Theo về phía công ty cổ phần vận tải đường sắt Hà Nội thì tổng công ty vận tải đường sắt Việt Nam đã bố trí chạy thêm các cái tàu để phục vụ nhu cầu đi lại cho hành khách tăng cao trong cái đợt này.",
+        "speakerID": "spk_15_0061",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0062": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0084.wav",
+        "text": "Trong cái dịp nghỉ lễ này, thời gian nghỉ lễ kéo dài thì chúng tôi đã bố trí một tổ công tác đặc biệt cơ động mặt nước bảo vệ an ninh khu vực vùng nước cửa khẩu cảng trong đó chú trọng công tác tuần tra kiểm soát quản lý các phương tiện ra vào, neo đậu và hoạt động trong cái vùng nước cửa khẩu cảng trong đó chú ý đến việc kiểm tra kiểm soát các phương tiện như là thiếu thủ tục giấy tờ bằng cấp chứng chỉ, chuyên môn, hàng hóa và đặc biệt là công tác phối hợp với các lực lượng để làm sao công tác bảo đảm an ninh trật tự trong cái khu vực dịp lễ này được đảm bảo tuyệt đối an toàn",
+        "speakerID": "spk_15_0062",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0063": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0085.wav",
+        "text": "Đến nay các cái mũi thi công cơ bản là đều đạt và vượt tiến độ đề ra. Nhà thầu đang tiến hành thi công (quân chiếu) đối với hạng mục đóng cọc đại trà của Bến Chính. Dự kiến trong cái tháng mười một này chúng tôi sẽ hoàn thành toàn bộ cái hạng mục đóng cọc đại trà đối với khu vực Bến Chính, Bến Cùng Vụ và Bến Sà Lan. Cùng theo đó đến tháng mười hai năm nay dự kiến chúng tôi cũng sẽ hoàn thành được cái mặt bến số ba.",
+        "speakerID": "spk_15_0063",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0064": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0086.wav",
+        "text": "Công tác san lấp, xử lý nền bãi thì chúng tôi đã hoàn thành cơ bản toàn bộ cái việc mà phun cát đạt đến cái cao trình ba chấm chín lăm. Và tiếp theo là chúng tôi sẽ thực hiện các công tác san lấp, xử lý nền bãi. Nhà thầu đang huy động luôn có từ ba trăm đến năm trăm lao động tại hiện trường để thi công. Dịp nghỉ lễ mùng hai tháng chín thì cải phòng",
+        "speakerID": "spk_15_0064",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0087.wav",
+        "text": "Chủ đầu tư cũng như là ban quản lý dự án, các cái đơn vị tư vấn giám sát, rồi nhà thầu thi công cũng quyết tâm là thi công xuyên lễ ba ca bốn kíp ngày đêm để chúng tôi làm sao đó phấn đấu hoàn thành sớm nhất tiến độ các cái mũi thi công cũng như là toàn bộ cái dự án.",
+        "speakerID": "spk_15_0064",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0065": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0088.wav",
+        "text": "Sau đại dịch Covid, thì nền kinh tế, đặc biệt là ngành nông nghiệp gặp rất nhiều khó khăn. Thứ nhất là suy thoái về kinh tế. Thứ hai là trong cái việc giao thông hàng hóa. Trong cái quá trình đó, được sự quan tâm của các sở ban ngành trong ngành nông nghiệp đã có những cái quan tâm hỗ trợ kịp thời. Đặc biệt là đối với cái chuỗi mà liên kết bao tiêu sản phẩm có đầu ra, cái sự quan tâm đó rất cần thiết và kịp thời. Tôi hy vọng rằng, từ đầu đến cuối năm, thì giá trị sản lượng cũng sẽ tăng và giá trị kinh tế từ hạt thóc gạo cũng sẽ tăng.",
+        "speakerID": "spk_15_0065",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0066": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0089.wav",
+        "text": "Trong thời gian tới thì chúng tôi cũng sẽ tiếp tục phát huy cái hướng sản xuất hàng hóa, tiếp tục thực hiện là phấn đấu làm sao mà tăng năng suất và chất lượng, và quan trọng nhất là hiệu quả sản xuất nông nghiệp. Với tiên lượng này và các giải pháp đồng bộ thì chắc chắn là năm hai nghìn không trăm hai ba thì nền nông nghiệp sẽ đạt được chỉ tiêu thành phố Giao.",
+        "speakerID": "spk_15_0066",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0067": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0090.wav",
+        "text": "(Chảng hệ) giao thông Quang Trung theo chỉ đạo của lãnh đạo phòng cảnh sát giao thông yêu cầu trực một trăm phần trăm quân số. Chúng tôi thì đã bố trí các cái chốt điểm đảm bảo điều tiết hướng dẫn giao thông tránh ùn tắc giao thông. Chúng tôi cử một tổ thẩm tra kiểm soát và xử lý các hành vi vi phạm.",
+        "speakerID": "spk_15_0067",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0068": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0091.wav",
+        "text": "Ngày đầu tiên của dịp lễ thì chúng tôi đã huy động tối đa lực lượng triển khai ra quân. Ngoài tuần tra kiểm soát lưu động trên tuyến thì chúng tôi đã duy trì tập trung vào các lỗi là nguyên nhân chính dẫn tới tai nạn giao thông. Tập trung vào hai đối tượng chính. là Thứ nhất là phương tiện xe chở hành khách. Thứ hai là phương tiện vận tải hàng hóa container.",
+        "speakerID": "spk_15_0068",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0069": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0092.wav",
+        "text": "Sự khó khăn vất vả và niềm vui lớn nhất của người làm đài là đưa được thông tin nhanh nhất, chính xác nhất tới khán thính giả của mình. Trong thời chúng tôi đấy, cách đây hàng chục năm thì các cơ quan truyền thông thì rất là ít",
+        "speakerID": "spk_15_0069",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0093.wav",
+        "text": "rồi thì phương tiện truyền thông, nó cũng còn sơ khai, lạc hậu. Các cái báo tạp chí thì người ta ra nhật trình",
+        "speakerID": "spk_15_0069",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0094.wav",
+        "text": "rồi thì nguyệt san tuần báo. Nhưng Đài thì với cái nhìn trang thiết bị của mình, là làm được thời trình. Thế cho nên là cái đáp ứng cái yêu cầu của người nghe rất là thuận lợi.",
+        "speakerID": "spk_15_0069",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0070": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0095.wav",
+        "text": "Chấp hành chủ trương của Công an thành phố Hải Phòng, nghị định là đọc về (sự sao hiếm). Chúng tôi đi đúng cần đường, làn đường và chở đúng chợ cải, không sử dụng rượu bia và ma túy.",
+        "speakerID": "spk_15_0070",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0071": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0096.wav",
+        "text": "Theo xu thế chung của cả nước, thì đài phát thanh và truyền hình Hải Phòng đã số hóa được tín hiệu truyền hình, đã sản xuất và phát sóng số ở định dạng HDTV, đã số hóa được kho tư liệu trước đây, được sự quan tâm của Ủy ban nhân dân thành phố, thì hạ tầng kỹ thuật phục vụ cho sản xuất và phát sóng chương trình của đài",
+        "speakerID": "spk_15_0071",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0097.wav",
+        "text": "thì đã được đầu tư qua dự án nâng cao năng lực năm hai nghìn không trăm mười tám. Với các trang thiết bị được đầu tư từ dự án thì đã làm thay đổi diện mạo và cơ sở hạ tầng kỹ thuật của đài. Được đánh giá là một trong năm đài truyền hình địa phương có hạ tầng kỹ thuật tốt nhất cả nước.",
+        "speakerID": "spk_15_0071",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0072": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0098.wav",
+        "text": "một chín trăm bốn lăm thì ở thôn Dũng Vỉa chúng tôi là rất là khổ cực, nhân dân rất là khổ cực Trong khi đó thì đồn bốt Tây nó mọc lên như thế này ba lô cốt, cái đường tàu đường năm này là chuyên vận chuyển hàng hóa của Pháp Từ ở trên Hà Nội xuống Cảng",
+        "speakerID": "spk_15_0072",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0099.wav",
+        "text": "dân quân du kích của địa phương, bộ đội của chính quy, là nổ mìn để ngăn chặn cái vận chuyển hàng hóa của của Pháp Quân Pháp xuống hải Phòng. nên là sau khi đó thì coi như là (nó bè nó cạn). Đời sống của nhân dân rất là khó khăn.",
+        "speakerID": "spk_15_0072",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0073": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0100.wav",
+        "text": "Đối với nhân dân thôn cử thì cũng nằm trong cái dự án của nâng cấp đường xây dựng nông thôn mới thì có hai tuyến đường. Đối với nhân dân thôn cử thì thực hiện cái chủ trương đó thì cũng rất là phấn khởi và họ đại bộ phận, đã hưởng ứng và đã hiến dâng, hiến đất, tháo dỡ công trình kiến trúc và hiến đất cho dự án để thi công, để đảm bảo hoàn thành trong năm hai nghìn không trăm hai ba.",
+        "speakerID": "spk_15_0073",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0074": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0101.wav",
+        "text": "Chúng tôi đã chuẩn bị một xe hoa vô cùng là tươi, đẹp, phục vụ cho những ngày lễ dài và mỗi ngày xong là một phong cách. Trong buổi sáng ngày hôm nay thì quán cà phê chúng tôi có chuẩn bị thêm năm nhân viên để phục vụ cho khách hàng. Ngoài phục vụ khách hàng của thành phố Hải Phòng thì chúng tôi đón rất là nhiều du khách đến từ các thành phố khác.",
+        "speakerID": "spk_15_0074",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0075": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0102.wav",
+        "text": "Sau cả một tuần làm việc vất vả căng thẳng thì cái điểm đầu tiên mà tôi muốn đưa gia đình đến là khu trung tâm thương mại như thế này. Thì nó đáp ứng được rất nhiều điều kiện, ví dụ như là trẻ con thì có thể là có nhiều khu vực vui chơi khác phù hợp. Và như người lớn chúng tôi thì trong lúc chờ đợi các con vui chơi thì có thể là đi mua sắm hoặc là ngồi cà phê thư giãn.",
+        "speakerID": "spk_15_0075",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0076": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0103.wav",
+        "text": "Từ nhà ra đây rất là gần và cũng có đầy đủ các dịch vụ cho người lớn cũng như trẻ con. Muốn dành nhiều thời gian để cho gia đình nhiều hơn là tại vì cũng có nhiều dịp để du lịch rồi thì mình cũng tranh thủ những ngày nghỉ để có thể nghỉ ngơi, gia đình gặp gỡ nhau rồi đến nhà ông bà và mua một số những cái sản phẩm để tặng gia đình.",
+        "speakerID": "spk_15_0076",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0077": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0104.wav",
+        "text": "Tiên lãng được thiên nhiên ban tặng cho con sông chúng tôi gọi là sông Cái, sông lớn, phát triển với đường thủy rất là tốt. Nhất là ưu đãi nữa là thành phố của chúng ta có quy hoạch khép kín. Tôi đánh giá rằng các cái nhà máy trong cái giai đoạn tới sẽ đầu tư vào đây nhiều, có thể làm được cảng biển logistic để các cái nhà máy đóng tàu bám biển.",
+        "speakerID": "spk_15_0077",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0078": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0105.wav",
+        "text": "Trong thời gian tới, cùng với việc đầu tư đồng bộ mạng lưới giao thông kết nối liên vùng và hoàn thiện cơ sở hạ tầng các khu cụm công nghiệp thì huyện tiên lãng chúng tôi xác định đẩy mạnh cải cách hành chính, cải thiện hơn nữa môi trường đầu tư kinh doanh và tăng cường đào tạo nghề cho người lao động. Đây là những giải pháp trọng tâm mà chúng tôi xác định để thu hút hơn nữa các doanh nghiệp đến với quê hương tiên lãng chúng tôi.",
+        "speakerID": "spk_15_0078",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0079": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0106.wav",
+        "text": "Niềm vinh dự tự hào của thế hệ hôm nay là được kế thừa truyền thống vẻ vang của cha ông. Nhưng đó cũng là trách nhiệm lớn lao đặt ra cho chúng tôi. Đó là phải phát huy những giá trị truyền thống, những tiềm năng lợi thế còn rất lớn của tiên lãng về vị trí địa lý, về đất đai tài nguyên, về di sản văn hóa, về những sản vật đặc sắc và sự kết nối giao thương.",
+        "speakerID": "spk_15_0079",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0107.wav",
+        "text": "Để đưa tiên lãng trở thành một địa phương giàu mạnh và đời sống của từng người dân, của từng hộ dân được nâng lên. Để làm được điều đó thì đảng bộ, chính quyền, quân và dân huyện phải xác định, đoàn kết, đồng sức, đồng lòng, đổi mới, sáng tạo. Và đặc biệt là phải quyết liệt hơn nữa trong lãnh đạo, chỉ đạo, thực hiện các nhiệm vụ phát triển kinh tế xã hội của địa phương.",
+        "speakerID": "spk_15_0079",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0080": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0108.wav",
+        "text": "Từ năm ba mươi chín, bố mẹ tôi đã tham gia đào cái hầm bí mật ở ngay dưới khán thờ đấy để mà chứa cán bộ nhất ở khu vực này là có cái trại tù ở ngay (căn đoạn xá và máy chai). Khi chạy ở đây thì thường thường cứ vào trong hầm bí mật để mà bố mẹ tôi cứ mang giấu và một số tài liệu ở ngoài kháng chiến đưa về thì thường thường cứ đưa vào hầm bí mật.",
+        "speakerID": "spk_15_0080",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0081": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0109.wav",
+        "text": "chín mươi lăm phần trăm rồi. Đến hội thì sẽ là một trăm phần trăm quá trình chăm sóc trâu. Lễ hội thì cái cần quan tâm nhất là để cho trâu thân với người và gần với lại chống cờ để cho không bị hoang mang hoặc là phản ứng dữ dội khi mà tham gia vào lễ hội.",
+        "speakerID": "spk_15_0081",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0110.wav",
+        "text": "Đây là ông trâu số không ba. Đến thời điểm này thì tôi đã mua về đồ sơn được một năm. Đến lễ hội thì sẽ là mười ba tháng. Và đến thời điểm này thì về tập luyện và chăm sóc cũng đạt đến",
+        "speakerID": "spk_15_0081",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0082": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0111.wav",
+        "text": "Kiểu anh em ở cái vùng miền này, người dân này người ta đam mê kinh khủng về cái lễ hội chọi trâu này. Có những người người ta đam mê mà người ta cảm thấy trăn trở như thế. Để ông trâu mà gần vào cái ngày lễ hội thế này. Người ta không ngủ được, người ta chỉ mong làm sao mà chăm sóc cho ông trâu tốt, giỏi để mà ra ngoài. Hôm nào đến cái lễ hội mà đưa vào để cống hiến cho tất cả những cái vùng miền xa. Người ta đến đây để dự cái lễ hội này. Thế cả nước trong, nước ngoài, người ta phải dự cái lễ hội này để ông trâu mình để cống hiến",
+        "speakerID": "spk_15_0082",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0083": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0112.wav",
+        "text": "Đến giờ phút này thì nghệ nhân và các tác phẩm sinh vật cảnh của khu vực phía Bắc đã hội tụ về quê An Dư để phát huy được cái thế mạnh của một cái địa phương có những cái làng nghề truyền thống đặc biệt là cây hoa cảnh thì có thể đây là một trong những cái hoạt động sẽ tạo ra hiệu ứng hết sức tích cực cho các hộ gia đình, cho các nghệ nhân, cho các nhà vườn trong cái xu thế phát triển cái kinh tế nông nghiệp",
+        "speakerID": "spk_15_0083",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0084": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0113.wav",
+        "text": "Các cụ ta thường nói là Tết cả năm không bằng rằm tháng bảy, Tết Vu Lan, gợi chúng ta cái truyền thống là luôn luôn nhớ về cội nguồn, nhớ biết ơn ông bà, tổ tiên của chúng ta. Và cũng trong cái ngày rằm tháng bảy này cũng là ngày mà được cho gia đình cũng như là đại gia đình được sum vầy với nhau.",
+        "speakerID": "spk_15_0084",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0085": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0114.wav",
+        "text": "Em và con gái thì mới có một chuyến bay từ Phú Quốc về và từ sân bay thì em thấy là không có tình trạng đông hay kẹt gì cả, xuống là được xuống luôn và lên cũng lên được luôn, không phải bị delay hoặc đi lấy hành lý thì bọn em cũng dễ dàng mà lấy thôi. Chắc là chỉ khoảng mười phút là em lấy được hành lý rồi, chứ không như mọi lần cũng lâu.",
+        "speakerID": "spk_15_0085",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0086": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0115.wav",
+        "text": "cao điểm nghỉ lễ mùng hai tháng chín nhưng tất cả các dịch vụ nhìn chung đều vẫn như ngày thường, phục vụ hành khách rất tốt.",
+        "speakerID": "spk_15_0086",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0087": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0116.wav",
+        "text": "tối ưu hóa năng lực khai thác của nhà ga và bố trí sắp xếp với dây chuyền hợp lý, phân luồng hành khách đi và đến cho thông thoáng, chuẩn bị các cái trang bị, thiết bị phục vụ mặt đất luôn trong tình trạng hoạt động tốt. Về nhân lực, thì cảng cũng đã xây dựng phương án tăng cường nhân lực, tập trung vào một số cái khung thời gian cao điểm để tránh ùn tắc. Về an ninh an toàn, cảng cũng đã triển khai chỉ thị số bốn năm không ba của Cục Hàng không Việt Nam để áp dụng biện pháp kiểm soát an ninh tăng cường trong cái dịp cao điểm.",
+        "speakerID": "spk_15_0087",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0088": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0117.wav",
+        "text": "Qua quá trình phát triển thì đến nay đảng bộ phường Đông Hải Một chúng tôi là có gần một nghìn bốn trăm giảng viên. Thì hàng năm vào dịp mà kỷ niệm ngày thành lập chi bộ đầu tiên của địa phương thì chúng tôi tổ chức các hoạt động dân hương tưởng niệm. Và cũng vào các dịp lễ Tết và ngày lịch sử thì chúng tôi cũng tuyên truyền rồi giới thiệu cho các đảng viên và các cháu học sinh, sinh viên để biết về cái lịch sử phát triển của đảng bộ cũng như là cái công lao đóng góp của các cụ",
+        "speakerID": "spk_15_0088",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0089": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0118.wav",
+        "text": "Hai bên bờ mương rất là dốc và mương rất sâu. Nhưng mà hai bên bờ không có lan can thì là năm ngoái đã xảy ra mấy trường hợp là học sinh và một người già là lăn xuống mương. Thế để chúng tôi mong muốn nhà nước giúp đỡ là xây dựng một cái bờ lan can bảo vệ, hai là gắn hệ thống chiếu sáng với lại cải tạo con đường dân sinh của chúng tôi đây này.",
+        "speakerID": "spk_15_0089",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0090": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0119.wav",
+        "text": "Khu công nghiệp Tuyên Thanh là một khu dự án có thể nói là trọng điểm của thành phố thu hút các nhà đầu tư nước ngoài đối với dự án này rất là lớn mà doanh nghiệp chúng tôi cũng đã rất là kỳ vọng ra đời sớm với cái khu công nghiệp thì đây là một sự rất là thuận lợi để mà tới này các nhà đầu tư có được vị trí đất đai để mà vào đầu tư phát triển của doanh nghiệp cũng như là phát triển thành phố Hải Phòng của chúng ta",
+        "speakerID": "spk_15_0090",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0091": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0120.wav",
+        "text": "Tháng tư năm hai nghìn không trăm hai hai thì Ban Quản lý được thành ủy giao là chúng ta đã tham mưu xây dựng một cái nghị quyết mới về phát triển khu cụm công nghiệp. Chúng tôi đã trình và được Ban Tổng bộ thành ủy giao một cái nghị quyết",
+        "speakerID": "spk_15_0091",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0121.wav",
+        "text": "mới. Thì có thể nói đây cái nghị quyết này về cơ bản nó đã cập nhật và dự báo được cái xu hướng phát triển của chúng ta. Theo cái hướng tất cả những khu công nghiệp mới được thành lập về sau này, chúng ta sẽ áp dụng ngay những cái tiêu chuẩn của một khu công nghiệp sinh thái.",
+        "speakerID": "spk_15_0091",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0092": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0122.wav",
+        "text": "Em thấy tiếng Hàn là một môn học, cũng là một môn ngoại ngữ có thể giúp ích cho em rất nhiều trong tương lai ạ. Văn hóa Hàn Quốc là một văn hóa rất là thú vị.",
+        "speakerID": "spk_15_0092",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0093": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0123.wav",
+        "text": "Tất cả các thiết bị dùng ở cảng là các thiết bị thân thiện với môi trường, không có khí thải. Và như tôi đã khẳng định đây là một cảng thông minh và là cảng xanh. Về công nghệ thông tin thì chúng tôi sẽ lựa chọn một đơn vị cung cấp phần mềm ứng dụng, quản lý cảng hiện đại nhất thế giới. Và đến thời điểm này, tôi thì khẳng định luôn đó là phần mềm của Mỹ.",
+        "speakerID": "spk_15_0093",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0124.wav",
+        "text": "Chúng tôi đã sử dụng toàn bộ các cái nhà thầu có kinh nghiệm. Về tư vấn thì chúng tôi sử dụng tư vấn của Nhật Bản. Về thiết kế thì chúng tôi sử dụng các đơn vị thiết kế quốc tế. Và song song với đó thì chúng tôi lựa chọn các máy móc thiết bị. Thì đến thời điểm này chúng tôi đã xong về các máy móc thiết bị.",
+        "speakerID": "spk_15_0093",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0094": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0125.wav",
+        "text": "các quy định của pháp luật về xử lý vi phạm chính, khắc phục hậu quả Những hộ còn lại thì tiếp tục tuyên truyền vận động các hộ chấp hành Theo cái chỉ đạo của ủy ban nhân dân xã (lợi) và tổ công tác để làm sao trả lại được cái hành lang thoát lũ, hành lang đê điều theo đúng quy định của pháp luật",
+        "speakerID": "spk_15_0094",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0126.wav",
+        "text": "để triển khai, rà soát và tiến hành xử lý các vi phạm trong hành lang đê điều và hành lang thoát lũ thì đã tiến hành quyết định thành lập tổ công tác để thực hiện nhiệm vụ cấp trên giao địa phương tiến hành xử lý các cái hộ là không chấp hành",
+        "speakerID": "spk_15_0094",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0095": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0127.wav",
+        "text": "Chúng tôi sẽ đẩy mạnh phân cấp phân quyền và tham mưu cho ủy ban nhân dân thành phố phân cấp phân quyền đặc biệt đối với các quận huyện, các sở ban ngành trong việc triển khai các thủ tục về đầu tư, thủ tục hỗ trợ kinh doanh. Thứ hai là tôi tiếp tục duy trì việc đánh giá chỉ số cải cách môi trường đầu tư của các sở ban ngành, quận huyện, IDCI. Đây là một yếu tố quan trọng để góp phần giúp cho chỉ số các hành chính và chỉ số PCI của thành phố được thăng hạng.",
+        "speakerID": "spk_15_0095",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0096": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0128.wav",
+        "text": "Với truyền thống cách mạng của quê hương mình, tôi rất tự hào. Tôi là vốn dĩ là một người lính, cố gắng hết sức mình để xứng đáng đời con của Tiên Sơn. Tôi thấy quê hương mình có nhiều thay da đổi thịt, nhất là trong điều kiện xây dựng nông thôn mới và nông thôn mới kiểu mẫu hiện nay. Chỉ mong sao sống được nhiều hơn nữa, để nhìn đến quê hương mình, để hưởng thụ thành quả mà ông cha mình đã làm được.",
+        "speakerID": "spk_15_0096",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0097": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0129.wav",
+        "text": "và đặc biệt là thực hiện cái chủ trương của đảng và nhà nước về xây dựng xã nông thôn mới kiểu mẫu. Đến nay đấy, đời sống vật chất và tinh thần của nhân dân đã từng bước nâng cao thì địa phương đang tập trung thực hiện các cái tiêu chí, mười chín tiêu chí xây dựng nông thôn mới nâng cao.",
+        "speakerID": "spk_15_0097",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0130.wav",
+        "text": "Đảng bộ và nhân dân xã tân trào cũng luôn phát huy truyền thống quê hương cách mạng, anh hùng lực lượng vũ trang nhân dân. Đảng bộ và nhân dân tích cực tham gia lao động sản xuất, phát triển quê hương đất nước.",
+        "speakerID": "spk_15_0097",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0098": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0131.wav",
+        "text": "Rất xúc động bởi vì là tất cả những cái hình ảnh được tái hiện trong phim nó rất chân thật Và nó mang đầy những tính thực tiễn về cái mảnh đất của quê hương chúng tôi",
+        "speakerID": "spk_15_0098",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0099": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0132.wav",
+        "text": "triển lãm đợt này nhằm tuyên truyền giáo dục sâu rộng với nhân dân và công chúng, những giá trị, những ý nghĩa, những công lao, những đóng góp của cha anh và làm động lực, làm nguồn lực để tuyên truyền giáo dục cho thế hệ hôm nay, để phát huy trong thời gian tới, trong thời điểm mà đất nước thành phố đang phát triển rất là mạnh mẽ.",
+        "speakerID": "spk_15_0099",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0100": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0133.wav",
+        "text": "Đây là một hoạt động hết sức ý nghĩa giúp cho cán bộ, đảng viên và nhân dân trên địa bàn huyện được có cơ hội ôn lại truyền thống hào hùng cách mạng tháng tám cũng như kỷ niệm ngày hai tháng chín. Và thông qua triển lãm này cũng có những hình ảnh về phát triển kinh tế, xã hội của thành phố Hải phòng và huyện An Riêng nói riêng giúp cho cán bộ, đảng viên, người dân An Riêng nhìn lại chặng đường phát triển của huyện nhà cũng như của thành phố thông qua triển lãm.",
+        "speakerID": "spk_15_0100",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0101": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0134.wav",
+        "text": "Các cấp ủy, chính quyền, mặt trận tổ quốc, các tổ chức chính trị xã hội từ thành phố đến cơ sở và đông đảo nhân dân trong toàn thành phố Hải Phòng tiếp tục xác định phong trào toàn dân bảo vệ an ninh tổ quốc là một nhiệm vụ hết sức quan trọng của cả hệ thống chính trị và toàn thể nhân dân",
+        "speakerID": "spk_15_0101",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0135.wav",
+        "text": "Tổ chức thực hiện nghiêm có hiệu quả các chủ trương của Đảng chính sách pháp luật của nhà nước, quy định hướng dẫn của Bộ Công an và của thành phố Hải Phòng về công tác đảm bảo an ninh trật tự và xây dựng phong trào bảo vệ an ninh tổ quốc, tăng cường sự lãnh đạo của Đảng đối với phong trào toàn dân bảo vệ an ninh tổ quốc trong tình hình mới",
+        "speakerID": "spk_15_0101",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0136.wav",
+        "text": "xây dựng thế trận an ninh nhân dân gắn với thế trận quốc phòng toàn dân vững chắc. đổi mới nội dung, hình thức, phương pháp xây dựng, phong trào Toàn dân Bảo vệ An ninh Tổ quốc và tổ chức Ngày hội Toàn dân Bảo vệ An ninh Tổ quốc thật sôi động, thiết thực và hiệu quả.",
+        "speakerID": "spk_15_0101",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0102": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0137.wav",
+        "text": "Có những cái hệ thống đường cột điện có từ những năm bảy tư, bảy nhăm Sau xây dựng nông thôn mới kiểu mẫu thì đường nó mở rộng ra Mở đường rộng nhưng mà giao thông nó vẫn cứ bị cản trở Thế mà hai cái mỹ quan nó không được đẹp, cái cột điện nó nằm mất một phần ba diện tích đường",
+        "speakerID": "spk_15_0102",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0103": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0138.wav",
+        "text": "Theo thống kê hiện nay trên địa bàn xã là còn khoảng trên hai trăm cột điện Cũ đang nằm cản trở giao thông, ảnh hưởng đến Mỹ Quan Và tất cả các kì họp của Hội đồng Nhân dân xã là cử tri và nhân dân phản ánh rất là nhiều Đối với địa phương cũng đã làm các văn bản, các thủ tục kiến nghị, ủy ban nhân dân huyện Rồi các ngành chức năng, kể cả là công ty điện nước (nắp máy) đi Hải Phòng. Tuy nhiên đến bây giờ là hiện nay chưa di chuyển được cái hệ thống cái cột điện.",
+        "speakerID": "spk_15_0103",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0104": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0139.wav",
+        "text": "Hiện nay chúng tôi đang chỉ đạo ban quản lý dự án và các đơn vị liên quan đẩy nhanh các thủ tục tiếp theo như mời thầu, thiết kế, kỹ thuật, lập dự toán và sẽ khẳng định phê duyệt trong tháng tám.",
+        "speakerID": "spk_15_0104",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0140.wav",
+        "text": "Thế vào tháng chín thì chúng tôi tháng chín tháng mười là thực hiện cái rà phá bom mìn khởi công vào dự kiến vào quý tư của năm hai nghìn không trăm hai ba. Cái này thực hiện theo đúng chỉ đạo của Thủ tướng chính phủ.",
+        "speakerID": "spk_15_0104",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0141.wav",
+        "text": "Liên quan đến đất quốc phòng để bàn giao cho thực hiện dự án thì nó cũng có những vướng mắc. Chính vì vậy chúng tôi đã đề nghị và thành phố đã quyết định phối hợp với các bộ ngành và đặc biệt là bộ quốc phòng để trình chính phủ. Đồng thuận cho việc bàn giao đất cho Hải Phòng và Hải Phòng bàn giao cho chúng tôi thì chúng tôi trong quý ba thì chúng tôi sẽ tiến hành việc khảo sát rà phá bom mìn để tiến hành cái khởi công.",
+        "speakerID": "spk_15_0104",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0105": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0142.wav",
+        "text": "Thách thức khó khăn chúng tôi hiện nay thì có rất nhiều khó khăn thách thức đặc biệt đối với công tác cấp cứu. Hiện nay về chất lượng cao và kỹ thuật cao thì chúng tôi không có khả năng để thực hiện việc này. Còn lại việc khám chữa bệnh thông thường thì cơ bản chúng tôi cũng đã phục vụ đáp ứng được bà con nhân dân trên huyện Đạp Cát Hải.",
+        "speakerID": "spk_15_0105",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0106": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0143.wav",
+        "text": "Bà con buôn bán thì tất nhiên là các thứ nó phải có những cái đồ dùng để quay như là người ta làm. Bây giờ nó nắng nôi gió mấy thì người ta cho vào một cái để giữ gìn hoa thôi.",
+        "speakerID": "spk_15_0106",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0107": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0144.wav",
+        "text": "Cái quán hoa này nằm trong lịch sử. Người ta bưng bít nhiều quá, du khách người ta đến người ta thấy nó trật khít lại như thế. Mà đặc biệt là đằng sau này, làm nhiều cái tuyến đường nó tối tăm lại. Nên mở mang rộng ra, để nó sáng sủa lên, nó ăn nhập vào cái nhà lớn. Đó là điều nhân dân Hải Phòng tự hào về cái quán hoa này đấy.",
+        "speakerID": "spk_15_0107",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0108": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0145.wav",
+        "text": "Chủ yếu của dân cư người ta thải ra. Ngoài ra không có nguồn khác. Có cái thời điểm mà nếu như không tháo kịp thời thì nó có cái ô nhiễm.",
+        "speakerID": "spk_15_0108",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0109": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0146.wav",
+        "text": "Để thao đảo được hệ thống thì cần có hai điều kiện. Điều kiện thứ nhất là mực nước thủy triều là có thể tháo từ cống phi trường A. Và điều kiện thứ hai là có thể lấy được nước từ cống tự chảy Hải An vào hệ thống. Đặc điểm của cống tự chảy Hải An là lấy nước từ kênh Hòa Bình thì đôi khi nước ở đấy bị mặn nên vì thế chúng ta phải kiểm tra độ mặn. Khi độ mặn đảm bảo thì mới được phép lấy nước vào hệ thống.",
+        "speakerID": "spk_15_0109",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0110": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0147.wav",
+        "text": "Thôn thì được trên đầu tư xây dựng nông thôn kiểu mẫu. Các cái hạng mục công trình cũng đã xong hoàn thành. Nhưng hiện nay, cái hệ thống cột điện trên địa bàn, thôn trên dưới, nói riêng và các thôn của xã Tạm Đa, nói chung là các cái hệ thống cột điện cũ hiện nay còn đang gây cái phản cảm mất cái mỹ quan đường phố và gây ảnh hưởng đến cái an toàn giao thông.",
+        "speakerID": "spk_15_0110",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0111": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0148.wav",
+        "text": "Ngành da giày thì tuy tăng trưởng nhanh nhưng sản xuất theo phương thức gia công là chủ yếu, khâu thiết kế còn yếu và chưa được thị trường nước ngoài chấp nhận với địa vị thương hiệu của Việt Nam. Đội ngũ lao động của ngành da giày phát triển nhanh nhưng còn thiếu lao động kỹ thuật được đào tạo chuyên sâu. trình độ công nghệ tuy đã được cải thiện nhưng vẫn thấp so với các quốc gia sản xuất ngành da giày trong khu vực. Các sản phẩm ngành da giày bước đầu đạt chất lượng quốc tế nhưng còn ít chủng loại",
+        "speakerID": "spk_15_0111",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0149.wav",
+        "text": "mẫu mã còn nghèo nàn, chưa đáp ứng được nhu cầu của thế giới. Cơ sở hạ tầng phục vụ cho sản xuất và xuất khẩu của doanh nghiệp da giày đã được cải thiện, tuy nhiên vẫn còn nhiều bất cập và hạn chế.",
+        "speakerID": "spk_15_0111",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0112": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0150.wav",
+        "text": "Cái đánh giá chung của tôi thì về cái mặt tổ chức là rất khoa học, bài bản.",
+        "speakerID": "spk_15_0112",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0113": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0151.wav",
+        "text": "Hiện nay, ban tổ chức đã chọn được năm mẫu để vào vòng trong. Thế và chúng tôi cũng đã phát ra hơn hai nghìn phiếu để xin ý kiến mọi tầng lớp nhân dân. Đặc biệt, ban tổ chức xin ý kiến các đồng chí Lão Thành Cách Mạng, các đồng chí Nguyên, lãnh đạo thành phố, các câu lạc bộ như Công lạc bộ Bạch Đằng. Câu lạc bộ Trung Dũng quyết thắng và đặc biệt là mọi tầng lớp nhân dân",
+        "speakerID": "spk_15_0113",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0152.wav",
+        "text": "chúng tôi sẽ tiếp thu lắng nghe các ý kiến và sẽ cùng với hội đồng nghệ thuật để làm sao lựa chọn ra một mẫu có số lượng bình chọn cao nhất để trình ra hội đồng nhân dân. Chỉ khi nào hội đồng nhân dân thành phố, nơi đại diện cho ý kiến và nguyện vọng của toàn thể cử tri thành phố, thông qua cái nghị quyết, tức là thông qua chọn cái mẫu đó, thì mẫu đó mới chính được là biểu tượng của thành phố Hải Phòng của chúng ta.",
+        "speakerID": "spk_15_0113",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0114": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0153.wav",
+        "text": "Về mặt tổ chức giải đấu là chúng tôi đến giờ phút này đánh giá là rất thành công. Nhưng thứ nhất là về quy mô mà nói thì năm nay là số đội tăng nhiều. Thứ hai là về mặt chất lượng thi đấu của các trận thì nhiều cháu là chơi rất tốt. Đây cũng là một cái cơ hội để các cháu có thể là rèn luyện tiếp tục, phấn đấu lên ở những cái hạng trên và trở thành bóng đá chuyên nghiệp.",
+        "speakerID": "spk_15_0114",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0115": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0154.wav",
+        "text": "Tôi ưa thích nhất là mã số ENTM bảy tám bảy Tôi lựa chọn mã này vì cái này nó độc đáo",
+        "speakerID": "spk_15_0115",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0116": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0155.wav",
+        "text": "Nhìn chung thì được cái sự quan tâm của các cấp các ngành như vậy những nạn nhân da cam thì vẫn là rất là khó khăn cho nên là vẫn cần sự chung tay giúp đỡ của các cái tổ chức cũng như là toàn thể cộng đồng",
+        "speakerID": "spk_15_0116",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0117": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0156.wav",
+        "text": "Đến nay trên địa bàn quận Ngô Quyền, cái kết quả quan trọng nhất đấy là sự đồng thuận của nhân dân. Hiện nay có khoảng mười tám nghìn hộ dân đã triển khai phân loại. Có những ngày cao điểm trên địa bàn quận thu gom được khoảng từ năm mươi tấn rác hữu cơ trên tổng số hai trăm tấn trên một ngày.",
+        "speakerID": "spk_15_0117",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0118": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0157.wav",
+        "text": "Các loại rác thải được xử lý bằng phương pháp chôn lấp sẽ gây ảnh hưởng tiêu cực đến môi trường Như là lãng phí quỹ đất và tiềm ẩn, nguy cơ gây ô nhiễm môi trường ô nhiễm mùi hôi trong không khí, nước rỉ rác lâu dài sẽ ảnh hưởng đến mạch nước ngầm, ảnh hưởng đến chất lượng công sống Đồng thời, việc chôn lấp rác sẽ lãng phí nguồn tài nguyên thiên nhiên và sẽ không thực hiện được mục tiêu của đảng, nhà nước cũng như của thành phố trong việc xây dựng nền kinh tế xanh, kinh tế tuần hoàn, thân thiện với môi trường",
+        "speakerID": "spk_15_0118",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0119": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0158.wav",
+        "text": "Như nhà tôi này, hiến bốn mươi mét vuông đất, em tôi hiến gần một trăm mét đất. Những người ở đây hiến toàn những cái đất, người vài chục mét, người vài mét, hiến đất hết.",
+        "speakerID": "spk_15_0119",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0120": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0159.wav",
+        "text": "nhất để cho người dân hiểu được tất cả những cái vai trò, ý nghĩa của cái việc thực hiện chương trình Nông Thôn Mới Kiểu Mẫu. Xã Học Thành là một trong những xã mà được huyện cũng như là thành phố đánh giá là đơn vị mà triển khai thành công các tuyến đường Nông thôn Mới Kiểu Mẫu cũng như các tiêu chí trong cái bộ tiêu chí Nông thôn Mới Kiểu Mẫu.",
+        "speakerID": "spk_15_0120",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0160.wav",
+        "text": "Xã Học thành thì được thành phố đầu tư mười ba tuyến đường với tổng chiều dài hơn tám km trên phương châm tôn trọng, lắng nghe ý kiến của nhân dân và có sự trao đổi mang tính dân chủ công khai, minh bạch",
+        "speakerID": "spk_15_0120",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0121": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0161.wav",
+        "text": "Các nghệ sĩ chúng tôi thì rõ ràng ai cũng dành những cái tình cảm tốt đẹp nhất, cái tình yêu như với quê hương, với nhà mình để dành cho Hải Phòng.",
+        "speakerID": "spk_15_0121",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0122": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0162.wav",
+        "text": "Quy mô tổ chức thì nó đã vượt qua cái phạm vi của một cái cuộc thi địa phương mà nó đã được tổ chức không những ở thành phố Hải Phòng mà còn ở hai cái trung tâm đào tạo và hoạt động mỹ thuật sôi động nhất trong cả nước. Đã đem đến cho các họa sĩ, các nhà thiết kế một cái sự trân trọng.",
+        "speakerID": "spk_15_0122",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0123": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0163.wav",
+        "text": "Khó khăn của thuyền viên khi đi tàu thì phải xa gia đình. Một khoảng thời gian cũng khá dài. Đặc thù của ngày này là khi anh em về nghỉ phép thì có một khoảng thời gian nghỉ khá dài. Nó sẽ ảnh hưởng đến kinh tế và sẽ gây khó khăn cho anh em.",
+        "speakerID": "spk_15_0123",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0124": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0164.wav",
+        "text": "Ngân hàng Nông nghiệp huyện Vĩnh Bảo và Ủy ban xã (nhân viên), ủy ban thiết khách xã đã hỗ trợ những người khuyết tật cho chúng tôi làm cái tài khoản để trả tiền không dùng tiền mặt. Trả tiền qua tài khoản chúng tôi cảm thấy rất là thuận lợi và dù rằng ở đâu chúng tôi cũng nhận được tiền.",
+        "speakerID": "spk_15_0124",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0125": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0165.wav",
+        "text": "Nhà trường cũng đã kết hợp với lại Ngân hàng Agribank để mở tài khoản thu và thanh toán trên phần mềm thu. thế thì Khi mà thực hiện cái phần mềm này thì đối với lại nhà trường thì thấy rằng là giảm tải rất là nhiều về mặt phiếu thu và hồ sơ. Cái hai nữa là khi sử dụng cái phần mềm này thì nhà trường tránh được cái sự nhầm lẫn trong công tác thu chi.",
+        "speakerID": "spk_15_0125",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0126": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0166.wav",
+        "text": "Riêng bảy tháng đầu năm hai nghìn không trăm hai ba, thì chi nhánh đã mở ba nghìn một trăm sáu mươi tài khoản và phát hành ba nghìn không trăm hai ba thẻ. Trong đó đã mở một nghìn tám trăm hai hai tài khoản thanh toán và phát hành một nghìn bảy trăm hai ba thẻ ATM cho đối tượng hưởng chính sách an sinh xã hội. Số lượng trường mầm non, trường tiểu học, trung học cơ sở đang sử dụng dịch vụ thu học phí là ba mươi sáu trường.",
+        "speakerID": "spk_15_0126",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0127": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0167.wav",
+        "text": "thành phố cũng đã đề ra đấy nhưng cái thực hiện thì nó chưa được thực, tức là chưa được tận tình hết, chưa đến nơi đến chốn cả Chứ bằng thực chất quy định đường để đi bộ khác mà đường để bán hàng nó khác",
+        "speakerID": "spk_15_0127",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0128": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0168.wav",
+        "text": "Ô tô lại đỗ ngang cả cái vạch để cho người đi bộ sang. Mà ô tô người ta đỗ cả ngày, cả sáng, cả chiều, lúc nào cũng có ô tô. Chúng tôi đi bộ, chúng tôi lại lách ra cái thì xe nó quẹt lật.",
+        "speakerID": "spk_15_0128",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0129": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0169.wav",
+        "text": "Đối với chức danh sỹ quan vận hành hiện tại thì trên thị trường thuyền viên Việt Nam thiếu hụt rất là nhiều. Và đặc biệt ở đây là cái lượng thuyền viên sĩ quan vận hành mà tốt nghiệp từ những trường cao đẳng và đại học chính quy. Mình có thể hiểu đây là thuyền viên chất lượng cao. Hiện tại đang thiếu hụt và cũng không đủ đáp ứng cho cái nhu cầu mà các công ty manning cũng như là chủ tàu đang mong muốn.",
+        "speakerID": "spk_15_0129",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0130": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0170.wav",
+        "text": "chỉ tiêu tuyển sinh số lượng thì nó còn phụ thuộc vào nhiều yếu tố. Còn thách thức thì có một cái nó tôi cũng là người đi biển mà. Thì cái nghề này thì nó sẽ có những cái mà các em nó đi làm thì nó khác những cái khác là mình phải",
+        "speakerID": "spk_15_0130",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0171.wav",
+        "text": "khi phải xa nhà mà mình cần cái sự tôn trọng và xã hội. Thế đấy các công ty quản lý thuyền viên các Nguồn nhân sự mình có chính sách hỗ trợ để người ta yên tâm về đi công tác",
+        "speakerID": "spk_15_0130",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0131": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0172.wav",
+        "text": "Nguồn nhân công cũng như cái biến động của người lao động rất là lớn. Mỗi một tháng thường thì rơi vào tầm khoảng bốn năm mươi lao động nghỉ việc và tuyển mới. Gây khó khăn rất là lớn trong việc sản xuất đào tạo nhân công.",
+        "speakerID": "spk_15_0131",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0132": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0173.wav",
+        "text": "Về kết nối giữa các doanh nghiệp gia công với nhau, (thường phụ) chỉ mang tính chất trao đổi những cái chính sách pháp luật để cùng thực hiện, chứ không mang đến tính chất trao đổi về nguồn hàng cũng như đơn hàng.",
+        "speakerID": "spk_15_0132",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0133": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0174.wav",
+        "text": "Trong thời gian vừa qua, thực hiện chủ trương của Hội đồng Nhân dân, Ủy ban nhân Dân đã cho sửa chữa, xây mới Hội trường Trung tâm Văn hóa là nơi tổ chức các cuộc sự kiện lớn của địa phương, làm thay đổi diện mạo cảnh quan của huyện.",
+        "speakerID": "spk_15_0133",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0134": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0175.wav",
+        "text": "Lớp hiện tại có bốn mươi hai cháu, trong đấy có năm mươi phần trăm là con công nhân và trong đó có mười bốn bạn là con công nhân trên khu công nghiệp đã được các cô hoàn thiện hồ sơ để các con được hưởng trợ cấp hai trăm nghìn đồng trên một trẻ một tháng. Ngoài ra thì các giáo viên mà đủ các trình độ từ cao đẳng trở lên thì là mỗi giáo viên sẽ được nhận một triệu đồng một tháng tiền hỗ trợ.",
+        "speakerID": "spk_15_0134",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0135": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0176.wav",
+        "text": "Nghị quyết không bốn của hội đồng nhân dân thành phố là một nghị quyết rất là ưu việt và nhân văn và rất là thiết thực. cái mức hỗ trợ cho các cái đối tượng được thụ hưởng cao hơn so với nghị định một lẻ năm của Chính phủ. Đối với lại Ban Quản lý Kinh tế thì chúng tôi sẽ có",
+        "speakerID": "spk_15_0135",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0177.wav",
+        "text": "cái kiến nghị để các khu công nghiệp cũng sẽ phối hợp và cùng vào cuộc với các ủy ban nhân dân, các quận huyện mà có khu công nghiệp trong cái việc về cấp cái giấy xác nhận cho công nhân để họ có thể được thụ hưởng nghị quyết một cách tốt nhất.",
+        "speakerID": "spk_15_0135",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0136": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0178.wav",
+        "text": "Được Bộ Văn Hóa công nhận có một không hai Việt Nam, đó là Pho Tượng Đức Thánh Cả Linh Lang Đại Vương. Khi mở cửa ra, ngài đứng lên khép cửa vào, ngài ngồi xuống. Ngoài Pho Tượng Đức Thánh Cả Linh Lang ra thì Miếu Bảo Hà chúng tôi còn giữ được tất cả các cái tượng thờ mà cách đây hơn bảy trăm năm về trước.",
+        "speakerID": "spk_15_0136",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0179.wav",
+        "text": "Ở đây các cụ nghệ nhân làm sơn mài, điêu khắc và làm con rối, chế tác con rối cho nên các cụ đã thiết kế và chế tác pho tượng Đức Thánh Cả Có cái cơ chế hoạt động gần như là con rối nước hoặc rối cạn Cũng (rằng say) là nó cũng gọi là đòn bẩy và gọi là (dữ lực) nữa",
+        "speakerID": "spk_15_0136",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0180.wav",
+        "text": "Xuất phát từ cái miếu Bảo Hà này rồi giữ gìn được cái nghề Điêu khắc Sơn Mạ Đục tượng Điêu khắc Sơn Mạ của quê hương",
+        "speakerID": "spk_15_0136",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0137": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0181.wav",
+        "text": "Tôi cũng thấy là ngôi miếu này rất đẹp, được chiêm ngưỡng bức tượng là đấy, đứng lên ngồi xuống.",
+        "speakerID": "spk_15_0137",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0138": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0182.wav",
+        "text": "Dự án hiện tại là gồm có mười bốn trụ, hai mố. Thì hiện nay thì thi công duy nhất được một trụ, đó là trụ T tám. Trụ T chín thì thì thi công được phần cọc.",
+        "speakerID": "spk_15_0138",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0139": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0183.wav",
+        "text": "Nếu mà đến tháng chín có thì anh em cũng sẽ cố gắng phấn đấu đạt đúng theo kế hoạch của ban. Còn nếu mà chậm hơn nữa thì thực sự nó cũng khó.",
+        "speakerID": "spk_15_0139",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0140": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0184.wav",
+        "text": "Từ những nhân vật rối, thì tôi cũng cho học sinh tạo hình bằng những sản phẩm, bằng các vật liệu tái chế. Thấy học sinh rất hứng thú, tôi thấy thông qua các nhân vật con rối, học sinh tự tin hơn để kể những câu chuyện, để tâm sự, nói ra những điều mình muốn nói.",
+        "speakerID": "spk_15_0140",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0141": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0185.wav",
+        "text": "Hiện có mười hai trường hợp, tuy nhiên trong thời gian vừa qua đối với địa phương chúng tôi đã xây dựng kế hoạch khắc phục từng trường hợp trong thời gian tới trên cơ sở xây dựng kế hoạch và cũng theo tiến độ lộ trình của huyện chỉ đạo. Các trường hợp còn lại chúng tôi sẽ chỉ đạo và vận động tuyên truyền các hộ vi phạm để tự tháo dỡ, tự khắc phục",
+        "speakerID": "spk_15_0141",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0142": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0186.wav",
+        "text": "Cháu lên Hà Nội trải nghiệm làm một thời gian được khoảng năm ngày. Sau khi đó bố mẹ cháu đón cháu về, về đến nhà thì khoảng ba hôm. Cháu bị sốt từ cảm cúm thôi, thì thấy cảm rồi truyền nước. Nhưng mà không khỏi thì đưa vào bệnh viện xét nghiệm thì kết luận là sốt xuất huyết.",
+        "speakerID": "spk_15_0142",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0143": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0187.wav",
+        "text": "Mùi mà tồn dư ngoài môi trường thì thực ra nó chỉ là cái mùi của thực phẩm Nó không phải là mùi hóa chất hay là mùi gì đó nó độc hại Chúng tôi đã đăng ký qua tất cả những cái khâu vệ sinh an toàn thực phẩm rồi Công ty đã tìm rất nhiều biện pháp để khắc phục Nhưng mà để mà lâu dài thì công ty sẽ không sản xuất cái mặt hàng này nữa",
+        "speakerID": "spk_15_0143",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0144": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0188.wav",
+        "text": "Qua xác minh thì không có mùi hôi thối lan tỏa trong không khí. Ở đây thì liên quan cơ sở thôn cũng phản ánh là cái mùi hương liệu tồn dư trong quá trình mà sản xuất cái chân gà cay đấy. Trong khu vực nhà máy nó xây dựng hệ thống xử lý nước thải. Nước thải sau khi được xử lý thì được dẫn bằng một đường ống ra cái khu vực kinh trên địa bàn thôn Nghi Dương. Nước đã qua xử lý thì không có màu đen xám.",
+        "speakerID": "spk_15_0144",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0145": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0189.wav",
+        "text": "Nhân những ngày hai bảy tháng bảy hay mùng mười tháng tám là ngày của nạn nhân chất độc da cam, tặng quà này rất nghĩa là làm cho những nạn nhân cũng thấy ấm lòng.",
+        "speakerID": "spk_15_0145",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0146": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0190.wav",
+        "text": "Chúng tôi cũng đã cố gắng rất là nhiều về vấn đề giao thông đặc biệt cái đường này nó rất là phức tạp. Nên là lưu lượng xe, ô tô rồi xe máy đi lại rất nhiều. Chúng tôi đã làm lập tám chốt đảm bảo giao thông xung quanh cái chỗ khu vực công trường. Thứ hai chúng tôi đã lắp đặt rất nhiều biển báo, biển chỉ dẫn, người hướng dẫn, rào chắn.",
+        "speakerID": "spk_15_0146",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0191.wav",
+        "text": "Xe máy lao vào cái đường xe công đi, mà đi ngược chiều. Xong rồi đi vào đường cấm. Chẳng may mà ngã vào đấy thì nó rất mệt mỏi. Cái thứ hai này, đường khi đang thi công rồi thì nó sẽ nhiều cái ổ gà, nó nhiều (mấm mô). Thì người dân đi vào sẽ xảy ra tai nạn.",
+        "speakerID": "spk_15_0146",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0192.wav",
+        "text": "Lưu lượng container và lượng xe ở cái nút rào này nó quá lớn Nên là cũng một phần ảnh hưởng rất lớn về cái an toàn Tới đây thì sẽ có hạng mục mà thi công (dầm hộp) Thì nó thi công trên cao và đúc trên các khối đà ráo thì phía nhà thầu cũng mong muốn là là phân luồng để giảm tải cái lượng xe container đi vào để đảm bảo cái chất lượng của cái công trình của mình",
+        "speakerID": "spk_15_0146",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0147": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0193.wav",
+        "text": "Mặt trận Tổ quốc Việt Nam và các tổ chức chính trị làm nòng cốt để nhân dân làm chủ. Thế nhưng mà làm nòng cốt thì làm thế nào thì lại phải nghiên cứu tiếp. Chúng ta làm sao phải đưa vào văn kiện để làm sao làm đậm nét sâu sắc thêm vị trí, vị thế chính trị vai trò tầm quan trọng của Mặt trận Tổ quốc Việt Nam",
+        "speakerID": "spk_15_0147",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0194.wav",
+        "text": "mà giải nghĩa cho rõ là tổ chức Liên minh Chính trị Liên hiệp tự nguyện và là cơ sở chính trị của chính quyền và để làm gì? để chúng ta phải là gì làm cho cả hệ thống chính trị hiểu sâu sắc về mặt trận tổ quốc Việt Nam phải rà soát lại tất cả các chủ trương đường lối của đảng",
+        "speakerID": "spk_15_0147",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0195.wav",
+        "text": "và các văn bản pháp luật của nhà nước để làm sao mà chúng ta củng cố thêm địa vị chính trị và địa vị pháp lý và ban hành các chủ trương mới và các văn bản pháp luật, nhất là luật giám sát của nhân dân",
+        "speakerID": "spk_15_0147",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0196.wav",
+        "text": "Đúng là trong giai đoạn cách mạng hiện nay, nếu muốn khẳng định vị trí vai trò tầm quan trọng của mật trận Tổ quốc Việt Nam thì phải nâng cao chất lượng hoạt động giám sát phản biện xã hội của mặt trận Tổ quốc Việt Nam.",
+        "speakerID": "spk_15_0147",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0148": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0197.wav",
+        "text": "Ở các cái nhà xưởng, tại các vị trí làm việc thì đều có các vị trí, các cái thùng rác được hướng dẫn phân loại rõ ràng. Và chúng tôi cũng được đào tạo rất cụ thể về việc phân loại rác thải tại nguồn. Về hoạt động tiết kiệm năng lượng thì hiện tại ở công ty chúng tôi cũng có các dự án về việc cải thiện năng lượng. Ví dụ như sử dụng năng lượng tự nhiên, điện mặt trời cho việc làm mát nhà xưởng.",
+        "speakerID": "spk_15_0148",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0149": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0198.wav",
+        "text": "Trường Mầm Non Hồng Thái thực hiện theo kế hoạch của Ủy ban nhân dân huyện đón chuẩn giai đoạn hai. Về công tác chuẩn bị các điều kiện về cơ sở vật chất thì đến nay chúng tôi đã có đủ mười bốn phòng học.",
+        "speakerID": "spk_15_0149",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0199.wav",
+        "text": "để đón nhận các cháu trong độ tuổi mầm non trên địa bàn ra lớp. Các phòng học đảm bảo đồ dùng đồ chơi trang thiết bị. Nhà trường cũng có đủ các phòng chức năng, phòng hiệu bộ. Bếp ăn cũng đã được xây dựng mới từ năm hai nghìn hai mốt đến nay nên các điều kiện về cơ sở vật chất đều đã đảm bảo đủ các điều kiện của công tác xây dựng chuẩn hai",
+        "speakerID": "spk_15_0149",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0150": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0200.wav",
+        "text": "Nhà trường đã đầu tư bổ sung một số cơ sở vật chất ở các phòng học, phòng chức năng đảm bảo về cơ bản đảm bảo được yêu cầu của trường chuẩn quốc gia. Đội ngũ giáo viên nhà trường thì tuy là còn thiếu, song là nhà trường sẽ tự chủ trong vấn đề là tìm nguồn và hợp đồng giáo viên để đảm bảo chuẩn về trình độ và đủ về số lượng.",
+        "speakerID": "spk_15_0150",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0151": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0201.wav",
+        "text": "Kết quả đạt được của em Vân Anh thì cũng mong rằng đây cũng là một cái động lực để học sinh các khóa tiếp theo có thể nhìn vào đấy để cố gắng phấn đấu. Tức là học sinh trường làng vẫn có thể được vinh danh và cũng có thể là đạt được thủ khoa toàn quốc giống như chị Vân Anh.",
+        "speakerID": "spk_15_0151",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0152": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0202.wav",
+        "text": "rất là hài lòng và cũng biết ơn đảng, chính quyền cũng như thành phố đã quan tâm đến người dân. Và cũng qua đây thì mong muốn làm sao thành phố cũng như là nhà nước quan tâm hơn nữa đến đời sống của nhân dân và có nhiều cái nghị quyết thông thoáng hơn và sát thực hơn với người dân để đưa nền kinh tế cho nhân dân chúng tôi được nâng cao hơn một bước nữa.",
+        "speakerID": "spk_15_0152",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0203.wav",
+        "text": "Nông thôn quê hương tôi là sang trang, sạch đẹp và nhân dân rất phấn khởi. Đường điện, đường trường trạm được rất là sang trang. Cá nhân tôi là một người dân thì tôi cũng thấy là",
+        "speakerID": "spk_15_0152",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0153": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0204.wav",
+        "text": "ý kiến của hộ dân cũng chỉ đề nghị là về cái mùi khó chịu người dân đề xuất công ty sản xuất chân gà không còn cái mùi khó chịu môi trường phải đảm bảo",
+        "speakerID": "spk_15_0153",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0154": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0205.wav",
+        "text": "Về phía công ty thì cũng đã rất là tích cực phối hợp với địa phương và cũng đã cho dừng hoạt động ngay sau khi địa phương có ý kiến trao đổi và cũng đã xử lý và lắp đặt cái hệ thống hút mùi. Tuy nhiên thì cái hệ thống hút mùi này nó cũng chưa đảm bảo được triệt để được cái mùi phát tán trong môi trường.",
+        "speakerID": "spk_15_0154",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0155": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0206.wav",
+        "text": "Em cảm thấy rất là vui và hạnh phúc vì mình cũng được góp một phần nào đó của mình, công sức của mình nhỏ thôi để giúp cho những gia đình liệt sĩ.",
+        "speakerID": "spk_15_0155",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0156": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0207.wav",
+        "text": "Mấy tháng trời qua như là đi các bệnh viện chạy thận nhưng mà về vẫn yếu, ăn cũng không ăn được. Thế là bố nó lo sức khỏe cho con rồi là không biết nó có tồn tại được lâu không. Nên là thôi cố gắng rồi là hiến cho con một quả thận. Lúc chồng con ở trong phòng mổ thì ở ngoài rất lo lắng. Ca mổ là thành công tốt đẹp là cô rất là mừng.",
+        "speakerID": "spk_15_0156",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0157": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0208.wav",
+        "text": "So với lần trước thì chúng tôi triển khai trong khoảng năm tiếng. Lần này chúng tôi triển khai trong khoảng bốn tiếng rưỡi. Và kết quả cho đến nay thì cả hai bệnh nhân đều khỏe mạnh. Như chúng ta đã biết là bệnh nhân nhận thận đã được chuyển xuống (ngoại bẩy) với các chỉ số cơ bản là đã trở về bình thường.",
+        "speakerID": "spk_15_0157",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0158": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0209.wav",
+        "text": "Bình thường thì chúng tôi chăm sóc vào buổi sáng, nhưng bây giờ chúng tôi phải dời lịch sang sáng sớm hơn. Công nhân sẽ đi làm linh động. Thời tiết rất là nắng nóng, không thể tưới. Lúc nắng khoảng tầm chín giờ bắt đầu nắng rồi. Chúng tôi phải tưới từ tầm sáu giờ đến bảy rưỡi. Còn chiều chúng tôi cũng phải tưới muộn hơn, từ bốn rưỡi đến sáu rưỡi.",
+        "speakerID": "spk_15_0158",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0159": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0210.wav",
+        "text": "Thời tiết nắng nóng cao điểm như này thì chúng tôi cũng phải thay đổi giờ làm việc. Chúng tôi làm sớm từ sáu giờ cho mà đến mười giờ thì mình nghỉ tránh nắng. Còn buổi chiều thì mình làm muộn đi từ hai rưỡi.",
+        "speakerID": "spk_15_0159",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0160": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0211.wav",
+        "text": "Trong thời gian tới, chúng tôi hết sức là cố gắng để hoàn thiện các hồ sơ để gia đình rồi cũng như là địa phương và huyện mong đợi cấp trên làm sao mà công nhận những liệt sĩ mà hiện nay còn chưa được công nhận.",
+        "speakerID": "spk_15_0160",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0161": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0212.wav",
+        "text": "Như năm nay mà thời tiết này chúng tôi cảm thấy vô tư thôi, không có sợ sệt gì, thiên tai khắc nghiệt gì nữa. Thế cho nên là chúng tôi thấy rằng là như thế này là tuổi già mà được cái điều kiện mà quan tâm của trên, rồi lại sự cố gắng của gia đình mà được căn nhà như thế này thì thật là toại nguyện quá.",
+        "speakerID": "spk_15_0161",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0162": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0213.wav",
+        "text": "Các đồng chí về tại gia đình thăm và tặng quà thì chúng tôi thấy là đây là một cái nguồn động viên rất lớn của các đồng chí lãnh đạo đã quan tâm đến các hộ gia đình chính sách. Tôi thì rất là phấn khởi và xúc động.",
+        "speakerID": "spk_15_0162",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0163": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0214.wav",
+        "text": "Mặc dù còn khó khăn, nhưng các đồng chí lãnh đạo, đảng, chính quyền địa phương quan tâm thế này rất là trân trọng, rất là quý.",
+        "speakerID": "spk_15_0163",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0164": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0215.wav",
+        "text": "Trong ngày hôm nay thì quận đoàn Đồ Sơn đã tổ chức lễ thắp nến tri ân các anh hùng liệt sĩ tại Nghĩa trang liệt sĩ quận nhằm tỏ lòng thành kính biết ơn đối với thế hệ cha anh đi trước cũng như là giáo dục truyền thống, lòng yêu nước cho thế hệ đoàn viên thanh thiếu nhi của quận.",
+        "speakerID": "spk_15_0164",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0165": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0216.wav",
+        "text": "Hôm nay bọn em rất vui được đến đây, nhân ngày hai bảy tháng bảy thì phụ giúp vợ của liệt sĩ Ngô Vân Cường, giúp đỡ bà vì việc lau dọn, dọn dẹp nhà cửa. Và nữa thì bọn em cũng làm một bữa ăn nho nhỏ, mong muốn giúp đỡ mọi người nhiều hơn để xứng đáng với bọn em là thanh niên mà. Bọn em phải tham gia giúp đỡ những người đã cống hiến cho đất nước chứ.",
+        "speakerID": "spk_15_0165",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0166": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0217.wav",
+        "text": "Những cái sưu tập và có những cái hiện vật đó để đưa về. Tuy con người đã mãi mãi nằm với lại non sông đất nước, nhưng cái hiện vật đó thì nó vẫn còn mãi mãi với cuộc sống và với thời gian để giúp cho sau này các thế hệ trẻ. Trên mười còn thêm tiếp mất tám mốt phần trăm",
+        "speakerID": "spk_15_0166",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0218.wav",
+        "text": "nhưng với quyết tâm với cái tinh thần là làm phấn đấu hết mình vì sự nghiệp và công tác để cho nó hoàn thành tốt nhiệm vụ. Đặc biệt là khi nào mà còn sức là còn lao động, còn chiến đấu để xây dựng đất nước ta ngày đàng hoàng hơn, to đẹp hơn như lời bác Hồ mong muốn.",
+        "speakerID": "spk_15_0166",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0167": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0219.wav",
+        "text": "không những ở vùng hàm mặt, ở những vùng khác. Và cũng là một bệnh khó, chúng tôi đang nhờ các quỹ bảo trợ Họ sẽ cung cấp những bệnh nhân như này để chúng tôi sẽ tiến hành những ca kế tiếp và theo mục đích hoàn toàn nhân đạo.",
+        "speakerID": "spk_15_0167",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0220.wav",
+        "text": "Tiếp theo ca này, bệnh viện chúng tôi xây dựng một cái trung tâm sinh học phân tử làm sao phục vụ cho tốt cho các công tác chẩn đoán và điều trị những bệnh về ung thư, những bệnh về miễn dịch. Chúng tôi đang chuẩn bị nhân lực để mổ bằng robot những ca bệnh liên quan (ưu biếu) mà phức tạp như thế này",
+        "speakerID": "spk_15_0167",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0168": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0221.wav",
+        "text": "Sự kết hợp giữa THP và Shining Media thì chắc chắn là sẽ mở ra một giai đoạn mới cho công ty cổ phần truyền thông Shining Media. Và chắc chắn là nó cũng mở ra một cái thời kỳ mới cho ngành truyền thông nói chung và ngành tổ chức sự kiện nói riêng tại Hải Phòng. Và Memory Show là một chuỗi show nhạc tình được phối hợp sản xuất bởi THP và Shining Media. Và chúng tôi không đặt cao về vấn đề lợi nhuận mà chúng tôi mong muốn mang đến cho người dân Hải Phòng những món quà tinh thần nhiều hơn nữa trong thời gian tới.",
+        "speakerID": "spk_15_0168",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0169": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0222.wav",
+        "text": "Qua quá trình làm bánh đa thì cũng phải lựa chọn cái gạo là phải ngon, trắng.",
+        "speakerID": "spk_15_0169",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0223.wav",
+        "text": "Làm sao mà cái hơi nó phải đủ. Cái độ hơi thì bánh nó mới dền.",
+        "speakerID": "spk_15_0169",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0224.wav",
+        "text": "Một ngày nhà tôi làm được bốn tạ gạo thì là được năm tạ bánh.",
+        "speakerID": "spk_15_0169",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0225.wav",
+        "text": "Từ trước bây giờ thì nói chung là nổi tiếng bánh đa của làng Đông Xá chúng tôi. Bánh đa ở đây làm nó cũng ngon, bánh nó cũng được dai, mà nó quánh bánh chứ nó không bị ái. Từ Hà Nội, Nam Định, Quảng Ninh là cũng về đến đây để đặt bánh.",
+        "speakerID": "spk_15_0169",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0226.wav",
+        "text": "Thì làng nghề truyền thống của làng từ thời xưa cổ, các cụ từ xưa đến giờ, nói chung nó yêu nghề. Mình cũng muốn thế là làm thôi.",
+        "speakerID": "spk_15_0169",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0170": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0227.wav",
+        "text": "Bác Trần Hồng Quảng luôn luôn rất là tâm huyết và quan tâm tới những gia đình chính sách tại địa phương. Và hàng năm thì đều hỗ trợ rồi ủng hộ cho các gia đình thương binh liệt sĩ tại địa phương. Các đồng chí mà thương binh bệnh binh đều được Bác Quảng hỗ trợ rồi tạo công ăn việc làm.",
+        "speakerID": "spk_15_0170",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0171": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0228.wav",
+        "text": "Cháu rất là bất ngờ và khi mà nhận được điểm phải gọi là cảm giác như vỡ oà trong cả hạnh phúc đấy ạ. Và cái đầu tiên cháu nhìn là điểm môn ngữ văn bởi vì là cháu cũng về nhà tự chấm và khi mà xem điểm thì cháu cũng thật sự bất ngờ bởi vì số điểm mà cũng vượt qua kỳ vọng của cháu và các môn thì cũng đã đạt đến mức mà cháu gần như có thể là hy vọng có thể đạt được và điều đó làm cháu rất là hạnh phúc và sung sướng ạ.",
+        "speakerID": "spk_15_0171",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0172": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0229.wav",
+        "text": "Gia đình tôi thì tạo mọi điều kiện cho cháu, đặc biệt là về thời gian và sức khỏe. Phải quan tâm, động viên con và chăm sóc con sức khỏe. Đặc biệt có sức khỏe thì mới có thể tiếp thu được mọi kiến thức trên lớp.",
+        "speakerID": "spk_15_0172",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0173": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0230.wav",
+        "text": "Với cái kết quả đạt được của em Vân Anh thì cũng mong rằng đây cũng là một cái động lực để học sinh các khóa tiếp theo có thể nhìn vào đấy để cố gắng phấn đấu. Tức là học sinh trường làng vẫn có thể được vinh danh và cũng có thể là đạt được thủ khoa toàn quốc giống như chị Vân Anh.",
+        "speakerID": "spk_15_0173",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0174": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0231.wav",
+        "text": "Tư vấn giám sát luôn luôn đôn đốc nhà thầu thực hiện về các cái nguồn vật liệu đổ vào các thứ thì tư vấn giám sát luôn luôn giám sát chặt chẽ về cái vật liệu đổ vào để đảm bảo chất lượng công trình.",
+        "speakerID": "spk_15_0174",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0175": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0232.wav",
+        "text": " và Cũng đang bám sát cái tiến độ nhưng tuy nhiên là có một số cái khó khăn vướng mắc về cái mặt bằng. Nhà thầu cũng kiến nghị với chủ đầu tư và Ủy ban nhân dân huyện An Dương làm sao thúc đẩy nhanh về cái công tác giải phóng mặt bằng để nhà thầu đáp ứng được cái tiến độ.",
+        "speakerID": "spk_15_0175",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0233.wav",
+        "text": "Nhà thầu đã huy động tất cả máy móc, thiết bị, đồng loạt, ba mũi thi công của ba đơn vị nhà thầu trong Luận Danh và đầy đủ một trăm phần trăm nhân lực để đáp ứng được cái tiến độ sản lượng nó khoảng hơn hai mươi phần trăm",
+        "speakerID": "spk_15_0175",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0176": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0234.wav",
+        "text": "U này đấy là U mổ lần thứ ba, do đó là nó đã xâm lấn, nó chèn ép lên tất cả các cơ quan quý ở trên cơ thể. Ví dụ như là vùng mắt, vùng xoang (sàng) hàm, rồi thì thậm chí lên trên nền sọ, xâm lấn sang bên mũi, mất toàn bộ cái vòm và toàn bộ cái xương hàm trên bị phá hủy.",
+        "speakerID": "spk_15_0176",
+        "gender": 1,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0235.wav",
+        "text": "Sau khi tiến hành hội chẩn trực tiếp giám đốc chỉ đạo thì chúng tôi đã tiến hành phẫu thuật cho bệnh nhân. Miếng Tintometer này là một trong những lần đầu tiên được sử dụng để tái tạng, làm cho khuôn mặt người ta không bị méo mó, xộc xệch sau mổ.",
+        "speakerID": "spk_15_0176",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0177": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0236.wav",
+        "text": "Khi con vào viện thì cái khối u của con trên mặt rất là to, nó biến chứng, nó chảy máu nhiều. Lúc đấy là con gần như là suy kiệt rồi. Và vào thì các bác sĩ đã tiến hành là mổ cái đường dạ dày để ăn thông cho con và truyền dinh dưỡng, truyền máu. Khi con vào đây là con rất là gầy, con chỉ có bốn mươi cân thôi. Trước khi lên bàn mổ là con lên được năm cân. Đến ngày hôm nay là ca mổ cũng đã thành công.",
+        "speakerID": "spk_15_0177",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0178": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0237.wav",
+        "text": "Tiến độ như chị nhìn thấy là tiến độ công trường là các mũi thi công của mình trên toàn bộ dự án, dưới nước cũng như trên bờ là mình thi công là dồn dập, tập trung là thi công ồ ạt. Còn công việc thì như chị biết đây là công tác có cái bến cầu đệm này thì mình sẽ cố gắng trong tháng mười một năm hai không hai ba là mình sẽ hoàn thành công tác bến cầu đệm và công tác đóng cọc của cái bến chính thì mình cố gắng là hoàn thành trong cuối tháng mười và đầu tháng mười một.",
+        "speakerID": "spk_15_0178",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0179": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0238.wav",
+        "text": "Nghe lời của người nhà nào bảo đi làm về thấy nó đi qua cái nghĩa trang thấy có kiểu biểu hiện như ma đuổi đi xem thì thầy đã bảo là cái này thì về chỉ thắp hương thôi thắp hương để mà cầu khấn thôi thôi chứ không nghĩ là nó an tâm nhưng mà càng ngày càng nặng thêm.",
+        "speakerID": "spk_15_0179",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0180": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0239.wav",
+        "text": "Mùa hè này thì nhà thầu cũng đã bố trí cái shelter gọi là cái nhà nghỉ tạm cho cán bộ công nhân viên điều chỉnh buổi sáng là cán bộ công nhân làm việc từ sáu giờ sáng cho đến mười rưỡi Chủ đầu tư cũng rất là ủng hộ và cũng tháo gỡ tất cả những cái vướng mắc khó khăn về thủ tục để nhà thầu triển khai thi công mà không có vướng mắc gì",
+        "speakerID": "spk_15_0180",
+        "gender": 1,
+        "split": "train"
+      }
+    ],
+    "spk_15_0181": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0240.wav",
+        "text": "Luật nhà ở năm hai không mười bốn đã quy định cụ thể về đối tượng và điều kiện được mua hoặc thuê mua nhà ở xã hội thì có thể tóm gọi là bảy cái nhóm đối tượng sau. Thứ nhất là người có công với cách mạng, người thu nhập thấp, hộ nghèo, hộ cận nghèo tại khu vực đô thị, người lao động đang làm việc tại các doanh nghiệp và trong khu công nghiệp",
+        "speakerID": "spk_15_0181",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0241.wav",
+        "text": "sĩ quan, hạ sĩ quan, chuyên môn kỹ thuật, quân nhân trong các cơ quan đơn vị của khối an ninh và quốc phòng, Các đối tượng mà đã trả lại nhà công vụ rồi hộ gia đình cá nhân thuộc diện bị thu hồi đất và phải giải tỏa, phá dỡ nhưng chưa được nhà nước bồi thường hoặc bố trí bằng nhà ở, đất ở thì có điều kiện để mua nhà xã hội",
+        "speakerID": "spk_15_0181",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0242.wav",
+        "text": "Và các đối tượng này đã được quy định rất rõ ràng trong luật Do vậy là những đối tượng nào nằm ngoài phạm vi này thì đều không phải là đối tượng được xem xét, xét duyệt mua nhà ở xã hội",
+        "speakerID": "spk_15_0181",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0243.wav",
+        "text": "Nghị định một trăm của Chính phủ cũng quy định rất rõ về quy trình xây dựng giá bán nhà ở xã hội. Các chủ đầu tư xây dựng nhà ở xã hội sẽ xây dựng cái giá bán dựa trên những chi phí của họ và những lãi định mức được nhà nước quy định. Sau đó thì họ trình ủy ban nhân dân thành phố và ủy ban nhân dân thành phố sẽ giao cho cơ quan có thẩm quyền Cụ thể ở đây là sở xây dựng",
+        "speakerID": "spk_15_0181",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0244.wav",
+        "text": "để kiểm tra thẩm tra thẩm định giá bán nhà ở xã hội Sau khi sở xây dựng thẩm định thẩm tra giá bán thì sẽ lại báo cáo ủy ban nhân dân thành phố và thông báo lại cho chủ đầu tư là giá bán nhà ở xã hội tại dự án này sẽ là giá bao nhiêu theo đúng quy định pháp luật",
+        "speakerID": "spk_15_0181",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0245.wav",
+        "text": "Sau tất cả các quy trình đó thì nhà đầu tư sẽ công bố giá bán nhà ở xã hội và các đối tượng được hưởng những chính sách của nhà ở xã hội sẽ đăng ký mua theo những giá bán đã công bố.",
+        "speakerID": "spk_15_0181",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0246.wav",
+        "text": "giá nhà ở xã hội các dự án nhà ở xã hội tiến độ thực hiện đến đâu để tránh những tình trạng thông tin tràn lan thất thiệt và tạo điều kiện cho những đối tượng trục lợi từ những chính sách ưu đãi về nhà ở xã hội của thành phố cũng như của nhà nước.",
+        "speakerID": "spk_15_0181",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0247.wav",
+        "text": ",Hiện nay tất cả các thông tin về nhà ở xã hội trên địa bàn thành phố Hải Phòng đã được chúng tôi công khai trên website của Sở xây dựng có địa chỉ như sau soxaydung.haiphong.gov.vn để có thông tin chính xác về đối tượng được mua nhà ở xã hội",
+        "speakerID": "spk_15_0181",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0182": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0248.wav",
+        "text": "Về lý do mà em chọn cái phương thức xét học bạ thì cũng khá đơn giản tại vì điểm số của em cũng khá ổn ở trường. Cộng thêm với việc là em cũng đang theo học tại trường chuyên thì với một số trường đại học thì sẽ được cộng thêm điểm khuyến khích. Và em đã nghĩ là với một lợi thế như thế thì tại sao mình lại không tận dụng.",
+        "speakerID": "spk_15_0182",
+        "gender": 0,
+        "split": "train"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0249.wav",
+        "text": "Với việc xét tuyển vào trường thì có rất là nhiều cơ hội để mà chọn được cái môi trường mà mình mong muốn. Cũng như là không bị áp lực tâm lý khi mà đi thi.",
+        "speakerID": "spk_15_0182",
+        "gender": 0,
+        "split": "train"
+      }
+    ],
+    "spk_15_0183": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0250.wav",
+        "text": "Việc mà mình xét tuyển bằng học bạ nó cho mình một cái ưu thế rất là lớn, đặc biệt là khi mà mình xét vào các trường lớn và người ta sẽ quy ra để mình sẽ được các học bổng. Ví dụ như em là vào các trường ngoại ngữ thì việc mà em có học bạ đẹp cộng với cả các chứng chỉ ngoại ngữ hoặc là giải liên quan đến các môn ngoại ngữ sẽ tạo cho em một cái thế rất là mạnh để có thể có được học bổng từ bảy mươi đến một trăm phần trăm của các trường.",
+        "speakerID": "spk_15_0183",
+        "gender": 0,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0184": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0251.wav",
+        "text": "Thầy bảo là cái đám đất nhà mình nó nghịch, nó không được tốt lắm. Thì mình cũng cúng, mình cũng tạ, mình cũng làm, cũng theo thầy thôi. Chứ mình là người trần mắt thịt có biết gì đâu. thầy Chỉ thầy bảo đâu thì mình biết lấy và làm thôi. Xong thì cũng vẫn cứ bệnh, vẫn cứ ốm. Mình bảo thôi cứ cho đi sang bác sĩ kiểm tra chứ cứ ở nhà cúng này mất nhiều tiền mà không mang lại cái gì.",
+        "speakerID": "spk_15_0184",
+        "gender": 0,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0185": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0252.wav",
+        "text": "Thứ ba nữa là đánh giá, phân tích Tờ khai tháng quý để làm sao kịp thời đôn đốc những số phát sinh vào ngân sách nhà nước, làm tốt công tác thanh tra kiểm tra, làm tốt công tác quản lý nợ, cưỡng chế nợ thuế. Cương quyết là sẽ xử lý, cưỡng chế những trường hợp nợ lớn để nộp vào ngân sách nhà nước.",
+        "speakerID": "spk_15_0185",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0253.wav",
+        "text": "cũng đã đề ra các giải pháp thứ nhất là sẽ tiếp tục tham mưu cho quận ủy, ủy ban nhân dân hai quận về công tác đấu giá đất để kịp thời có nguồn thu thuộc sử dụng tiền đất. Thứ hai nữa là duy trì hai đoàn công tác của các quận để làm công tác thu nợ đầu đối với tiền thuê đất. ",
+        "speakerID": "spk_15_0185",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0186": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0254.wav",
+        "text": "Ngày trước khi cháu hưng học, là học đội tuyển, phải lên tập huấn trên Hà Nội, là các cháu không có kinh phí đâu. Nhưng từ năm hai không mười tám, các cháu bắt đầu có kinh phí đi học. Chính vì cái sự động viên và cái chính sách đầu tư mạnh mẽ cho giáo dục, các cháu được tiếp cận với những thầy cô, giáo sư có chuyên môn rất giỏi mới có cơ hội để đi thi đấu ở đấu trường quốc tế.",
+        "speakerID": "spk_15_0186",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0187": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0255.wav",
+        "text": "Hai anh em trai mà cùng được huy chương vàng thì phải là một cái điều gì đấy rất là đặc biệt. Nhưng mà em cũng biết là đây cũng chỉ là khởi đầu thôi. Còn rất là nhiều thử thách, rất là nhiều chông gai đang chờ đợi phía trước. Mình không được ngủ quên trên chiến thắng. Mình phải lúc nào cũng tiến lên phía trước và vượt qua bản thân mình ngày hôm qua.",
+        "speakerID": "spk_15_0187",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0188": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0256.wav",
+        "text": "Vì cái con đường này nó là đường ngắn cho nên là các xe công khi vắng bóng công an là các xe công cũng vẫn cứ chạy. Nếu không cứ tình trạng xe công chạy này là rất ảnh hưởng đến sức khỏe của con người. Hai nữa là nó ảnh hưởng đến nhà cửa của nhân dân.",
+        "speakerID": "spk_15_0188",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0189": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0257.wav",
+        "text": "Trong các cái giờ cao điểm,thì lực lượng xe phương tiện gọi là xe công vẫn tham gia rất đông trên tuyến đường này, cho nên rất là nguy hiểm. Về kiến nghị địa phương thì cũng kiến nghị với cơ quan chức năng là sẽ kiên quyết xử lý nghiêm những trường hợp xe công chạy quá tải vi phạm trên đường này.",
+        "speakerID": "spk_15_0189",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0190": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0258.wav",
+        "text": "Cục thuế Thành phố Hải Phòng tăng cường công tác tuyên truyền đến người nộp thuế và hướng dẫn người nộp thuế phát hiện những hành vi mà người nộp thuế có dấu hiệu sử dụng không hợp pháp hóa đơn và gian lận trong việc sử dụng hóa đơn điện tử. Cục thuế Thành phố Hải Phòng cũng có gửi văn bản rồi là thư ngỏ đến tất cả người nộp thuế. Cục thuế Thành phố Hải Phòng là tăng cường cái tổ kiểm soát quản lý rủi ro trong sử dụng hóa đơn điện tử",
+        "speakerID": "spk_15_0190",
+        "gender": 0,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0259.wav",
+        "text": "để thường xuyên kiểm tra, tra cứu trên hệ thống sử dụng hóa đơn điện tử nhằm phát hiện và ngăn chặn kịp thời những người nộp thuế có dấu hiệu mà rủi ro về hóa đơn và về thuế Trường hợp phát hiện của thuế thành phố Hải Phòng sẽ làm biện pháp rất mạnh đó là mời người nộp thuế lên cơ quan thuế",
+        "speakerID": "spk_15_0190",
+        "gender": 0,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0260.wav",
+        "text": "hoặc cung cấp bổ sung hồ sơ giải trình thông tin tài liệu liên quan đến việc xác định nghĩa vụ thuế phải nộp. Trường hợp người nộp thuế có dấu hiệu cố tình trốn tránh, vi phạm, cơ quan thuế sẽ thực hiện ban hành quyết định thanh tra kiểm tra để yêu cầu người nộp thuế thực hiện đúng theo quy định của pháp luật.",
+        "speakerID": "spk_15_0190",
+        "gender": 0,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0191": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0261.wav",
+        "text": "Chúng tôi cũng đã chuẩn bị tất cả các cái đường dây là từ một trăm hai mươi, rồi thậm chí có những đường dây một trăm năm mươi. Các đường xương cá vào trong các cụm dân cư của nhân dân. Hầu hết chúng tôi thay dây bốn nhân bảy mươi và bốn nhân năm mươi để phục vụ an toàn điện cho nhân dân sử dụng được tốt.",
+        "speakerID": "spk_15_0191",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0192": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0262.wav",
+        "text": "Tôi cũng mong muốn bây giờ là nhất là thành phố tạo điều kiện cho các hợp tác xã không riêng của chúng tôi để cho chúng tôi làm sao có cái vốn để hoạt động, mà chúng tôi đủ điều kiện để hoạt động. và Hai nữa là chúng tôi đã có điều kiện rồi thì đương nhiên chúng tôi phải vươn ra các cái ngành nghề khác.",
+        "speakerID": "spk_15_0192",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0193": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0263.wav",
+        "text": "Trường Trung học phổ thông Kiến Thụy là một trong những ngôi trường có bề dày lịch sử truyền thống rất là nhiều năm qua và đặc biệt trong hai năm gần đây thì việc học tập làm theo bác được nhà trường thực hiện rất là bài bản, rất là nghiêm túc, triển khai rất là đầy đủ theo đúng tất cả các bước, theo tinh thần của huyện ủy Kiến Thụy chỉ đạo.",
+        "speakerID": "spk_15_0193",
+        "gender": 0,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0264.wav",
+        "text": "Nhà trường đã rèn luyện được phẩm chất đạo đức cho cán bộ giáo viên và học sinh, là một trong những trường học đầu tiên trên địa bàn thành phố tổ chức kết nạp Đảng cho học sinh.",
+        "speakerID": "spk_15_0193",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_15_0194": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0265.wav",
+        "text": "Lúc mà em cảm thấy vui sướng nhất là khi mà em giải quyết được bài ba của ngày một. Một trong những bài khó nhất là một trong những bài mà giúp em vượt lên các bạn cùng trang lứa để đạt được cái ngưỡng điểm đạt huy chương vàng. Từ khi mà em làm xong ngày một thì em cảm thấy rất là vui sướng.",
+        "speakerID": "spk_15_0194",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0195": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0266.wav",
+        "text": "Em biết là em của em đã phải chịu nhiều áp lực hơn em nhiều, vấp ngã và đứng dậy rất nhiều lần. Nên là sau khi biết tin em được huy chương vàng như thế thì em cảm thấy rất là nhẹ nhõm, rất là biết ơn. Cuối cùng thì công sức của em em, những công sức của gia đình thầy cô, rất là nhiều công sức cuối cùng cũng đã được công nhận và đền đáp.",
+        "speakerID": "spk_15_0195",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0196": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0267.wav",
+        "text": "Em cũng rất là mong muốn là có thể về Việt Nam, có thể là Hải Phòng. Em nghĩ là dù ở đâu thì mình cũng có thể đóng góp cho Việt Nam và ít nhất thì câu chuyện vừa rồi của em cũng ít nhất đã đóng góp cho Hải Phòng và tạo một cái động lực và tạo truyền cảm hứng cho các bạn khác.",
+        "speakerID": "spk_15_0196",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0197": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0268.wav",
+        "text": "Chúng tôi thấy rằng đây là một việc làm rất có ý nghĩa đối với gia đình các gia đình chính sách cũng như là nhân dân thương binh chúng tôi. Chúng tôi thay mặt cho các gia đình chính sách xin cảm ơn sự quan tâm của các ban ngành, thành phố cũng như là phường.",
+        "speakerID": "spk_15_0197",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0198": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0269.wav",
+        "text": "Bệnh viện công an tổ chức khám xét nghiệm cơ bản về máu, siêu âm, điện tim và khám cơ xương khớp và tổng hợp các bệnh lý liên quan cũng là một cái dịp để tri ân đến người có công và một phần cũng để tư vấn thăm khám và nâng cao chất lượng đời sống cho các bác thương binh, bệnh binh và cựu chiến binh.",
+        "speakerID": "spk_15_0198",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0199": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0270.wav",
+        "text": "Người ta biết là vào đây là vi phạm, đi vào tuyến này là vi phạm nhưng người ta vẫn cố tình. Bằng mọi giá, lực lượng công an huyện chúng tôi đã phối hợp với thanh tra giao thông cùng với công an huyện thanh Hà, tỉnh Hải Dương tăng cường công tác tuần tra kiểm soát dọc tuyến tuần tra hai bốn trên hai bốn để xử lý nghiêm tất cả các phương tiện tải trên ba chục mà đi vào đoạn đường cấm.",
+        "speakerID": "spk_15_0199",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0200": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0271.wav",
+        "text": "Lực lượng cảnh sát giao thông thì có chốt hai đầu hai tư trên hai tư và lực lượng thanh tra chúng tôi là tổ trưởng cùng với lực lượng cảnh sát giao thông kiểm tra và xử lý tất cả các cái trường hợp. Từ ngày mùng ba tháng bảy đến bây giờ chúng tôi đã xử lý được hơn hai mươi trường hợp.",
+        "speakerID": "spk_15_0200",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0201": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0272.wav",
+        "text": "Xe nó cũng dài, hai xe ngược chiều, mà đường hẹp, nó cũng gây nguy hiểm đấy. Thế thì trong thời gian qua thì công an An lão kết hợp với thanh tra sở giao thông làm rất tốt ở trên tuyến đường này. Thường xuyên tuần tra kiểm soát và xử lý. Do đó mà mức độ vi phạm của xe bốn chục năm sáu chục trở lên là nó cũng hạn chế được rất nhiều.",
+        "speakerID": "spk_15_0201",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0202": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0273.wav",
+        "text": "(Năm 19) có đề nghị hình thành thêm một cái khu kinh tế ven biển Nam Hải Phòng, về chủ trương thì chúng tôi cũng ủng hộ. Nhưng mà cũng phải lấy đánh giá thực tiễn, đánh giá kết quả mà chúng ta thực hiện khu kinh tế (đang đình vũ) khách hàng, trong cái giai đoạn vừa qua thế nào, và bây giờ cái nhu cầu",
+        "speakerID": "spk_15_0202",
+        "gender": 1,
+        "split": "valid"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0274.wav",
+        "text": "nó như thế nào để chúng ta hình thành một khu kinh tế mới. Chưa nói đến là các điều kiện tiêu chí trong cái nghị định ba lăm đã quy định thì sự cần thiết và cái khả thi của nó đến đâu thì người ta cần phải làm rõ. Nhưng về nguyên tắc thì chúng ta cũng ủng hộ là đối với Hải Phòng cũng nên có cái để mở một cái hình thành, một cái khu kinh tế mới tạo một cái động lực mới cho Hải Phòng.",
+        "speakerID": "spk_15_0202",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0203": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0275.wav",
+        "text": "để thực hiện tốt nhiệm vụ chính trị được giao. Bản thân tôi luôn không ngừng phấn đấu, rèn luyện, học tập để nâng cao trình độ về mọi mặt đáp ứng yêu cầu nhiệm vụ trong thời kỳ mới, nhất là việc phát huy phẩm chất bộ đội Cụ Hồ trong công việc, trong cuộc sống để hoàn thành tốt nhiệm vụ được giao.",
+        "speakerID": "spk_15_0203",
+        "gender": 1,
+        "split": "valid"
+      }
+    ],
+    "spk_15_0204": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0276.wav",
+        "text": "Đồng chí Khúc Ngọc Minh là một cán bộ trẻ, năng động, sáng tạo, dám nghĩ, dám làm. Đặc biệt là trong quá trình thực hiện nhiệm vụ tại đơn vị thì đồng chí đã tham mưu cho chỉ huy, chỉ huy kíp tàu thực hiện tốt cái nhiệm vụ mà chỉ huy đơn vị giao. Đồng thời, đồng chí là tấm gương cho cán bộ chiến sĩ noi theo trong học tập làm theo tư tưởng đạo đức Hồ Chí Minh.",
+        "speakerID": "spk_15_0204",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0205": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0277.wav",
+        "text": "Với nội dung tuyên truyền ngày hôm nay thì tôi cũng biết cách để định hướng con rồi dạy dỗ con, đồng hành với con trong khoảng thời gian mà cháu dậy thì để nuôi dạy con tốt hơn.",
+        "speakerID": "spk_15_0205",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_15_0206": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0278.wav",
+        "text": "Các thầy cô cũng tuyên truyền cho bọn em cách để chăm sóc sức khỏe sinh sản và từ đó em cũng biết chăm sóc cho bản thân mình.",
+        "speakerID": "spk_15_0206",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_15_0207": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0279.wav",
+        "text": "Tinh thần phục vụ của các y bác sĩ rất là chu đáo và nhẹ nhàng, rất là thân thiện.",
+        "speakerID": "spk_15_0207",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0208": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0280.wav",
+        "text": "là nguồn lực của thành phố, nguồn lực của xã hội và nguồn lực của các doanh nghiệp để vào đầu tư và phát triển Kiến An. Thế rồi cái thứ ba nữa là chúng tôi đã tập trung cao, đó là quan tâm đến các cái chính sách, rồi đội ngũ cán bộ để quá trình tổ chức triển khai thực hiện nhiệm vụ.",
+        "speakerID": "spk_15_0208",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0281.wav",
+        "text": "Giải pháp mà đã thực hiện trong nửa nhiệm kỳ đầu đó là chúng tôi đã cụ thể hóa được các cái chương trình kế hoạch trên cơ sở các nhiệm vụ và từ việc đó thì cũng đã phân công rõ người rõ việc và bên cạnh đó cũng huy động được mọi nguồn lực",
+        "speakerID": "spk_15_0208",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0209": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0282.wav",
+        "text": "Các võ sinh để tham gia cái kỳ thi này đều là những võ sinh đẳng cấp và nhiều người có thể đã là kiện tướng cho nên trọng tài trong tổ trọng tài bắt nó cũng sẽ rất căng. Lực lượng vận động viên thì toàn những vận động viên đẳng cấp cả, trọng tài phải có trình độ bắt giải mới được tốt.",
+        "speakerID": "spk_15_0209",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0210": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0283.wav",
+        "text": "Đối thủ vừa rồi của em, em đánh giá, tuy bạn ấy là người nhỏ tuổi hơn nhưng mà cái sức lì lợm, cái tính lì lợm của bạn ấy chiến đấu rất là cao. Dù có rất nhiều đòn, em đã đánh rất là mạnh rồi nhưng mà bạn ấy vẫn tiếp tục trụ lại để phản lại. Em đã sử dụng cách đánh là tạo cự ly, sử dụng nhiều chân trước của mình để đạp, tạo cự ly với đối thủ và tấn công bằng tay thuận tay phải.",
+        "speakerID": "spk_15_0210",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0211": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0284.wav",
+        "text": "Vòng loại hội thi võ trạng Nguyên Vương Triều Mạc lần thứ nhất năm hai không hai ba đã quy tụ được mười tám võ sĩ thi đấu đại đao với thanh mô phỏng định nam đao của Mạc Thái Tổ, nặng mười hai ki lô gam. Đấy là một cái điều rất là đặc biệt vì nó đòi hỏi thể lực rất lớn và bài tự chọn cũng cần sự sáng tạo rất cao. Tôi đánh giá là cái chất lượng chuyên môn tương đối tốt.",
+        "speakerID": "spk_15_0211",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0212": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0285.wav",
+        "text": "Hôm vừa rồi thì ông cháu có nói đùa là sau mấy năm duy trì bữa ăn gia đình bây giờ có thể bỏ được không? Cháu nói là không, phải tiếp tục ông ạ. Ông thì thực ra là chỉ nói đùa, hỏi đùa nhưng mà đến khi nghe cháu trả lời câu ấy thì bản thân tôi rất là vui bởi vì cái suy nghĩ về bữa cơm gia đình đã ăn sâu vào trong các cháu và được lan tỏa đến tất cả mọi thành viên trong gia đình.",
+        "speakerID": "spk_15_0212",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_15_0213": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0286.wav",
+        "text": "Cũng phải có công việc gia đình đột xuất thì cũng lại phải sắp xếp thì hai vợ chồng cùng nhau lo lắng cái công việc cho gia đình thôi. Tôi bản thân tôi như thế thôi nhưng mà tôi rất là may mắn bởi vì lấy được người vợ cùng đồng hành với mình trong những lúc khó khăn nhất.",
+        "speakerID": "spk_15_0213",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0214": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0287.wav",
+        "text": "Tôi cảm thấy vô cùng khó chịu và sợ hãi khi mà bị taxi dù họ chèo kéo như thế. Có những cái taxi họ còn lôi cả đồ của tôi lên xe của họ nữa. Khi mà tôi không đi xe của họ thì họ bắt đầu tỏ ra khó chịu và mắng mỏ tôi. Thì tôi cảm thấy là cái vấn đề bị taxi dù chèo kéo như thế này thực sự là một vấn nạn lớn. Nhất là tại các bến xe và cần các lực lượng chức năng phải vào cuộc.",
+        "speakerID": "spk_15_0214",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_15_0215": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0288.wav",
+        "text": "Bây giờ taxi dù của người ta, người ta lại không có cái biển mác gì. Có thể người ta gây gổ với lại lái xe bên tôi. Lái xe chính hãng thì là ở ngoài sáng, mà lái xe dù người ta sẽ ở trong tối. Người ta không có một cái đoàn thể nào, cho nên là người ta có thể gây gổ, người ta cướp khách, người ta không cho khách lên xe của chúng tôi.",
+        "speakerID": "spk_15_0215",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0216": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0289.wav",
+        "text": "cái mặt đường của chợ con đó là cái vỉa hè của chỗ chợ để kinh doanh buôn bán thì cái này thì cũng là cái nhức nhối mà cũng cái là cái có rất nhiều ý kiến của nhân dân hoặc là ý kiến của cử tri về vấn đề mất trật tự an toàn giao thông.",
+        "speakerID": "spk_15_0216",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0290.wav",
+        "text": "các cái hộ kinh doanh ở trong chợ thì đã có cái điểm kinh doanh ở trong chợ rồi nhưng đôi khi là cái tình trạng buôn bán là nó ế ẩm nên là đôi khi là họ có di chuyển một ít mặt hàng kinh doanh ở trong chợ ra ngoài",
+        "speakerID": "spk_15_0216",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0217": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0291.wav",
+        "text": "Với mười tám chỉ tiêu cho nghị quyết đại hội xác định là đã có sáu chỉ tiêu hoàn thành vượt mức thì chúng tôi vẫn tiếp tục chỉ đạo triển khai để đạt được một kết quả cao nhất khi kết thúc nghị quyết đại hội. Cái thứ hai với mười hai chỉ tiêu còn lại thì chúng tôi đang tập trung để rà soát, bên cạnh đó sẽ có một chỉ đạo một cách quyết liệt. Đối với từng chỉ tiêu, trong đó chúng tôi đã có những cái điều chỉnh, những chỉ tiêu mang tính nhất hết sức tiên tiến",
+        "speakerID": "spk_15_0217",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0292.wav",
+        "text": "như là giảm hộ nghèo theo nghị quyết đại hội nhiệm kỳ hai mươi hai năm. Đến năm hai nghìn không trăm hai năm, quận Kiến An còn không phẩy hai phần nghìn hộ nghèo. Nhưng chúng tôi xác định đến năm hai ngàn không trăm hai năm thì sẽ không còn hộ nghèo theo chuẩn đa chiều.",
+        "speakerID": "spk_15_0217",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0293.wav",
+        "text": "Thế rồi cái thứ hai đó là về phát triển đảng. Phấn đấu là từ năm hai nghìn hai ba sẽ có chín mươi phần trăm tổ chức đảng hoàn thành tốt nhiệm vụ. Và trong đó có hai mươi phần trăm tổ chức đảng hoàn thành xuất sắc nhiệm vụ. Tăng cường nguồn lực ngân sách, đáp ứng yêu cầu đầu tư cho các hạng mục công trình và để cho phát triển Kiến An.",
+        "speakerID": "spk_15_0217",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0218": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0294.wav",
+        "text": "Ngay từ cuối năm hai không hai mốt, đảng Bộ quận ngô quyền giao cho uỷ ban xây dựng đề án phát triển kinh tế gắn với tăng thu ngân sách. Tôi xây dựng một số hệ thống cái ví dụ như quản lý thông tin đến từng hộ kinh doanh theo thời gian thực. Thứ hai là cũng phát triển một số mô hình kinh tế tuần hoàn trong cộng đồng.",
+        "speakerID": "spk_15_0218",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0295.wav",
+        "text": "Thứ ba, chúng tôi cũng đang nghiên cứu sẽ báo cáo của thành phố là nghiên cứu xây dựng một số khu gọi là trung tâm outlet tại quận ngô quyền với mục tiêu thu hút một số doanh nghiệp và kích thích các doanh nghiệp nhỏ tham gia và phát triển.",
+        "speakerID": "spk_15_0218",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0296.wav",
+        "text": "Ngoài ra thì cũng phát hiện thêm một số mô hình như kinh tế đêm, các khu phố đi bộ để phát triển và tập trung trong khu đô thị sinh thái và khu đô thị tuần hoàn. Từ nay đến cuối năm hai không hai lăm chúng tôi phải phấn đấu hoàn thành chỉ tiêu thu thuế ngoại quốc doanh và đạt một nghìn hai trăm tám tám tỷ. Hiện nay đến năm hai không hai hai chúng tôi mới đạt được khoảng năm mươi hai phần trăm sáu trăm sáu hai tỷ.",
+        "speakerID": "spk_15_0218",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0297.wav",
+        "text": "Rồi chỉ tiêu theo số doanh nghiệp hoạt động trên địa bàn Từ nay đến năm hai không hai lăm chúng tôi sẽ phải đạt năm nghìn hai trăm doanh nghiệp. Mà hiện nay đến hết năm hai không hai hai thì số doanh nghiệp đang hoạt động trên địa bàn của tôi là ba nghìn bốn trăm năm mươi doanh nghiệp. Để mà đạt được cái tốc độ đến cuối năm hai không hai lăm mà đạt được chỉ tiêu như trên, đòi hỏi là tăng tốc độ gần như là phải gấp đôi so với gia đoạn từ hai mươi đến hai hai.",
+        "speakerID": "spk_15_0218",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0219": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0298.wav",
+        "text": "Chúng tôi cũng sẽ rà soát lại toàn bộ các hệ thống chỉ tiêu mà huyện cũng đã xác định từ đầu nhiệm kỳ đặc biệt là kế hoạch phát triển kinh tế xã hội năm năm hai nghìn hai mốt hai lăm mà thành phố đã giao cho huyện thì chúng tôi sẽ tập trung cái thứ nhất là thu ngân sách đây là một trong những cái khâu quan trọng bởi vì nếu có thu được ngân sách thì đảm bảo được cân đối cũng như đầu tư trở lại thì huyện mới có điều kiện để phát triển",
+        "speakerID": "spk_15_0219",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0299.wav",
+        "text": "Cái thứ hai nữa là tập trung đẩy nhanh tiến độ giải phóng mặt bằng các dự án lớn của thành phố. Đặc biệt là các tuyến đường trọng điểm mà thành phố đã quan tâm đầu tư cho huyện. Thế rồi các khu cụm công nghiệp, các khu đô thị sẽ triển khai trong thời gian tới của địa bàn huyện. Cái thứ ba nữa là tập trung về chỉ đạo sản xuất nông nghiệp Thì cái này huyện ủy cũng đã ban hành cái nghị quyết không tám về các cái mô hình tích tụ ruộng đất",
+        "speakerID": "spk_15_0219",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0300.wav",
+        "text": "Cái này để nhằm mục đích một là khai thác tối đa các cái quỹ đất không bỏ hoang, đồng thời với đó là quản lý chặt chẽ các quỹ đất để không để phát sinh các sai phạm tiêu cực trong việc sử dụng đất như thời gian vừa qua.",
+        "speakerID": "spk_15_0219",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0220": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0301.wav",
+        "text": "Ban chấp hành đảng Bộ huyện bám sát mục tiêu nghị quyết đại hội đảng Bộ thành phố, nghị quyết đại hội đảng Bộ huyện đề ra và bám sát với tình hình thực tế, nhiệm vụ về chuyển đổi đơn vị hành chính quận và cũng đã thống nhất đánh giá, điều chỉnh, bổ khuyết một số chỉ tiêu. Trong đó đã huy động và sử dụng có hiệu quả mọi nguồn lực",
+        "speakerID": "spk_15_0220",
+        "gender": 0,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0302.wav",
+        "text": "tập trung trong đó phát triển kinh tế là trọng điểm và phát triển nông nghiệp sinh thái công nghiệp thương mại dịch vụ. Quyết tâm để xây dựng và phát triển huyện theo hướng đô thị văn minh hiện đại để huyện sớm trở thành đơn vị hành chính quận trước năm hai nghìn không trăm hai lăm.",
+        "speakerID": "spk_15_0220",
+        "gender": 0,
+        "split": "test"
+      }
+    ],
+    "spk_15_0221": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0303.wav",
+        "text": "Toàn hệ thống chính trị ra quân như thế thì đến nay nó tạo sự lan tỏa đối với nhân dân. Nhân dân cũng tham gia rất tích cực. Ý thức của người dân trong việc tự quản đối với khu vực gia đình mình sinh sống. Cho nên đối với mỗi gia đình thì cũng rất là tự giác giữ gìn vệ sinh môi trường, tự xóa quảng cáo, bóc quảng cáo khi mà nó đã xảy ra ở khu vực gia đình mình cư trú.",
+        "speakerID": "spk_15_0221",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0222": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0304.wav",
+        "text": "Địa phương cũng đã thấy rõ được cái chuyển biến về cái bộ mặt đô thị Các cái tuyến đường, tuyến ngõ thì cũng đã được bà con giữ gìn sạch đẹp, phong quang hơn Thế rồi các cái quảng cáo rao vặt trái phép trên bờ tường, gốc cây, cột điện Thì cũng đã được bà con nhân dân cùng cán bộ công chức xóa phá thường xuyên. Thế là tạo được cái hình ảnh đẹp tại các cái đầu ngõ",
+        "speakerID": "spk_15_0222",
+        "gender": 1,
+        "split": "test"
+      },
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0305.wav",
+        "text": "Mặt trận tổ quốc các đoàn thể các phường đã phối hợp với ủy ban nhân dân Cùng với các cái tổ dân phố để có mô hình cụ thể để tạo được cái chỉnh trang đô thị như là vẽ tranh tường, thế rồi làm các cái pano áp phích tuyên truyền tại các đầu ngõ.",
+        "speakerID": "spk_15_0222",
+        "gender": 1,
+        "split": "test"
+      }
+    ],
+    "spk_15_0223": [
+      {
+        "province_name": "HaiPhong",
+        "province_code": 15,
+        "filename": "15_0306.wav",
+        "text": "Tôi đưa con đi học trại hè này, mong muốn là con cũng quen dần với trường lớp. Các cô uốn nắn dạy con những chữ hoặc là đọc, viết trước khi để con vào lớp một để con có thể tự tin hơn.",
+        "speakerID": "spk_15_0223",
+        "gender": 1,
+        "split": "test"
+      }
+    ]
+  }
+}
