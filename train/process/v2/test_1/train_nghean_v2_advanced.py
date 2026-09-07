@@ -701,14 +701,18 @@ def train_lora(
         else torch.float16
     )
 
-    device_map = {"": torch.cuda.current_device()} if torch.cuda.is_available() else None
+    # Force the complete trainable model onto one GPU.  Avoid device_map here:
+    # Accelerate marks the model as model-parallel and Trainer skips its normal
+    # device move even when the map contains only one GPU.
+    train_device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
         trust_remote_code=True,
         dtype=dtype,
-        device_map=device_map,
     )
     model = get_peft_model(model, lora_config)
+    model = model.to(train_device)
+    model.config.use_cache = False
     model.print_trainable_parameters()
 
     class SafeVieNeuDataset(VieNeuDataset):
@@ -839,7 +843,7 @@ def train_lora(
             "best_checkpoint": trainer.state.best_model_checkpoint,
             "bf16": use_bf16,
             "fp32": fp32,
-            "device_map": str(device_map),
+            "device_map": "none; explicit single-device placement",
             "resume_from_checkpoint": str(resume_path) if resume_path else None,
         }
     )
