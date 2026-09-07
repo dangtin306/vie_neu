@@ -680,8 +680,11 @@ def train_lora(
         pass
 
     if torch.cuda.is_available():
-        torch.backends.cuda.matmul.allow_tf32 = True
-        torch.backends.cudnn.allow_tf32 = True
+        # Avoid unstable TF32 CUBLAS kernels on the RTX 3080 for this
+        # Qwen3/LoRA graph; tensors remain entirely on CUDA.
+        torch.backends.cuda.matmul.allow_tf32 = False
+        torch.backends.cudnn.allow_tf32 = False
+        torch.set_float32_matmul_precision("highest")
 
     tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL, trust_remote_code=True)
     if tokenizer.pad_token is None:
