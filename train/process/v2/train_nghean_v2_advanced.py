@@ -94,6 +94,12 @@ def parse_args() -> argparse.Namespace:
         help="Output directory name under train/output/.",
     )
     p.add_argument(
+        "--reuse-dataset-from",
+        type=Path,
+        default=None,
+        help="Reuse an existing run's dataset/ files; skip filter and NeuCodec encode.",
+    )
+    p.add_argument(
         "--gender",
         choices=("all", "male", "female"),
         default="all",
@@ -1024,6 +1030,11 @@ def write_report(path: Path, report: dict[str, Any]) -> None:
     )
 
 
+def read_encoded_rows(path: Path) -> list[dict[str, Any]]:
+    with path.open(encoding="utf-8-sig", newline="") as f:
+        return list(csv.DictReader(f))
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -1084,40 +1095,62 @@ def main() -> None:
         seed=args.seed,
     )
 
-    stage_info = stage_dataset(train_rows, dataset_dir)
-    print("🦜 Đã staging dataset, bắt đầu filter + encode...", flush=True)
-    encoded = official_filter_and_encode(
-        dataset_dir,
-        max_samples=max(1, len(train_rows) + 10),
-    )
+    if args.reuse_dataset_from is not None:
+        reuse_root = args.reuse_dataset_from.expanduser().resolve()
+        reuse_dataset = reuse_root / "dataset" if (reuse_root / "dataset").is_dir() else reuse_root
+        train_path = reuse_dataset / "train_encoded.csv"
+        valid_path = reuse_dataset / "valid_encoded.csv"
+        if not train_path.is_file():
+            raise FileNotFoundError(f"Missing cached train dataset: {train_path}")
+        train_safe = read_encoded_rows(train_path)
+        valid_safe = read_encoded_rows(valid_path) if valid_path.is_file() else []
+        accepted = train_safe + valid_safe
+        rejected = []
+        encoded = reuse_dataset / "metadata_encoded.csv"
+        safe_encoded = reuse_dataset / "metadata_encoded_safe.csv"
+        stage_info = {"metadata": reuse_dataset / "metadata.csv"}
+        source_meta = {"reused_dataset_from": str(reuse_dataset)}
+        select_stats = {"reused": True}
+        print(
+            f"🦜 Dùng dataset cache: {len(train_safe)} train / "
+            f"{len(valid_safe)} valid; bỏ qua filter + NeuCodec encode.",
+            flush=True,
+        )
+    else:
+        stage_info = stage_dataset(train_rows, dataset_dir)
+        print("🦜 Đã staging dataset, bắt đầu filter + encode...", flush=True)
+        encoded = official_filter_and_encode(
+            dataset_dir,
+            max_samples=max(1, len(train_rows) + 10),
+        )
 
-    from transformers import AutoTokenizer
+        from transformers import AutoTokenizer
 
-    tokenizer = AutoTokenizer.from_pretrained(
-        BASE_MODEL, trust_remote_code=True
-    )
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
+        tokenizer = AutoTokenizer.from_pretrained(
+            BASE_MODEL, trust_remote_code=True
+        )
+        if tokenizer.pad_token is None:
+            tokenizer.pad_token = tokenizer.eos_token
 
-    safe_encoded, accepted, rejected = token_audit_and_filter(
-        encoded, tokenizer, run
-    )
-    print(
-        f"🦜 Đã audit token: {len(accepted)} mẫu giữ lại, "
-        f"{len(rejected)} mẫu loại.",
-        flush=True,
-    )
+        safe_encoded, accepted, rejected = token_audit_and_filter(
+            encoded, tokenizer, run
+        )
+        print(
+            f"🦜 Đã audit token: {len(accepted)} mẫu giữ lại, "
+            f"{len(rejected)} mẫu loại.",
+            flush=True,
+        )
 
-    train_path, valid_path, train_safe, valid_safe = split_encoded_by_speaker(
-        accepted,
-        dataset_dir,
-        seed=args.seed,
-        validation_ratio=args.validation_ratio,
-    )
-    print(
-        f"🦜 Đã chia dữ liệu: {len(train_safe)} train / {len(valid_safe)} valid.",
-        flush=True,
-    )
+        train_path, valid_path, train_safe, valid_safe = split_encoded_by_speaker(
+            accepted,
+            dataset_dir,
+            seed=args.seed,
+            validation_ratio=args.validation_ratio,
+        )
+        print(
+            f"🦜 Đã chia dữ liệu: {len(train_safe)} train / {len(valid_safe)} valid.",
+            flush=True,
+        )
 
     report.update(
         {
