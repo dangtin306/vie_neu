@@ -1,7 +1,7 @@
 # Full dataset file paths
 # Generated from train/data
 
-Local root: D:\hustmedia\python\tts\vie_neu
+Local root: <vie_neu>
 Ubuntu root: /root/media_tech_ai/vie_neu
 
 train/data/dataset_haiphong/dataset_haiphong_test/metadata.csv
