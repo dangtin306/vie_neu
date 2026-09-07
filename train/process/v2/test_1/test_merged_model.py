@@ -127,8 +127,7 @@ def infer_with_eos_fallback(engine, text: str, reference: Path, ref_text: str):
     when present; it is not required for the call to finish.
     """
     import torch
-    from vieneu_utils.phonemize_text import phonemize_with_dict
-    from vieneu_utils.core_utils import normalize_to_chunks
+    from vieneu_utils.phonemize_text import phonemize_with_dict, normalize_to_chunks
 
     ref_codes, resolved_ref_text = engine._resolve_ref_voice(
         None, str(reference), None, ref_text
