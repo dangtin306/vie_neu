@@ -13,7 +13,7 @@ from pathlib import Path
 from threading import Lock
 
 WORKER_SCRIPT = Path(__file__).resolve().with_name('test_vieneu_server.py')
-PYTHON_TTS5 = Path('D:/hustmedia/conda_envs/tts_5/python.exe')
+PYTHON_TTS5 = Path(__import__('os').environ.get('VIE_NEU_PYTHON', sys.executable))
 _worker = None
 _worker_lock = Lock()
 NL = chr(10)
@@ -67,7 +67,7 @@ def main(text: str):
         result = json.loads(response)
         if not result.get('ok'):
             raise RuntimeError(result.get('message', 'VieNeu v3 inference failed'))
-    return Path(result.get('output_path', 'D:/hustmedia/python/tts/output/output_vieneu_persistent.mp3'))
+    return Path(result.get('output_path', WORKER_SCRIPT.parent / 'output' / 'output_vieneu_persistent.mp3'))
 
 
 def start():

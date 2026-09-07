@@ -21,7 +21,7 @@ torchao 0.13.0
 ## Dữ liệu
 
 ```text
-D:\hustmedia\python\tts\vie_neu\vimd_hp_candidates\
+<vie_neu>\vimd_hp_candidates\
 ```
 
 CSV ưu tiên:
@@ -45,14 +45,14 @@ Nếu `decision` đã được chấm, script chỉ lấy `giữ`. Nếu còn tr
 
 ```powershell
 conda activate tts_5
-cd D:\hustmedia\python\tts\vie_neu\train
+cd <vie_neu>\train
 python test_train_haiphong.py --prepare
 ```
 
 Output:
 
 ```text
-D:\hustmedia\python\tts\vie_neu\train\data\dataset_haiphong_test\
+<vie_neu>\train\data\dataset_haiphong_test\
 ```
 
 Các file chính:
@@ -122,7 +122,7 @@ save_steps: 30
 Checkpoint:
 
 ```text
-D:\hustmedia\python\tts\vie_neu\train\output\haiphong_test\
+<vie_neu>\train\output\haiphong_test\
 ```
 
 Không có CUDA thì script chỉ prepare dataset, không train CPU nặng.

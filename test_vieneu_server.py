@@ -10,6 +10,7 @@ import time
 import urllib.request
 import json
 import multiprocessing
+import shutil
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from threading import Lock, Thread
@@ -55,9 +56,10 @@ os.environ["OMP_DYNAMIC"] = "FALSE"
 os.environ["MKL_DYNAMIC"] = "FALSE"
 
 # Set caches before importing torch, huggingface_hub, or VieNeu modules.
-CACHE_DIR = Path('F:/ai/cache/cuda/vie_neu')
+PROJECT_DIR = Path(__file__).resolve().parent
+CACHE_DIR = Path(os.environ.get('VIE_NEU_CACHE_DIR', PROJECT_DIR / 'cache' / 'cuda' / 'vie_neu'))
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
-TORCH_KERNEL_CACHE_DIR = Path('F:/ai/cache/torch_kernels')
+TORCH_KERNEL_CACHE_DIR = Path(os.environ.get('VIE_NEU_TORCH_CACHE_DIR', PROJECT_DIR / 'cache' / 'torch_kernels'))
 TORCH_KERNEL_CACHE_DIR.mkdir(parents=True, exist_ok=True)
 os.environ["HF_HOME"] = str(CACHE_DIR)
 os.environ["HUGGINGFACE_HUB_CACHE"] = str(CACHE_DIR / 'huggingface' / 'hub')
@@ -92,7 +94,6 @@ if torch.cuda.is_available():
     except Exception:
         pass
 
-PROJECT_DIR = Path(__file__).resolve().parent
 SOURCE_ROOT = PROJECT_DIR / 'source_code'
 AUDIO_MODEL_SRC = SOURCE_ROOT / 'audio_model' / 'src'
 if AUDIO_MODEL_SRC.exists():
@@ -104,10 +105,11 @@ from vieneu_utils.phonemize_text import phonemize_text_with_emotions
 app = Flask(__name__)
 inference_lock = Lock()
 
-OUTPUT_DIR = Path('D:/hustmedia/python/tts/output')
+OUTPUT_DIR = Path(os.environ.get('VIE_NEU_OUTPUT_DIR', PROJECT_DIR / 'output'))
 OUTPUT_WAV = OUTPUT_DIR / 'output_vieneu_persistent.wav'
 OUTPUT_MP3 = OUTPUT_DIR / 'output_vieneu_persistent.mp3'
-FFMPEG_EXE = Path('D:/hustmedia/application/ffmpeg/bin/ffmpeg.exe')
+FFMPEG_CONFIG = os.environ.get('VIE_NEU_FFMPEG')
+FFMPEG_EXE = Path(FFMPEG_CONFIG) if FFMPEG_CONFIG else (Path(shutil.which('ffmpeg')) if shutil.which('ffmpeg') else None)
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 _engine = None
@@ -142,7 +144,7 @@ def synthesize(text: str) -> Path:
             audio = engine.infer(text=text, batch_size=8, max_chars=110)
         engine.save(audio, OUTPUT_WAV)
 
-        if FFMPEG_EXE.exists():
+        if FFMPEG_EXE and FFMPEG_EXE.exists():
             cmd = [
                 str(FFMPEG_EXE),
                 '-y',

@@ -12,7 +12,7 @@ if sys.stderr is not None and hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 
 # Cache configuration
-CACHE_DIR = Path('F:/ai/cache/cuda/vie_neu')
+CACHE_DIR = Path(os.environ.get('VIE_NEU_CACHE_DIR', Path(__file__).resolve().parents[1] / 'cache' / 'cuda' / 'vie_neu'))
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 os.environ['HF_HOME'] = str(CACHE_DIR)
 os.environ['HUGGINGFACE_HUB_CACHE'] = str(CACHE_DIR / 'huggingface' / 'hub')
