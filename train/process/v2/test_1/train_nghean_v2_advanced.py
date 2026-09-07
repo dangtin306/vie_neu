@@ -49,7 +49,7 @@ os.environ.setdefault("TOKENIZERS_PARALLELISM", "true")
 # Project paths
 # ---------------------------------------------------------------------------
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[4]
 SOURCE_ROOT = ROOT / "source_code" / "audio_model"
 SOURCE_FINETUNE = SOURCE_ROOT / "finetune"
 
@@ -432,6 +432,14 @@ def stage_dataset(train_rows: list[dict[str, Any]], dataset_dir: Path) -> dict[s
 
 def official_filter_and_encode(dataset_dir: Path, max_samples: int) -> Path:
     """Run the repository's official filter and NeuCodec encoder."""
+    # Apply the machine-wide CPU configuration before the official encoder
+    # imports torch/librosa.  Audio loading is parallelized by encode_data.py;
+    # NeuCodec itself remains a single GPU model to avoid VRAM duplication.
+    import torch
+
+    torch.set_num_threads(CPU_THREADS)
+    torch.set_num_interop_threads(max(1, min(4, CPU_THREADS)))
+    os.environ.setdefault("VIENEU_ENCODE_WORKERS", str(CPU_THREADS))
     from finetune.data_scripts.filter_data import filter_and_process_dataset
     from finetune.data_scripts.encode_data import encode_dataset
 
