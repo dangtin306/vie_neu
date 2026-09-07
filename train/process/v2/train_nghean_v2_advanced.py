@@ -1178,8 +1178,20 @@ def main() -> None:
             "split": {
                 "train_samples": len(train_safe),
                 "validation_samples": len(valid_safe),
-                "train_speakers": len({r["speakerID"] for r in train_safe}),
-                "validation_speakers": len({r["speakerID"] for r in valid_safe}),
+                "train_speakers": len(
+                    {
+                        r.get("speakerID") or r.get("speaker_id") or r.get("speaker")
+                        for r in train_safe
+                        if r.get("speakerID") or r.get("speaker_id") or r.get("speaker")
+                    }
+                ),
+                "validation_speakers": len(
+                    {
+                        r.get("speakerID") or r.get("speaker_id") or r.get("speaker")
+                        for r in valid_safe
+                        if r.get("speakerID") or r.get("speaker_id") or r.get("speaker")
+                    }
+                ),
             },
         }
     )
