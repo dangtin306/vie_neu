@@ -9,7 +9,7 @@ import argparse
 import csv
 import sys
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 SOURCE = ROOT / "source_code" / "audio_model"
 RUN = ROOT / "train" / "output" / "nghean_v2_pilot"
 PREPARED = ROOT / "train" / "output" / "nghean_test2_accent_scale"

@@ -15,7 +15,7 @@ import random
 import sys
 from pathlib import Path
 
-PROJECT = Path(__file__).resolve().parents[2]
+PROJECT = Path(__file__).resolve().parents[3]
 SOURCE = PROJECT / "source_code" / "audio_model"
 sys.path.insert(0, str(SOURCE / "src"))
 sys.path.insert(0, str(SOURCE))

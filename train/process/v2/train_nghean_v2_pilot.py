@@ -18,7 +18,7 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 SOURCE_ROOT = ROOT / "source_code" / "audio_model"
 sys.path.insert(0, str(SOURCE_ROOT / "src"))
 sys.path.insert(0, str(SOURCE_ROOT))
