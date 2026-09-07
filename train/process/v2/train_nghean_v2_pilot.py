@@ -12,11 +12,19 @@ import argparse
 import csv
 import gc
 import json
+import os
 import random
 import shutil
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
+
+CPU_THREADS = max(1, os.cpu_count() or 1)
+DATA_WORKERS = CPU_THREADS
+os.environ.setdefault("OMP_NUM_THREADS", str(CPU_THREADS))
+os.environ.setdefault("MKL_NUM_THREADS", str(CPU_THREADS))
+os.environ.setdefault("OPENBLAS_NUM_THREADS", str(CPU_THREADS))
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "true")
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE_ROOT = ROOT / "source_code" / "audio_model"
@@ -107,6 +115,8 @@ def encode_with_official_script():
 
 def train_lora(encoded: Path, steps: int):
     import torch
+    torch.set_num_threads(CPU_THREADS)
+    torch.set_num_interop_threads(max(1, min(4, CPU_THREADS)))
     from peft import get_peft_model
     from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments, default_data_collator
     from finetune.train import VieNeuDataset
@@ -126,7 +136,9 @@ def train_lora(encoded: Path, steps: int):
         output_dir=str(ADAPTER), max_steps=steps, per_device_train_batch_size=1,
         gradient_accumulation_steps=1, learning_rate=1e-4, warmup_ratio=0.03,
         logging_steps=25, save_strategy="steps", save_steps=100, save_total_limit=3,
-        eval_strategy="no", report_to="none", dataloader_num_workers=0,
+        eval_strategy="no", report_to="none", dataloader_num_workers=DATA_WORKERS,
+        dataloader_pin_memory=torch.cuda.is_available(),
+        dataloader_persistent_workers=DATA_WORKERS > 0,
         bf16=torch.cuda.is_available(), fp16=False, remove_unused_columns=False,
         ddp_find_unused_parameters=False,
     )
