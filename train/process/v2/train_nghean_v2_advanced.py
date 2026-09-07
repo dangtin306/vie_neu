@@ -159,6 +159,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Disable BF16 when a CUDA/cuBLAS driver is unstable; use FP16 instead.",
     )
+    p.add_argument(
+        "--fp32",
+        action="store_true",
+        help="Use full FP32 for maximum CUDA stability; slower and uses more VRAM.",
+    )
     return p.parse_args()
 
 
@@ -653,6 +658,7 @@ def train_lora(
     lr_arg: float,
     resume_from_checkpoint: Path | None = None,
     no_bf16: bool = False,
+    fp32: bool = False,
 ) -> dict[str, Any]:
     import torch
     from peft import get_peft_model
@@ -685,20 +691,22 @@ def train_lora(
         torch.cuda.is_available()
         and torch.cuda.is_bf16_supported()
         and not no_bf16
+        and not fp32
     )
     dtype = (
-        torch.bfloat16
+        torch.float32
+        if fp32 or not torch.cuda.is_available()
+        else torch.bfloat16
         if use_bf16
         else torch.float16
-        if torch.cuda.is_available()
-        else torch.float32
     )
 
+    device_map = {"": torch.cuda.current_device()} if torch.cuda.is_available() else None
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
         trust_remote_code=True,
         dtype=dtype,
-        device_map="auto" if torch.cuda.is_available() else None,
+        device_map=device_map,
     )
     model = get_peft_model(model, lora_config)
     model.print_trainable_parameters()
@@ -753,7 +761,7 @@ def train_lora(
         dataloader_persistent_workers=workers > 0,
         remove_unused_columns=False,
         bf16=use_bf16,
-        fp16=bool(torch.cuda.is_available() and not use_bf16),
+        fp16=bool(torch.cuda.is_available() and not use_bf16 and not fp32),
         seed=seed,
         data_seed=seed,
         save_total_limit=3,
@@ -830,6 +838,8 @@ def train_lora(
             "cpu_threads": CPU_THREADS,
             "best_checkpoint": trainer.state.best_model_checkpoint,
             "bf16": use_bf16,
+            "fp32": fp32,
+            "device_map": str(device_map),
             "resume_from_checkpoint": str(resume_path) if resume_path else None,
         }
     )
@@ -1073,6 +1083,7 @@ def main() -> None:
         lr_arg=args.learning_rate,
         resume_from_checkpoint=args.resume_from_checkpoint,
         no_bf16=args.no_bf16,
+        fp32=args.fp32,
     )
     report["training"] = metrics
     report["adapter"] = str(adapter_dir)
