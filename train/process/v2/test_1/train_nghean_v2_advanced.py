@@ -129,7 +129,7 @@ def parse_args() -> argparse.Namespace:
         "--batch-size",
         type=int,
         default=0,
-        help="0 = auto by GPU VRAM (4 for >=12GB, 2 for >=8GB, otherwise 1).",
+        help="0 = auto by GPU VRAM (4 for >=11GB, 2 for >=8GB, otherwise 1).",
     )
     p.add_argument("--grad-accum", type=int, default=1)
     p.add_argument(
@@ -1037,7 +1037,7 @@ def main() -> None:
 
         if torch.cuda.is_available():
             vram_gb = torch.cuda.get_device_properties(0).total_memory / (1024**3)
-            args.batch_size = 4 if vram_gb >= 12 else 2 if vram_gb >= 8 else 1
+            args.batch_size = 4 if vram_gb >= 11 else 2 if vram_gb >= 8 else 1
             print(
                 f"🦜 Auto batch theo VRAM {vram_gb:.1f} GB: "
                 f"batch={args.batch_size}, grad_accum={args.grad_accum}",
