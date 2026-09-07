@@ -25,6 +25,7 @@ sys.path.insert(0, str(SOURCE_ROOT))
 
 PREPARED = ROOT / "train" / "output" / "nghean_test2_accent_scale"
 MANIFEST = PREPARED / "nghean_eligible_audio_manifest.csv"
+SOURCE_METADATA = ROOT / "train" / "metadata_na_candidates.csv"
 RUN = ROOT / "train" / "output" / "nghean_v2_pilot"
 PILOT_DATASET = RUN / "pilot_dataset"
 ADAPTER = RUN / "adapter"
@@ -43,8 +44,19 @@ def args():
 
 
 def read_manifest():
-    with MANIFEST.open(encoding="utf-8-sig", newline="") as f:
-        return [r for r in csv.DictReader(f) if r.get("exists") == "True" and r.get("readable") == "True"]
+    manifest_path = MANIFEST if MANIFEST.is_file() else SOURCE_METADATA
+    with manifest_path.open(encoding="utf-8-sig", newline="") as f:
+        rows = list(csv.DictReader(f))
+    for row in rows:
+        if "transcript" not in row:
+            row["transcript"] = row.get("text", "")
+        path = Path(row["local_path"])
+        if not path.is_absolute():
+            path = ROOT / "train" / path
+        row["local_path"] = str(path)
+        row["exists"] = str(path.is_file())
+        row["readable"] = row["exists"]
+    return [r for r in rows if r.get("exists") == "True" and r.get("readable") == "True"]
 
 
 def prepare_staging(seed: int, n_speakers: int, max_samples: int):
