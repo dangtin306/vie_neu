@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from scipy.signal import stft
 
 ROOT=Path(__file__).resolve().parent.parent
-SRC=ROOT/'vimd_haiphong'/'test'
+SRC=ROOT/'data'/'dataset_haiphong'/'test'
 OUT=ROOT/'output'/'test13_scale_feasibility'/'reference_manual_audit'
 ITEMS=[('spk_15_0218','15_0294.wav','0218_0294'),('spk_15_0218','15_0295.wav','0218_0295'),('spk_15_0220','15_0301.wav','0220_0301'),('spk_15_0219','15_0299.wav','0219_0299_control')]
 

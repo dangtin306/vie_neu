@@ -6,7 +6,7 @@ import fsspec, pyarrow.parquet as pq
 import soundfile as sf
 import numpy as np
 
-ROOT=Path(__file__).resolve().parent; AUDIT=ROOT/'vimd_na_audit.json'; OUT=ROOT/'vimd_nghean'; SHARDS={'train':103,'valid':13,'test':14}; META=['province_name','province_code','filename','text','speakerID','gender']; MAX_FILES=100
+ROOT=Path(__file__).resolve().parent; AUDIT=ROOT/'vimd_na_audit.json'; OUT=ROOT/'data'/'dataset_nghean'; SHARDS={'train':103,'valid':13,'test':14}; META=['province_name','province_code','filename','text','speakerID','gender']; MAX_FILES=100
 def url(s,i): return f'https://huggingface.co/datasets/nguyendv02/ViMD_Dataset/resolve/main/data/{s}-{i:05d}-of-{SHARDS[s]:05d}.parquet'
 def select(audit):
  by=defaultdict(list)

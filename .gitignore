@@ -34,3 +34,10 @@ logs/
 .env
 .venv/
 venv/
+
+# Datasets required by the Ubuntu training environment
+!train/data/
+!train/data/dataset_haiphong/
+!train/data/dataset_haiphong/**
+!train/data/dataset_nghean/
+!train/data/dataset_nghean/**

@@ -5,7 +5,7 @@ import numpy as np
 import soundfile as sf
 
 ROOT=Path(__file__).resolve().parent.parent
-AUDIO_ROOT=ROOT/'vimd_haiphong'
+AUDIO_ROOT=ROOT/'data'/'dataset_haiphong'
 OUT=ROOT/'output'/'test13_scale_feasibility'
 SPEAKERS={'spk_15_0218','spk_15_0220','spk_15_0219'}
 

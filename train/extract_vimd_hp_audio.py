@@ -18,7 +18,7 @@ import pyarrow.parquet as pq
 
 TRAIN_DIR = Path(__file__).resolve().parent
 AUDIT = TRAIN_DIR / "vimd_hp_audit.json"
-OUT_ROOT = TRAIN_DIR / "vimd_haiphong"
+OUT_ROOT = TRAIN_DIR / "data" / "dataset_haiphong"
 EXTRACTED_CSV = TRAIN_DIR / "metadata_hp_extracted.csv"
 SHARDS = {"train": 103, "valid": 13, "test": 14}
 COLS_META = ["province_name", "province_code", "filename", "text", "speakerID", "gender"]
