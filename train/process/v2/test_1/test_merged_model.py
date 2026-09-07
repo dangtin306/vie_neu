@@ -9,15 +9,24 @@ from __future__ import annotations
 
 import argparse
 import csv
+import os
 import sys
 from pathlib import Path
 
+
+# Apply the same machine-wide CPU settings as the training pipeline before
+# importing torch/librosa. GPU remains responsible for model inference.
+CPU_THREADS = max(1, os.cpu_count() or 1)
+os.environ.setdefault("OMP_NUM_THREADS", str(CPU_THREADS))
+os.environ.setdefault("MKL_NUM_THREADS", str(CPU_THREADS))
+os.environ.setdefault("OPENBLAS_NUM_THREADS", str(CPU_THREADS))
+os.environ.setdefault("NUMEXPR_NUM_THREADS", str(CPU_THREADS))
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "true")
 
 ROOT = Path(__file__).resolve().parents[4]
 SOURCE_ROOT = ROOT / "source_code" / "audio_model"
 sys.path.insert(0, str(SOURCE_ROOT / "src"))
 
-DEFAULT_MODEL = ROOT / "train" / "output" / "nghean_v2_advanced" / "merged_model"
 DEFAULT_METADATA = ROOT / "train" / "metadata_na_candidates.csv"
 DEFAULT_OUTPUT = Path(__file__).resolve().parent / "outputs"
 
@@ -33,6 +42,19 @@ TEST_TEXTS = [
 MAX_NEW_TOKENS = 700
 MIN_NEW_TOKENS = 50
 REPETITION_PENALTY = 1.2
+
+
+def find_latest_model() -> Path:
+    models = sorted(
+        (ROOT / "train" / "output").glob("*/merged_model"),
+        key=lambda path: path.stat().st_mtime,
+        reverse=True,
+    )
+    if not models:
+        raise FileNotFoundError(
+            "Không tìm thấy merged_model. Hãy train trước hoặc truyền --model."
+        )
+    return models[0]
 
 
 def choose_reference() -> tuple[Path, str]:
@@ -69,14 +91,20 @@ def choose_reference() -> tuple[Path, str]:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=Path, default=DEFAULT_MODEL)
+    parser.add_argument(
+        "--model",
+        type=Path,
+        default=None,
+        help="Merged model cụ thể; bỏ trống sẽ tự chọn merged_model mới nhất.",
+    )
     parser.add_argument("--reference", type=Path)
     parser.add_argument("--ref-text")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--text", action="append", dest="texts")
     args = parser.parse_args()
 
-    model = args.model if args.model.is_absolute() else ROOT / args.model
+    model = find_latest_model() if args.model is None else args.model
+    model = model if model.is_absolute() else ROOT / model
     if not model.is_dir():
         raise FileNotFoundError(f"Chưa có merged model: {model}")
 
@@ -89,6 +117,10 @@ def main() -> None:
         reference, ref_text = choose_reference()
 
     from vieneu import Vieneu
+    import torch
+
+    torch.set_num_threads(CPU_THREADS)
+    torch.set_num_interop_threads(max(1, min(4, CPU_THREADS)))
 
     output_dir = args.output_dir if args.output_dir.is_absolute() else ROOT / args.output_dir
     output_dir.mkdir(parents=True, exist_ok=True)
