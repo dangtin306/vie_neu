@@ -1162,12 +1162,17 @@ def main() -> None:
             "token_audit": {
                 "accepted_samples": len(accepted),
                 "rejected_samples": len(rejected),
-                "max_token_count": max(r["total_token_count"] for r in accepted),
+                "max_token_count": max(
+                    (int(r.get("total_token_count", 0) or 0) for r in accepted),
+                    default=0,
+                ),
                 "over_context_rejected": sum(
                     1 for r in rejected if r.get("over_context")
                 ),
                 "samples_with_eos": sum(
-                    1 for r in accepted if r.get("eos_in_labels")
+                    1
+                    for r in accepted
+                    if str(r.get("eos_in_labels", "")).lower() == "true"
                 ),
             },
             "split": {
