@@ -127,29 +127,41 @@ def infer_with_eos_fallback(engine, text: str, reference: Path, ref_text: str):
     when present; it is not required for the call to finish.
     """
     import torch
+    import numpy as np
     from vieneu_utils.phonemize_text import phonemize_with_dict, normalize_to_chunks
+    from vieneu_utils.core_utils import join_audio_chunks
 
     ref_codes, resolved_ref_text = engine._resolve_ref_voice(
         None, str(reference), None, ref_text
     )
     chunks = normalize_to_chunks(text, max_chars=256)
-    if len(chunks) != 1:
-        # The test sentences are short; retain official chunk handling for a
-        # caller-provided long sentence rather than silently dropping text.
-        return engine.infer(
-            text,
-            ref_audio=str(reference),
-            ref_text=ref_text,
-            max_chars=256,
-            temperature=0.35,
-            top_k=25,
-            apply_watermark=False,
-        )
-
     ref_phonemes = engine.get_ref_phonemes(resolved_ref_text)
-    phonemes = phonemize_with_dict(chunks[0], skip_normalize=True)
+    audio_chunks = []
+    for index, chunk in enumerate(chunks, 1):
+        try:
+            audio_chunks.append(
+                infer_one_chunk_safe(
+                    engine, chunk, ref_codes, ref_phonemes, torch
+                )
+            )
+        except Exception as exc:
+            # A broken EOS/audio chunk must not cancel the remaining text.
+            print(f"WARNING: bỏ qua chunk {index}/{len(chunks)}: {exc}")
+
+    if not audio_chunks:
+        return np.array([], dtype=np.float32)
+    return join_audio_chunks(audio_chunks, engine.sample_rate, silence_p=0.08)
+
+
+def infer_one_chunk_safe(engine, chunk, ref_codes, ref_phonemes, torch):
+    """Generate one chunk with a hard fallback when EOS is missing."""
+    from vieneu_utils.phonemize_text import phonemize_with_dict
+
+    phonemes = phonemize_with_dict(chunk, skip_normalize=True)
     prompt_ids = engine._apply_chat_template(ref_codes, ref_phonemes, phonemes)
-    prompt = torch.tensor(prompt_ids, dtype=torch.long, device=engine.backbone.device).unsqueeze(0)
+    prompt = torch.tensor(
+        prompt_ids, dtype=torch.long, device=engine.backbone.device
+    ).unsqueeze(0)
     speech_end_id = engine.tokenizer.convert_tokens_to_ids(
         "<|SPEECH_GENERATION_END|>"
     )
