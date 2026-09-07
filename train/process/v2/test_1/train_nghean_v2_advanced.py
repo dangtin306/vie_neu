@@ -164,6 +164,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Use full FP32 for maximum CUDA stability; slower and uses more VRAM.",
     )
+    p.add_argument(
+        "--fast-gpu",
+        action="store_true",
+        help="Speed mode: enable CUDA caching, SDPA, BF16, batch 2 and no checkpointing.",
+    )
     return p.parse_args()
 
 
@@ -659,6 +664,7 @@ def train_lora(
     resume_from_checkpoint: Path | None = None,
     no_bf16: bool = False,
     fp32: bool = False,
+    fast_gpu: bool = False,
 ) -> dict[str, Any]:
     import torch
     from peft import get_peft_model
@@ -682,7 +688,7 @@ def train_lora(
     if torch.cuda.is_available():
         # Avoid unstable TF32 CUBLAS kernels on the RTX 3080 for this
         # Qwen3/LoRA graph; tensors remain entirely on CUDA.
-        torch.backends.cuda.matmul.allow_tf32 = False
+        torch.backends.cuda.matmul.allow_tf32 = bool(fast_gpu)
         torch.backends.cudnn.allow_tf32 = False
         torch.set_float32_matmul_precision("highest")
 
@@ -712,15 +718,16 @@ def train_lora(
         BASE_MODEL,
         trust_remote_code=True,
         dtype=dtype,
-        attn_implementation="eager",
+        attn_implementation="sdpa" if fast_gpu else "eager",
     )
     model = get_peft_model(model, lora_config)
     model = model.to(train_device)
     model.config.use_cache = False
-    model.gradient_checkpointing_enable(
-        gradient_checkpointing_kwargs={"use_reentrant": False}
-    )
-    model.enable_input_require_grads()
+    if not fast_gpu:
+        model.gradient_checkpointing_enable(
+            gradient_checkpointing_kwargs={"use_reentrant": False}
+        )
+        model.enable_input_require_grads()
     model.print_trainable_parameters()
 
     class SafeVieNeuDataset(VieNeuDataset):
@@ -772,7 +779,7 @@ def train_lora(
         dataloader_pin_memory=torch.cuda.is_available(),
         dataloader_persistent_workers=workers > 0,
         remove_unused_columns=False,
-        gradient_checkpointing=True,
+        gradient_checkpointing=not fast_gpu,
         bf16=use_bf16,
         fp16=bool(torch.cuda.is_available() and not use_bf16 and not fp32),
         seed=seed,
@@ -854,6 +861,7 @@ def train_lora(
             "fp32": fp32,
             "device_map": "none; explicit single-device placement",
             "resume_from_checkpoint": str(resume_path) if resume_path else None,
+            "fast_gpu": fast_gpu,
         }
     )
     return metrics
@@ -1000,6 +1008,13 @@ def write_report(path: Path, report: dict[str, Any]) -> None:
 
 def main() -> None:
     args = parse_args()
+    if args.fast_gpu:
+        os.environ["CUDA_LAUNCH_BLOCKING"] = "0"
+        os.environ.pop("PYTORCH_NO_CUDA_MEMORY_CACHING", None)
+        if args.batch_size == 1:
+            args.batch_size = 2
+        if args.grad_accum == 2:
+            args.grad_accum = 1
     random.seed(args.seed)
 
     run = ROOT / "train" / "output" / args.run_name
@@ -1097,6 +1112,7 @@ def main() -> None:
         resume_from_checkpoint=args.resume_from_checkpoint,
         no_bf16=args.no_bf16,
         fp32=args.fp32,
+        fast_gpu=args.fast_gpu,
     )
     report["training"] = metrics
     report["adapter"] = str(adapter_dir)
