@@ -43,6 +43,11 @@ os.environ.setdefault("OMP_NUM_THREADS", str(CPU_THREADS))
 os.environ.setdefault("MKL_NUM_THREADS", str(CPU_THREADS))
 os.environ.setdefault("OPENBLAS_NUM_THREADS", str(CPU_THREADS))
 os.environ.setdefault("NUMEXPR_NUM_THREADS", str(CPU_THREADS))
+# CUDA stability defaults for this Qwen3/LoRA training path.  They must be
+# set before importing torch.  Users can still override them in the shell.
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")
+os.environ.setdefault("CUDA_LAUNCH_BLOCKING", "1")
+os.environ.setdefault("PYTORCH_NO_CUDA_MEMORY_CACHING", "1")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "true")
 
 # ---------------------------------------------------------------------------
@@ -714,10 +719,17 @@ def train_lora(
         BASE_MODEL,
         trust_remote_code=True,
         dtype=dtype,
+        attn_implementation="eager",
     )
     model = get_peft_model(model, lora_config)
     model = model.to(train_device)
     model.config.use_cache = False
+    # Avoid fused/SDPA kernel instability on long runs and lower activation
+    # memory so the complete model remains on the single CUDA device.
+    model.gradient_checkpointing_enable(
+        gradient_checkpointing_kwargs={"use_reentrant": False}
+    )
+    model.enable_input_require_grads()
     model.print_trainable_parameters()
 
     class SafeVieNeuDataset(VieNeuDataset):
@@ -769,6 +781,7 @@ def train_lora(
         dataloader_pin_memory=torch.cuda.is_available(),
         dataloader_persistent_workers=workers > 0,
         remove_unused_columns=False,
+        gradient_checkpointing=True,
         bf16=use_bf16,
         fp16=bool(torch.cuda.is_available() and not use_bf16 and not fp32),
         seed=seed,

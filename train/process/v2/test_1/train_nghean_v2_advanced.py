@@ -712,10 +712,15 @@ def train_lora(
         BASE_MODEL,
         trust_remote_code=True,
         dtype=dtype,
+        attn_implementation="eager",
     )
     model = get_peft_model(model, lora_config)
     model = model.to(train_device)
     model.config.use_cache = False
+    model.gradient_checkpointing_enable(
+        gradient_checkpointing_kwargs={"use_reentrant": False}
+    )
+    model.enable_input_require_grads()
     model.print_trainable_parameters()
 
     class SafeVieNeuDataset(VieNeuDataset):
@@ -767,6 +772,7 @@ def train_lora(
         dataloader_pin_memory=torch.cuda.is_available(),
         dataloader_persistent_workers=workers > 0,
         remove_unused_columns=False,
+        gradient_checkpointing=True,
         bf16=use_bf16,
         fp16=bool(torch.cuda.is_available() and not use_bf16 and not fp32),
         seed=seed,
