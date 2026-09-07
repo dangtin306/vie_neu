@@ -671,6 +671,7 @@ def train_lora(
     fp32: bool = False,
     fast_gpu: bool = False,
 ) -> dict[str, Any]:
+    print("🦜 Bắt đầu load tokenizer/model và gắn LoRA...", flush=True)
     import torch
     from peft import get_peft_model
     from transformers import (
@@ -767,7 +768,7 @@ def train_lora(
         1, math.ceil(len(train_ds) / max(1, batch_size * grad_accum))
     )
     total_steps_est = max(1, int(math.ceil(steps_per_epoch * epochs)))
-    logging_steps = max(1, total_steps_est // 10)
+    logging_steps = max(1, total_steps_est // 20)
     eval_steps = max(1, total_steps_est // 4)
     save_steps = eval_steps
 
@@ -837,7 +838,14 @@ def train_lora(
             raise FileNotFoundError(f"Checkpoint không tồn tại: {resume_path}")
         print(f"🦜 Resume từ checkpoint: {resume_path}")
 
+    print(
+        f"🦜 Bắt đầu train LoRA: {len(train_ds)} train, "
+        f"{len(valid_ds) if valid_ds is not None else 0} valid, "
+        f"{total_steps_est} steps, batch={batch_size}, grad_accum={grad_accum}",
+        flush=True,
+    )
     result = trainer.train(resume_from_checkpoint=str(resume_path) if resume_path else None)
+    print("✅ Đã hoàn tất train LoRA.", flush=True)
     runtime_wall = time.time() - t0
 
     # When load_best_model_at_end=True, this saves the best weights currently
@@ -1059,6 +1067,7 @@ def main() -> None:
     )
 
     stage_info = stage_dataset(train_rows, dataset_dir)
+    print("🦜 Đã staging dataset, bắt đầu filter + encode...", flush=True)
     encoded = official_filter_and_encode(
         dataset_dir,
         max_samples=max(1, len(train_rows) + 10),
@@ -1075,12 +1084,21 @@ def main() -> None:
     safe_encoded, accepted, rejected = token_audit_and_filter(
         encoded, tokenizer, run
     )
+    print(
+        f"🦜 Đã audit token: {len(accepted)} mẫu giữ lại, "
+        f"{len(rejected)} mẫu loại.",
+        flush=True,
+    )
 
     train_path, valid_path, train_safe, valid_safe = split_encoded_by_speaker(
         accepted,
         dataset_dir,
         seed=args.seed,
         validation_ratio=args.validation_ratio,
+    )
+    print(
+        f"🦜 Đã chia dữ liệu: {len(train_safe)} train / {len(valid_safe)} valid.",
+        flush=True,
     )
 
     report.update(
