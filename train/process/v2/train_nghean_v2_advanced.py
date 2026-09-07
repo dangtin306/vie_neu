@@ -148,6 +148,17 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Delete an existing run directory with the same name before starting.",
     )
+    p.add_argument(
+        "--resume-from-checkpoint",
+        type=Path,
+        default=None,
+        help="Resume Trainer from an existing adapter/checkpoint directory.",
+    )
+    p.add_argument(
+        "--no-bf16",
+        action="store_true",
+        help="Disable BF16 when a CUDA/cuBLAS driver is unstable; use FP16 instead.",
+    )
     return p.parse_args()
 
 
@@ -640,6 +651,8 @@ def train_lora(
     workers_arg: int,
     epochs_arg: float,
     lr_arg: float,
+    resume_from_checkpoint: Path | None = None,
+    no_bf16: bool = False,
 ) -> dict[str, Any]:
     import torch
     from peft import get_peft_model
@@ -668,7 +681,11 @@ def train_lora(
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    use_bf16 = bool(torch.cuda.is_available() and torch.cuda.is_bf16_supported())
+    use_bf16 = bool(
+        torch.cuda.is_available()
+        and torch.cuda.is_bf16_supported()
+        and not no_bf16
+    )
     dtype = (
         torch.bfloat16
         if use_bf16
@@ -772,7 +789,18 @@ def train_lora(
     )
 
     t0 = time.time()
-    result = trainer.train()
+    resume_path = None
+    if resume_from_checkpoint is not None:
+        resume_path = (
+            resume_from_checkpoint
+            if resume_from_checkpoint.is_absolute()
+            else ROOT / resume_from_checkpoint
+        )
+        if not resume_path.is_dir():
+            raise FileNotFoundError(f"Checkpoint không tồn tại: {resume_path}")
+        print(f"🦜 Resume từ checkpoint: {resume_path}")
+
+    result = trainer.train(resume_from_checkpoint=str(resume_path) if resume_path else None)
     runtime_wall = time.time() - t0
 
     # When load_best_model_at_end=True, this saves the best weights currently
@@ -802,6 +830,7 @@ def train_lora(
             "cpu_threads": CPU_THREADS,
             "best_checkpoint": trainer.state.best_model_checkpoint,
             "bf16": use_bf16,
+            "resume_from_checkpoint": str(resume_path) if resume_path else None,
         }
     )
     return metrics
@@ -1042,6 +1071,8 @@ def main() -> None:
         workers_arg=args.workers,
         epochs_arg=args.epochs,
         lr_arg=args.learning_rate,
+        resume_from_checkpoint=args.resume_from_checkpoint,
+        no_bf16=args.no_bf16,
     )
     report["training"] = metrics
     report["adapter"] = str(adapter_dir)
