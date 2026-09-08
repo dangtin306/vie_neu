@@ -106,6 +106,11 @@ def parse_args() -> argparse.Namespace:
     )
     p.add_argument("--overwrite", action="store_true")
     p.add_argument(
+        "--train-only",
+        action="store_true",
+        help="Reuse this run's prepared dataset and start directly at LoRA training.",
+    )
+    p.add_argument(
         "--resume-from-checkpoint",
         type=Path,
         default=None,
@@ -745,6 +750,39 @@ def main() -> None:
     run = ROOT / "train" / "output" / args.run_name
     dataset_dir = run / "dataset"
     adapter_dir = run / "adapter"
+
+    if args.train_only:
+        train_path = dataset_dir / "train_encoded.csv"
+        valid_path = dataset_dir / "valid_encoded.csv"
+        if not train_path.is_file():
+            raise FileNotFoundError(f"Missing prepared train dataset: {train_path}")
+        train_count = sum(1 for line in train_path.read_text(encoding="utf-8").splitlines() if line.strip())
+        if train_count != TARGET_SAFE_TRAIN:
+            raise RuntimeError(
+                f"Prepared dataset has {train_count} rows; expected exactly {TARGET_SAFE_TRAIN}."
+            )
+        report_path = run / "training_report.json"
+        report = json.loads(report_path.read_text(encoding="utf-8")) if report_path.is_file() else {
+            "status": "prepared",
+            "run": str(run),
+            "adapter_only": True,
+            "final_train_count": TARGET_SAFE_TRAIN,
+        }
+        print(
+            f"🦜 Train-only: reuse {train_count} prepared rows; skip filter + NeuCodec encode.",
+            flush=True,
+        )
+        metrics = train_adapter(
+            train_path=train_path,
+            valid_path=valid_path if valid_path.is_file() else None,
+            adapter_dir=adapter_dir,
+            args=args,
+        )
+        report["status"] = "completed"
+        report["training"] = metrics
+        write_json(report_path, report)
+        print(json.dumps(report, ensure_ascii=False, indent=2), flush=True)
+        return
 
     prepare_run_dir(run, args.overwrite)
     dataset_dir.mkdir(parents=True, exist_ok=True)

@@ -33,6 +33,16 @@ python train/process/v2/test_2/train_lora_30_eos.py \
   --fast-gpu \
   --overwrite
 
+Nếu dataset đã encode nhưng train bị dừng, chạy lại chỉ phần train:
+
+python train/process/v2/test_2/train_lora_30_eos.py \
+  --run-name nghean_v2_lora30_eos \
+  --epochs 80 \
+  --learning-rate 5e-6 \
+  --eos-loss-weight 5 \
+  --fast-gpu \
+  --train-only
+
 ## Expected training output
 
 train/output/nghean_v2_lora30_eos/
