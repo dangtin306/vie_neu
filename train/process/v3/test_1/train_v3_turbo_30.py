@@ -55,12 +55,26 @@ TRAINING_ROOT = WORK_ROOT / "training"
 RUN_NAME = "nghean_v3_turbo_30"
 BASE_MODEL = "pnnbao-ump/VieNeu-TTS-v3-Turbo"
 
-SOURCE_METADATA = (
+SOURCE_METADATA_PRIMARY = (
     PROJECT_ROOT
     / "train"
     / "output"
     / "nghean_test2_accent_scale"
     / "metadata_na_extracted.csv"
+)
+SOURCE_METADATA_FALLBACK = (
+    PROJECT_ROOT
+    / "train"
+    / "output"
+    / "nghean_test2_accent_scale"
+    / "nghean_eligible_audio_manifest.csv"
+)
+# The old extracted metadata is not part of Git.  New Ubuntu clones commonly
+# have only the eligible manifest, so choose it automatically when present.
+SOURCE_METADATA = (
+    SOURCE_METADATA_PRIMARY
+    if SOURCE_METADATA_PRIMARY.is_file()
+    else SOURCE_METADATA_FALLBACK
 )
 SOURCE_PAIR_METADATA = (
     PROJECT_ROOT
@@ -127,7 +141,13 @@ def resolve(path: Path) -> Path:
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open("r", encoding="utf-8-sig", newline="") as f:
-        return list(csv.DictReader(f))
+        rows = list(csv.DictReader(f))
+    # Older manifests call the transcript column `transcript`; the official
+    # v3 preparation flow expects `text`.
+    for row in rows:
+        if not row.get("text", "").strip() and row.get("transcript", "").strip():
+            row["text"] = row["transcript"].strip()
+    return rows
 
 
 def find_source_audio(row: dict[str, str], audio_root: Path) -> Path:
