@@ -1,21 +1,32 @@
-"""Train exactly 30 safe Nghá»‡ An utterances as a runtime PEFT LoRA.
+"""Aggressive Nghá»‡ An accent + EOS-focused PEFT LoRA training.
 
-Design
-------
-- Reuse the verified v2 preprocessing helpers from train_nghean_v2_advanced.py.
-- Stage ALL eligible train candidates, run official filter + NeuCodec encode,
-  audit token/context/EOS safety, THEN choose exactly 30 safe train rows.
-- Keep the base model untouched. Save only the PEFT adapter.
-- Up-weight only <|SPEECH_GENERATION_END|> targets in the causal token loss.
-- Preserve the fast single-GPU / multi-CPU behavior used by the current v2
-  training pipeline.
+Goals
+-----
+- Keep the verified v2 preprocessing/filter/NeuCodec/token-audit pipeline.
+- Keep EXACTLY 30 already-safe training rows so this remains directly
+  comparable with test_2.
+- Push regional pronunciation much harder than the previous LoRA:
+  * larger LoRA rank/alpha,
+  * zero LoRA dropout,
+  * LoRA also on lm_head,
+  * stronger learning rate + cosine schedule,
+  * loss only on generated speech codes + END (not the generation-start token).
+- Reduce missing EOS without encouraging premature stopping:
+  * strong END weight,
+  * END weight ramps up late in training,
+  * extra supervision on the final speech-code window,
+  * anti-early-EOS margin penalty before the true END.
+- Preserve the fast single-GPU / multi-CPU path:
+  BF16 + SDPA + dynamic right-padding trim + no checkpointing on --fast-gpu.
+- Save adapter only. Never merge the base model.
 
-This file does not modify source_code/audio_model or the production v2 script.
+This file does not modify source_code/audio_model or the inference/test file.
 """
 
 from __future__ import annotations
 
 import argparse
+import copy
 import csv
 import json
 import math
@@ -65,9 +76,23 @@ from train_nghean_v2_advanced import (  # noqa: E402
 )
 
 CODEC_MODEL = "neuphonic/neucodec"
-DEFAULT_RUN_NAME = "nghean_v2_lora30_eos"
+DEFAULT_RUN_NAME = "nghean_v2_lora30_accentmax_eos"
 TARGET_SAFE_TRAIN = 30
-DEFAULT_EOS_LOSS_WEIGHT = 5.0
+
+# Aggressive accent preset. The official config is r=16, alpha=32, dropout=0.05.
+DEFAULT_LEARNING_RATE = 1.2e-5
+DEFAULT_LORA_R = 32
+DEFAULT_LORA_ALPHA = 96
+DEFAULT_LORA_DROPOUT = 0.0
+
+# EOS preset: start moderately, then become much stronger late in training.
+DEFAULT_EOS_START_WEIGHT = 6.0
+DEFAULT_EOS_LOSS_WEIGHT = 18.0
+DEFAULT_EOS_RAMP_START = 0.55
+DEFAULT_EOS_TAIL_TOKENS = 64
+DEFAULT_EOS_TAIL_WEIGHT = 1.35
+DEFAULT_EARLY_EOS_PENALTY = 0.08
+DEFAULT_EARLY_EOS_MARGIN = 0.5
 
 
 # ---------------------------------------------------------------------------
@@ -76,17 +101,92 @@ DEFAULT_EOS_LOSS_WEIGHT = 5.0
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
-        description="Train exactly 30 safe Nghá»‡ An rows as an adapter-only VieNeu v2 LoRA."
+        description=(
+            "Aggressive Nghá»‡ An accent + EOS-focused adapter-only VieNeu v2 LoRA."
+        )
     )
     p.add_argument("--run-name", default=DEFAULT_RUN_NAME)
-    p.add_argument("--epochs", type=float, default=80.0)
-    p.add_argument("--learning-rate", type=float, default=5e-6)
-    p.add_argument("--eos-loss-weight", type=float, default=DEFAULT_EOS_LOSS_WEIGHT)
+    p.add_argument("--epochs", type=float, default=60.0)
+    p.add_argument("--learning-rate", type=float, default=DEFAULT_LEARNING_RATE)
+
+    # Reuse an already-prepared dataset from another run while writing a new
+    # adapter to --run-name. This lets test_2 keep its old dataset untouched.
+    p.add_argument(
+        "--dataset-run-name",
+        default=None,
+        help=(
+            "With --train-only, read dataset/train_encoded.csv and "
+            "valid_encoded.csv from this run name. If omitted, use --run-name."
+        ),
+    )
+
+    # Stronger LoRA capacity for pronunciation/acoustic-token adaptation.
+    p.add_argument("--lora-r", type=int, default=DEFAULT_LORA_R)
+    p.add_argument("--lora-alpha", type=int, default=DEFAULT_LORA_ALPHA)
+    p.add_argument("--lora-dropout", type=float, default=DEFAULT_LORA_DROPOUT)
+    p.add_argument(
+        "--no-lm-head-lora",
+        action="store_true",
+        help=(
+            "Disable LoRA on lm_head. Default keeps it ON because adapting the "
+            "speech-token output projection materially increases accent/EOS capacity."
+        ),
+    )
+
+    # EOS objective.
+    p.add_argument(
+        "--eos-loss-weight",
+        type=float,
+        default=DEFAULT_EOS_LOSS_WEIGHT,
+        help="Final END-token weight used late in training and for evaluation.",
+    )
+    p.add_argument(
+        "--eos-start-weight",
+        type=float,
+        default=DEFAULT_EOS_START_WEIGHT,
+        help="END-token weight before the late-training ramp begins.",
+    )
+    p.add_argument(
+        "--eos-ramp-start",
+        type=float,
+        default=DEFAULT_EOS_RAMP_START,
+        help="Training-progress fraction at which END weight starts ramping to final.",
+    )
+    p.add_argument(
+        "--eos-tail-tokens",
+        type=int,
+        default=DEFAULT_EOS_TAIL_TOKENS,
+        help="Number of speech-code targets immediately before END to up-weight.",
+    )
+    p.add_argument(
+        "--eos-tail-weight",
+        type=float,
+        default=DEFAULT_EOS_TAIL_WEIGHT,
+        help="Weight for the final speech-code window before END.",
+    )
+    p.add_argument(
+        "--early-eos-penalty",
+        type=float,
+        default=DEFAULT_EARLY_EOS_PENALTY,
+        help="Margin penalty that keeps END below the true next token before the boundary.",
+    )
+    p.add_argument(
+        "--early-eos-margin",
+        type=float,
+        default=DEFAULT_EARLY_EOS_MARGIN,
+    )
+
+    p.add_argument(
+        "--scheduler",
+        choices=("cosine", "linear", "constant_with_warmup"),
+        default="cosine",
+        help="cosine is the recommended aggressive-but-stable accent schedule.",
+    )
     p.add_argument(
         "--batch-size",
         type=int,
         default=0,
-        help="0 = auto by VRAM: >=11GB -> 4, >=8GB -> 2, otherwise 1.",
+        help="0 = auto by VRAM: >=11GB -> 4, >=8GB -> 3, otherwise 1.",
     )
     p.add_argument("--grad-accum", type=int, default=1)
     p.add_argument(
@@ -107,25 +207,18 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--force-checkpointing",
         action="store_true",
-        help=(
-            "Force gradient checkpointing if CUDA OOM occurs. "
-            "Slower, but reduces activation memory."
-        ),
+        help="Force gradient checkpointing if CUDA OOM occurs.",
     )
     p.add_argument(
         "--no-dynamic-trim",
         action="store_true",
-        help=(
-            "Disable batch-time trimming of right padding. "
-            "Normally leave this OFF because trimming preserves valid tokens "
-            "while greatly reducing compute."
-        ),
+        help="Disable trimming of masked right padding at batch time.",
     )
     p.add_argument(
         "--trim-multiple",
         type=int,
         default=8,
-        help="Round dynamic sequence length up to this multiple (default 8).",
+        help="Round dynamic sequence length up to this multiple.",
     )
     p.add_argument("--fp32", action="store_true")
     p.add_argument(
@@ -138,7 +231,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--train-only",
         action="store_true",
-        help="Reuse this run's prepared dataset and start directly at LoRA training.",
+        help="Reuse a prepared encoded dataset and start directly at LoRA training.",
     )
     p.add_argument(
         "--resume-from-checkpoint",
@@ -189,15 +282,16 @@ def select_exactly_30(
     accepted: list[dict[str, Any]],
     staged: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
-    """Choose exactly 30 already-safe encoded rows.
+    """Choose exactly 30 safe rows with stronger accent concentration.
 
     Preference:
-    1) speakers with multiple usable utterances;
-    2) 5-8 second utterances;
-    3) several passes over each speaker before globally filling the remainder.
+    1) speakers with multiple usable utterances first;
+    2) take several utterances from the same repeated speaker before moving on;
+    3) prefer 6-12 second utterances (more phonetic/context coverage);
+    4) fill with singletons only when necessary.
 
-    This deliberately avoids the old mistake of selecting 30 raw rows and
-    allowing the official filter to shrink the actual training set afterward.
+    If the source itself contains almost one utterance per speaker, this cannot
+    invent repeated-speaker data; it simply avoids maximizing speaker diversity.
     """
     if len(accepted) < TARGET_SAFE_TRAIN:
         raise RuntimeError(
@@ -218,46 +312,46 @@ def select_exactly_30(
         rows.sort(
             key=lambda row: (
                 0
-                if 5.0 <= duration_by_filename.get(row["filename"], 0.0) <= 8.0
+                if 6.0 <= duration_by_filename.get(row["filename"], 0.0) <= 12.0
                 else 1,
-                abs(duration_by_filename.get(row["filename"], 6.0) - 6.0),
+                abs(duration_by_filename.get(row["filename"], 8.0) - 8.0),
                 int(row.get("total_token_count", 0) or 0),
                 row["filename"],
             )
         )
 
-    speaker_counts = {
-        speaker: len(rows)
-        for speaker, rows in by_speaker.items()
-    }
     speakers = sorted(
         by_speaker,
-        key=lambda speaker: (-speaker_counts[speaker], speaker),
+        key=lambda spk: (-len(by_speaker[spk]), spk),
     )
 
     selected: list[dict[str, Any]] = []
 
-    # Up to four utterances per speaker in round-robin order before filling.
-    for round_index in range(4):
-        for speaker in speakers:
-            rows = by_speaker[speaker]
-            if round_index < len(rows) and len(selected) < TARGET_SAFE_TRAIN:
-                selected.append(rows[round_index])
+    # Accent-concentrated pass: repeated speakers contribute up to 8 rows before
+    # singleton speakers are needed.
+    for speaker in speakers:
+        if len(by_speaker[speaker]) <= 1:
+            continue
+        for row in by_speaker[speaker][:8]:
+            if len(selected) >= TARGET_SAFE_TRAIN:
+                break
+            selected.append(row)
+        if len(selected) >= TARGET_SAFE_TRAIN:
+            break
 
+    # Fill from all remaining safe rows, still preferring repeated speakers and
+    # useful duration.
     if len(selected) < TARGET_SAFE_TRAIN:
         already = {id(row) for row in selected}
-        remaining = [
-            row
-            for row in accepted
-            if id(row) not in already
-        ]
+        speaker_counts = {spk: len(rows) for spk, rows in by_speaker.items()}
+        remaining = [row for row in accepted if id(row) not in already]
         remaining.sort(
             key=lambda row: (
                 -speaker_counts[row["speakerID"]],
                 0
-                if 5.0 <= duration_by_filename.get(row["filename"], 0.0) <= 8.0
+                if 6.0 <= duration_by_filename.get(row["filename"], 0.0) <= 12.0
                 else 1,
-                abs(duration_by_filename.get(row["filename"], 6.0) - 6.0),
+                abs(duration_by_filename.get(row["filename"], 8.0) - 8.0),
                 row["filename"],
             )
         )
@@ -363,44 +457,60 @@ def encode_external_validation(
 # ---------------------------------------------------------------------------
 
 class EOSWeightedTrainerMixin:
-    """Fast exact EOS-weighted causal LM loss.
+    """Fast endpoint-aware loss for stronger END behavior.
 
-    The previous test_2 implementation recomputed token-level cross entropy
-    over every [batch, seq, vocab] logit in Python windows. That duplicated the
-    model's own causal-LM loss work and forced gradient checkpointing on the
-    9.8GB card.
+    The official VieNeu dataset already supervises the generated speech region.
+    This trainer keeps the fast native causal-LM loss, then adds only small
+    targeted losses:
+      - stronger CE on the true SPEECH_GENERATION_END position;
+      - mild CE boost on the final N speech-code targets before END;
+      - margin penalty that prevents END from outranking the correct next code
+        before the actual boundary.
 
-    This version keeps the SAME weighted objective without recomputing CE for
-    every normal token:
-
-        weighted_loss
-          = (sum(normal CE) + w * sum(EOS CE))
-            / (normal_count + w * eos_count)
-
-    The model's native loss already gives:
-        base_loss = (sum(normal CE) + sum(EOS CE)) / valid_count
-
-    Therefore we only compute an extra CE for the very small number of EOS
-    positions and reconstruct the exact weighted mean. Usually there is one EOS
-    target per sample, so the extra [num_eos, vocab] CE is tiny.
+    No full [batch, seq, vocab] per-token CE tensor is materialized.
     """
 
-    eos_loss_weight: float
     eos_token_id: int
 
-    def _init_eos_stats(self, weight: float, eos_token_id: int) -> None:
-        if weight <= 0:
-            raise ValueError("--eos-loss-weight must be > 0")
+    def _init_eos_stats(
+        self,
+        final_weight: float,
+        start_weight: float,
+        ramp_start: float,
+        tail_tokens: int,
+        tail_weight: float,
+        early_eos_penalty: float,
+        early_eos_margin: float,
+        eos_token_id: int,
+    ) -> None:
+        if final_weight <= 0 or start_weight <= 0:
+            raise ValueError("EOS weights must be > 0")
+        if not 0.0 <= ramp_start < 1.0:
+            raise ValueError("--eos-ramp-start must be in [0, 1)")
+        if tail_tokens < 0:
+            raise ValueError("--eos-tail-tokens must be >= 0")
+        if tail_weight < 1.0:
+            raise ValueError("--eos-tail-weight must be >= 1")
+        if early_eos_penalty < 0:
+            raise ValueError("--early-eos-penalty must be >= 0")
 
-        self.eos_loss_weight = float(weight)
+        self.eos_final_weight = float(final_weight)
+        self.eos_start_weight = float(start_weight)
+        self.eos_ramp_start = float(ramp_start)
+        self.eos_tail_tokens = int(tail_tokens)
+        self.eos_tail_weight = float(tail_weight)
+        self.early_eos_penalty = float(early_eos_penalty)
+        self.early_eos_margin = float(early_eos_margin)
         self.eos_token_id = int(eos_token_id)
 
-        # Keep diagnostics as detached GPU scalars during training. This avoids
-        # several .item() CUDA synchronizations on every optimizer micro-step.
         self._diag_eos_loss_sum = None
         self._diag_normal_loss_sum = None
+        self._diag_tail_loss_sum = None
+        self._diag_early_eos_penalty_sum = None
         self._diag_eos_count = None
         self._diag_normal_count = None
+        self._diag_tail_count = None
+        self._diag_batches = None
 
     @staticmethod
     def _accumulate_scalar(current, value):
@@ -409,6 +519,28 @@ class EOSWeightedTrainerMixin:
             return value.clone()
         current.add_(value)
         return current
+
+    def _current_eos_weight(self, training: bool) -> float:
+        # Evaluation always uses the final weight, so eval losses at different
+        # checkpoints remain comparable.
+        if not training:
+            return self.eos_final_weight
+
+        max_steps = max(1, int(getattr(self.state, "max_steps", 1) or 1))
+        step = max(0, int(getattr(self.state, "global_step", 0) or 0))
+        progress = min(1.0, step / max_steps)
+
+        if progress <= self.eos_ramp_start:
+            return self.eos_start_weight
+
+        t = (
+            (progress - self.eos_ramp_start)
+            / max(1e-8, 1.0 - self.eos_ramp_start)
+        )
+        return (
+            self.eos_start_weight
+            + t * (self.eos_final_weight - self.eos_start_weight)
+        )
 
     def compute_loss(
         self,
@@ -424,77 +556,140 @@ class EOSWeightedTrainerMixin:
         if labels is None:
             raise RuntimeError("EOSWeightedTrainer requires labels.")
 
-        # Let the backbone use its normal optimized causal-LM loss path.
-        # This is the same fast path that made test_1 ~0.5 s/step.
         outputs = model(**inputs)
         base_loss = outputs.loss
         if base_loss is None:
             raise RuntimeError("Backbone did not return a causal LM loss.")
 
         shift_labels = labels[..., 1:].contiguous()
+        shift_logits = outputs.logits[..., :-1, :]
+
         valid_mask = shift_labels.ne(-100)
         eos_mask = shift_labels.eq(self.eos_token_id) & valid_mask
 
-        # Counts remain tensors so there is no host/device synchronization in
-        # the hot path.
         valid_count = valid_mask.sum().to(dtype=base_loss.dtype)
         eos_count = eos_mask.sum().to(dtype=base_loss.dtype)
         normal_count = valid_count - eos_count
 
-        # Every train/valid row is EOS-audited before entering this Trainer,
-        # therefore every non-empty batch contains at least one EOS target.
-        # Avoid eos_mask.any().item()/bool here because that would synchronize
-        # CUDA on every micro-step.
-        shift_logits = outputs.logits[..., :-1, :]
         eos_logits = shift_logits[eos_mask]
         eos_targets = shift_labels[eos_mask]
-
         if eos_logits.shape[0] == 0:
             raise RuntimeError(
-                "A Trainer batch contains zero SPEECH_GENERATION_END targets; "
+                "A batch contains zero SPEECH_GENERATION_END targets; "
                 "the EOS-audited dataset invariant was broken."
             )
 
-        # Tiny FP32 CE improves numerical stability at negligible cost.
         eos_loss_sum = F.cross_entropy(
             eos_logits.float(),
             eos_targets,
             reduction="sum",
         ).to(dtype=base_loss.dtype)
 
-        # Recover the normal-token CE sum from the native mean loss, then
-        # rebuild the exact weighted mean. For w=1 this reduces to the
-        # native base loss (up to normal floating-point rounding).
+        # Final N speech-code positions before the true EOS.
+        seq_len = shift_labels.shape[1]
+        positions = torch.arange(
+            seq_len,
+            device=shift_labels.device,
+        ).unsqueeze(0)
+
+        eos_pos_candidates = torch.where(
+            eos_mask,
+            positions,
+            torch.full_like(positions, seq_len),
+        )
+        eos_pos = eos_pos_candidates.min(dim=1).values
+        tail_start = (eos_pos - self.eos_tail_tokens).clamp_min(0)
+
+        tail_mask = (
+            valid_mask
+            & ~eos_mask
+            & (positions >= tail_start.unsqueeze(1))
+            & (positions < eos_pos.unsqueeze(1))
+        )
+
+        tail_count = tail_mask.sum().to(dtype=base_loss.dtype)
+        if self.eos_tail_tokens > 0 and tail_mask.shape[0] > 0:
+            tail_logits = shift_logits[tail_mask]
+            tail_targets = shift_labels[tail_mask]
+        else:
+            tail_logits = shift_logits.new_empty(
+                (0, shift_logits.shape[-1])
+            )
+            tail_targets = shift_labels.new_empty((0,))
+
+        if tail_logits.shape[0] > 0:
+            tail_loss_sum = F.cross_entropy(
+                tail_logits.float(),
+                tail_targets,
+                reduction="sum",
+            ).to(dtype=base_loss.dtype)
+
+            # Before the real boundary, END should not beat the correct next
+            # speech code. This counterbalances the stronger END weight.
+            correct_logits = tail_logits.gather(
+                1,
+                tail_targets.unsqueeze(1),
+            ).squeeze(1)
+            premature_eos_logits = tail_logits[:, self.eos_token_id]
+            boundary_penalty = F.softplus(
+                premature_eos_logits.float()
+                - correct_logits.float()
+                + self.early_eos_margin
+            ).mean().to(dtype=base_loss.dtype)
+        else:
+            tail_loss_sum = base_loss.detach() * 0.0
+            boundary_penalty = base_loss.detach() * 0.0
+
         base_loss_sum = base_loss * valid_count.clamp_min(1.0)
-        extra_weight = self.eos_loss_weight - 1.0
-        denominator = (
-            valid_count + extra_weight * eos_count
+
+        current_eos_weight = self._current_eos_weight(model.training)
+        eos_extra = current_eos_weight - 1.0
+        tail_extra = self.eos_tail_weight - 1.0
+
+        weighted_sum = (
+            base_loss_sum
+            + eos_extra * eos_loss_sum
+            + tail_extra * tail_loss_sum
+        )
+        weighted_count = (
+            valid_count
+            + eos_extra * eos_count
+            + tail_extra * tail_count
         ).clamp_min(1.0)
-        loss = (
-            base_loss_sum + extra_weight * eos_loss_sum
-        ) / denominator
+
+        loss = weighted_sum / weighted_count
+        if self.early_eos_penalty > 0:
+            loss = loss + self.early_eos_penalty * boundary_penalty
 
         normal_loss_sum = (
             base_loss_sum.detach() - eos_loss_sum.detach()
         )
 
-        # Diagnostics only during training. No .item() here.
         if model.training:
+            one = eos_count.detach() * 0.0 + 1.0
             self._diag_eos_loss_sum = self._accumulate_scalar(
-                self._diag_eos_loss_sum,
-                eos_loss_sum,
+                self._diag_eos_loss_sum, eos_loss_sum
             )
             self._diag_normal_loss_sum = self._accumulate_scalar(
-                self._diag_normal_loss_sum,
-                normal_loss_sum,
+                self._diag_normal_loss_sum, normal_loss_sum
+            )
+            self._diag_tail_loss_sum = self._accumulate_scalar(
+                self._diag_tail_loss_sum, tail_loss_sum
+            )
+            self._diag_early_eos_penalty_sum = self._accumulate_scalar(
+                self._diag_early_eos_penalty_sum, boundary_penalty
             )
             self._diag_eos_count = self._accumulate_scalar(
-                self._diag_eos_count,
-                eos_count,
+                self._diag_eos_count, eos_count
             )
             self._diag_normal_count = self._accumulate_scalar(
-                self._diag_normal_count,
-                normal_count,
+                self._diag_normal_count, normal_count
+            )
+            self._diag_tail_count = self._accumulate_scalar(
+                self._diag_tail_count, tail_count
+            )
+            self._diag_batches = self._accumulate_scalar(
+                self._diag_batches, one
             )
 
         return (loss, outputs) if return_outputs else loss
@@ -507,13 +702,26 @@ class EOSWeightedTrainerMixin:
 
         eos_sum = scalar(self._diag_eos_loss_sum)
         normal_sum = scalar(self._diag_normal_loss_sum)
+        tail_sum = scalar(self._diag_tail_loss_sum)
+        boundary_sum = scalar(self._diag_early_eos_penalty_sum)
         eos_count = scalar(self._diag_eos_count)
         normal_count = scalar(self._diag_normal_count)
+        tail_count = scalar(self._diag_tail_count)
+        batches = scalar(self._diag_batches)
 
         return {
             "number_of_train_eos_targets_seen": int(round(eos_count)),
             "normal_token_loss": normal_sum / max(1.0, normal_count),
             "eos_token_loss": eos_sum / max(1.0, eos_count),
+            "tail_token_loss": tail_sum / max(1.0, tail_count),
+            "average_early_eos_margin_penalty": (
+                boundary_sum / max(1.0, batches)
+            ),
+            "eos_start_weight": self.eos_start_weight,
+            "eos_final_weight": self.eos_final_weight,
+            "eos_tail_tokens": self.eos_tail_tokens,
+            "eos_tail_weight": self.eos_tail_weight,
+            "early_eos_penalty": self.early_eos_penalty,
         }
 
 def train_adapter(
@@ -558,9 +766,16 @@ def train_adapter(
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
+    speech_start_id = tokenizer.convert_tokens_to_ids(
+        "<|SPEECH_GENERATION_START|>"
+    )
     speech_end_id = tokenizer.convert_tokens_to_ids(
         "<|SPEECH_GENERATION_END|>"
     )
+    if speech_start_id is None or int(speech_start_id) < 0:
+        raise RuntimeError(
+            "Base tokenizer does not expose <|SPEECH_GENERATION_START|>."
+        )
     if speech_end_id is None or int(speech_end_id) < 0:
         raise RuntimeError(
             "Base tokenizer does not expose <|SPEECH_GENERATION_END|>."
@@ -588,7 +803,21 @@ def train_adapter(
         dtype=dtype,
         attn_implementation="sdpa" if args.fast_gpu else "eager",
     )
-    model = get_peft_model(model, lora_config)
+
+    # Strong accent LoRA:
+    # official = r16 / alpha32 / dropout0.05 on transformer projections.
+    # default here = r32 / alpha96 / dropout0.0 + lm_head LoRA.
+    accent_lora_config = copy.deepcopy(lora_config)
+    accent_lora_config.r = int(args.lora_r)
+    accent_lora_config.lora_alpha = int(args.lora_alpha)
+    accent_lora_config.lora_dropout = float(args.lora_dropout)
+
+    target_modules = list(accent_lora_config.target_modules or [])
+    if not args.no_lm_head_lora and "lm_head" not in target_modules:
+        target_modules.append("lm_head")
+    accent_lora_config.target_modules = target_modules
+
+    model = get_peft_model(model, accent_lora_config)
     model = model.to(train_device)
     model.config.use_cache = False
 
@@ -606,14 +835,48 @@ def train_adapter(
     model.print_trainable_parameters()
 
     class SafeVieNeuDataset(VieNeuDataset):
-        """Official dataset behavior, but right-padding never contributes loss."""
+        """Speech-code-focused labels + safe padding mask.
+
+        Official VieNeu already masks the text prompt and starts labels at
+        SPEECH_GENERATION_START. We additionally mask that START token itself,
+        so every supervised non-EOS token is an acoustic speech code. We also
+        mask anything after the first true speech END for strict boundary focus.
+        """
 
         def __getitem__(self, idx):
             item = super().__getitem__(idx)
-            item["labels"] = item["labels"].masked_fill(
+            labels = item["labels"].clone()
+            input_ids = item["input_ids"]
+
+            labels = labels.masked_fill(
                 item["attention_mask"] == 0,
                 -100,
             )
+
+            start_positions = (
+                input_ids == int(speech_start_id)
+            ).nonzero(as_tuple=True)[0]
+            end_positions = (
+                input_ids == int(speech_end_id)
+            ).nonzero(as_tuple=True)[0]
+
+            if len(start_positions) == 0 or len(end_positions) == 0:
+                raise RuntimeError(
+                    f"Sample {idx} lost speech START/END after dataset loading."
+                )
+
+            start_pos = int(start_positions[0])
+            end_pos = int(end_positions[0])
+            if end_pos <= start_pos:
+                raise RuntimeError(
+                    f"Sample {idx} has invalid speech boundary ordering."
+                )
+
+            labels[: start_pos + 1] = -100
+            if end_pos + 1 < labels.shape[0]:
+                labels[end_pos + 1 :] = -100
+
+            item["labels"] = labels
             return item
 
     train_ds = SafeVieNeuDataset(
@@ -674,9 +937,6 @@ def train_adapter(
             torch.cuda.get_device_properties(0).total_memory
             / (1024**3)
         )
-        # The 9.8-GB card is now using dynamic sequence trimming and the
-        # native+EOS-only loss, so batch 3 gives materially better GPU
-        # occupancy than batch 2 without increasing sequence length.
         batch_size = 4 if vram_gb >= 11 else 3 if vram_gb >= 8 else 1
     else:
         vram_gb = None
@@ -701,7 +961,7 @@ def train_adapter(
     )
 
     logging_steps = max(1, total_steps // 20)
-    eval_steps = max(1, total_steps // 4)
+    eval_steps = max(1, total_steps // 6)
     save_steps = eval_steps
 
     has_eval = valid_ds is not None and len(valid_ds) > 0
@@ -713,8 +973,8 @@ def train_adapter(
         per_device_eval_batch_size=1,
         gradient_accumulation_steps=args.grad_accum,
         learning_rate=args.learning_rate,
-        warmup_ratio=0.05,
-        lr_scheduler_type="linear",
+        warmup_ratio=0.03,
+        lr_scheduler_type=args.scheduler,
         max_grad_norm=1.0,
         logging_steps=logging_steps,
         report_to="none",
@@ -742,7 +1002,7 @@ def train_adapter(
             greater_is_better=False,
         )
         callbacks.append(
-            EarlyStoppingCallback(early_stopping_patience=3)
+            EarlyStoppingCallback(early_stopping_patience=4)
         )
     else:
         training_kwargs.update(
@@ -766,8 +1026,14 @@ def train_adapter(
         callbacks=callbacks,
     )
     trainer._init_eos_stats(
-        args.eos_loss_weight,
-        int(speech_end_id),
+        final_weight=args.eos_loss_weight,
+        start_weight=args.eos_start_weight,
+        ramp_start=args.eos_ramp_start,
+        tail_tokens=args.eos_tail_tokens,
+        tail_weight=args.eos_tail_weight,
+        early_eos_penalty=args.early_eos_penalty,
+        early_eos_margin=args.early_eos_margin,
+        eos_token_id=int(speech_end_id),
     )
 
     resume_path = None
@@ -785,7 +1051,10 @@ def train_adapter(
         f"valid={len(valid_ds) if valid_ds is not None else 0} | "
         f"stepsâ‰ˆ{total_steps} | batch={batch_size} | "
         f"grad_accum={args.grad_accum} | "
-        f"eos_loss_weight={args.eos_loss_weight} | "
+        f"EOS={args.eos_start_weight}->{args.eos_loss_weight} | "
+        f"LoRA=r{args.lora_r}/a{args.lora_alpha} | "
+        f"lm_head_lora={not args.no_lm_head_lora} | "
+        f"scheduler={args.scheduler} | "
         f"dynamic_trim={not args.no_dynamic_trim} | "
         f"checkpointing={use_checkpointing}",
         flush=True,
@@ -827,6 +1096,11 @@ def train_adapter(
             ),
             "epochs_requested": args.epochs,
             "learning_rate": args.learning_rate,
+            "scheduler": args.scheduler,
+            "lora_r": args.lora_r,
+            "lora_alpha": args.lora_alpha,
+            "lora_dropout": args.lora_dropout,
+            "lm_head_lora": not args.no_lm_head_lora,
             "batch_size": batch_size,
             "gradient_accumulation_steps": args.grad_accum,
             "estimated_optimizer_steps": total_steps,
@@ -838,8 +1112,16 @@ def train_adapter(
             "gradient_checkpointing": use_checkpointing,
             "dynamic_right_padding_trim": not args.no_dynamic_trim,
             "trim_multiple": trim_multiple,
-            "eos_loss_implementation": "native_base_loss_plus_eos_only_exact_reweight",
+            "eos_loss_implementation": (
+                "native_speech_loss_plus_dynamic_eos_tail_boundary_margin"
+            ),
             "eos_loss_weight": args.eos_loss_weight,
+            "eos_start_weight": args.eos_start_weight,
+            "eos_ramp_start": args.eos_ramp_start,
+            "eos_tail_tokens": args.eos_tail_tokens,
+            "eos_tail_weight": args.eos_tail_weight,
+            "early_eos_penalty": args.early_eos_penalty,
+            "early_eos_margin": args.early_eos_margin,
             **eos_diag,
             "best_checkpoint": trainer.state.best_model_checkpoint,
             "adapter_only": True,
@@ -865,6 +1147,22 @@ def main() -> None:
         raise ValueError("--grad-accum must be > 0")
     if args.trim_multiple <= 0:
         raise ValueError("--trim-multiple must be > 0")
+    if args.lora_r <= 0:
+        raise ValueError("--lora-r must be > 0")
+    if args.lora_alpha <= 0:
+        raise ValueError("--lora-alpha must be > 0")
+    if not 0.0 <= args.lora_dropout < 1.0:
+        raise ValueError("--lora-dropout must be in [0, 1)")
+    if args.eos_start_weight <= 0:
+        raise ValueError("--eos-start-weight must be > 0")
+    if not 0.0 <= args.eos_ramp_start < 1.0:
+        raise ValueError("--eos-ramp-start must be in [0, 1)")
+    if args.eos_tail_tokens < 0:
+        raise ValueError("--eos-tail-tokens must be >= 0")
+    if args.eos_tail_weight < 1.0:
+        raise ValueError("--eos-tail-weight must be >= 1")
+    if args.early_eos_penalty < 0:
+        raise ValueError("--early-eos-penalty must be >= 0")
 
     random.seed(args.seed)
 
@@ -873,36 +1171,118 @@ def main() -> None:
     adapter_dir = run / "adapter"
 
     if args.train_only:
-        train_path = dataset_dir / "train_encoded.csv"
-        valid_path = dataset_dir / "valid_encoded.csv"
+        dataset_source_run_name = args.dataset_run_name or args.run_name
+        dataset_source_run = (
+            ROOT / "train" / "output" / dataset_source_run_name
+        )
+        dataset_source_dir = dataset_source_run / "dataset"
+
+        train_path = dataset_source_dir / "train_encoded.csv"
+        valid_path = dataset_source_dir / "valid_encoded.csv"
+
         if not train_path.is_file():
-            raise FileNotFoundError(f"Missing prepared train dataset: {train_path}")
-        train_count = sum(1 for line in train_path.read_text(encoding="utf-8").splitlines() if line.strip())
+            raise FileNotFoundError(
+                f"Missing prepared train dataset: {train_path}"
+            )
+
+        train_count = sum(
+            1
+            for line in train_path.read_text(
+                encoding="utf-8"
+            ).splitlines()
+            if line.strip()
+        )
         if train_count != TARGET_SAFE_TRAIN:
             raise RuntimeError(
-                f"Prepared dataset has {train_count} rows; expected exactly {TARGET_SAFE_TRAIN}."
+                f"Prepared dataset has {train_count} rows; "
+                f"expected exactly {TARGET_SAFE_TRAIN}."
             )
+
+        run.mkdir(parents=True, exist_ok=True)
+
+        # --overwrite in train-only mode removes ONLY this output adapter,
+        # never the source encoded dataset.
+        if (
+            args.overwrite
+            and adapter_dir.exists()
+            and args.resume_from_checkpoint is None
+        ):
+            shutil.rmtree(adapter_dir)
+
+        source_report_path = dataset_source_run / "training_report.json"
         report_path = run / "training_report.json"
-        report = json.loads(report_path.read_text(encoding="utf-8")) if report_path.is_file() else {
-            "status": "prepared",
-            "run": str(run),
-            "adapter_only": True,
-            "final_train_count": TARGET_SAFE_TRAIN,
+
+        if report_path.is_file():
+            report = json.loads(
+                report_path.read_text(encoding="utf-8")
+            )
+        elif source_report_path.is_file():
+            source_report = json.loads(
+                source_report_path.read_text(encoding="utf-8")
+            )
+            report = {
+                "status": "prepared",
+                "base_model": source_report.get("base_model", BASE_MODEL),
+                "codec_model": source_report.get("codec_model", CODEC_MODEL),
+                "run": str(run),
+                "adapter_only": True,
+                "final_train_count": TARGET_SAFE_TRAIN,
+                "dataset_reused_from": str(dataset_source_run),
+                "source": source_report.get("source"),
+                "train_speakers": source_report.get("train_speakers"),
+                "samples_with_eos": source_report.get("samples_with_eos"),
+                "max_token_count": source_report.get("max_token_count"),
+                "valid_count": source_report.get("valid_count"),
+            }
+        else:
+            report = {
+                "status": "prepared",
+                "run": str(run),
+                "adapter_only": True,
+                "final_train_count": TARGET_SAFE_TRAIN,
+                "dataset_reused_from": str(dataset_source_run),
+            }
+
+        report["training_config"] = {
+            "epochs": args.epochs,
+            "learning_rate": args.learning_rate,
+            "scheduler": args.scheduler,
+            "lora_r": args.lora_r,
+            "lora_alpha": args.lora_alpha,
+            "lora_dropout": args.lora_dropout,
+            "lm_head_lora": not args.no_lm_head_lora,
+            "eos_start_weight": args.eos_start_weight,
+            "eos_loss_weight": args.eos_loss_weight,
+            "eos_ramp_start": args.eos_ramp_start,
+            "eos_tail_tokens": args.eos_tail_tokens,
+            "eos_tail_weight": args.eos_tail_weight,
+            "early_eos_penalty": args.early_eos_penalty,
+            "fast_gpu": args.fast_gpu,
+            "requested_batch_size": args.batch_size,
+            "gradient_accumulation_steps": args.grad_accum,
         }
+
         print(
-            f"đŸ¦œ Train-only: reuse {train_count} prepared rows; skip filter + NeuCodec encode.",
+            f"đŸ¦œ Train-only: reuse {train_count} prepared rows from "
+            f"{dataset_source_run}; skip filter + NeuCodec encode.",
             flush=True,
         )
+
         metrics = train_adapter(
             train_path=train_path,
             valid_path=valid_path if valid_path.is_file() else None,
             adapter_dir=adapter_dir,
             args=args,
         )
+
         report["status"] = "completed"
+        report["adapter"] = str(adapter_dir)
         report["training"] = metrics
         write_json(report_path, report)
-        print(json.dumps(report, ensure_ascii=False, indent=2), flush=True)
+        print(
+            json.dumps(report, ensure_ascii=False, indent=2),
+            flush=True,
+        )
         return
 
     prepare_run_dir(run, args.overwrite)
@@ -1066,7 +1446,18 @@ def main() -> None:
         "training_config": {
             "epochs": args.epochs,
             "learning_rate": args.learning_rate,
+            "scheduler": args.scheduler,
+            "lora_r": args.lora_r,
+            "lora_alpha": args.lora_alpha,
+            "lora_dropout": args.lora_dropout,
+            "lm_head_lora": not args.no_lm_head_lora,
+            "eos_start_weight": args.eos_start_weight,
             "eos_loss_weight": args.eos_loss_weight,
+            "eos_ramp_start": args.eos_ramp_start,
+            "eos_tail_tokens": args.eos_tail_tokens,
+            "eos_tail_weight": args.eos_tail_weight,
+            "early_eos_penalty": args.early_eos_penalty,
+            "early_eos_margin": args.early_eos_margin,
             "fast_gpu": args.fast_gpu,
             "force_checkpointing": args.force_checkpointing,
             "dynamic_right_padding_trim": not args.no_dynamic_trim,
@@ -1099,10 +1490,10 @@ def main() -> None:
         "samples_with_eos": samples_with_eos,
         "adapter_only": True,
         "note": (
-            "EOS token weighting increases the training signal for speech END; "
-            "it does not mathematically guarantee that every sampled inference "
-            "will emit EOS. test_lora_model.py rejects missing-EOS generations "
-            "so they cannot become saved runaway audio."
+            "This run uses a strong late END ramp, final-code tail weighting, "
+            "and an anti-early-END margin. These increase endpoint supervision "
+            "but still cannot mathematically guarantee EOS on every sampled "
+            "inference. The existing test_lora_model.py remains unchanged."
         ),
     }
 
