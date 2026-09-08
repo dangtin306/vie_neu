@@ -743,9 +743,15 @@ def train_lora(
     model = get_peft_model(model, lora_config)
     model = model.to(train_device)
     model.config.use_cache = False
-    if not fast_gpu:
-        # Safe mode: avoid fused/SDPA kernel instability on long runs and
-        # lower activation memory so the complete model remains on one GPU.
+    low_vram = bool(
+        torch.cuda.is_available()
+        and torch.cuda.get_device_properties(0).total_memory / (1024**3) < 11
+        and batch_size >= 2
+    )
+    use_gradient_checkpointing = bool(not fast_gpu or low_vram)
+    if use_gradient_checkpointing:
+        # Checkpointing is required for the 10GB path at batch 2. Fast mode
+        # still keeps BF16 + SDPA, so it remains faster than the old FP32 path.
         model.gradient_checkpointing_enable(
             gradient_checkpointing_kwargs={"use_reentrant": False}
         )
@@ -801,7 +807,7 @@ def train_lora(
         dataloader_pin_memory=torch.cuda.is_available(),
         dataloader_persistent_workers=workers > 0,
         remove_unused_columns=False,
-        gradient_checkpointing=not fast_gpu,
+        gradient_checkpointing=use_gradient_checkpointing,
         bf16=use_bf16,
         fp16=bool(torch.cuda.is_available() and not use_bf16 and not fp32),
         seed=seed,
@@ -1048,17 +1054,7 @@ def main() -> None:
         if torch.cuda.is_available():
             vram_gb = torch.cuda.get_device_properties(0).total_memory / (1024**3)
             if args.fast_gpu:
-                # Fast mode removes checkpointing. On 8-<11GB cards even
-                # batch 2 can OOM during backward, so use micro-batch 1 and
-                # accumulate 2 steps to preserve the effective batch size.
-                if vram_gb >= 11:
-                    args.batch_size = 4
-                elif vram_gb >= 8:
-                    args.batch_size = 1
-                    if args.grad_accum == 1:
-                        args.grad_accum = 2
-                else:
-                    args.batch_size = 1
+                args.batch_size = 4 if vram_gb >= 11 else 2 if vram_gb >= 8 else 1
             else:
                 args.batch_size = 4 if vram_gb >= 11 else 2 if vram_gb >= 8 else 1
             print(
@@ -1074,10 +1070,6 @@ def main() -> None:
         # before any torch import/encode work starts.
         os.environ["CUDA_LAUNCH_BLOCKING"] = "0"
         os.environ.pop("PYTORCH_NO_CUDA_MEMORY_CACHING", None)
-        if args.batch_size == 1:
-            args.batch_size = 2
-        if args.grad_accum == 2:
-            args.grad_accum = 1
     random.seed(args.seed)
 
     run = ROOT / "train" / "output" / args.run_name
