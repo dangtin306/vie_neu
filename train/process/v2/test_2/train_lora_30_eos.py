@@ -1,4 +1,4 @@
-"""Train exactly 30 safe Nghệ An utterances as a runtime PEFT LoRA.
+"""Train exactly 30 safe Nghá»‡ An utterances as a runtime PEFT LoRA.
 
 Design
 ------
@@ -76,7 +76,7 @@ DEFAULT_EOS_LOSS_WEIGHT = 5.0
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
-        description="Train exactly 30 safe Nghệ An rows as an adapter-only VieNeu v2 LoRA."
+        description="Train exactly 30 safe Nghá»‡ An rows as an adapter-only VieNeu v2 LoRA."
     )
     p.add_argument("--run-name", default=DEFAULT_RUN_NAME)
     p.add_argument("--epochs", type=float, default=80.0)
@@ -96,7 +96,37 @@ def parse_args() -> argparse.Namespace:
         help="-1 = auto min(CPU threads, 16).",
     )
     p.add_argument("--seed", type=int, default=37)
-    p.add_argument("--fast-gpu", action="store_true")
+    p.add_argument(
+        "--fast-gpu",
+        action="store_true",
+        help=(
+            "Fast path: BF16 + SDPA, dynamic right-padding trim, "
+            "and no gradient checkpointing unless explicitly forced."
+        ),
+    )
+    p.add_argument(
+        "--force-checkpointing",
+        action="store_true",
+        help=(
+            "Force gradient checkpointing if CUDA OOM occurs. "
+            "Slower, but reduces activation memory."
+        ),
+    )
+    p.add_argument(
+        "--no-dynamic-trim",
+        action="store_true",
+        help=(
+            "Disable batch-time trimming of right padding. "
+            "Normally leave this OFF because trimming preserves valid tokens "
+            "while greatly reducing compute."
+        ),
+    )
+    p.add_argument(
+        "--trim-multiple",
+        type=int,
+        default=8,
+        help="Round dynamic sequence length up to this multiple (default 8).",
+    )
     p.add_argument("--fp32", action="store_true")
     p.add_argument(
         "--validation-limit",
@@ -171,8 +201,8 @@ def select_exactly_30(
     """
     if len(accepted) < TARGET_SAFE_TRAIN:
         raise RuntimeError(
-            f"Chỉ có {len(accepted)} safe encoded train samples sau filter/encode/audit; "
-            f"cần đúng {TARGET_SAFE_TRAIN}. Không train."
+            f"Chá»‰ cĂ³ {len(accepted)} safe encoded train samples sau filter/encode/audit; "
+            f"cáº§n Ä‘Ăºng {TARGET_SAFE_TRAIN}. KhĂ´ng train."
         )
 
     duration_by_filename = {
@@ -333,16 +363,30 @@ def encode_external_validation(
 # ---------------------------------------------------------------------------
 
 class EOSWeightedTrainerMixin:
-    """Causal LM loss with extra weight ONLY on speech-END target positions."""
+    """Fast exact EOS-weighted causal LM loss.
+
+    The previous test_2 implementation recomputed token-level cross entropy
+    over every [batch, seq, vocab] logit in Python windows. That duplicated the
+    model's own causal-LM loss work and forced gradient checkpointing on the
+    9.8GB card.
+
+    This version keeps the SAME weighted objective without recomputing CE for
+    every normal token:
+
+        weighted_loss
+          = (sum(normal CE) + w * sum(EOS CE))
+            / (normal_count + w * eos_count)
+
+    The model's native loss already gives:
+        base_loss = (sum(normal CE) + sum(EOS CE)) / valid_count
+
+    Therefore we only compute an extra CE for the very small number of EOS
+    positions and reconstruct the exact weighted mean. Usually there is one EOS
+    target per sample, so the extra [num_eos, vocab] CE is tiny.
+    """
 
     eos_loss_weight: float
     eos_token_id: int
-
-    train_eos_targets: int
-    train_normal_loss_sum: float
-    train_eos_loss_sum: float
-    train_normal_count: int
-    train_eos_count: int
 
     def _init_eos_stats(self, weight: float, eos_token_id: int) -> None:
         if weight <= 0:
@@ -351,11 +395,20 @@ class EOSWeightedTrainerMixin:
         self.eos_loss_weight = float(weight)
         self.eos_token_id = int(eos_token_id)
 
-        self.train_eos_targets = 0
-        self.train_normal_loss_sum = 0.0
-        self.train_eos_loss_sum = 0.0
-        self.train_normal_count = 0
-        self.train_eos_count = 0
+        # Keep diagnostics as detached GPU scalars during training. This avoids
+        # several .item() CUDA synchronizations on every optimizer micro-step.
+        self._diag_eos_loss_sum = None
+        self._diag_normal_loss_sum = None
+        self._diag_eos_count = None
+        self._diag_normal_count = None
+
+    @staticmethod
+    def _accumulate_scalar(current, value):
+        value = value.detach()
+        if current is None:
+            return value.clone()
+        current.add_(value)
+        return current
 
     def compute_loss(
         self,
@@ -367,69 +420,101 @@ class EOSWeightedTrainerMixin:
         import torch
         import torch.nn.functional as F
 
-        # Do not ask the backbone to compute its own unweighted loss; we only
-        # need logits and calculate the exact weighted objective below.
-        model_inputs = dict(inputs)
-        labels = model_inputs.pop("labels")
-        outputs = model(**model_inputs)
-        logits = outputs.logits
+        labels = inputs.get("labels")
+        if labels is None:
+            raise RuntimeError("EOSWeightedTrainer requires labels.")
 
-        shift_logits = logits[..., :-1, :]
-        shift_labels = labels[..., 1:]
+        # Let the backbone use its normal optimized causal-LM loss path.
+        # This is the same fast path that made test_1 ~0.5 s/step.
+        outputs = model(**inputs)
+        base_loss = outputs.loss
+        if base_loss is None:
+            raise RuntimeError("Backbone did not return a causal LM loss.")
 
-        # Compute CE in token windows. A single flattened CE over the whole
-        # [batch, 2048, vocab] tensor needs an extra ~1GB CUDA workspace on
-        # 10GB cards, even when the forward pass itself fits.
-        weighted_loss_sum = logits.sum() * 0.0
-        weight_sum = logits.new_zeros(())
-        eos_mask_total = torch.zeros_like(shift_labels, dtype=torch.bool)
-        normal_mask_total = torch.zeros_like(shift_labels, dtype=torch.bool)
-        eos_loss_sum_tensor = logits.new_zeros(())
-        normal_loss_sum_tensor = logits.new_zeros(())
-        for start in range(0, shift_labels.shape[1], 256):
-            end = min(start + 256, shift_labels.shape[1])
-            chunk_logits = shift_logits[:, start:end, :]
-            chunk_labels = shift_labels[:, start:end]
-            chunk_losses = F.cross_entropy(
-                chunk_logits.reshape(-1, chunk_logits.size(-1)),
-                chunk_labels.reshape(-1),
-                reduction="none",
-                ignore_index=-100,
-            ).view_as(chunk_labels)
-            valid = chunk_labels.ne(-100)
-            eos = chunk_labels.eq(self.eos_token_id) & valid
-            normal = valid & ~eos
-            weights = torch.ones_like(chunk_losses)
-            weights[eos] = self.eos_loss_weight
-            weighted_loss_sum = weighted_loss_sum + (chunk_losses * weights * valid).sum()
-            weight_sum = weight_sum + weights[valid].sum()
-            eos_mask_total[:, start:end] = eos
-            normal_mask_total[:, start:end] = normal
-            if eos.any():
-                eos_loss_sum_tensor = eos_loss_sum_tensor + chunk_losses[eos].detach().float().sum()
-            if normal.any():
-                normal_loss_sum_tensor = normal_loss_sum_tensor + chunk_losses[normal].detach().float().sum()
-        loss = weighted_loss_sum / weight_sum.clamp_min(1.0)
-        eos_mask = eos_mask_total.reshape(-1)
-        normal_mask = normal_mask_total.reshape(-1)
+        shift_labels = labels[..., 1:].contiguous()
+        valid_mask = shift_labels.ne(-100)
+        eos_mask = shift_labels.eq(self.eos_token_id) & valid_mask
 
-        # Only accumulate diagnostics during training, not validation passes.
+        # Counts remain tensors so there is no host/device synchronization in
+        # the hot path.
+        valid_count = valid_mask.sum().to(dtype=base_loss.dtype)
+        eos_count = eos_mask.sum().to(dtype=base_loss.dtype)
+        normal_count = valid_count - eos_count
+
+        # Every train/valid row is EOS-audited before entering this Trainer,
+        # therefore every non-empty batch contains at least one EOS target.
+        # Avoid eos_mask.any().item()/bool here because that would synchronize
+        # CUDA on every micro-step.
+        shift_logits = outputs.logits[..., :-1, :]
+        eos_logits = shift_logits[eos_mask]
+        eos_targets = shift_labels[eos_mask]
+
+        if eos_logits.shape[0] == 0:
+            raise RuntimeError(
+                "A Trainer batch contains zero SPEECH_GENERATION_END targets; "
+                "the EOS-audited dataset invariant was broken."
+            )
+
+        # Tiny FP32 CE improves numerical stability at negligible cost.
+        eos_loss_sum = F.cross_entropy(
+            eos_logits.float(),
+            eos_targets,
+            reduction="sum",
+        ).to(dtype=base_loss.dtype)
+
+        # Recover the normal-token CE sum from the native mean loss, then
+        # rebuild the exact weighted mean. For w=1 this reduces to the
+        # native base loss (up to normal floating-point rounding).
+        base_loss_sum = base_loss * valid_count.clamp_min(1.0)
+        extra_weight = self.eos_loss_weight - 1.0
+        denominator = (
+            valid_count + extra_weight * eos_count
+        ).clamp_min(1.0)
+        loss = (
+            base_loss_sum + extra_weight * eos_loss_sum
+        ) / denominator
+
+        normal_loss_sum = (
+            base_loss_sum.detach() - eos_loss_sum.detach()
+        )
+
+        # Diagnostics only during training. No .item() here.
         if model.training:
-            with torch.no_grad():
-                eos_count = int(eos_mask.sum().item())
-                normal_count = int(normal_mask.sum().item())
-
-                self.train_eos_targets += eos_count
-                self.train_eos_count += eos_count
-                self.train_normal_count += normal_count
-
-                if normal_count:
-                    self.train_normal_loss_sum += float(normal_loss_sum_tensor.item())
-                if eos_count:
-                    self.train_eos_loss_sum += float(eos_loss_sum_tensor.item())
+            self._diag_eos_loss_sum = self._accumulate_scalar(
+                self._diag_eos_loss_sum,
+                eos_loss_sum,
+            )
+            self._diag_normal_loss_sum = self._accumulate_scalar(
+                self._diag_normal_loss_sum,
+                normal_loss_sum,
+            )
+            self._diag_eos_count = self._accumulate_scalar(
+                self._diag_eos_count,
+                eos_count,
+            )
+            self._diag_normal_count = self._accumulate_scalar(
+                self._diag_normal_count,
+                normal_count,
+            )
 
         return (loss, outputs) if return_outputs else loss
 
+    def eos_diagnostics(self) -> dict[str, float | int]:
+        def scalar(value, default=0.0):
+            if value is None:
+                return default
+            return float(value.detach().float().cpu().item())
+
+        eos_sum = scalar(self._diag_eos_loss_sum)
+        normal_sum = scalar(self._diag_normal_loss_sum)
+        eos_count = scalar(self._diag_eos_count)
+        normal_count = scalar(self._diag_normal_count)
+
+        return {
+            "number_of_train_eos_targets_seen": int(round(eos_count)),
+            "normal_token_loss": normal_sum / max(1.0, normal_count),
+            "eos_token_loss": eos_sum / max(1.0, eos_count),
+        }
 
 def train_adapter(
     train_path: Path,
@@ -462,7 +547,9 @@ def train_adapter(
         # pipeline: one explicit CUDA device, BF16/SDPA when available.
         torch.backends.cuda.matmul.allow_tf32 = bool(args.fast_gpu)
         torch.backends.cudnn.allow_tf32 = False
-        torch.set_float32_matmul_precision("highest")
+        torch.set_float32_matmul_precision(
+            "high" if args.fast_gpu else "highest"
+        )
 
     tokenizer = AutoTokenizer.from_pretrained(
         BASE_MODEL,
@@ -505,9 +592,11 @@ def train_adapter(
     model = model.to(train_device)
     model.config.use_cache = False
 
-    # Batch 2 on a 9.8GB card still needs checkpointing during backward. The
-    # EOS CE windows reduce workspace, while checkpointing bounds activations.
-    use_checkpointing = True
+    # Fast path: test_1 already proved batch=2 on the ~9.8GB card can train
+    # without checkpointing. The old test_2 only needed forced checkpointing
+    # because it recomputed full-vocab CE over every token. The new EOS loss
+    # only gathers EOS positions, so restore the fast behavior.
+    use_checkpointing = bool(args.force_checkpointing or not args.fast_gpu)
     if use_checkpointing:
         model.gradient_checkpointing_enable(
             gradient_checkpointing_kwargs={"use_reentrant": False}
@@ -537,6 +626,39 @@ def train_adapter(
         if valid_path is not None and valid_path.is_file()
         else None
     )
+
+    # VieNeuDataset pads every item to MAX_LEN=2048. Most of the current
+    # Nghá»‡ An utterances are far shorter. Right padding is already masked from
+    # labels, so trimming ONLY the padded suffix changes no valid token, EOS
+    # target, attention relation, or training objective. It simply prevents the
+    # GPU from doing transformer work on hundreds/thousands of useless pads.
+    trim_multiple = max(1, int(args.trim_multiple))
+
+    def fast_dynamic_collator(features):
+        batch = default_data_collator(features)
+        if args.no_dynamic_trim:
+            return batch
+
+        attention = batch.get("attention_mask")
+        if attention is None or attention.ndim != 2:
+            return batch
+
+        # Collation happens on CPU, so this .item() is not a CUDA sync.
+        max_valid = int(attention.sum(dim=1).max().item())
+        trimmed_len = max(
+            trim_multiple,
+            ((max_valid + trim_multiple - 1) // trim_multiple)
+            * trim_multiple,
+        )
+        trimmed_len = min(trimmed_len, batch["input_ids"].shape[1])
+
+        if trimmed_len < batch["input_ids"].shape[1]:
+            for key in ("input_ids", "attention_mask", "labels"):
+                value = batch.get(key)
+                if value is not None and getattr(value, "ndim", 0) >= 2:
+                    batch[key] = value[:, :trimmed_len].contiguous()
+
+        return batch
 
     if len(train_ds) != TARGET_SAFE_TRAIN:
         raise RuntimeError(
@@ -637,7 +759,7 @@ def train_adapter(
         args=training_args,
         train_dataset=train_ds,
         eval_dataset=valid_ds,
-        data_collator=default_data_collator,
+        data_collator=fast_dynamic_collator,
         callbacks=callbacks,
     )
     trainer._init_eos_stats(
@@ -656,17 +778,19 @@ def train_adapter(
             )
 
     print(
-        f"🦜 Train exactly {len(train_ds)} safe rows | "
+        f"đŸ¦œ Train exactly {len(train_ds)} safe rows | "
         f"valid={len(valid_ds) if valid_ds is not None else 0} | "
-        f"steps≈{total_steps} | batch={batch_size} | "
+        f"stepsâ‰ˆ{total_steps} | batch={batch_size} | "
         f"grad_accum={args.grad_accum} | "
-        f"eos_loss_weight={args.eos_loss_weight}",
+        f"eos_loss_weight={args.eos_loss_weight} | "
+        f"dynamic_trim={not args.no_dynamic_trim} | "
+        f"checkpointing={use_checkpointing}",
         flush=True,
     )
 
     if vram_gb is not None:
         print(
-            f"🦜 Auto batch theo VRAM {vram_gb:.1f} GB: "
+            f"đŸ¦œ Auto batch theo VRAM {vram_gb:.1f} GB: "
             f"batch={batch_size}",
             flush=True,
         )
@@ -686,14 +810,7 @@ def train_adapter(
     trainer.save_model(str(adapter_dir))
     tokenizer.save_pretrained(str(adapter_dir))
 
-    normal_token_loss = (
-        trainer.train_normal_loss_sum
-        / max(1, trainer.train_normal_count)
-    )
-    eos_token_loss = (
-        trainer.train_eos_loss_sum
-        / max(1, trainer.train_eos_count)
-    )
+    eos_diag = trainer.eos_diagnostics()
 
     metrics = dict(result.metrics)
     metrics.update(
@@ -716,12 +833,11 @@ def train_adapter(
             "fp32": args.fp32,
             "fast_gpu": args.fast_gpu,
             "gradient_checkpointing": use_checkpointing,
+            "dynamic_right_padding_trim": not args.no_dynamic_trim,
+            "trim_multiple": trim_multiple,
+            "eos_loss_implementation": "native_base_loss_plus_eos_only_exact_reweight",
             "eos_loss_weight": args.eos_loss_weight,
-            "number_of_train_eos_targets_seen": (
-                trainer.train_eos_targets
-            ),
-            "normal_token_loss": normal_token_loss,
-            "eos_token_loss": eos_token_loss,
+            **eos_diag,
             "best_checkpoint": trainer.state.best_model_checkpoint,
             "adapter_only": True,
         }
@@ -744,6 +860,8 @@ def main() -> None:
         raise ValueError("--eos-loss-weight must be > 0")
     if args.grad_accum <= 0:
         raise ValueError("--grad-accum must be > 0")
+    if args.trim_multiple <= 0:
+        raise ValueError("--trim-multiple must be > 0")
 
     random.seed(args.seed)
 
@@ -769,7 +887,7 @@ def main() -> None:
             "final_train_count": TARGET_SAFE_TRAIN,
         }
         print(
-            f"🦜 Train-only: reuse {train_count} prepared rows; skip filter + NeuCodec encode.",
+            f"đŸ¦œ Train-only: reuse {train_count} prepared rows; skip filter + NeuCodec encode.",
             flush=True,
         )
         metrics = train_adapter(
@@ -788,8 +906,8 @@ def main() -> None:
     dataset_dir.mkdir(parents=True, exist_ok=True)
 
     print(
-        "🦜 Tìm toàn bộ candidate Nghệ An; "
-        "không cắt xuống 30 trước filter/encode...",
+        "đŸ¦œ TĂ¬m toĂ n bá»™ candidate Nghá»‡ An; "
+        "khĂ´ng cáº¯t xuá»‘ng 30 trÆ°á»›c filter/encode...",
         flush=True,
     )
 
@@ -812,8 +930,8 @@ def main() -> None:
 
     if len(train_candidates) < TARGET_SAFE_TRAIN:
         raise RuntimeError(
-            f"Nguồn chỉ có {len(train_candidates)} eligible train candidates; "
-            f"cần ít nhất {TARGET_SAFE_TRAIN}."
+            f"Nguá»“n chá»‰ cĂ³ {len(train_candidates)} eligible train candidates; "
+            f"cáº§n Ă­t nháº¥t {TARGET_SAFE_TRAIN}."
         )
 
     # Prefer multi-utterance speakers and useful durations before staging. We
@@ -839,8 +957,8 @@ def main() -> None:
     )
 
     print(
-        f"🦜 Staged {len(train_candidates)} train candidates; "
-        "chạy official filter + NeuCodec encode...",
+        f"đŸ¦œ Staged {len(train_candidates)} train candidates; "
+        "cháº¡y official filter + NeuCodec encode...",
         flush=True,
     )
 
@@ -865,7 +983,7 @@ def main() -> None:
     )
 
     print(
-        f"🦜 Safe sau filter/encode/token audit: "
+        f"đŸ¦œ Safe sau filter/encode/token audit: "
         f"{len(accepted_all)} | rejected={len(rejected_all)}",
         flush=True,
     )
@@ -885,8 +1003,8 @@ def main() -> None:
         or samples_with_eos != TARGET_SAFE_TRAIN
     ):
         raise RuntimeError(
-            "Không đạt đúng 30 train samples an toàn có "
-            "<|SPEECH_GENERATION_END|>; dừng trước training."
+            "KhĂ´ng Ä‘áº¡t Ä‘Ăºng 30 train samples an toĂ n cĂ³ "
+            "<|SPEECH_GENERATION_END|>; dá»«ng trÆ°á»›c training."
         )
 
     train_path = dataset_dir / "train_encoded.csv"
@@ -947,6 +1065,9 @@ def main() -> None:
             "learning_rate": args.learning_rate,
             "eos_loss_weight": args.eos_loss_weight,
             "fast_gpu": args.fast_gpu,
+            "force_checkpointing": args.force_checkpointing,
+            "dynamic_right_padding_trim": not args.no_dynamic_trim,
+            "trim_multiple": max(1, int(args.trim_multiple)),
             "requested_batch_size": args.batch_size,
             "gradient_accumulation_steps": args.grad_accum,
         },
@@ -954,7 +1075,7 @@ def main() -> None:
     write_json(run / "training_report.json", report)
 
     print(
-        f"✅ Dataset khóa lại: exactly {len(selected)} train | "
+        f"âœ… Dataset khĂ³a láº¡i: exactly {len(selected)} train | "
         f"EOS={samples_with_eos}/{TARGET_SAFE_TRAIN} | "
         f"speakers={report['train_speakers']} | "
         f"valid={len(valid_accepted)}",
@@ -984,7 +1105,7 @@ def main() -> None:
 
     write_json(run / "training_report.json", report)
 
-    print("✅ Đã hoàn tất adapter-only LoRA.", flush=True)
+    print("âœ… ÄĂ£ hoĂ n táº¥t adapter-only LoRA.", flush=True)
     print(
         json.dumps(report, ensure_ascii=False, indent=2),
         flush=True,
@@ -993,3 +1114,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
