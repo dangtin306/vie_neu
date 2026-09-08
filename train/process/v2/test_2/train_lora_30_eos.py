@@ -369,35 +369,44 @@ class EOSWeightedTrainerMixin:
         outputs = model(**model_inputs)
         logits = outputs.logits
 
-        shift_logits = logits[..., :-1, :].contiguous()
-        shift_labels = labels[..., 1:].contiguous()
+        shift_logits = logits[..., :-1, :]
+        shift_labels = labels[..., 1:]
 
-        flat_logits = shift_logits.view(-1, shift_logits.size(-1))
-        flat_labels = shift_labels.view(-1)
-
-        token_losses = F.cross_entropy(
-            flat_logits,
-            flat_labels,
-            reduction="none",
-            ignore_index=-100,
-        )
-
-        valid_mask = flat_labels.ne(-100)
-        eos_mask = flat_labels.eq(self.eos_token_id) & valid_mask
-        normal_mask = valid_mask & ~eos_mask
-
-        valid_losses = token_losses[valid_mask]
-        if valid_losses.numel() == 0:
-            # Should never happen for a valid VieNeu item.
-            loss = token_losses.sum() * 0.0
-        else:
-            weights = torch.ones_like(token_losses)
-            weights[eos_mask] = self.eos_loss_weight
-            valid_weights = weights[valid_mask]
-            loss = (
-                (valid_losses * valid_weights).sum()
-                / valid_weights.sum().clamp_min(1.0)
-            )
+        # Compute CE in token windows. A single flattened CE over the whole
+        # [batch, 2048, vocab] tensor needs an extra ~1GB CUDA workspace on
+        # 10GB cards, even when the forward pass itself fits.
+        weighted_loss_sum = logits.sum() * 0.0
+        weight_sum = logits.new_zeros(())
+        eos_mask_total = torch.zeros_like(shift_labels, dtype=torch.bool)
+        normal_mask_total = torch.zeros_like(shift_labels, dtype=torch.bool)
+        eos_loss_sum_tensor = logits.new_zeros(())
+        normal_loss_sum_tensor = logits.new_zeros(())
+        for start in range(0, shift_labels.shape[1], 256):
+            end = min(start + 256, shift_labels.shape[1])
+            chunk_logits = shift_logits[:, start:end, :]
+            chunk_labels = shift_labels[:, start:end]
+            chunk_losses = F.cross_entropy(
+                chunk_logits.reshape(-1, chunk_logits.size(-1)),
+                chunk_labels.reshape(-1),
+                reduction="none",
+                ignore_index=-100,
+            ).view_as(chunk_labels)
+            valid = chunk_labels.ne(-100)
+            eos = chunk_labels.eq(self.eos_token_id) & valid
+            normal = valid & ~eos
+            weights = torch.ones_like(chunk_losses)
+            weights[eos] = self.eos_loss_weight
+            weighted_loss_sum = weighted_loss_sum + (chunk_losses * weights * valid).sum()
+            weight_sum = weight_sum + weights[valid].sum()
+            eos_mask_total[:, start:end] = eos
+            normal_mask_total[:, start:end] = normal
+            if eos.any():
+                eos_loss_sum_tensor = eos_loss_sum_tensor + chunk_losses[eos].detach().float().sum()
+            if normal.any():
+                normal_loss_sum_tensor = normal_loss_sum_tensor + chunk_losses[normal].detach().float().sum()
+        loss = weighted_loss_sum / weight_sum.clamp_min(1.0)
+        eos_mask = eos_mask_total.reshape(-1)
+        normal_mask = normal_mask_total.reshape(-1)
 
         # Only accumulate diagnostics during training, not validation passes.
         if model.training:
@@ -410,21 +419,9 @@ class EOSWeightedTrainerMixin:
                 self.train_normal_count += normal_count
 
                 if normal_count:
-                    self.train_normal_loss_sum += float(
-                        token_losses[normal_mask]
-                        .detach()
-                        .float()
-                        .sum()
-                        .item()
-                    )
+                    self.train_normal_loss_sum += float(normal_loss_sum_tensor.item())
                 if eos_count:
-                    self.train_eos_loss_sum += float(
-                        token_losses[eos_mask]
-                        .detach()
-                        .float()
-                        .sum()
-                        .item()
-                    )
+                    self.train_eos_loss_sum += float(eos_loss_sum_tensor.item())
 
         return (loss, outputs) if return_outputs else loss
 
@@ -503,9 +500,9 @@ def train_adapter(
     model = model.to(train_device)
     model.config.use_cache = False
 
-    # On the user's ~9.8GB card, fast_gpu + batch=2 has already been proven to
-    # fit, so do not forcibly re-enable checkpointing merely because VRAM <11GB.
-    use_checkpointing = not args.fast_gpu
+    # Keep checkpointing enabled for the EOS-weighted path. This allows the
+    # requested batch=2 on a 9.8GB card while BF16/SDPA still provide speed.
+    use_checkpointing = True
     if use_checkpointing:
         model.gradient_checkpointing_enable(
             gradient_checkpointing_kwargs={"use_reentrant": False}
@@ -550,16 +547,7 @@ def train_adapter(
             torch.cuda.get_device_properties(0).total_memory
             / (1024**3)
         )
-        if vram_gb >= 11:
-            batch_size = 4
-        elif vram_gb >= 8:
-            # The token-level EOS loss materializes a CE workspace. On a
-            # 9.8GB card batch 2 can OOM even though the normal Trainer fits.
-            batch_size = 1
-            if args.grad_accum == 1:
-                args.grad_accum = 2
-        else:
-            batch_size = 1
+        batch_size = 4 if vram_gb >= 11 else 2 if vram_gb >= 8 else 1
     else:
         vram_gb = None
         batch_size = 1
