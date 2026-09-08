@@ -261,6 +261,34 @@ def choose_external_validation_rows(
     return rows
 
 
+def official_filter_and_encode_local(
+    dataset_dir: Path,
+    max_samples: int,
+) -> Path:
+    """Official filter/encode without re-setting torch interop threads."""
+    import torch
+
+    torch.set_num_threads(CPU_THREADS)
+    try:
+        torch.set_num_interop_threads(max(1, min(4, CPU_THREADS)))
+    except RuntimeError:
+        # A previous encode may already have started CPU parallel work.
+        pass
+
+    from finetune.data_scripts.encode_data import encode_dataset
+    from finetune.data_scripts.filter_data import filter_and_process_dataset
+
+    filter_and_process_dataset(dataset_dir=str(dataset_dir))
+    cleaned = dataset_dir / "metadata_cleaned.csv"
+    if not cleaned.is_file():
+        raise RuntimeError(f"Official filter did not create {cleaned}")
+    encode_dataset(dataset_dir=str(dataset_dir), max_samples=max_samples)
+    encoded = dataset_dir / "metadata_encoded.csv"
+    if not encoded.is_file():
+        raise RuntimeError(f"Official encoder did not create {encoded}")
+    return encoded
+
+
 def encode_external_validation(
     rows: list[dict[str, Any]],
     run: Path,
@@ -273,7 +301,7 @@ def encode_external_validation(
     valid_dir.mkdir(parents=True, exist_ok=True)
 
     stage_dataset(rows, valid_dir)
-    encoded = official_filter_and_encode(
+    encoded = official_filter_and_encode_local(
         valid_dir,
         max_samples=max(1, len(rows) + 10),
     )
@@ -781,7 +809,7 @@ def main() -> None:
         flush=True,
     )
 
-    encoded = official_filter_and_encode(
+    encoded = official_filter_and_encode_local(
         dataset_dir,
         max_samples=max(100000, len(train_candidates) + 10),
     )
