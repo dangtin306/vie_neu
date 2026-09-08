@@ -183,7 +183,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--fast-gpu",
         action="store_true",
-        help="Speed mode: enable CUDA caching, SDPA, BF16, batch 2 and no checkpointing.",
+        help="Speed mode: CUDA caching, SDPA, BF16, batch 4 on GPUs >=8GB, no checkpointing.",
     )
     return p.parse_args()
 
@@ -1046,7 +1046,10 @@ def main() -> None:
 
         if torch.cuda.is_available():
             vram_gb = torch.cuda.get_device_properties(0).total_memory / (1024**3)
-            args.batch_size = 4 if vram_gb >= 11 else 2 if vram_gb >= 8 else 1
+            if args.fast_gpu:
+                args.batch_size = 4 if vram_gb >= 8 else 2 if vram_gb >= 6 else 1
+            else:
+                args.batch_size = 4 if vram_gb >= 11 else 2 if vram_gb >= 8 else 1
             print(
                 f"🦜 Auto batch theo VRAM {vram_gb:.1f} GB: "
                 f"batch={args.batch_size}, grad_accum={args.grad_accum}",
