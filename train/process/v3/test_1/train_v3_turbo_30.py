@@ -111,6 +111,12 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--source-audio-root", type=Path, default=SOURCE_AUDIO_ROOT)
     ap.add_argument("--source-pairs", type=Path, default=SOURCE_PAIR_METADATA)
     ap.add_argument("--limit", type=int, default=30)
+    ap.add_argument(
+        "--max-sec",
+        type=float,
+        default=30.0,
+        help="Maximum clip duration passed to official v3 preparation.",
+    )
     ap.add_argument("--overwrite-stage", action="store_true")
 
     # Official v3 defaults are r16/a32.  They remain CLI options so the pilot
@@ -355,7 +361,7 @@ def prepare(args: argparse.Namespace) -> None:
             "--min-sec",
             "1",
             "--max-sec",
-            "20",
+            str(args.max_sec),
         ],
         runtime_finetune,
     )
