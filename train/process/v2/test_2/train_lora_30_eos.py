@@ -505,10 +505,9 @@ def train_adapter(
     model = model.to(train_device)
     model.config.use_cache = False
 
-    # The EOS CE is already computed in small token windows, so fast mode can
-    # safely remove checkpoint recomputation and use the requested batch=2.
-    # This raises useful VRAM occupancy and avoids the checkpointing slowdown.
-    use_checkpointing = not args.fast_gpu
+    # Batch 2 on a 9.8GB card still needs checkpointing during backward. The
+    # EOS CE windows reduce workspace, while checkpointing bounds activations.
+    use_checkpointing = True
     if use_checkpointing:
         model.gradient_checkpointing_enable(
             gradient_checkpointing_kwargs={"use_reentrant": False}
