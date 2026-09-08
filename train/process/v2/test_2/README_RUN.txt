@@ -15,9 +15,9 @@ test_lora_model.py
 - No weight merge.
 - <|SPEECH_GENERATION_END|> gets a configurable token-level loss weight.
 - Default: 80 epochs, LR 5e-6, EOS weight 5.
-- --fast-gpu uses BF16/SDPA when supported. The EOS-weighted loss is computed
-  in token windows and gradient checkpointing remains enabled so the known
-  ~9.8GB card can use batch 2 without CUDA OOM.
+- --fast-gpu uses BF16/SDPA when supported. Dynamic sequence trimming and the
+  native+EOS-only loss keep memory efficient; the known ~9.8GB card auto-selects
+  batch 3 to improve GPU occupancy.
 
 ## Train
 

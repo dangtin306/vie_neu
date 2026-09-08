@@ -674,7 +674,10 @@ def train_adapter(
             torch.cuda.get_device_properties(0).total_memory
             / (1024**3)
         )
-        batch_size = 4 if vram_gb >= 11 else 2 if vram_gb >= 8 else 1
+        # The 9.8-GB card is now using dynamic sequence trimming and the
+        # native+EOS-only loss, so batch 3 gives materially better GPU
+        # occupancy than batch 2 without increasing sequence length.
+        batch_size = 4 if vram_gb >= 11 else 3 if vram_gb >= 8 else 1
     else:
         vram_gb = None
         batch_size = 1
@@ -1114,5 +1117,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
 
