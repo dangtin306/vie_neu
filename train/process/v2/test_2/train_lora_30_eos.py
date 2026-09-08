@@ -505,9 +505,10 @@ def train_adapter(
     model = model.to(train_device)
     model.config.use_cache = False
 
-    # Keep checkpointing enabled for the EOS-weighted path. This allows the
-    # requested batch=2 on a 9.8GB card while BF16/SDPA still provide speed.
-    use_checkpointing = True
+    # The EOS CE is already computed in small token windows, so fast mode can
+    # safely remove checkpoint recomputation and use the requested batch=2.
+    # This raises useful VRAM occupancy and avoids the checkpointing slowdown.
+    use_checkpointing = not args.fast_gpu
     if use_checkpointing:
         model.gradient_checkpointing_enable(
             gradient_checkpointing_kwargs={"use_reentrant": False}
