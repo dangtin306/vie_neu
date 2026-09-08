@@ -30,7 +30,8 @@ def configure_console() -> None:
 
 
 HERE = Path(__file__).resolve().parent
-PROJECT_ROOT = HERE.parents[4]
+# train/process/v3/test_1 -> repository root.
+PROJECT_ROOT = HERE.parents[3]
 SOURCE_ROOT = PROJECT_ROOT / "source_code" / "audio_model"
 WORK_ROOT = HERE / "output" / "nghean_v3_turbo_30"
 STAGE_DATASET = WORK_ROOT / "dataset"
