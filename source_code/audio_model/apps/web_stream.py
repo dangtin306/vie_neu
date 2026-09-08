@@ -36,10 +36,19 @@ CLIENT_HTML_PATH = ROOT_DIR / "client" / "client.html"
 
 def load_model():
     global vieneu
-    print("⏳ Loading VieNeu-TTS v3 Turbo (int8, CPU)...")
+    import os
+    print(f"⏳ Loading VieNeu-TTS v3 Turbo ({os.environ.get('VIENEU_PRECISION', 'fp32')}, CPU)...")
     # backend="onnx" ép đường ONNX/CPU int8. KHÔNG để device="auto" (mặc định):
-    vieneu = Vieneu(backend="onnx")  # == Vieneu(mode="v3turbo", backend="onnx", precision="int8")
-    print(f"✅ Ready. Backbone: int8 | intra_op threads: {getattr(vieneu.engine, 'ort_intra_op_threads', '?')}")
+    # Precision / graph source are configurable from the environment so the demo
+    # can run a local export (e.g. a finetune's fp32 package) without code edits:
+    #   VIENEU_PRECISION=fp32  VIENEU_ONNX_DIR=E:/path/to/onnx_fp32_v2  python -m apps.web_stream
+    # Unset -> fp32 from the public repo (the SDK default since v3.4.0).
+    vieneu = Vieneu(
+        backend="onnx",                                  # == mode="v3turbo", force CPU/ONNX
+        precision=os.environ.get("VIENEU_PRECISION", "fp32"),
+        onnx_dir=os.environ.get("VIENEU_ONNX_DIR") or None,
+    )
+    print(f"✅ Ready. Backbone: {os.environ.get('VIENEU_PRECISION', 'fp32')} | intra_op threads: {getattr(vieneu.engine, 'ort_intra_op_threads', '?')}")
 
 
 load_model()

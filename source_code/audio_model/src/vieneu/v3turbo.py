@@ -13,7 +13,6 @@ natural style. The argument is still accepted everywhere for backward compatibil
 but it is ignored.
 """
 import logging
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any, Generator, List, Optional, Tuple, Union
 
@@ -23,10 +22,12 @@ from .base import BaseVieneuTTS
 from ._v3_turbo_engine.rep_history import DEFAULT_REP_WINDOW
 from vieneu_utils.phonemize_text import (
     phonemize_text_with_emotions,
-    normalize_to_chunks_v3,
     normalize_to_chunks_v3_with_gaps,
 )
-from vieneu_utils.core_utils import join_audio_chunks, gaps_to_silence, max_expected_frames
+from vieneu_utils.core_utils import (
+    join_audio_chunks, gaps_to_silence, max_expected_frames, pause_pad_samples,
+    BABBLE_MAX_RETRIES,
+)
 
 
 def _cap_frames(sampling: dict, cap: int) -> dict:
@@ -41,24 +42,6 @@ def _cap_frames(sampling: dict, cap: int) -> dict:
     return out
 
 logger = logging.getLogger("Vieneu.V3Turbo")
-
-def _get_optimal_cpu_workers() -> int:
-    """Tự động đo lường số luồng CPU tối đa của máy đang chạy."""
-    try:
-        count = os.cpu_count()
-        if count and count > 0:
-            return count
-    except Exception:
-        pass
-    try:
-        import multiprocessing
-        count = multiprocessing.cpu_count()
-        if count and count > 0:
-            return count
-    except Exception:
-        pass
-    return 4
-
 
 
 class V3TurboVieNeuTTS(BaseVieneuTTS):
@@ -131,19 +114,21 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         backend: str = "auto",   # "auto" → ONNX on CPU, PyTorch on GPU; "onnx"|"pytorch" to force
         onnx_repo: Optional[str] = None,
         onnx_dir: Optional[str] = None,
-        precision: str = "int8",   # ONNX/CPU backbone: "int8" (mặc định, nhanh ~3x/frame, nhỏ 4x) | "fp32" (chất-lượng-tối-đa)
+        precision: str = "fp32",   # ONNX/CPU backbone: "fp32" (mặc định, chất-lượng-tối-đa) | "int8" (nhanh ~3x/frame, nhỏ 4x; cần CPU hỗ trợ VNNI để không bị méo)
         onnx_subfolder: Optional[str] = None,   # override thủ công subfolder; None → suy từ `precision`
         threads: int = 0,   # ONNX/CPU intra-op threads; 0 = mặc định engine (~nhân vật lý, cap 8). Đặt số cụ thể để tinh chỉnh.
         max_batch_size: int = 32,   # GPU/PyTorch: trần số chunk gộp vào một forward (static batching). Batch thực = min(số_chunk, max_batch_size). Bỏ qua trên CPU/ONNX.
+        babble_retries: int = BABBLE_MAX_RETRIES,   # chunk <= 3 tiếng mà "nói thêm" (nhiều cụm âm hơn số tiếng) thì sinh lại tối đa N lần; 0 = tắt
         **kwargs: Any,
     ):
         super().__init__()
         self.sample_rate = 48_000
+        self.babble_retries = max(0, int(babble_retries))
 
         # `precision` chỉ áp cho đường ONNX/CPU (chọn subfolder graph int8 vs fp32).
         # Đường PyTorch/GPU dùng torch fp32/bf16, không liên quan.
         if onnx_subfolder is None:
-            onnx_subfolder = {"int8": "onnx_int8", "fp32": "onnx_update"}.get(str(precision).lower(), "onnx_int8")
+            onnx_subfolder = {"int8": "onnx_int8", "fp32": "onnx_update"}.get(str(precision).lower(), "onnx_update")
 
         if device in (None, "auto"):
             try:
@@ -179,6 +164,7 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
                 dtype=dtype,
             )
             self.backend = "pytorch"
+        self.engine.babble_retries = self.babble_retries   # guard chạy ở tầng engine
         logger.info(f"✅ VieNeu-TTS v3 Turbo ready (backend={self.backend})")
 
         # Style is deprecated on v3 Turbo: it is implied by the reference (speaker
@@ -187,7 +173,9 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         self.default_style = "tu_nhien"
         self._preset_voices: dict = {}
         self._default_voice: Optional[str] = None
+        self.backbone_repo = backbone_repo
         self._load_v3_voices()
+        self._load_repo_voices(backbone_repo)
 
         # Static-batching (GPU/PyTorch). Dựng lười ở lần batch đầu; None trên CPU/ONNX.
         self.max_batch_size = max(1, int(max_batch_size))
@@ -216,6 +204,50 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
             }
         self._default_voice = data.get("default_voice")
         logger.info(f"📢 Loaded {len(self._preset_voices)} preset voices (default: {self._default_voice})")
+
+    def _load_repo_voices(self, backbone_repo: Optional[str]) -> None:
+        """Voices shipped WITH a model (fine-tunes): ``voices_v3_turbo.json`` at the root of
+        the model folder / Hub repo, same layout as the built-in file. They are added on
+        top of the built-ins (same name = override) and the file's ``default_voice`` wins.
+        Missing file = nothing happens."""
+        if not backbone_repo:
+            return
+        import json
+        path = None
+        local = Path(backbone_repo)
+        if local.is_dir():
+            if (local / "voices_v3_turbo.json").is_file():
+                path = local / "voices_v3_turbo.json"
+        else:
+            try:
+                from huggingface_hub import hf_hub_download
+                path = Path(hf_hub_download(backbone_repo, "voices_v3_turbo.json"))
+            except Exception:
+                path = None
+        if path is None:
+            return
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception as e:
+            logger.warning(f"Ignoring unreadable voices file {path}: {e}")
+            return
+        n = 0
+        for name, v in data.get("presets", {}).items():
+            emb, codes = v.get("speaker_emb"), v.get("codes")
+            if emb is None:
+                continue
+            self._preset_voices[name] = {
+                "description": v.get("description", ""),
+                "gender": v.get("gender", ""),
+                "style": v.get("style", self.default_style),
+                "speaker_emb": np.asarray(emb, dtype=np.float32),
+                "codes": np.asarray(codes, dtype=np.int64) if codes is not None else None,
+            }
+            n += 1
+        if data.get("default_voice") in self._preset_voices:
+            self._default_voice = data["default_voice"]
+        if n:
+            logger.info("📢 Loaded %d extra voice(s) shipped with the model.", n)
 
     def list_preset_voices(self) -> List[tuple]:
         """Return ``[(label, voice_id), ...]`` for the built-in voices."""
@@ -375,6 +407,7 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         if self._batch_engine is None:
             from .v3_turbo_serve import V3TurboBatchEngine
             self._batch_engine = V3TurboBatchEngine(self.engine)
+            self._batch_engine.babble_retries = self.babble_retries
         return self._batch_engine
 
     def _infer_chunks(
@@ -399,20 +432,19 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         """
         n = len(chunks)
         engine = self._get_batch_engine() if (batch_size > 1 and n > 1) else None
+        phs = [phonemize_text_with_emotions(c) for c in chunks]
 
-        # Kích hoạt 28 luồng CPU phân tích ngữ âm song song toàn bộ chunks
-        with ThreadPoolExecutor(max_workers=min(_get_optimal_cpu_workers(), max(1, n))) as pool:
-            phs = list(pool.map(phonemize_text_with_emotions, chunks))
+        def _one(ph: str) -> np.ndarray:
+            return self.engine.infer(
+                phonemes=ph, speaker_emb=speaker_emb, ref_codes=ref_codes,
+                use_ref_codes=use_ref_codes,
+                **_cap_frames(sampling, max_expected_frames(ph)),
+            )
 
         if engine is None:
-            wavs: List[np.ndarray] = []
-            for ph in phs:
-                wavs.append(self.engine.infer(
-                    phonemes=ph, speaker_emb=speaker_emb, ref_codes=ref_codes,
-                    use_ref_codes=use_ref_codes,
-                    **_cap_frames(sampling, max_expected_frames(ph)),
-                ))
+            wavs: List[np.ndarray] = [_one(ph) for ph in phs]
             return wavs
+
         order = sorted(range(n), key=lambda i: len(phs[i]))
         wavs = [None] * n
         for i in range(0, n, batch_size):
@@ -429,7 +461,6 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
                 wavs[j] = w
         return wavs
 
-    # ── Public API ───────────────────────────────────────────────────────────
     def infer(
         self,
         text: str,
@@ -444,7 +475,7 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         max_new_frames: int = 300,
         repetition_penalty: float = 1.2,
         repetition_window: int = DEFAULT_REP_WINDOW,
-        max_chars: int = 110,
+        max_chars: int = 256,
         silence_p: float = 0.15,
         crossfade_p: float = 0.0,
         apply_watermark: bool = True,
@@ -494,39 +525,44 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         max_new_frames: int = 300,
         repetition_penalty: float = 1.2,
         repetition_window: int = DEFAULT_REP_WINDOW,
-        max_chars: int = 110,
+        max_chars: int = 256,
         apply_watermark: bool = True,
         **kwargs: Any,
     ) -> Generator[np.ndarray, None, None]:
         speaker_emb, ref_codes = self._resolve_ref(voice, ref_audio, denoise, use_ref_codes)
-        chunks = normalize_to_chunks_v3(text, max_chars=max_chars)
+        chunks, gaps = normalize_to_chunks_v3_with_gaps(text, max_chars=max_chars)
+        pauses = gaps_to_silence(gaps)
         # Prefer the engine's native frame-level streaming (low first-audio latency);
         # both the PyTorch and ONNX engines expose infer_stream. Fall back to one
         # full infer per chunk if not available.
         stream_fn = getattr(self.engine, "infer_stream", None)
-        for chunk in chunks:
+        sr = self.sample_rate
+        last_out: Optional[np.ndarray] = None   # mẩu audio cuối đã phát của chunk trước
+        for ci, chunk in enumerate(chunks):
             ph = phonemize_text_with_emotions(chunk)
             chunk_frames_cap = min(max_new_frames, max_expected_frames(ph))
-            if stream_fn is not None:
-                for sub in stream_fn(
-                    phonemes=ph, speaker_emb=speaker_emb, ref_codes=ref_codes,
-                    use_ref_codes=use_ref_codes,
-                    temperature=temperature, top_k=top_k, top_p=top_p,
-                    max_new_frames=chunk_frames_cap, repetition_penalty=repetition_penalty,
-                    repetition_window=repetition_window,
-                ):
-                    if sub is None or len(sub) == 0:
-                        continue
-                    yield self._apply_watermark(sub) if apply_watermark else sub
-            else:
-                wav = self.engine.infer(
-                    phonemes=ph, speaker_emb=speaker_emb, ref_codes=ref_codes,
-                    use_ref_codes=use_ref_codes,
-                    temperature=temperature, top_k=top_k, top_p=top_p,
-                    max_new_frames=chunk_frames_cap, repetition_penalty=repetition_penalty,
-                    repetition_window=repetition_window,
-                )
-                yield self._apply_watermark(wav) if apply_watermark else wav
+            gen_kwargs = dict(
+                phonemes=ph, speaker_emb=speaker_emb, ref_codes=ref_codes,
+                use_ref_codes=use_ref_codes,
+                temperature=temperature, top_k=top_k, top_p=top_p,
+                max_new_frames=chunk_frames_cap, repetition_penalty=repetition_penalty,
+                repetition_window=repetition_window,
+            )
+            subs = stream_fn(**gen_kwargs) if stream_fn is not None else (self.engine.infer(**gen_kwargs),)
+            first = True
+            for sub in subs:
+                if sub is None or len(sub) == 0:
+                    continue
+                if first and last_out is not None:
+                    # Khoảng nghỉ giữa hai text chunk = TỔNG theo loại ranh giới, cùng
+                    # bảng với join_audio_chunks. Audio chunk trước đã phát đi nên không
+                    # trim được, chỉ bù zeros cho đủ (đuôi model tự phát dài hơn thì giữ).
+                    pad = pause_pad_samples(last_out, sub, sr, pauses[ci - 1])
+                    if pad > 0:
+                        yield np.zeros(pad, dtype=np.float32)
+                first = False
+                last_out = sub
+                yield self._apply_watermark(sub) if apply_watermark else sub
 
     def infer_batch(
         self,
@@ -542,7 +578,7 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         max_new_frames: int = 300,
         repetition_penalty: float = 1.2,
         repetition_window: int = DEFAULT_REP_WINDOW,
-        max_chars: int = 110,
+        max_chars: int = 256,
         apply_watermark: bool = True,
         batch_size: Optional[int] = None,
         **kwargs: Any,

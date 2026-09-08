@@ -12,6 +12,11 @@ theme = gr.themes.Soft(
 
 css = """
 .container { max-width: 1400px; margin: auto; }
+/* Compact control rows (Voice Cloning → saved voices): caption above, one-line
+   controls vertically centred so a small button sits level with the dropdown. */
+.field-caption { margin: 4px 0 -6px 0; }
+.field-caption p { margin: 0; font-size: 0.85rem; color: var(--block-title-text-color); }
+.inline-row { align-items: center; }
 .header-box {
     text-align: center;
     margin-bottom: 25px;

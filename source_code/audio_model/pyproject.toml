@@ -33,7 +33,7 @@ explicit = true
 
 [project]
 name = "vieneu"
-version = "3.3.0"
+version = "3.6.4"
 description = "Advanced on-device Vietnamese TTS with instant voice cloning"
 readme = "README_PYPI.md"
 license = { file = "LICENSE" }
@@ -64,11 +64,10 @@ authors = [
 ]
 requires-python = ">=3.10"
 # Minimal, TORCH-FREE core. `pip install vieneu` runs VieNeu-TTS v3 Turbo on CPU
-# via ONNX Runtime. GPU is a manual step (install a CUDA torch + transformers
-# yourself — there is no [gpu] extra; see [project.optional-dependencies] below);
+# via ONNX Runtime. GPU (v3 Turbo PyTorch backend): `pip install vieneu[cuda]`;
 # legacy backends (llama-cpp, lmdeploy, librosa, neucodec) live in the [legacy] extra.
 dependencies = [
-    "sea-g2p>=0.9.0", # phonemizer (Rust, torch-free) — cần hàm punc_norm() (>=0.7.11)
+    "sea-g2p>=0.9.1", # phonemizer (Rust, torch-free) — cần hàm punc_norm() (>=0.7.11)
     "onnxruntime>=1.20.0", # runs the v3 transformers + MOSS codec
     "numpy",
     "soundfile", # audio I/O
@@ -79,7 +78,9 @@ dependencies = [
     "PyYAML", # gradio config.yaml
     "gradio>=5.49.1", # web UI (vieneu-web)
     "librosa>=0.11.0",
-    "perth>=0.2.0", # optional audio watermark (skipped gracefully if absent)
+    # NOTE: audio watermarking is opt-in via `pip install vieneu[watermark]` (resemble-perth,
+    # needs torch/torchaudio). The PyPI package literally named `perth` is an unrelated
+    # threading helper and must NOT be listed here (issue #191).
 ]
 
 [project.urls]
@@ -109,6 +110,33 @@ pdf = [
     "PyMuPDF>=1.25.0",
 ]
 
+# Optional Resemble Perth audio watermark (needs torch + torchaudio; Perth runs at 32 kHz,
+# so 48 kHz v3 output is resampled 48k→32k→48k around the watermark step).
+# Install with: pip install vieneu[watermark]
+watermark = [
+    "resemble-perth>=1.0.1",
+]
+
+# v3 Turbo on CUDA (PyTorch backend) — what the docker/Dockerfile.gpu image installs.
+# Install with: uv sync --extra cuda   (or: pip install vieneu[cuda])
+cuda = [
+    "transformers",
+    "safetensors",
+    "torch==2.8.0",
+    "torchaudio==2.8.0",
+]
+
+# LoRA fine-tuning of v3 Turbo (finetune/): GPU only.
+# Install with: uv sync --extra finetune   (or: pip install vieneu[finetune])
+finetune = [
+    "torch",
+    "transformers",
+    "peft>=0.13",
+    "accelerate",
+    "safetensors",
+    "pyarrow",
+]
+
 [dependency-groups]
 dev = [
     "pytest",
@@ -125,17 +153,16 @@ gpu = [
     "torch==2.8.0",
     "torchaudio==2.8.0",
     "datasets>=3.2.0",
-    "perth>=0.2.0",
     "lmdeploy; sys_platform != 'darwin'",
     "triton-windows; sys_platform == 'win32'",
     "triton; sys_platform == 'linux'",
     "transformers; sys_platform == 'darwin'",
     "accelerate; sys_platform == 'darwin'",
     "trafilatura>=2.0.0",
-    "llama-cpp-python==0.3.16",
 ]
 
 [tool.pytest.ini_options]
+testpaths = ["tests"]   # finetune/tests runs in its own process (see tests/test_finetune_lora.py)
 pythonpath = ["src"]
 
 [project.scripts]
@@ -151,6 +178,7 @@ include = ["vieneu*", "vieneu_utils*", "apps*", "examples*"]
 
 [tool.setuptools.package-data]
 vieneu = ["assets/*.json", "assets/samples/*"]
+examples = ["audio_ref/*.wav", "srt/*.srt"]  # samples the Gradio app (vieneu-web) offers
 
 [tool.uv.sources]
 
@@ -168,10 +196,4 @@ lmdeploy = [
     { url = "https://github.com/InternLM/lmdeploy/releases/download/v0.11.0/lmdeploy-0.11.0+cu128-cp312-cp312-win_amd64.whl", marker = "sys_platform == 'win32' and python_version == '3.12'" },
     { url = "https://github.com/InternLM/lmdeploy/releases/download/v0.11.0/lmdeploy-0.11.0+cu128-cp312-cp312-manylinux2014_x86_64.whl", marker = "sys_platform == 'linux' and python_version == '3.12'" },
     { index = "pypi", marker = "sys_platform == 'darwin'" }
-]
-
-llama-cpp-python = [
-    { url = "https://github.com/pnnbao97/VieNeu-TTS/releases/download/wheels-v0.3.16/llama_cpp_python-0.3.16-cp312-cp312-win_amd64.whl", marker = "sys_platform == 'win32' and python_version == '3.12'" },
-    { index = "llama-cpp-metal", marker = "sys_platform == 'darwin'" },
-    { index = "pypi", marker = "sys_platform != 'win32' and sys_platform != 'darwin'" }
 ]

@@ -34,6 +34,8 @@ from typing import Generator, List, Optional, Tuple, Union
 import numpy as np
 
 from .rep_history import DEFAULT_REP_WINDOW, RepetitionHistory
+from vieneu_utils.core_utils import BABBLE_MAX_RETRIES, babble_suspect, babble_prefer, babble_log_line
+import logging
 
 _V3_REPO = "pnnbao-ump/VieNeu-TTS-v3-Turbo"
 _CODEC_REPO = "OpenMOSS-Team/MOSS-Audio-Tokenizer-Nano-ONNX"
@@ -71,7 +73,7 @@ class OnnxV3LiteEngine:
         onnx_repo: Optional[str] = None,
         codec_repo: str = _CODEC_REPO,
         onnx_dir: Optional[str] = None,
-        onnx_subfolder: str = "onnx_int8",   # int8 backbone (mặc định); "onnx_update" = fp32
+        onnx_subfolder: str = "onnx_update",   # fp32 backbone (mặc định); "onnx_int8" = int8
         codec_dir: Optional[str] = None,
         threads: int = 0,
         **_kw,
@@ -394,35 +396,56 @@ class OnnxV3LiteEngine:
         rows = self._build_rows(phonemes, ref_codes, style_id)
         prompt_embeds = self._embed_rows(rows, anchor)              # (1, T, H)
 
-        with self._lock:
-            pre = self.sess_pre.run(None, {"inputs_embeds": prompt_embeds})
-            past_k = [pre[1 + i] for i in range(self.L)]
-            past_v = [pre[1 + self.L + i] for i in range(self.L)]
-            h = pre[0][:, -1]
-            Tprompt = prompt_embeds.shape[1]
-            hist = RepetitionHistory(self.n_vq, repetition_window) if not math.isclose(repetition_penalty, 1.0) else None
-            frames: List[np.ndarray] = []
-            for t in range(max_new_frames):
-                codes, eos = self._acoustic_frame(h, temperature, top_k, top_p, repetition_penalty, hist)
-                frames.append(np.asarray(codes, dtype=np.int64))
-                if eos:
-                    break
-                slot = np.full((1, 1, self.n_vq + 1), self.audio_pad, dtype=np.int64)
-                slot[:, :, 0] = self.sgs
-                slot[0, 0, 1:] = codes
-                se = self._embed_rows(slot[0], anchor)              # (1,1,H)
-                feed = {"inputs_embeds": se, "position_ids": np.array([[Tprompt + t]], np.int64)}
-                for i in range(self.L):
-                    feed[f"past_k_{i}"] = past_k[i]
-                    feed[f"past_v_{i}"] = past_v[i]
-                out = self.sess_dec.run(None, feed)
-                h = out[0][:, 0]
-                past_k = [out[1 + i] for i in range(self.L)]
-                past_v = [out[1 + self.L + i] for i in range(self.L)]
+        def _gen_once() -> List[np.ndarray]:
+            with self._lock:
+                pre = self.sess_pre.run(None, {"inputs_embeds": prompt_embeds})
+                past_k = [pre[1 + i] for i in range(self.L)]
+                past_v = [pre[1 + self.L + i] for i in range(self.L)]
+                h = pre[0][:, -1]
+                Tprompt = prompt_embeds.shape[1]
+                hist = RepetitionHistory(self.n_vq, repetition_window) if not math.isclose(repetition_penalty, 1.0) else None
+                frames: List[np.ndarray] = []
+                for t in range(max_new_frames):
+                    codes, eos = self._acoustic_frame(h, temperature, top_k, top_p, repetition_penalty, hist)
+                    frames.append(np.asarray(codes, dtype=np.int64))
+                    if eos:
+                        break
+                    slot = np.full((1, 1, self.n_vq + 1), self.audio_pad, dtype=np.int64)
+                    slot[:, :, 0] = self.sgs
+                    slot[0, 0, 1:] = codes
+                    se = self._embed_rows(slot[0], anchor)              # (1,1,H)
+                    feed = {"inputs_embeds": se, "position_ids": np.array([[Tprompt + t]], np.int64)}
+                    for i in range(self.L):
+                        feed[f"past_k_{i}"] = past_k[i]
+                        feed[f"past_v_{i}"] = past_v[i]
+                    out = self.sess_dec.run(None, feed)
+                    h = out[0][:, 0]
+                    past_k = [out[1 + i] for i in range(self.L)]
+                    past_v = [out[1 + self.L + i] for i in range(self.L)]
+            return frames
 
+        frames = _gen_once()
         if not frames:
             return np.zeros(0, dtype=np.float32)
-        return self._decode_codes(np.stack(frames))                # (T, n_vq) → wav
+        wav = self._decode_codes(np.stack(frames))                 # (T, n_vq) → wav
+        # Babble guard (cùng logic engine PyTorch — xem core_utils.babble_suspect).
+        retries = int(getattr(self, "babble_retries", BABBLE_MAX_RETRIES))
+        if retries > 0 and frame_cap:
+            sr = int(getattr(self, "sample_rate", 48_000))
+            best = babble_suspect(wav, sr, phonemes, max_new_frames, len(frames))
+            tries = 0
+            while best[0] and tries < retries:
+                f2 = _gen_once()
+                tries += 1
+                if not f2:
+                    continue
+                w2 = self._decode_codes(np.stack(f2))
+                cand = babble_suspect(w2, sr, phonemes, max_new_frames, len(f2))
+                if babble_prefer(cand, best):
+                    frames, wav, best = f2, w2, cand
+            if tries:
+                logging.getLogger("Vieneu.V3Turbo.ONNX").info("🔁 " + babble_log_line(best, tries, max_new_frames))
+        return wav
 
     # ── streaming synthesis (native, frame-level) ──────────────────────────────
     def _stream_new_state(self) -> dict:

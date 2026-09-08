@@ -22,6 +22,11 @@ def test_factory_turbo(mock_turbo):
     Vieneu(mode="turbo")
     mock_turbo.assert_called_once()
 
+@patch("vieneu.v3nano.V3NanoVieNeuTTS", create=True)
+def test_factory_v3nano(mock_nano):
+    Vieneu(mode="v3nano", threads=2)
+    mock_nano.assert_called_once_with(threads=2)
+
 @patch("vieneu.turbo.TurboGPUVieNeuTTS", create=True)
 def test_factory_turbo_gpu(mock_turbo_gpu):
     Vieneu(mode="turbo_gpu")

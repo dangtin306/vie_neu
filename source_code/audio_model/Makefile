@@ -1,15 +1,18 @@
 SHELL := /bin/bash
 
-.PHONY: help setup-gpu setup-cpu demo docker-gpu check clean
+.PHONY: help setup setup-gpu setup-cpu setup-finetune demo run stream docker-cpu docker-gpu docker-build-cpu docker-build-gpu check clean
 
 help:
 	@echo "Targets:"
-	@echo "  make check       - check toolchain (python>=3.12, uv, espeak, docker, gpu, .env...)"
-	@echo "  make setup      - setup environment (uv sync)"
-	@echo "  make run        - run Gradio UI (alias for 'make demo')"
-	@echo "  make stream     - run Web Stream UI (CPU GGUF)"
-	@echo "  make docker-gpu - run docker compose --profile gpu (auto-create .env if needed)"
-	@echo "  make clean       - clean artifacts (.venv, cache, ...)"
+	@echo "  make check          - check toolchain (python>=3.10, uv, docker, gpu, .env...)"
+	@echo "  make setup          - torch-free install: v3 Turbo (ONNX) + v3 Nano on CPU"
+	@echo "  make setup-gpu      - + torch/transformers: v3 Turbo on CUDA (uv sync --extra cuda)"
+	@echo "  make setup-finetune - + peft/accelerate: LoRA fine-tuning (uv sync --extra finetune)"
+	@echo "  make run            - run Gradio UI (alias for 'make demo')"
+	@echo "  make stream         - run legacy Web Stream UI (v1 CPU GGUF)"
+	@echo "  make docker-cpu     - docker compose --profile cpu (Web UI, torch-free)"
+	@echo "  make docker-gpu     - docker compose --profile gpu (Web UI, CUDA)"
+	@echo "  make clean          - clean artifacts (.venv, cache, ...)"
 	@echo "  make uv          - install uv (standalone)"
 	@echo "  make espeak      - install eSpeak NG (standalone)"
 
@@ -63,17 +66,9 @@ check-install-prereqs:
 	    echo -e "$${C_RED}[ERROR] uv is required. Aborting.$${C_RESET}"; exit 1; \
 	  fi; \
 	fi; \
-	# --- eSpeak Check --- \
+	# --- eSpeak (legacy v1/v2 backends only; v3 uses sea-g2p) --- \
 	if ! command -v espeak-ng >/dev/null 2>&1 && ! command -v espeak >/dev/null 2>&1; then \
-	   echo -e "$${C_RED}[ERROR] eSpeak NG not found. Required for phonemizer.$${C_RESET}"; \
-	   read -p "Install eSpeak NG? [y/N] " ans; \
-	   if [[ "$$ans" =~ ^[Yy]$$ ]]; then \
-	       $(MAKE) espeak; \
-	       echo -e "$${C_YELLOW}NOTE: If installation required a separate window or manual steps, please complete them, RESTART your shell, and run make again.$${C_RESET}"; \
-	   else \
-	       echo "Aborting."; \
-	   fi; \
-	   exit 1; \
+	   echo -e "$${C_BLUE}[INFO] eSpeak NG not found — only needed for the legacy v1/v2 backends (make espeak).$${C_RESET}"; \
 	fi
 
 uv:
@@ -108,9 +103,13 @@ espeak:
 setup: check-install-prereqs
 	uv sync
 
-setup-gpu: setup
-setup-cpu: check-install-prereqs
-	uv sync --no-default-groups
+setup-cpu: setup
+
+setup-gpu: check-install-prereqs
+	uv sync --extra cuda
+
+setup-finetune: check-install-prereqs
+	uv sync --extra finetune
 
 demo:
 	uv run vieneu-web
@@ -121,15 +120,23 @@ stream:
 	uv run vieneu-stream
 
 # --- Docker (auto-create .env if missing) ---
+docker-cpu:
+	@set -euo pipefail; \
+	if [ ! -f .env ] && [ -f .env.example ]; then cp .env.example .env; echo ">> Created .env from .env.example"; fi; \
+	docker compose -f docker/docker-compose.yml --profile cpu up
+
 docker-gpu:
 	@set -euo pipefail; \
-	if [ ! -f .env ] && [ -f .env.example ]; then \
-	  cp .env.example .env; \
-	  echo ">> Created .env from .env.example"; \
-	fi; \
+	if [ ! -f .env ] && [ -f .env.example ]; then cp .env.example .env; echo ">> Created .env from .env.example"; fi; \
 	docker compose -f docker/docker-compose.yml --profile gpu up
 
-# --- Docker Serve (Remote Mode) ---
+docker-build-cpu:
+	docker build -t pnnbao/vieneu-tts:cpu -f docker/Dockerfile.cpu .
+
+docker-build-gpu:
+	docker build -t pnnbao/vieneu-tts:gpu -f docker/Dockerfile.gpu .
+
+# --- Docker Serve (LEGACY v1/v2 LMDeploy API server) ---
 docker-build-serve:
 	docker build -t pnnbao/vieneu-tts:serve -f docker/Dockerfile.serve .
 
@@ -151,9 +158,9 @@ check:
 	echo -e "$${C_CYAN}== Python ==$${C_RESET}"; \
 	if command -v python >/dev/null 2>&1; then \
 	  python -V; \
-	  python -c 'import sys; ok = sys.version_info >= (3,12); print("python_ok(>=3.12):", ok); sys.exit(0 if ok else 2)' && echo -e "$${C_GREEN}[OK]$${C_RESET} Python version OK" || echo -e "$${C_YELLOW}[WARNING]$${C_RESET} Python should be >= 3.12 (repo requirement)."; \
+	  python -c 'import sys; ok = sys.version_info >= (3,10); print("python_ok(>=3.10):", ok); sys.exit(0 if ok else 2)' && echo -e "$${C_GREEN}[OK]$${C_RESET} Python version OK" || echo -e "$${C_YELLOW}[WARNING]$${C_RESET} Python should be >= 3.10 (repo requirement)."; \
 	else \
-	  echo -e "$${C_RED}[ERROR]$${C_RESET} python not found. Need Python >= 3.12."; \
+	  echo -e "$${C_RED}[ERROR]$${C_RESET} python not found. Need Python >= 3.10."; \
 	fi; \
 	echo; \
 	echo -e "$${C_CYAN}== uv ==$${C_RESET}"; \
@@ -164,7 +171,7 @@ check:
 	  echo -e "$${C_YELLOW}[WARNING]$${C_RESET} uv not found (repo uses uv sync/uv run)."; \
 	fi; \
 	echo; \
-	echo -e "$${C_CYAN}== eSpeak NG (libespeak) ==$${C_RESET}"; \
+	echo -e "$${C_CYAN}== eSpeak NG (legacy v1/v2 only) ==$${C_RESET}"; \
 	if command -v espeak-ng >/dev/null 2>&1; then \
 	  espeak-ng --version | head -n 1; \
 	  echo -e "$${C_GREEN}[OK]$${C_RESET} eSpeak NG found"; \
@@ -172,7 +179,7 @@ check:
 	  espeak --version | head -n 1; \
 	  echo -e "$${C_GREEN}[OK]$${C_RESET} eSpeak found"; \
 	else \
-	  echo -e "$${C_YELLOW}[WARNING]$${C_RESET} eSpeak NG not found. Missing libespeak can break phonemizer."; \
+	  echo -e "$${C_BLUE}[INFO]$${C_RESET} eSpeak NG not found (only the legacy v1/v2 backends need it)."; \
 	fi; \
 	echo; \
 	echo -e "$${C_CYAN}== Docker ==$${C_RESET}"; \

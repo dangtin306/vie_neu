@@ -60,3 +60,9 @@ outputs/
 
 
 
+
+# Fine-tune data / outputs and stray root clips
+finetune/dataset/
+finetune/output/
+/*.mp3
+readmehf.md

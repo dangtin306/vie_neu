@@ -116,13 +116,32 @@ class BaseVieneuTTS(ABC):
 
 
     def _init_watermarker(self) -> None:
-        """Initialize optional audio watermarker."""
+        """Initialize optional audio watermarker (Resemble Perth).
+
+        Requires the ``resemble-perth`` package (``pip install vieneu[watermark]``),
+        which itself needs torch/torchaudio. NOTE: the PyPI package literally named
+        ``perth`` is an unrelated threading helper — importing it succeeds but it has
+        no ``PerthImplicitWatermarker``; we must not fail silently in that case
+        (issue #191).
+        """
         try:
             import perth
-            self.watermarker = perth.PerthImplicitWatermarker()
-            logger.info("🔒 Audio watermarking initialized (Perth)")
-        except (ImportError, AttributeError):
+        except ImportError:
             self.watermarker = None
+            logger.debug("Audio watermark disabled: resemble-perth not installed (pip install vieneu[watermark]).")
+            return
+        try:
+            wm_cls = getattr(perth, "PerthImplicitWatermarker", None)
+            if wm_cls is None:
+                raise AttributeError(
+                    "module 'perth' has no 'PerthImplicitWatermarker' — the installed 'perth' package "
+                    "is not resemble-perth, or its torch/torchaudio dependencies are missing"
+                )
+            self.watermarker = wm_cls()
+            logger.info("🔒 Audio watermarking initialized (Perth)")
+        except Exception as e:
+            self.watermarker = None
+            logger.warning("⚠️ Watermarker init failed — output audio will NOT be watermarked: %s", e)
 
     def _load_voices(self, backbone_repo: Optional[str], hf_token: Optional[str] = None, clear_existing: bool = False) -> None:
         """Unified voice loading for Local and Remote paths."""

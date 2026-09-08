@@ -43,7 +43,7 @@ def _min_expected_frames(phonemes: str) -> int:
 # dataset finetune — xem vieneu_utils.core_utils.max_expected_frames). Row ngắn
 # bắn trượt stop token thì bị cắt tại trần của CHÍNH row đó thay vì chạy hết
 # max_new_frames của cả batch.
-from vieneu_utils.core_utils import max_expected_frames
+from vieneu_utils.core_utils import max_expected_frames, BABBLE_MAX_RETRIES, babble_suspect, babble_prefer
 
 
 class V3TurboBatchEngine:
@@ -158,12 +158,32 @@ class V3TurboBatchEngine:
                     f"⚠️ v3 Turbo batch: rows {still_bad} vẫn ngắn hơn ngưỡng sau "
                     f"{max_retries} lần thử — giữ bản dài nhất.")
 
-        wavs: List[np.ndarray] = []
-        for c in codes:
-            if len(c):
-                wavs.append(self.tts._decode_codes(c.cpu()))
-            else:
-                wavs.append(np.zeros(0, dtype=np.float32))
+        def _decode(c) -> np.ndarray:
+            return self.tts._decode_codes(c.cpu()) if len(c) else np.zeros(0, dtype=np.float32)
+
+        wavs: List[np.ndarray] = [_decode(c) for c in codes]
+
+        # Babble guard (đối xứng với guard "chunk câm" ở trên): row rất ngắn mà
+        # "nói thêm" sau stop token trượt -> sinh lại row đó. Đây là tầng engine
+        # nên mọi lối vào (SDK, Gradio, server) đều được che. Xem core_utils.babble_suspect.
+        retries = int(getattr(self, "babble_retries", BABBLE_MAX_RETRIES))
+        if retries > 0 and caps is not None:
+            sr = int(getattr(self.tts, "sample_rate", 48_000))
+            state = [babble_suspect(wavs[i], sr, reqs[i]["phonemes"], caps[i], len(codes[i]))
+                     for i in range(len(reqs))]
+            for attempt in range(retries):
+                bad = [i for i in range(len(reqs)) if state[i][0]]
+                if not bad:
+                    break
+                logger.info(f"🔁 v3 Turbo batch: {len(bad)} chunk ngắn nghi 'nói thêm' (rows {bad}) "
+                            f"— đang sinh lại ({attempt + 1}/{retries})...")
+                retry = self._generate_codes_batch(
+                    [reqs[i] for i in bad], frame_caps=[caps[i] for i in bad], **sampling)
+                for j, i in enumerate(bad):
+                    w2 = _decode(retry[j])
+                    cand = babble_suspect(w2, sr, reqs[i]["phonemes"], caps[i], len(retry[j]))
+                    if babble_prefer(cand, state[i]):
+                        codes[i], wavs[i], state[i] = retry[j], w2, cand
         return wavs
 
     @torch.no_grad()

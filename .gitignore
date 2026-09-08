@@ -1,43 +1,28 @@
-# Python/cache
+# Python-generated files
 __pycache__/
-*.py[cod]
-*.pyd
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
 .pytest_cache/
-.mypy_cache/
 
-# Nested upstream repository metadata
-**/.git/
+# Virtual environments
+.venv
+.xpu_venv
+outputs/
+.env
 
-# Training data and generated experiments
+# Finetune Data & Checkpoints
+finetune/dataset/
+finetune/output/
+
+# Merged Models
+merged_models_cache/
+
+# Existing VieNeu v1/v2 training data and generated artifacts
+cache/
+source_code/audio_model/examples/audio_ref/
 train/data/
 train/output/
-train/**/*.pt
-train/**/*.bin
-train/**/*.safetensors
-train/**/*.ckpt
-train/**/*.pth
-
-# Audio generated or used during local tests/training
-*.wav
-*.mp3
-*.flac
-*.ogg
-
-# Local runtime/cache files
-.cache/
-cache/
-outputs/
-logs/
-*.log
-
-# Local environment/secrets
-.env
-.venv/
-venv/
-
-# Datasets required by the Ubuntu training environment
-!train/data/
-!train/data/dataset_haiphong/
-!train/data/dataset_haiphong/**
-!train/data/dataset_nghean/
-!train/data/dataset_nghean/**
+train/cache/
