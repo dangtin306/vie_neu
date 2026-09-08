@@ -1048,9 +1048,9 @@ def main() -> None:
         if torch.cuda.is_available():
             vram_gb = torch.cuda.get_device_properties(0).total_memory / (1024**3)
             if args.fast_gpu:
-                # Fast mode removes checkpointing, so a 10GB card must stay
-                # at batch 2; batch 4 exhausts VRAM on the 0.3B Qwen graph.
-                args.batch_size = 4 if vram_gb >= 11 else 2 if vram_gb >= 8 else 1
+                # Fast mode removes checkpointing. Use batch 3 below 11GB to
+                # use more of a 10GB card without the batch-4 OOM boundary.
+                args.batch_size = 4 if vram_gb >= 11 else 3 if vram_gb >= 8 else 1
             else:
                 args.batch_size = 4 if vram_gb >= 11 else 2 if vram_gb >= 8 else 1
             print(
