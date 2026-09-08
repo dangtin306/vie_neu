@@ -329,7 +329,10 @@ def run_official(script: Path, arguments: list[str], runtime_finetune: Path) -> 
     env["PYTHONPATH"] = os.pathsep.join(python_paths)
     command = [sys.executable, "-u", str(script), *arguments]
     print("run:", " ".join(command), flush=True)
-    completed = subprocess.run(command, cwd=str(runtime_finetune.parent.parent), env=env)
+    # The official v3 helpers intentionally reject paths outside their current
+    # working directory.  Run them from the repository root so staged data and
+    # outputs under train/process remain inside the allowed workspace.
+    completed = subprocess.run(command, cwd=str(PROJECT_ROOT), env=env)
     if completed.returncode != 0:
         raise SystemExit(completed.returncode)
 
