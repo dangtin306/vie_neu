@@ -138,6 +138,14 @@ def bool_true(value: Any) -> bool:
     return str(value).strip().lower() in {"true", "1", "yes"}
 
 
+def repair_terminal_punctuation(text: str) -> tuple[str, bool]:
+    """Repair staging metadata only; never modify source audio or source CSV."""
+    cleaned = (text or "").strip()
+    if cleaned and cleaned[-1] not in ".,?!":
+        return cleaned + ".", True
+    return cleaned, False
+
+
 # ---------------------------------------------------------------------------
 # Safe row selection
 # ---------------------------------------------------------------------------
@@ -729,6 +737,11 @@ def main() -> None:
         for row in source_rows
         if row["split"] == "train"
     ]
+    repaired_transcripts = 0
+    for row in train_candidates:
+        repaired, changed = repair_terminal_punctuation(row["transcript"])
+        row["transcript"] = repaired
+        repaired_transcripts += int(changed)
     external_validation = choose_external_validation_rows(
         source_rows,
         args.validation_limit,
@@ -833,6 +846,7 @@ def main() -> None:
         "adapter_only": True,
         "source": source_meta,
         "source_train_candidates": len(train_candidates),
+        "staging_transcripts_terminal_punctuation_repaired": repaired_transcripts,
         "safe_after_filter_encode_audit": len(accepted_all),
         "rejected_after_train_audit": len(rejected_all),
         "final_train_count": len(selected),
