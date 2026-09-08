@@ -550,7 +550,16 @@ def train_adapter(
             torch.cuda.get_device_properties(0).total_memory
             / (1024**3)
         )
-        batch_size = 4 if vram_gb >= 11 else 2 if vram_gb >= 8 else 1
+        if vram_gb >= 11:
+            batch_size = 4
+        elif vram_gb >= 8:
+            # The token-level EOS loss materializes a CE workspace. On a
+            # 9.8GB card batch 2 can OOM even though the normal Trainer fits.
+            batch_size = 1
+            if args.grad_accum == 1:
+                args.grad_accum = 2
+        else:
+            batch_size = 1
     else:
         vram_gb = None
         batch_size = 1
