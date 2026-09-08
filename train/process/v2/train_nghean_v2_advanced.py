@@ -743,19 +743,13 @@ def train_lora(
     model = get_peft_model(model, lora_config)
     model = model.to(train_device)
     model.config.use_cache = False
-    low_vram = bool(
-        torch.cuda.is_available()
-        and torch.cuda.get_device_properties(0).total_memory / (1024**3) < 11
-        and batch_size >= 2
+    # Use one memory-stable profile on every machine. BF16/SDPA can still
+    # accelerate CUDA, while checkpointing keeps activation VRAM bounded.
+    use_gradient_checkpointing = True
+    model.gradient_checkpointing_enable(
+        gradient_checkpointing_kwargs={"use_reentrant": False}
     )
-    use_gradient_checkpointing = bool(not fast_gpu or low_vram)
-    if use_gradient_checkpointing:
-        # Checkpointing is required for the 10GB path at batch 2. Fast mode
-        # still keeps BF16 + SDPA, so it remains faster than the old FP32 path.
-        model.gradient_checkpointing_enable(
-            gradient_checkpointing_kwargs={"use_reentrant": False}
-        )
-        model.enable_input_require_grads()
+    model.enable_input_require_grads()
     model.print_trainable_parameters()
 
     class SafeVieNeuDataset(VieNeuDataset):
