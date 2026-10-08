@@ -54,6 +54,85 @@ services:
               capabilities: [gpu]
 
   # ========================================================
+  # API profiles — OpenAI-compatible streaming speech API (apps/openai_speech.py)
+  #   docker compose -f docker/docker-compose.yml --profile api-gpu up   # RTX: 16 streams
+  #   docker compose -f docker/docker-compose.yml --profile api-cpu up   # no GPU: 1-2 streams
+  #   -> POST http://localhost:8000/v1/audio/speech  (docs/streaming.vi.md)
+  # ========================================================
+  api-gpu:
+    profiles: ["api-gpu"]
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.gpu
+      target: prod
+    container_name: vieneu-tts-api-gpu
+    command: ["python", "-m", "apps.openai_speech"]
+    ports:
+      - "${API_PORT:-8000}:8000"
+    environment:
+      - HF_HOME=${HF_HOME:-/home/app/.cache/huggingface}
+      - PYTHONUNBUFFERED=1
+      - HOST=0.0.0.0   # the server defaults to loopback; the published port needs all interfaces
+      - PORT=8000
+      - VIENEU_MAX_STREAMS=${VIENEU_MAX_STREAMS:-16}
+      - VIENEU_QUEUE=${VIENEU_QUEUE:-16}
+      - VIENEU_QUEUE_TIMEOUT=${VIENEU_QUEUE_TIMEOUT:-10}
+      - VIENEU_API_KEY=${VIENEU_API_KEY:-}
+      - VIENEU_WATERMARK=${VIENEU_WATERMARK:-1}
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - huggingface_cache:/home/app/.cache/huggingface
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3).status == 200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      start_period: 120s
+      retries: 3
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  api-cpu:
+    profiles: ["api-cpu"]
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.cpu
+    container_name: vieneu-tts-api-cpu
+    command: ["python", "-m", "apps.openai_speech"]
+    ports:
+      - "${API_PORT:-8000}:8000"
+    environment:
+      - HF_HOME=${HF_HOME:-/home/app/.cache/huggingface}
+      - PYTHONUNBUFFERED=1
+      - HOST=0.0.0.0   # the server defaults to loopback; the published port needs all interfaces
+      - PORT=8000
+      - VIENEU_BACKEND=onnx
+      - VIENEU_PRECISION=${VIENEU_PRECISION:-fp32}   # int8: nhanh ~2x, cần CPU có VNNI
+      - VIENEU_QUEUE=${VIENEU_QUEUE:-4}
+      - VIENEU_QUEUE_TIMEOUT=${VIENEU_QUEUE_TIMEOUT:-10}
+      - VIENEU_API_KEY=${VIENEU_API_KEY:-}
+      - VIENEU_WATERMARK=${VIENEU_WATERMARK:-1}
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - huggingface_cache:/home/app/.cache/huggingface
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3).status == 200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      start_period: 180s
+      retries: 3
+    restart: unless-stopped
+
+  # ========================================================
   # Serve profile — LEGACY v1/v2 LMDeploy API server (not used by v3)
   # ========================================================
   serve:

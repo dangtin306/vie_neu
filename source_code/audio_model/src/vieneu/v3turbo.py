@@ -13,8 +13,9 @@ natural style. The argument is still accepted everywhere for backward compatibil
 but it is ignored.
 """
 import logging
+import threading
 from pathlib import Path
-from typing import Any, Generator, List, Optional, Tuple, Union
+from typing import Any, Dict, Generator, List, Optional, Tuple, Union
 
 import numpy as np
 
@@ -25,8 +26,12 @@ from vieneu_utils.phonemize_text import (
     normalize_to_chunks_v3_with_gaps,
 )
 from vieneu_utils.core_utils import (
-    join_audio_chunks, gaps_to_silence, max_expected_frames, pause_pad_samples,
+    join_audio_chunks,
+    gaps_to_silence,
+    max_expected_frames,
+    pause_pad_samples,
     BABBLE_MAX_RETRIES,
+    strip_encoder_pad_frame,
 )
 
 
@@ -42,6 +47,28 @@ def _cap_frames(sampling: dict, cap: int) -> dict:
     return out
 
 logger = logging.getLogger("Vieneu.V3Turbo")
+
+
+def _featured_rank(v: dict) -> Optional[int]:
+    """``featured`` from a voices JSON entry as a positive int, else ``None``."""
+    try:
+        r = int(v.get("featured"))
+    except (TypeError, ValueError):
+        return None
+    return r if r > 0 else None
+
+
+def sorted_voices(presets: Dict[str, dict]) -> List[Tuple[str, dict]]:
+    """``(name, entry)`` pairs: editors' picks first (by ``featured`` rank), then the
+    rest in insertion order."""
+    return sorted(presets.items(),
+                  key=lambda kv: (kv[1].get("featured") is None, kv[1].get("featured") or 0))
+
+
+def voice_label(name: str, v: dict) -> str:
+    """Dropdown / CLI label: ``⭐ Name — description`` for editors' picks."""
+    label = f"{name} — {v['description']}" if v.get("description") else name
+    return f"⭐ {label}" if v.get("featured") is not None else label
 
 
 class V3TurboVieNeuTTS(BaseVieneuTTS):
@@ -118,6 +145,7 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         onnx_subfolder: Optional[str] = None,   # override thủ công subfolder; None → suy từ `precision`
         threads: int = 0,   # ONNX/CPU intra-op threads; 0 = mặc định engine (~nhân vật lý, cap 8). Đặt số cụ thể để tinh chỉnh.
         max_batch_size: int = 32,   # GPU/PyTorch: trần số chunk gộp vào một forward (static batching). Batch thực = min(số_chunk, max_batch_size). Bỏ qua trên CPU/ONNX.
+        max_streams: int = 16,   # GPU/PyTorch: số luồng `infer_stream` phục vụ đồng thời (continuous batching, một CUDA graph). Đo trên RTX 3060: 8 luồng chunk đầu ~135 ms, 16 ~200 ms, 32 ~260 ms. Bỏ qua trên CPU/ONNX.
         babble_retries: int = BABBLE_MAX_RETRIES,   # chunk <= 3 tiếng mà "nói thêm" (nhiều cụm âm hơn số tiếng) thì sinh lại tối đa N lần; 0 = tắt
         **kwargs: Any,
     ):
@@ -172,7 +200,18 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         # only as voice metadata / for backward-compatible call signatures.
         self.default_style = "tu_nhien"
         self._preset_voices: dict = {}
+        # Old names that still resolve to a (renamed) preset, e.g. "Minh Quân Pro" →
+        # "Hải Đăng". Filled from the voices JSON ("aliases" per entry) so
+        # existing API clients and saved scripts keep working after a rename.
+        self._voice_aliases: dict = {}
         self._default_voice: Optional[str] = None
+        # Enrolled references, keyed by clip CONTENT (blake2b of the file bytes) +
+        # enrol flags. Enrolling = denoise + x-vector + codec encode ≈ 2.7 s at
+        # 5-10 cores on a 6-core CPU (measured 2026-09-15), and a document's
+        # chunks / repeated requests reuse the same clip. Content-keyed so a
+        # fresh temp path per upload still hits.
+        from collections import OrderedDict
+        self._ref_cache: "OrderedDict[tuple, Tuple[np.ndarray, Optional[np.ndarray]]]" = OrderedDict()
         self.backbone_repo = backbone_repo
         self._load_v3_voices()
         self._load_repo_voices(backbone_repo)
@@ -180,6 +219,11 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         # Static-batching (GPU/PyTorch). Dựng lười ở lần batch đầu; None trên CPU/ONNX.
         self.max_batch_size = max(1, int(max_batch_size))
         self._batch_engine = None
+        # Streaming scheduler (GPU/PyTorch): một worker thread + một CUDA graph
+        # phục vụ mọi `infer_stream` đang chạy. Dựng lười ở lần stream đầu.
+        self.max_streams = max(1, int(max_streams))
+        self._stream_sched = None
+        self._stream_lock = threading.Lock()
 
     # ── Preset voices (speaker embedding + reference codes) ─────────────────────
     def _load_v3_voices(self) -> None:
@@ -199,9 +243,12 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
                 "description": v.get("description", ""),
                 "gender": v.get("gender", ""),
                 "style": v.get("style", self.default_style),
+                "featured": _featured_rank(v),
+                "aliases": list(v.get("aliases") or []),
                 "speaker_emb": np.asarray(emb, dtype=np.float32) if emb is not None else None,
-                "codes": np.asarray(codes, dtype=np.int64) if codes is not None else None,
+                "codes": strip_encoder_pad_frame(np.asarray(codes, dtype=np.int64)) if codes is not None else None,
             }
+            self._register_aliases(name, v.get("aliases"))
         self._default_voice = data.get("default_voice")
         logger.info(f"📢 Loaded {len(self._preset_voices)} preset voices (default: {self._default_voice})")
 
@@ -240,9 +287,12 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
                 "description": v.get("description", ""),
                 "gender": v.get("gender", ""),
                 "style": v.get("style", self.default_style),
+                "featured": _featured_rank(v),
+                "aliases": list(v.get("aliases") or []),
                 "speaker_emb": np.asarray(emb, dtype=np.float32),
-                "codes": np.asarray(codes, dtype=np.int64) if codes is not None else None,
+                "codes": strip_encoder_pad_frame(np.asarray(codes, dtype=np.int64)) if codes is not None else None,
             }
+            self._register_aliases(name, v.get("aliases"))
             n += 1
         if data.get("default_voice") in self._preset_voices:
             self._default_voice = data["default_voice"]
@@ -250,29 +300,72 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
             logger.info("📢 Loaded %d extra voice(s) shipped with the model.", n)
 
     def list_preset_voices(self) -> List[tuple]:
-        """Return ``[(label, voice_id), ...]`` for the built-in voices."""
-        return [(f"{n} — {v['description']}" if v["description"] else n, n)
-                for n, v in self._preset_voices.items()]
+        """Return ``[(label, voice_id), ...]`` for the built-in voices.
+
+        Editors' picks (``featured`` 1..N in the voices JSON) come first in that
+        order with a ⭐ prefix, then the remaining voices in file order.
+        """
+        return [(voice_label(n, v), n) for n, v in sorted_voices(self._preset_voices)]
+
+    def _register_aliases(self, name: str, aliases) -> None:
+        for a in aliases or []:
+            if a and a != name:
+                self._voice_aliases[str(a)] = name
+
+    def resolve_voice_name(self, name: Optional[str]) -> Optional[str]:
+        """Canonical preset name for ``name`` (itself, or the preset an alias points
+        to); ``None`` if unknown. A real preset always wins over an alias."""
+        if name is None:
+            return None
+        if name in self._preset_voices:
+            return name
+        target = self._voice_aliases.get(name)
+        return target if target in self._preset_voices else None
 
     def get_preset_voice(self, voice_name: Optional[str] = None) -> dict:
-        name = voice_name or self._default_voice
-        if name not in self._preset_voices:
-            raise ValueError(f"Voice '{name}' not found. Available: {list(self._preset_voices)}")
+        name = self.resolve_voice_name(voice_name or self._default_voice)
+        if name is None:
+            raise ValueError(f"Voice '{voice_name or self._default_voice}' not found. "
+                             f"Available: {list(self._preset_voices)}")
         return self._preset_voices[name]
 
-    def encode_reference(self, ref_audio: Union[str, Path], denoise: bool = True) -> Tuple[np.ndarray, np.ndarray]:
-        """Enroll a voice from a wav → ``(speaker_emb, ref_codes)``.
-        """
+    REF_CACHE_MAX = 32   # distinct clips kept (LRU); each entry is a few hundred KB
+
+    def _enroll_reference(self, ref_audio: Union[str, Path], denoise: bool, use_ref_codes: bool
+                          ) -> Tuple[np.ndarray, Optional[np.ndarray]]:
+        """Trim → engine.prepare_reference, memoised on the clip's content."""
+        import hashlib
         import os
+        key = None
+        try:
+            # blake2b: fast content fingerprint (not a security boundary, but keeps
+            # the weak-hash linter quiet); 16-byte digest is plenty for a cache key.
+            digest = hashlib.blake2b(Path(ref_audio).read_bytes(), digest_size=16).hexdigest()
+            key = (digest, bool(denoise), bool(use_ref_codes))
+        except OSError:
+            pass   # unreadable path: let the engine raise its own error below
+        if key is not None and key in self._ref_cache:
+            self._ref_cache.move_to_end(key)
+            return self._ref_cache[key]
         clean_ref = self._preclean_reference_audio(ref_audio)
         try:
-            return self.engine.prepare_reference(str(clean_ref), denoise=denoise, use_ref_codes=True)
+            out = self.engine.prepare_reference(str(clean_ref), denoise=denoise, use_ref_codes=use_ref_codes)
         finally:
             if clean_ref and Path(clean_ref).resolve() != Path(ref_audio).resolve():
                 try:
                     os.remove(clean_ref)
                 except Exception:
                     pass
+        if key is not None:
+            self._ref_cache[key] = out
+            while len(self._ref_cache) > self.REF_CACHE_MAX:
+                self._ref_cache.popitem(last=False)
+        return out
+
+    def encode_reference(self, ref_audio: Union[str, Path], denoise: bool = True) -> Tuple[np.ndarray, np.ndarray]:
+        """Enroll a voice from a wav → ``(speaker_emb, ref_codes)``.
+        """
+        return self._enroll_reference(ref_audio, denoise=denoise, use_ref_codes=True)
 
     def denoise(self, ref_audio: Union[str, Path], out_path: Optional[Union[str, Path]] = None,
                 max_seconds: Optional[float] = None) -> Tuple[np.ndarray, int]:
@@ -337,7 +430,9 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
 
     def remove_voice(self, name: str, save: bool = False) -> None:
         """Remove a registered voice by name."""
+        name = self.resolve_voice_name(name) or name
         self._preset_voices.pop(name, None)
+        self._voice_aliases = {a: t for a, t in self._voice_aliases.items() if t != name}
         if self._default_voice == name:
             self._default_voice = next(iter(self._preset_voices), None)
         if save:
@@ -358,7 +453,13 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
                 "speaker_emb": [round(float(x), 6) for x in np.asarray(emb).reshape(-1)] if emb is not None else None,
                 "codes": np.asarray(codes, dtype=int).tolist() if codes is not None else None,
             }
-        data = {"meta": {"note": "v3 turbo voices: speaker embedding + reference codes"},
+            if v.get("featured") is not None:
+                presets[n]["featured"] = v["featured"]
+            aliases = [a for a, t in self._voice_aliases.items() if t == n]
+            if aliases:
+                presets[n]["aliases"] = aliases
+        data = {"meta": {"note": "v3 turbo voices: speaker embedding + reference codes; "
+                                 "`featured` 1..N marks the editors' picks in display order"},
                 "default_voice": self._default_voice, "presets": presets}
         path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
         logger.info(f"💾 Saved {len(presets)} voices → {path}")
@@ -370,19 +471,11 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         Precedence: cloned ``ref_audio`` → preset ``voice`` (name or dict) → default preset.
         """
         if ref_audio is not None:
-            import os
-            clean_ref = self._preclean_reference_audio(ref_audio)
-            try:
-                return self.engine.prepare_reference(str(clean_ref), denoise=denoise, use_ref_codes=use_ref_codes)
-            finally:
-                if clean_ref and Path(clean_ref).resolve() != Path(ref_audio).resolve():
-                    try:
-                        os.remove(clean_ref)
-                    except Exception:
-                        pass
+            return self._enroll_reference(ref_audio, denoise=denoise, use_ref_codes=use_ref_codes)
         preset = None
         if isinstance(voice, str):
-            preset = self._preset_voices.get(voice)
+            name = self.resolve_voice_name(voice)
+            preset = self._preset_voices.get(name) if name else None
             if preset is None:
                 raise ValueError(f"Voice '{voice}' not found. Available: {list(self._preset_voices)}")
         elif isinstance(voice, dict):
@@ -410,6 +503,30 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
             self._batch_engine.babble_retries = self.babble_retries
         return self._batch_engine
 
+    def _fused_available(self) -> bool:
+        """The batch engine runs frames as CUDA graphs here (see fused.py)."""
+        eng = self._get_batch_engine()
+        return bool(eng is not None and getattr(eng, "use_fused", False)
+                    and getattr(self.engine.device, "type", "") == "cuda")
+
+    def _get_stream_scheduler(self):
+        """Lazily build the continuous-batching stream scheduler (CUDA only).
+
+        Returns ``None`` on CPU/ONNX or when the fused graphs are disabled
+        (``VIENEU_FUSED_FRAME=0``); ``infer_stream`` then takes the engine's
+        own single-sequence path.
+        """
+        if not self._fused_available():
+            return None
+        with self._stream_lock:
+            if self._stream_sched is None:
+                from .v3_turbo_serve.stream import V3TurboStreamScheduler
+                self._stream_sched = V3TurboStreamScheduler(
+                    self._get_batch_engine(), max_streams=self.max_streams,
+                )
+                logger.info(f"✅ v3 Turbo stream scheduler ready (max_streams={self.max_streams})")
+        return self._stream_sched
+
     def _infer_chunks(
         self,
         chunks: List[str],
@@ -432,6 +549,13 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         """
         n = len(chunks)
         engine = self._get_batch_engine() if (batch_size > 1 and n > 1) else None
+        # A single chunk (or batch_size=1) used to take the single-sequence
+        # engine. On CUDA the batch engine's fused CUDA graph beats it even
+        # at B=1 — measured 2.3 s → 0.38 s for one sentence — so every chunk
+        # goes through the batch engine there; groups of ``batch_size`` still
+        # decide how many share a forward.
+        if engine is None and self._fused_available():
+            engine = self._get_batch_engine()
         phs = [phonemize_text_with_emotions(c) for c in chunks]
 
         def _one(ph: str) -> np.ndarray:
@@ -529,26 +653,32 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         apply_watermark: bool = True,
         **kwargs: Any,
     ) -> Generator[np.ndarray, None, None]:
+        """Synthesize ``text`` and yield 48 kHz float32 audio as it is generated.
+
+        On CUDA every call goes through one shared scheduler (see
+        ``v3_turbo_serve/stream.py``): concurrent calls from different threads
+        share a CUDA graph and one codec session, so a server can stream to
+        many listeners at once — first audio in ~110-135 ms with up to 8
+        streams on an RTX 3060. On CPU/ONNX the engine's own frame-level
+        streaming runs, one call at a time.
+        """
         speaker_emb, ref_codes = self._resolve_ref(voice, ref_audio, denoise, use_ref_codes)
         chunks, gaps = normalize_to_chunks_v3_with_gaps(text, max_chars=max_chars)
         pauses = gaps_to_silence(gaps)
-        # Prefer the engine's native frame-level streaming (low first-audio latency);
-        # both the PyTorch and ONNX engines expose infer_stream. Fall back to one
-        # full infer per chunk if not available.
-        stream_fn = getattr(self.engine, "infer_stream", None)
+        sampling = dict(
+            temperature=temperature, top_k=top_k, top_p=top_p,
+            repetition_penalty=repetition_penalty, repetition_window=repetition_window,
+        )
+        sched = self._get_stream_scheduler()
+        if sched is not None:
+            per_chunk = self._stream_chunks_gpu(sched, chunks, speaker_emb, ref_codes,
+                                                use_ref_codes, max_new_frames, sampling)
+        else:
+            per_chunk = self._stream_chunks_engine(chunks, speaker_emb, ref_codes,
+                                                   use_ref_codes, max_new_frames, sampling)
         sr = self.sample_rate
         last_out: Optional[np.ndarray] = None   # mẩu audio cuối đã phát của chunk trước
-        for ci, chunk in enumerate(chunks):
-            ph = phonemize_text_with_emotions(chunk)
-            chunk_frames_cap = min(max_new_frames, max_expected_frames(ph))
-            gen_kwargs = dict(
-                phonemes=ph, speaker_emb=speaker_emb, ref_codes=ref_codes,
-                use_ref_codes=use_ref_codes,
-                temperature=temperature, top_k=top_k, top_p=top_p,
-                max_new_frames=chunk_frames_cap, repetition_penalty=repetition_penalty,
-                repetition_window=repetition_window,
-            )
-            subs = stream_fn(**gen_kwargs) if stream_fn is not None else (self.engine.infer(**gen_kwargs),)
+        for ci, subs in enumerate(per_chunk):
             first = True
             for sub in subs:
                 if sub is None or len(sub) == 0:
@@ -563,6 +693,67 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
                 first = False
                 last_out = sub
                 yield self._apply_watermark(sub) if apply_watermark else sub
+
+    def _stream_chunks_engine(self, chunks, speaker_emb, ref_codes, use_ref_codes,
+                              max_new_frames, sampling):
+        """One audio iterator per text chunk from the engine's own streaming
+        (PyTorch single path or ONNX); a full ``infer`` per chunk if it has none."""
+        stream_fn = getattr(self.engine, "infer_stream", None)
+        for chunk in chunks:
+            ph = phonemize_text_with_emotions(chunk)
+            gen_kwargs = dict(
+                phonemes=ph, speaker_emb=speaker_emb, ref_codes=ref_codes,
+                use_ref_codes=use_ref_codes,
+                max_new_frames=min(max_new_frames, max_expected_frames(ph)), **sampling,
+            )
+            yield stream_fn(**gen_kwargs) if stream_fn is not None else (self.engine.infer(**gen_kwargs),)
+
+    def _stream_chunks_gpu(self, sched, chunks, speaker_emb, ref_codes, use_ref_codes,
+                           max_new_frames, sampling):
+        """One audio iterator per text chunk through the stream scheduler.
+
+        Chunk ``i+1`` is submitted the moment chunk ``i``'s last frame is
+        generated (its tail audio is still being decoded), so one call holds
+        one scheduler slot and the join between chunks costs a prefill, not a
+        whole chunk's wait. Abandoning the iterator cancels whatever is queued.
+        """
+        def submit(ci):
+            ph = phonemize_text_with_emotions(chunks[ci])
+            return sched.submit(
+                phonemes=ph, speaker_emb=speaker_emb, ref_codes=ref_codes,
+                use_ref_codes=use_ref_codes,
+                max_new_frames=min(max_new_frames, max_expected_frames(ph)), **sampling,
+            )
+
+        state = {"next": None}
+
+        def audio_of(handle, ci):
+            nxt = None
+            try:
+                for sub in handle:
+                    if nxt is None and ci + 1 < len(chunks) and handle.gen_done.is_set():
+                        nxt = submit(ci + 1)
+                    yield sub
+                if nxt is None and ci + 1 < len(chunks):
+                    nxt = submit(ci + 1)
+            finally:
+                handle.close()
+                state["next"] = nxt
+
+        if not chunks:
+            return
+        handle = submit(0)
+        try:
+            for ci in range(len(chunks)):
+                state["next"] = None
+                yield audio_of(handle, ci)
+                handle = state["next"]
+                if handle is None and ci + 1 < len(chunks):
+                    handle = submit(ci + 1)
+        finally:
+            for h in (handle, state["next"]):
+                if h is not None:
+                    h.close()
 
     def infer_batch(
         self,
@@ -638,5 +829,8 @@ class V3TurboVieNeuTTS(BaseVieneuTTS):
         return results
 
     def close(self) -> None:
+        if self._stream_sched is not None:
+            self._stream_sched.close()
+            self._stream_sched = None
         self.engine = None
         self._batch_engine = None

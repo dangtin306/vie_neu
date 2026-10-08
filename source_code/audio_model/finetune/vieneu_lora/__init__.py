@@ -2,8 +2,8 @@
 
 Three small modules, all built on the inference classes shipped in the ``vieneu`` SDK:
 
-* :mod:`.data`  — turns (phones, codes, speaker embedding) rows into the 2-D token
-  sequences the model reads, and pads a batch.
+* :mod:`.data`  — turns (phones, codes, speaker embedding) rows of ONE speaker into the
+  2-D token sequences the model reads (no in-context reference), and pads a batch.
 * :mod:`.model` — teacher-forcing forward pass + loss for the v3 Turbo network.
 * :mod:`.lora`  — attach LoRA adapters (PEFT), save / load / merge them.
 """

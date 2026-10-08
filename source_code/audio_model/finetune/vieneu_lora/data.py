@@ -1,11 +1,16 @@
-"""Training rows -> 2-D token sequences for VieNeu-TTS v3 Turbo.
+"""Training rows -> 2-D token sequences for VieNeu-TTS v3 Turbo (one speaker).
+
+A LoRA here teaches the model ONE voice, so the conditioning is deliberately
+minimal: the clip's own speaker embedding and no in-context reference clip. At
+inference the voice is called the same way — a speaker embedding enrolled from a
+clip of that speaker, no reference codes (``make_voice.py``) — so training and
+inference see the same prompt.
 
 A training row is a dict with
 
     phones            : str            phonemes of the utterance (sea-g2p, as the SDK produces)
     codes             : list[list[int]] (T, n_vq) MOSS codec codes of the utterance
-    speaker           : str            speaker name (rows of one speaker lend each other a reference)
-    speaker_embedding : list[float]    192-d x-vector of the utterance
+    speaker_embedding : list[float]    192-d x-vector of the clip
 
 ``prepare_dataset.py`` writes exactly this layout (parquet).
 
@@ -14,12 +19,13 @@ token, columns 1..n_vq the audio codes (``audio_pad_token_id`` where there is no
 A training sequence is
 
     [style][TPS] phones... [TPE]          text rows      (audio columns = pad)
-    [REF ] codes of a reference clip      optional       (same speaker, other utterance)
     [SGS ] codes of the target, frame 0..T-1
     [EOS ]                                 (audio columns = pad)
 
-which is the very prompt the SDK builds at inference time (``build_prompt_2d``) followed by
-the frames the model has to produce.
+which is the prompt the SDK builds at inference time for a voice without reference
+codes (``build_prompt_2d(..., ref_codes=None)``) followed by the frames the model has
+to produce. The base model was trained with reference dropout, so this no-reference
+format is one it already knows.
 """
 from __future__ import annotations
 
@@ -52,16 +58,10 @@ class V3TurboLoraDataset(Dataset):
     Args:
         rows: training rows (see module docstring).
         tokenizer: the v3 Turbo tokenizer (phoneme vocabulary).
-        config: the model config (token ids, ``n_vq``, ``ref_drop_rate``, style ids).
+        config: the model config (token ids, ``n_vq``, style ids).
         max_length: hard cap on sequence length; rows whose target audio cannot fit
-            together with the prompt, a full-size reference and the EOS row are dropped
-            up front (a truncated sequence would lose its EOS and teach the model to
-            never stop).
-        use_ref: put a same-speaker reference clip in the prompt (voice-cloning mode).
-        ref_drop_rate: fraction of samples trained WITHOUT the reference rows so the
-            model also works from the speaker embedding alone (``None`` = model config).
-        min_ref_frames / max_ref_frames: the reference is a random window of this many
-            codec frames (12.5 frames/s: 38 ≈ 3 s, 125 ≈ 10 s).
+            together with the prompt and the EOS row are dropped up front (a truncated
+            sequence would lose its EOS and teach the model to never stop).
         style: speaking-style label of the data (``config.style_labels``); the SDK
             always synthesises with the default (natural) style, so keep the default
             unless you know why.
@@ -73,25 +73,15 @@ class V3TurboLoraDataset(Dataset):
         tokenizer,
         config,
         max_length: int = 1024,
-        use_ref: bool = True,
-        ref_drop_rate: Optional[float] = None,
-        min_ref_frames: int = 38,
-        max_ref_frames: int = 125,
         style: Optional[str] = None,
-        seed: Optional[int] = None,
     ):
         self.tok, self.cfg = tokenizer, config
-        self.rng = np.random.default_rng(seed)
         self.n_vq = int(config.n_vq)
         self.audio_pad = int(config.audio_pad_token_id)
         self.text_pad = int(config.pad_token_id)
         self.sgs = int(config.speech_generation_start_token_id)
         self.eos = int(config.speech_generation_end_token_id)
         self.max_length = int(max_length)
-        self.use_ref = bool(use_ref)
-        self.min_ref, self.max_ref = int(min_ref_frames), int(max_ref_frames)
-        drop = config.ref_drop_rate if ref_drop_rate is None else ref_drop_rate
-        self.ref_drop_rate = float(drop or 0.0)
         labels = getattr(config, "style_labels", None) or {}
         self.style_id = int(labels.get(style, config.default_style_token_id)) if style else int(config.default_style_token_id)
         self.spk_dim = int(getattr(config, "speaker_embedding_dim", 192))
@@ -99,14 +89,13 @@ class V3TurboLoraDataset(Dataset):
         # Validate + budget check. Text tokens are counted once here.
         self.rows: List[Dict[str, Any]] = []
         n_bad = n_long = 0
-        ref_budget = self.max_ref if self.use_ref else 0
         for r in rows:
             codes, emb = r.get("codes"), r.get("speaker_embedding")
             if not r.get("phones") or not codes or emb is None or len(emb) != self.spk_dim:
                 n_bad += 1
                 continue
             n_text = len(self.tok.encode(r["phones"], add_special_tokens=False)) + 3   # style, TPS, TPE
-            if n_text + ref_budget + len(codes) + 1 > self.max_length:
+            if n_text + len(codes) + 1 > self.max_length:
                 n_long += 1
                 continue
             self.rows.append(r)
@@ -116,43 +105,19 @@ class V3TurboLoraDataset(Dataset):
         if not self.rows:
             raise ValueError("No usable training rows.")
 
-        # Same-speaker index for reference sampling.
-        self.by_speaker: Dict[str, List[int]] = {}
-        for i, r in enumerate(self.rows):
-            self.by_speaker.setdefault(str(r.get("speaker") or ""), []).append(i)
-
     def __len__(self) -> int:
         return len(self.rows)
 
-    # ── helpers ────────────────────────────────────────────────────────────
     def _codes_tensor(self, codes) -> torch.LongTensor:
         t = torch.as_tensor(np.asarray(codes, dtype=np.int64))
         if t.ndim != 2 or t.shape[1] != self.n_vq:
             raise ValueError(f"codes must be (T, {self.n_vq}), got {tuple(t.shape)}")
         return t
 
-    def _pick_ref(self, idx: int) -> Optional[torch.LongTensor]:
-        """A random window of another utterance of the same speaker, or None."""
-        if not self.use_ref or (self.ref_drop_rate > 0 and self.rng.random() < self.ref_drop_rate):
-            return None
-        peers = [j for j in self.by_speaker.get(str(self.rows[idx].get("speaker") or ""), []) if j != idx]
-        if not peers:
-            return None
-        ref = self._codes_tensor(self.rows[int(self.rng.choice(peers))]["codes"])
-        T = int(ref.shape[0])
-        hi = min(self.max_ref, T)
-        lo = min(self.min_ref, hi)
-        win = int(self.rng.integers(lo, hi + 1)) if hi > lo else hi
-        if win < T:
-            s = int(self.rng.integers(0, T - win + 1))
-            ref = ref[s:s + win]
-        return ref
-
-    # ── item ───────────────────────────────────────────────────────────────
     def __getitem__(self, idx: int) -> Dict[str, torch.Tensor]:
         r = self.rows[idx]
         target = self._codes_tensor(r["codes"])
-        prompt = build_prompt_2d(r["phones"], self._pick_ref(idx), self.tok, self.cfg, style_token_id=self.style_id)
+        prompt = build_prompt_2d(r["phones"], None, self.tok, self.cfg, style_token_id=self.style_id)
         gen = torch.full((target.shape[0], self.n_vq + 1), self.audio_pad, dtype=torch.long)
         gen[:, 0] = self.sgs
         gen[:, 1:] = target

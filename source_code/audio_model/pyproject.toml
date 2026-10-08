@@ -33,7 +33,7 @@ explicit = true
 
 [project]
 name = "vieneu"
-version = "3.6.4"
+version = "3.8.3"
 description = "Advanced on-device Vietnamese TTS with instant voice cloning"
 readme = "README_PYPI.md"
 license = { file = "LICENSE" }
@@ -96,12 +96,8 @@ legacy = [
     "torch",
     "torchaudio",
     "transformers",
-    "neucodec>=0.0.4",
-    "lmdeploy; sys_platform != 'darwin'",
-    "triton-windows; sys_platform == 'win32'",
-    "triton; sys_platform == 'linux'",
+    "neucodec>=0.0.4",  
     "accelerate; sys_platform == 'darwin'",
-    "llama-cpp-python==0.3.16",
 ]
 
 # PDF text extraction. Separate from core to keep the minimal install torch-free.
@@ -153,9 +149,6 @@ gpu = [
     "torch==2.8.0",
     "torchaudio==2.8.0",
     "datasets>=3.2.0",
-    "lmdeploy; sys_platform != 'darwin'",
-    "triton-windows; sys_platform == 'win32'",
-    "triton; sys_platform == 'linux'",
     "transformers; sys_platform == 'darwin'",
     "accelerate; sys_platform == 'darwin'",
     "trafilatura>=2.0.0",
@@ -181,19 +174,11 @@ vieneu = ["assets/*.json", "assets/samples/*"]
 examples = ["audio_ref/*.wav", "srt/*.srt"]  # samples the Gradio app (vieneu-web) offers
 
 [tool.uv.sources]
-
 torch = [
     { index = "pytorch", marker = "sys_platform != 'darwin'" },
     { index = "pypi", marker = "sys_platform == 'darwin'" }
 ]
-
 torchaudio = [
     { index = "pytorch", marker = "sys_platform != 'darwin'" },
-    { index = "pypi", marker = "sys_platform == 'darwin'" }
-]
-
-lmdeploy = [
-    { url = "https://github.com/InternLM/lmdeploy/releases/download/v0.11.0/lmdeploy-0.11.0+cu128-cp312-cp312-win_amd64.whl", marker = "sys_platform == 'win32' and python_version == '3.12'" },
-    { url = "https://github.com/InternLM/lmdeploy/releases/download/v0.11.0/lmdeploy-0.11.0+cu128-cp312-cp312-manylinux2014_x86_64.whl", marker = "sys_platform == 'linux' and python_version == '3.12'" },
     { index = "pypi", marker = "sys_platform == 'darwin'" }
 ]

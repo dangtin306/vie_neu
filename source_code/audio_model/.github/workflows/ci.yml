@@ -28,4 +28,4 @@ jobs:
           uv pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu --no-build
 
       - name: Run tests
-        run: uv run --frozen pytest -v --tb=short
+        run: uv run --frozen --no-sync --no-build pytest -v --tb=short   # env đã sync ở bước trên; không build gì lúc chạy

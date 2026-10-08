@@ -31,7 +31,8 @@ from .configuration_v3_turbo import VieNeuV3TurboConfig
 from .hub_load_v3_turbo import load_v3_turbo_checkpoint
 from .modeling_v3_turbo import VieNeuV3TurboForTTS, _sample_token
 from .rep_history import DEFAULT_REP_WINDOW, RepetitionHistory
-from vieneu_utils.core_utils import BABBLE_MAX_RETRIES, babble_suspect, babble_prefer, babble_log_line
+from vieneu_utils.core_utils import (BABBLE_MAX_RETRIES, CODEC_SAMPLES_PER_FRAME, babble_suspect,
+                                     babble_prefer, babble_log_line)
 import logging
 
 # Reference clips longer than this are trimmed before enrollment.
@@ -368,14 +369,26 @@ class VieNeuTTSv3Turbo:
             return torchaudio.functional.resample(wav, sr, target)
 
     def _encode_ref_wav(self, wav: torch.Tensor, sr: int) -> np.ndarray:
+        """Waveform ``(ch, n)`` → MOSS codes ``(T, n_vq)``, ``T = n_padded / 3840``.
+
+        The clip is zero-padded to a whole number of codec frames first: fed an
+        odd tail, the codec pads it itself and that frame always comes out as
+        codebook-0 = 455, an audible blip rather than silence (issue #198). With
+        real zeros the last frame encodes the actual tail (+ silence).
+        """
         if sr != self.SAMPLE_RATE:
             wav = self._resample(wav, sr, self.SAMPLE_RATE)
+        n = wav.shape[-1]
+        if n % CODEC_SAMPLES_PER_FRAME:
+            wav = torch.nn.functional.pad(wav, (0, CODEC_SAMPLES_PER_FRAME - n % CODEC_SAMPLES_PER_FRAME))
+        n_frames = wav.shape[-1] // CODEC_SAMPLES_PER_FRAME
         n_ch = int(getattr(self.audio_tokenizer.config, 'number_channels', 2))
         wav = wav.repeat(n_ch, 1) if wav.shape[0] == 1 else wav[:n_ch]
         wav = wav.unsqueeze(0).to(self.device)
         with torch.no_grad():
             enc = self.audio_tokenizer.encode(wav, return_dict=True)
-        return self._moss_codes_to_Tnq(enc.audio_codes, self.config.n_vq).cpu().numpy()
+        codes = self._moss_codes_to_Tnq(enc.audio_codes, self.config.n_vq).cpu().numpy()
+        return codes[:n_frames]
 
     def _encode_ref(self, ref_audio_path: str) -> np.ndarray:
         """Encode a reference wav into MOSS voice codes of shape ``(T, n_vq)``."""

@@ -34,6 +34,7 @@ class OnnxSpeakerEncoder:
         device: str = "cpu",
         max_seconds: float = 30.0,
         providers: Optional[Sequence[str]] = None,
+        sess_options=None,
     ):
         import onnxruntime as ort
 
@@ -43,7 +44,7 @@ class OnnxSpeakerEncoder:
                 providers = ["CUDAExecutionProvider", "CPUExecutionProvider"]
             else:
                 providers = ["CPUExecutionProvider"]
-        self.session = ort.InferenceSession(onnx_path, providers=list(providers))
+        self.session = ort.InferenceSession(onnx_path, sess_options, providers=list(providers))
         self.input_name = self.session.get_inputs()[0].name    # "input"
         self.output_name = self.session.get_outputs()[0].name  # "output"
         self.max_seconds = float(max_seconds)

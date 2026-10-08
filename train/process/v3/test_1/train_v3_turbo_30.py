@@ -19,8 +19,10 @@ IMPORTANT
 This does not modify VieNeu-TTS source files. It only calls the official v3
 fine-tuning scripts from source_code/audio_model/finetune.
 
-The current VieNeu-TTS README recommends roughly 10-30 minutes of clean audio
-for one voice. This script warns when the selected dataset is below 10 minutes.
+The latest upstream recipe targets one speaker per LoRA. This runner instead
+learns shared regional accent cues across speakers before a later speaker-
+specific fine-tune. The 10-minute warning is a small-data heuristic, not the
+upstream single-speaker data recommendation.
 For a regional accent, fewer consistent Nghá»‡ An speakers are preferable to
 many unrelated speakers with only one utterance each.
 """
@@ -462,9 +464,9 @@ def select_rows_accent_focused(
 
     if total_min < 10.0:
         print(
-            "WARNING: selected audio is below the current upstream guidance "
-            "of about 10-30 minutes for one fine-tuned voice. "
-            "Training can still run, but accent transfer may remain limited.",
+            "WARNING: selected multi-speaker regional audio is below 10 minutes. "
+            "This is a small-data heuristic, not the upstream single-voice "
+            "LoRA recommendation; accent transfer may remain limited.",
             flush=True,
         )
 
@@ -671,8 +673,6 @@ def prepare(args: argparse.Namespace) -> None:
             str(output_parquet),
             "--base",
             BASE_MODEL,
-            "--speaker",
-            "nghean_region",
             "--min-sec",
             str(args.min_sec),
             "--max-sec",

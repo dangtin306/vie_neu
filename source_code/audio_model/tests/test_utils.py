@@ -10,6 +10,8 @@ from vieneu_utils.core_utils import (
     trim_and_fade,
     pause_pad_samples,
     V3_GAP_SILENCE,
+    check_sampling,
+    trust_remote_code_enabled,
 )
 
 # --- Text Utils Tests ---
@@ -113,10 +115,33 @@ def test_forced_word_cut_never_splits_pair_even_without_natural_cut():
         assert (_conn_key(lt[-1]), _conn_key(rt[0])) not in _CONN_PAIRS
 
 def test_forced_word_cut_connector_too_early_is_ignored():
-    """Từ nối làm mảnh trái < max_chars//2 thì bỏ qua, cắt sát trần như cũ."""
+    """Từ nối làm mảnh trái < max_chars//3 thì bỏ qua, cắt theo từ như thường."""
     sent = "x" * 10 + " và " + "y" * 30
     chunks = pack_sentences_into_chunks([sent], max_chars=40)
     assert chunks[0] == "x" * 10 + " và"
+
+
+def test_forced_word_cut_is_balanced_not_greedy():
+    """304 ký tự không thành 251 + 53: cần 2 mảnh thì mỗi mảnh nhắm ~152 và
+    từ nối gần đích nhất thắng, dù mảnh trái chưa tới nửa trần."""
+    left = "thái lan nâng cấp quan hệ lên đối tác chiến lược toàn diện ngày mười sáu tháng năm hai nghìn không trăm hai mươi lăm"
+    right = "và ký chương trình hành động triển khai quan hệ đối tác chiến lược toàn diện giai đoạn hai nghìn không trăm hai mươi sáu đến hai nghìn không trăm ba mươi mốt ngày hai mươi tám tháng năm"
+    chunks = pack_sentences_into_chunks([left + " " + right], max_chars=256)
+    assert chunks == [left, right]
+
+
+def test_forced_word_cut_never_splits_a_number():
+    """Không có từ nối: điểm cắt cân bằng cũng không được rơi giữa các từ đọc số."""
+    words = ["x" * 12] * 6 + "hai nghìn không trăm ba mươi mốt".split() + ["y" * 12] * 6
+    sent = " ".join(words)
+    from vieneu_utils.core_utils import _tail_slack
+    cap = len(sent) // 2 + 8
+    chunks = pack_sentences_into_chunks([sent], max_chars=cap)
+    assert " ".join(chunks).split() == words
+    for c in chunks:
+        assert len(c) <= cap + _tail_slack(cap)      # trần tương đối
+    joined_number = any("hai nghìn không trăm ba mươi mốt" in c for c in chunks)
+    assert joined_number, chunks
 
 def test_forced_word_cut_no_connector_falls_back():
     """Không có từ nối: giữ nguyên hành vi cắt theo từ, không mất chữ."""
@@ -388,3 +413,49 @@ def test_soft_cap_long_tail_still_cut():
     pieces = _split_long_part(" ".join(tail), 128)
     assert len(pieces) == 1 and len(pieces[0]) == 129
     assert _tail_slack(128) == 15 and _tail_slack(40) == 5
+
+
+# ── issue #198: encoder pad frame ─────────────────────────────────────────────
+
+def test_pad_to_codec_frame_rounds_up_to_whole_frames():
+    from vieneu_utils.core_utils import CODEC_SAMPLES_PER_FRAME as F, pad_to_codec_frame
+    assert len(pad_to_codec_frame(np.zeros(10 * F, np.float32))) == 10 * F
+    assert len(pad_to_codec_frame(np.ones(10 * F + 1, np.float32))) == 11 * F
+    assert len(pad_to_codec_frame(np.ones(10 * F + F - 1, np.float32))) == 11 * F
+    out = pad_to_codec_frame(np.ones(5, np.float32))
+    assert out[:5].tolist() == [1.0] * 5 and not out[5:].any()
+    assert len(pad_to_codec_frame(np.ones(7, np.float32), sr=24_000)) == 7   # only defined at 48 kHz
+
+
+def test_strip_encoder_pad_frame_drops_only_a_trailing_455():
+    from vieneu_utils.core_utils import strip_encoder_pad_frame
+    codes = np.array([[10, 1], [20, 2], [455, 3]])
+    assert strip_encoder_pad_frame(codes).tolist() == [[10, 1], [20, 2]]
+    assert strip_encoder_pad_frame(np.array([[10, 1], [455, 2], [20, 3]])).shape[0] == 3
+    assert strip_encoder_pad_frame(np.array([[455, 1]])).shape[0] == 1   # never empty a reference
+    assert strip_encoder_pad_frame(None) is None
+
+
+# --- Guards for the shared GPU path / remote code ---
+
+@pytest.mark.parametrize("bad", [
+    dict(temperature=float("nan")), dict(temperature=float("inf")), dict(temperature=-0.1),
+    dict(top_p=float("nan")), dict(repetition_penalty=0.0), dict(repetition_penalty=float("nan")),
+    dict(top_k="many"), dict(top_k=float("inf")),
+])
+def test_check_sampling_rejects_values_that_poison_the_gpu(bad):
+    args = dict(temperature=0.8, top_k=25, top_p=0.95, repetition_penalty=1.2)
+    args.update(bad)
+    with pytest.raises(ValueError):
+        check_sampling(**args)
+
+
+def test_check_sampling_normalizes_types():
+    assert check_sampling(0, 25.0, 0.9, 1) == (0.0, 25, 0.9, 1.0)   # temperature 0 = greedy
+
+
+def test_trust_remote_code_is_opt_in(monkeypatch):
+    monkeypatch.delenv("VIENEU_TRUST_REMOTE_CODE", raising=False)
+    assert trust_remote_code_enabled() is False
+    monkeypatch.setenv("VIENEU_TRUST_REMOTE_CODE", "1")
+    assert trust_remote_code_enabled() is True

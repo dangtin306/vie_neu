@@ -1,4 +1,8 @@
-"""LoRA fine-tuning of VieNeu-TTS v3 Turbo on your own voice.
+"""LoRA fine-tuning of VieNeu-TTS v3 Turbo on ONE voice.
+
+The dataset is one speaker (see prepare_dataset.py); the model is conditioned on the
+speaker embedding only, with no in-context reference clip, so the merged model speaks
+the voice from `voice="<name>"` enrolled with make_voice.py (embedding, no reference codes).
 
     uv run python finetune/train_lora.py --data finetune/dataset/train.parquet --run my_voice
 
@@ -48,8 +52,6 @@ def parse_args():
     ap.add_argument("--unfreeze", default="", help="comma-separated sub-modules to train fully, e.g. xvec_proj")
     # data
     ap.add_argument("--max-length", type=int, default=1024)
-    ap.add_argument("--no-ref", action="store_true", help="train without in-context reference clips")
-    ap.add_argument("--ref-drop-rate", type=float, default=None, help="default: model config")
     ap.add_argument("--eval-ratio", type=float, default=0.03)
     # optimisation
     ap.add_argument("--batch-size", type=int, default=4)
@@ -120,8 +122,7 @@ def main() -> None:
     rng.shuffle(rows)
     n_eval = max(1, int(len(rows) * args.eval_ratio)) if len(rows) >= 20 else 0
     eval_rows, train_rows = rows[:n_eval], rows[n_eval:]
-    mk = lambda rs: V3TurboLoraDataset(rs, tokenizer, model.config, max_length=args.max_length,
-                                        use_ref=not args.no_ref, ref_drop_rate=args.ref_drop_rate, seed=args.seed)
+    mk = lambda rs: V3TurboLoraDataset(rs, tokenizer, model.config, max_length=args.max_length)
     train_ds = mk(train_rows)
     eval_ds = mk(eval_rows) if eval_rows else None
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, drop_last=False,

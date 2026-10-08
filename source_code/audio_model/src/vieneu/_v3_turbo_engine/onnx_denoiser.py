@@ -92,9 +92,11 @@ def _resample(wav: np.ndarray, sr: int, target: int = WAV_RATE) -> np.ndarray:
 class OnnxDenoiser:
     """Torch-free resemble-enhance denoiser (denoise-only) via ONNX + numpy."""
 
-    def __init__(self, onnx_path: str, providers=None):
+    def __init__(self, onnx_path: str, providers=None, sess_options=None):
+        # sess_options: share the engine's tuned options (thread count, no
+        # spinning). The ORT default is a pool of ALL cores that busy-waits.
         self.sess = ort.InferenceSession(
-            onnx_path, providers=providers or ["CPUExecutionProvider"]
+            onnx_path, sess_options, providers=providers or ["CPUExecutionProvider"]
         )
 
     def _core(self, mag, cos, sin):

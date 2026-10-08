@@ -34,7 +34,7 @@ from typing import Generator, List, Optional, Tuple, Union
 import numpy as np
 
 from .rep_history import DEFAULT_REP_WINDOW, RepetitionHistory
-from vieneu_utils.core_utils import BABBLE_MAX_RETRIES, babble_suspect, babble_prefer, babble_log_line
+from vieneu_utils.core_utils import (BABBLE_MAX_RETRIES, babble_suspect, babble_prefer, babble_log_line, CODEC_SAMPLES_PER_FRAME, pad_to_codec_frame)
 import logging
 
 _V3_REPO = "pnnbao-ump/VieNeu-TTS-v3-Turbo"
@@ -149,6 +149,11 @@ class OnnxV3LiteEngine:
             intra = min(max((os.cpu_count() or 8) // 2, 1), 8)
         so.intra_op_num_threads = intra
         self.ort_intra_op_threads = intra
+        # Every auxiliary session (denoiser, speaker encoder, codec encoder) reuses
+        # these options too. Left on ORT defaults they each spawn a pool of ALL
+        # cores that busy-waits between ops: measured 2026-09-15 (i5-12400F, 12
+        # logical), cloning ran at 5-10 cores avg vs ~1.2-2.8 for synthesis.
+        self._so = so
         prov = ["CPUExecutionProvider"]
         self.sess_pre = ort.InferenceSession(str(vd / "vieneu_prefill.onnx"), so, providers=prov)
         self.sess_dec = ort.InferenceSession(str(vd / "vieneu_decode_step.onnx"), so, providers=prov)
@@ -193,7 +198,7 @@ class OnnxV3LiteEngine:
         try:
             from .onnx_denoiser import OnnxDenoiser
             path = self._resolve_root_file("denoiser.onnx")
-            return OnnxDenoiser(path) if path else None
+            return OnnxDenoiser(path, sess_options=self._so) if path else None
         except Exception:
             return None
 
@@ -212,7 +217,8 @@ class OnnxV3LiteEngine:
         if self.speaker_encoder is None:
             from .speaker import OnnxSpeakerEncoder
             self.speaker_encoder = OnnxSpeakerEncoder.from_pretrained(
-                self.checkpoint_path, filename=self.speaker_encoder_filename, device="cpu")
+                self.checkpoint_path, filename=self.speaker_encoder_filename, device="cpu",
+                sess_options=self._so)
         return self.speaker_encoder
 
     # ── numpy embedding / speaker anchor / heads / sampling ────────────────────
@@ -586,18 +592,26 @@ class OnnxV3LiteEngine:
         return out[0][0].mean(0).astype(np.float32)
 
     def _encode_ref_wav(self, wav: np.ndarray, sr: int) -> np.ndarray:
-        """wav: 1D mono float → MOSS ref codes (T, n_vq), torch-free."""
+        """wav: 1D mono float → MOSS ref codes (T, n_vq), torch-free, ``T = n_padded / 3840``.
+
+        Zero-padded to whole codec frames first, and cut to exactly ``T`` frames:
+        the ONNX encoder always returns one frame more than the input holds, and
+        that frame is the audible codebook-0 = 455 pad artifact (issue #198).
+        """
         wav = np.asarray(wav, dtype=np.float32).reshape(-1)
         if sr != self.SAMPLE_RATE:
             import soxr
             wav = soxr.resample(wav, sr, self.SAMPLE_RATE).astype(np.float32)
+        wav = pad_to_codec_frame(wav, self.SAMPLE_RATE)
+        n_frames = len(wav) // CODEC_SAMPLES_PER_FRAME
         stereo = np.stack([wav, wav])[None].astype(np.float32)     # (1, 2, n)
         lens = np.array([stereo.shape[-1]], dtype=np.int32)
         if self._sess_codec_enc is None:
             import onnxruntime as ort
-            self._sess_codec_enc = ort.InferenceSession(self._codec_enc_path, providers=["CPUExecutionProvider"])
+            self._sess_codec_enc = ort.InferenceSession(
+                self._codec_enc_path, self._so, providers=["CPUExecutionProvider"])
         out = self._sess_codec_enc.run(None, {"waveform": stereo, "input_lengths": lens})
-        return np.asarray(out[0][0], dtype=np.int64)               # (T, n_vq)
+        return np.asarray(out[0][0], dtype=np.int64)[:n_frames]    # (T, n_vq)
 
     def _encode_ref(self, ref_audio_path: str) -> np.ndarray:
         wav, sr = self._load_mono(ref_audio_path, None)

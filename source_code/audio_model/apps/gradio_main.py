@@ -20,7 +20,7 @@ import queue
 import threading
 import yaml
 import uuid
-from vieneu_utils.core_utils import join_audio_chunks, env_bool, get_silence_duration_v2, gaps_to_silence
+from vieneu_utils.core_utils import join_audio_chunks, env_bool, get_silence_duration_v2, gaps_to_silence, trust_remote_code_enabled
 from vieneu_utils.phonemize_text import phonemize_to_chunks, normalize_to_chunks, normalize_to_chunks_v3, normalize_to_chunks_v3_with_gaps
 # PuncNormalizer = sea_g2p.Normalizer luôn bật punc_norm=True.
 from vieneu_utils.phonemize_text import PuncNormalizer as Normalizer
@@ -175,6 +175,19 @@ model_loaded = False
 using_lmdeploy = False
 PRESET_VOICES_CACHE = []  # List of all voices (tuples or strings)
 CONV_VOICES_CACHE = []    # Filtered list for conversation (podcast=True)
+
+
+def _sort_voices(tts, voices):
+    """Dropdown order: editors' picks (``featured`` 1..N in the voices JSON, already
+    ⭐-labelled by the SDK) first in that order, then everything else A-Z."""
+    presets = getattr(tts, "_preset_voices", {}) or {}
+
+    def _key(v):
+        label, v_id = (v[0], v[1]) if isinstance(v, tuple) else (v, v)
+        rank = presets.get(v_id, {}).get("featured") if isinstance(presets.get(v_id), dict) else None
+        return (rank is None, rank or 0, str(label))
+
+    voices.sort(key=_key)
 MAX_SPEAKERS = 8          # Max concurrent speakers in conversation tab
 
 # Normalizer (module-level singleton)
@@ -376,8 +389,12 @@ def load_model(backbone_choice: str, codec_choice: str, device_choice: str,
                  # LoRA can use LMDeploy if we merge first (checked logic below) or Standard
                  use_lmdeploy = force_lmdeploy and should_use_lmdeploy(custom_base_model, device_choice)
              else:
-                 # Full custom model (e.g. finetune)
-                 use_lmdeploy = force_lmdeploy and should_use_lmdeploy("VieNeu-TTS (GPU)", device_choice) # Assume GPU compatible?
+                 # Full custom model (e.g. finetune). LMDeploy reads the repo itself and
+                 # older releases always pass trust_remote_code=True, so a typed-in repo
+                 # takes that path only with VIENEU_TRUST_REMOTE_CODE=1; the Standard
+                 # backend never runs the repo's code.
+                 use_lmdeploy = (force_lmdeploy and trust_remote_code_enabled()
+                                 and should_use_lmdeploy("VieNeu-TTS (GPU)", device_choice))
         # Use LMDeploy only if Force LMDeploy is set and the model is compatible
         # NOTE: For VieNeu-v2-Turbo, we handle LMDeploy inside TurboGPUVieNeuTTS class, 
         # so we set use_lmdeploy = False here to avoid generic FastVieNeuTTS loading.
@@ -753,11 +770,8 @@ def load_model(backbone_choice: str, codec_choice: str, device_choice: str,
                 else:
                     voices.append(default_v)
             
-            # Sort voices by name/label for better UX
-            if is_tuple:
-                voices.sort(key=lambda x: str(x[0]))
-            else:
-                voices.sort()
+            # Editors' picks first, then A-Z
+            _sort_voices(tts, voices)
 
             voice_update = gr.update(choices=voices, value=default_v, interactive=True)
             
@@ -2467,10 +2481,7 @@ with gr.Blocks(theme=theme, css=css, title="VieNeu-TTS", head=head_html) as demo
                 voices = tts.list_preset_voices()
             except Exception:
                 voices = []
-            if voices and isinstance(voices[0], tuple):
-                voices.sort(key=lambda x: str(x[0]))
-            else:
-                voices.sort()
+            _sort_voices(tts, voices)
             PRESET_VOICES_CACHE = voices
 
             def _podcast(v_id):
@@ -2617,7 +2628,21 @@ def main():
     if server_name == "0.0.0.0" and os.getenv("GRADIO_SHARE") is None:
         share = False
 
-    demo.queue().launch(server_name=server_name, server_port=server_port, share=share)
+    # Optional login for a UI others can reach (Docker, LAN, Colab share link):
+    # VIENEU_WEB_AUTH="user:password".
+    auth = None
+    creds = os.getenv("VIENEU_WEB_AUTH", "")
+    if creds:
+        user, sep, password = creds.partition(":")
+        if not (user and sep and password):
+            raise SystemExit("VIENEU_WEB_AUTH must look like 'user:password'")
+        auth = (user, password)
+    elif share or server_name not in ("127.0.0.1", "localhost", "::1"):
+        where = "a public share link" if share else f"{server_name}:{server_port}"
+        print(f"⚠️  The Web UI is reachable beyond this machine ({where}) with no login. "
+              "Set VIENEU_WEB_AUTH=user:password to require one.")
+
+    demo.queue().launch(server_name=server_name, server_port=server_port, share=share, auth=auth)
 
 if __name__ == "__main__":
     main()
