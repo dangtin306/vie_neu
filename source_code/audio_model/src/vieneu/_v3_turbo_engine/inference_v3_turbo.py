@@ -399,6 +399,25 @@ class VieNeuTTSv3Turbo:
     def _decode_codes(self, codes: torch.LongTensor) -> np.ndarray:
         if codes.numel() == 0:
             return np.zeros(0, dtype=np.float32)
+        if codes.shape[0] > 256:
+            # Stream long codes through MOSS in 8-second slices. Copy every
+            # decoded slice to host RAM immediately so the full waveform never
+            # has to coexist in VRAM with the decoder's activations.
+            chunk_frames = int(8.0 * self.audio_tokenizer.sampling_rate
+                               / self.audio_tokenizer.downsample_rate)
+            audio_parts: List[np.ndarray] = []
+            first = True
+            try:
+                for start in range(0, codes.shape[0], chunk_frames):
+                    part = self._decode_codes_stream(
+                        codes[start:start + chunk_frames], reset=first)
+                    first = False
+                    if part.size:
+                        audio_parts.append(part)
+            finally:
+                if not first:
+                    self._reset_stream_session()
+            return np.concatenate(audio_parts) if audio_parts else np.zeros(0, dtype=np.float32)
         c = self._Tnq_to_moss_codes(codes).to(self.device)
         dec = self.audio_tokenizer.decode(c, return_dict=True)
         return dec.audio[0].mean(0).cpu().float().numpy()

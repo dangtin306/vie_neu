@@ -30,3 +30,7 @@ train/cache/
 # Local training artifacts and logs; keep on disk, do not commit
 /train/process/v2/extract_nghean_test2.log
 /train/process/v3/test_1/output/
+# Large model artifacts
+*.onnx
+*.safetensors
+*.pt

@@ -1,0 +1,13 @@
+# Generated demos, datasets, checkpoints, and merged models
+**/output/
+**/outputs/
+**/*.wav
+**/*.mp3
+**/*.flac
+**/*.parquet
+**/*.safetensors
+**/*.onnx
+**/*.pt
+**/*.pth
+**/*.ckpt
+**/*.bin

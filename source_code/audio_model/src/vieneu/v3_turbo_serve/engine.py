@@ -305,7 +305,7 @@ class V3TurboBatchEngine:
         ]
 
     # Frames a fused graph's code buffer holds; a call may ask for fewer.
-    FUSED_MAX_FRAMES = 512
+    FUSED_MAX_FRAMES = _env_int("VIENEU_FUSED_MAX_FRAMES", 512)
 
     def warm_fused(self, batch_sizes=(1, 16), max_len: int = 1024, *,
                    temperature: float = 0.8, top_k: int = 25, top_p: float = 0.95,
